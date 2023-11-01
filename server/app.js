@@ -8,8 +8,6 @@ const cors = require('cors');
 
 const db = require('./data/database');
 
-const expressSession = require('express-session');
-
 const errorHandlerMiddleware = require('./middlewares/error-handler');
 
 const checkAuthStatusMiddleware = require('./middlewares/check-auth');
@@ -18,11 +16,8 @@ const verifyJWTTokenMiddleware = require('./middlewares/verify-jwt-token');
 
 const refreshTokenController = require('./controllers/refresh-token-controller');
 
-const createSessionConfig = require('./config/session');
-
 const protectRoutesMiddleware = require('./middlewares/protect-routes');
 
-// const notFoundMiddleware = require('./middlewares/not-found');
 
 const corsOptions = {
     origin: process.env.CLIENT_URL,
@@ -33,7 +28,6 @@ const corsOptions = {
 };
 
 const corsMiddleware = cors(corsOptions);
-
 
 const authRoutes = require('./routes/auth-routes');
 const baseRoutes = require('./routes/base-routes');
@@ -58,13 +52,7 @@ app.use(express.json());
 
 app.use(corsMiddleware);
 
-
-const sessionConfig = createSessionConfig();
-app.use(expressSession(sessionConfig));
-
 app.use(cookieParser()); //parses cookies and adds them to req.cookies
-
-
 
 
 app.use(baseRoutes);
