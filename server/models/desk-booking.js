@@ -561,7 +561,8 @@ class DeskBookings {
             public."DeskBookings"."booked_for_date", public."Users"."first_name", public."Users"."last_name"
             FROM public."DeskBookings"
             INNER JOIN public."Users" ON public."DeskBookings"."user_id" = public."Users"."user_id"
-            WHERE "booked_for_date" >= CURRENT_DATE;`);
+            WHERE "booked_for_date" >= CURRENT_DATE
+            ORDER BY "booked_for_date";`);
         } catch (error) {
             console.error(error);
         }
@@ -579,7 +580,8 @@ class DeskBookings {
             bookings = await db.any(`SELECT public."DeskBookings"."desk_id", public."DeskBookings"."user_id",
             public."DeskBookings"."booked_for_date", public."Users"."first_name", public."Users"."last_name"
             FROM public."DeskBookings"
-            INNER JOIN public."Users" ON public."DeskBookings"."user_id" = public."Users"."user_id";`);
+            INNER JOIN public."Users" ON public."DeskBookings"."user_id" = public."Users"."user_id"
+            ORDER BY "booked_for_date";`);
         } catch (error) {
             console.error(error);
         }
@@ -599,7 +601,8 @@ class DeskBookings {
             public."DeskBookings"."booked_for_date", public."Users"."first_name", public."Users"."last_name"
             FROM public."DeskBookings"
             INNER JOIN public."Users" ON public."DeskBookings"."user_id" = public."Users"."user_id"
-            WHERE public."DeskBookings"."user_id" = $1;`, [userId]);
+            WHERE public."DeskBookings"."user_id" = $1
+            ORDER BY "booked_for_date";`, [userId]);
         } catch (error) {
             console.error(error);
         }
@@ -620,7 +623,8 @@ class DeskBookings {
             FROM public."DeskBookings"
             INNER JOIN public."Users" ON public."DeskBookings"."user_id" = public."Users"."user_id"
             WHERE public."DeskBookings"."user_id" = $1
-            AND "booked_for_date" >= CURRENT_DATE;`, [userId]);
+            AND "booked_for_date" >= CURRENT_DATE
+            ORDER BY "booked_for_date";`, [userId]);
         } catch (error) {
             console.error(error);
         }
@@ -673,7 +677,102 @@ class DeskBookings {
             public."DeskBookings"."booked_for_date", public."Users"."first_name", public."Users"."last_name"
             FROM public."DeskBookings"
             INNER JOIN public."Users" ON public."DeskBookings"."user_id" = public."Users"."user_id"
-            WHERE "booked_for_date" = $1;`, [date]);
+            WHERE "booked_for_date" = $1
+            ORDER BY "booked_for_date";`, [date]);
+        } catch (error) {
+            console.error(error);
+        }
+        try {
+            bookings = await this.formatDeskBoookings(bookings);
+        } catch (error) {
+            console.error(error);
+        }
+        return bookings;
+    }
+
+    static async getDeskBookingsForDates(dates) { //returns an array of all desk bookings for multiple dates (array of dates)
+        if (!dates) return null; //if dates is undefined, then return null
+        if (!Array.isArray(dates)) dates = [dates]; //if dates is not an array, then set dates to an array containing dates
+        for (let i = 0; i < dates.length; i++) {
+            dates[i] = moment(dates[i]).format('YYYY-MM-DD');
+        }
+        //sort dates in ascending order
+        dates.sort((a, b) => {
+            return new Date(a) - new Date(b);
+        });
+        let booking, bookings;
+        try {
+            for (let i = 0; i < dates.length; i++) {
+                booking = await db.any(`SELECT public."DeskBookings"."desk_id", public."DeskBookings"."user_id",
+                public."DeskBookings"."booked_for_date", public."Users"."first_name", public."Users"."last_name"
+                FROM public."DeskBookings"
+                INNER JOIN public."Users" ON public."DeskBookings"."user_id" = public."Users"."user_id"
+                WHERE "booked_for_date" = $1
+                ORDER BY "booked_for_date";`, [dates[i]]);
+                if (!booking || booking.length === 0) continue;
+                if (bookings) bookings = bookings.concat(booking);
+                //concat is used instead of push because push adds the array booking as an element to bookings array, whereas concat adds the elements of booking array to bookings array
+                else bookings = booking;
+            }
+        } catch (error) {
+            console.error(error);
+        }
+        try {
+            bookings = await this.formatDeskBoookings(bookings);
+        } catch (error) {
+            console.error(error);
+        }
+        return bookings;
+    }
+
+    static async getDeskBookingsForUserForDates(userId, dates) { //returns an array of all desk bookings for a user for multiple dates (array of dates)
+        if (!userId || !dates) return null; //if userId or dates is undefined, then return null
+        if (!Array.isArray(dates)) dates = [dates]; //if dates is not an array, then set dates to an array containing dates
+        for (let i = 0; i < dates.length; i++) {
+            dates[i] = moment(dates[i]).format('YYYY-MM-DD');
+        }
+        //sort dates in ascending order
+        dates.sort((a, b) => {
+            return new Date(a) - new Date(b);
+        });
+        let booking, bookings;
+        try {
+            for (let i = 0; i < dates.length; i++) {
+                booking = await db.any(`SELECT public."DeskBookings"."desk_id", public."DeskBookings"."user_id",
+                public."DeskBookings"."booked_for_date", public."Users"."first_name", public."Users"."last_name"
+                FROM public."DeskBookings"
+                INNER JOIN public."Users" ON public."DeskBookings"."user_id" = public."Users"."user_id"
+                WHERE public."DeskBookings"."user_id" = $1
+                AND "booked_for_date" = $2
+                ORDER BY "booked_for_date";`, [userId, dates[i]]);
+                if (!booking || booking.length === 0) continue;
+                if (bookings) bookings = bookings.concat(booking);
+                //concat is used instead of push because push adds the array booking as an element to bookings array, whereas concat adds the elements of booking array to bookings array
+                else bookings = booking;
+            }
+        } catch (error) {
+            console.error(error);
+        }
+        try {
+            bookings = await this.formatDeskBoookings(bookings);
+        } catch (error) {
+            console.error(error);
+        }
+        return bookings;
+    }
+
+    static async getDeskBookingsBetweenDates(startDate, endDate) { //returns an array of all desk bookings between two dates
+        if (!startDate || !endDate) return null; //if startDate or endDate is undefined, then return null
+        startDate = moment(startDate).format('YYYY-MM-DD');
+        endDate = moment(endDate).format('YYYY-MM-DD');
+        let bookings;
+        try {
+            bookings = await db.any(`SELECT public."DeskBookings"."desk_id", public."DeskBookings"."user_id",
+            public."DeskBookings"."booked_for_date", public."Users"."first_name", public."Users"."last_name"
+            FROM public."DeskBookings"
+            INNER JOIN public."Users" ON public."DeskBookings"."user_id" = public."Users"."user_id"
+            WHERE "booked_for_date" BETWEEN $1 AND $2
+            ORDER BY "booked_for_date";`, [startDate, endDate]);
         } catch (error) {
             console.error(error);
         }
@@ -689,11 +788,13 @@ class DeskBookings {
         if (!deskId) return null; //if bookingId is undefined, then return null
         let booking;
         try {
-            booking = await db.any(`SELECT public."DeskBookings"."desk_id", public."DeskBookings"."user_id", public."DeskBookings"."booked_for_date", public."Users"."first_name", public."Users"."last_name" 
-            FROM public."DeskBookings" 
-            INNER JOIN public."Users" ON public."DeskBookings"."user_id" = public."Users"."user_id" 
-            WHERE "desk_id" = $1 
-            AND "booked_for_date" >= CURRENT_DATE;`, [deskId]);
+            //bookings should be in ascending order of booked_for_date
+            booking = await db.any(`SELECT public."DeskBookings"."desk_id", public."DeskBookings"."user_id", public."DeskBookings"."booked_for_date", public."Users"."first_name", public."Users"."last_name"
+            FROM public."DeskBookings"
+            INNER JOIN public."Users" ON public."DeskBookings"."user_id" = public."Users"."user_id"
+            WHERE "desk_id" = $1
+            AND "booked_for_date" >= CURRENT_DATE
+            ORDER BY "booked_for_date";`, [deskId]);
         } catch (error) {
             console.error(error);
         }
@@ -724,7 +825,7 @@ class DeskBookings {
         try {
             for (let i = 0; i < dates.length; i++) {
                 bookingId = uuidv4(); //generate a random booking id
-                await db.any('INSERT INTO public."DeskBookings"("booking_id", "desk_id", "user_id", "booked_for_date", date_of_booking) VALUES($1, $2, $3, $4, CURRENT_DATE)', [bookingId, deskId, userId, dates[i]]);
+                await db.any('INSERT INTO public."DeskBookings"("booking_id", "desk_id", "user_id", "booked_for_date", date_of_booking) VALUES($1, $2, $3, $4, CURRENT_TIMESTAMP)', [bookingId, deskId, userId, dates[i]]);
             }
         } catch (error) {
             console.error(error);
