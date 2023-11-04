@@ -1,0 +1,61 @@
+.table-container {
+    max-height: 400px; 
+    overflow-y: auto; 
+    padding-top: 100px;
+    
+  }
+  
+  table {
+    border-collapse: collapse;
+    width: 100%;
+ 
+  }
+  
+  thead {
+    position: sticky;
+    top: 0;
+    
+  }
+  
+  th, td {
+    padding: 8px;
+    border: 1px solid #ddd;
+    text-align: left;
+  }
+  
+  
+  .sticky-thead {
+    position: sticky;
+    top: 0;
+    z-index: 1;
+  }
+  
+  .booking{
+    text-align: center;
+    size: 10px;
+    
+    color: black
+  }
+  
+ 
+.red-button {
+    background-color: red;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    padding: 6px 12px;
+    cursor: pointer;
+  }
+
+  th {
+    background-color: #044280;
+    color: #fff;
+  }
+  
+  tr:nth-child(even) {
+    background-color: #f2f2f2;
+  }
+  
+  tr:nth-child(odd) {
+    background-color: #fff;
+  }
