@@ -11,7 +11,7 @@ async function getAllDeskBookings(req, res, next) { //function to get all desk b
         return res.status(500).json({ message: 'Internal Server Error' });
     }
     if (!desks || desks.length === 0) {
-        return res.status(404).json({ message: 'No desks found' });
+        return res.status(404).json({ message: 'No desk bookings found' });
     }
     return res.status(200).json(desks);
 }
@@ -25,10 +25,56 @@ async function getFutureDeskBookings(req, res, next) { //function to get all fut
         return res.status(500).json({ message: 'Internal Server Error' });
     }
     if (!desks || desks.length === 0) {
-        return res.status(404).json({ message: 'No desks found' });
+        return res.status(404).json({ message: 'No desk bookings found' });
     }
     return res.status(200).json(desks);
 }
+
+async function getDeskBookingsForDates(req, res, next) { //function to get all desk bookings for multiple dates
+    let dates = req.body.dates;
+    if (!dates || dates.length === 0) {
+        return res.status(400).json({ message: 'Dates not provided' });
+    }
+    if (!Array.isArray(dates)) dates = [dates];
+    for (let i = 0; i < dates.length; i++) {
+        dates[i] = moment(dates[i]).format('YYYY-MM-DD');
+    }
+    let desks;
+    try {
+        desks = await deskBookingsModel.getDeskBookingsForDates(dates);
+    } catch (error) {
+        console.error(error);
+        return res.status(500).json({ message: 'Internal Server Error' });
+    }
+
+    if (!desks || desks.length === 0) {
+        return res.status(404).json({ message: 'No desk bookings found' });
+    }
+    return res.status(200).json(desks);
+}
+
+async function getDeskBookingsBetweenDates(req, res, next) { //function to get all desk bookings between two dates
+    let startDate = req.body.startDate;
+    let endDate = req.body.endDate;
+    if (!startDate || !endDate) {
+        return res.status(400).json({ message: 'Start date or end date not provided' });
+    }
+    startDate = moment(startDate).format('YYYY-MM-DD');
+    endDate = moment(endDate).format('YYYY-MM-DD');
+    let desks;
+    try {
+        desks = await deskBookingsModel.getDeskBookingsBetweenDates(startDate, endDate);
+    } catch (error) {
+        console.error(error);
+        return res.status(500).json({ message: 'Internal Server Error' });
+    }
+
+    if (!desks || desks.length === 0) {
+        return res.status(404).json({ message: 'No desk bookings found' });
+    }
+    return res.status(200).json(desks);
+}
+
 
 async function getAllDeskBookingsForUser(req, res, next) { //function to get all desk bookings for a user
     const userId = req.userId;
@@ -40,7 +86,7 @@ async function getAllDeskBookingsForUser(req, res, next) { //function to get all
         return res.status(500).json({ message: 'Internal Server Error' });
     }
     if (!desks || desks.length === 0) {
-        return res.status(404).json({ message: 'No desks found' });
+        return res.status(404).json({ message: 'No desk bookings found' });
     }
     return res.status(200).json(desks);
 }
@@ -55,7 +101,7 @@ async function getFutureDeskBookingsForUser(req, res, next) { //function to get 
         return res.status(500).json({ message: 'Internal Server Error' });
     }
     if (!desks || desks.length === 0) {
-        return res.status(404).json({ message: 'No desks found' });
+        return res.status(404).json({ message: 'No desk bookings found' });
     }
     return res.status(200).json(desks);
 }
@@ -79,7 +125,7 @@ async function getDesksAvailabilityByDateObj(req, res, next) { //function to get
 
 async function getDesksAvailabilityByDatesObj(req, res, next) { //function to get availability of all desks for multiple dates
     let dates = req.body.dates;
-    if (!dates) {
+    if (!dates || dates.length === 0) {
         return res.status(400).json({ message: 'Dates not provided' });
     }
     if (!Array.isArray(dates)) dates = [dates];
@@ -90,7 +136,7 @@ async function getDesksAvailabilityByDatesObj(req, res, next) { //function to ge
     for (let i = 0; i < dates.length; i++) {
         dates[i] = moment(dates[i]).format('YYYY-MM-DD');
     }
-    
+
     let desksObj = [];
     for (let i = 0; i < dates.length; i++) { //get availability of all desks for each date in dates array
         let desks;
@@ -111,7 +157,7 @@ async function getDesksAvailabilityByDatesObj(req, res, next) { //function to ge
     }
     for (let i = 0; i < desksObj.length; i++) { //iterate over desksObj array and update finalDesks object with bookedBy field for each desk if desk is booked for any of the dates
         for (const key in desksObj[i]) {
-            if(key == "dateBooked") continue;
+            if (key == "dateBooked") continue;
             if (desksObj[i][key].bookedBy !== null) {
                 finalDesks[key].bookedBy = "someone";
             }
@@ -130,7 +176,7 @@ async function getDesksObj(req, res, next) { //function to get an object with de
         return res.status(500).json({ message: 'Internal Server Error' });
     }
     if (!desksObj || desksObj.length === 0) {
-        return res.status(404).json({ message: 'No desks found' });
+        return res.status(404).json({ message: 'No desk bookings found' });
     }
     return res.status(200).json(desksObj);
 }
@@ -150,7 +196,7 @@ async function getDeskByDeskId(req, res, next) { //function to get future desk b
         return res.status(500).json({ message: 'Internal Server Error' });
     }
     if (desk.length === 0) {
-        return res.status(404).json({ message: 'Desk not found' });
+        return res.status(404).json({ message: 'Desk booking not found' });
     }
     return res.status(200).json(desk);
 }
@@ -160,13 +206,25 @@ async function bookDesk(req, res, next) {
     let dates = req.body.dates;
     const deskId = req.query.deskId;
     const userId = req.userId;
-    if (!dates || !deskId || !userId) {
+    if (!dates || !deskId || !userId || dates.length === 0) {
         return res.status(400).json({ message: 'Dates, desk id or user id not provided' });
     }
 
     for (let i = 0; i < dates.length; i++) {
         dates[i] = moment(dates[i]).format('YYYY-MM-DD');
     }
+    //verify id user has already booked a desk for any of the dates
+    let userBookings;
+    try {
+        userBookings = await deskBookingsModel.getDeskBookingsForUserForDates(userId, dates);
+    } catch (error) {
+        console.error(error);
+        return res.status(500).json({ message: 'Internal Server Error' });
+    }
+    if (userBookings && userBookings.length > 0) {
+        return res.status(400).json({ message: 'User has already booked a desk for one or more of the dates' });
+    }
+    //verify if desk is already booked for any of the dates
     let bookings;
     try {
         bookings = await deskBookingsModel.getDeskBookingByDeskIdAndDates(deskId, dates); //check if desk is already booked for any of the dates
@@ -192,11 +250,11 @@ async function cancelDeskBooking(req, res, next) {
     const deskId = req.query.deskId;
     const userId = req.userId;
     let date = req.body.dates;
-    if (!deskId || !userId || !date) {
+    if (!deskId || !userId || !date || date.length === 0) {
         return res.status(400).json({ message: 'Desk id, user id or date not provided' });
     }
     if (!Array.isArray(date)) date = [date];
-    if(date.length > 1) {
+    if (date.length > 1) {
         return res.status(400).json({ message: 'Only one date can be provided' });
     }
     date[0] = moment(date[0]).format('YYYY-MM-DD');
@@ -223,6 +281,8 @@ async function cancelDeskBooking(req, res, next) {
 module.exports = {
     getAllDeskBookings,
     getFutureDeskBookings,
+    getDeskBookingsForDates,
+    getDeskBookingsBetweenDates,
     getAllDeskBookingsForUser,
     getFutureDeskBookingsForUser,
     getDesksAvailabilityByDateObj,
