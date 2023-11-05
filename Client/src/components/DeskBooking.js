@@ -1,6 +1,7 @@
 import { Button, createTheme } from '@mui/material';
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+
 // import Table from './Table';
 
 const DeskBooking = ({ selectedDates }) => {
@@ -40,15 +41,17 @@ const DeskBooking = ({ selectedDates }) => {
         <div key={index}>
           <Button
             variant="contained"
-            onClick={() => handleDeskView(index)}
+            onClick={() => handleDeskView(index)
+             }
             color={index === active ? 'success' : 'primary'}
+            
           >
             {d.toDateString()}
           </Button>
           
         </div>
       ))}
-      <Button variant="outlined" onClick={() => navigate('/cabbooking')}>next</Button>
+      <Button variant="outlined" onClick={() => navigate('/lunchandcabbook')} >next</Button>
     </div>
   );
 };

@@ -6,7 +6,7 @@
 import React, { useEffect } from 'react';
 import { Box, Button } from '@mui/material';
 import './Navbar.css';
-import cme from '../assets/cmeLogo.png';
+
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { faUser, faNewspaper } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -41,9 +41,9 @@ const Navbar = ({showNewsFeed,setShowNewsFeed ,isAdmin}) => {
         backgroundColor: 'white',
       }}
     >
-      <div>
+      {/* <div>
         <img src={cme} alt="CME Logo" style={{ width: '18vw', padding: '0.5vw' }} />
-      </div>
+      </div> */}
 
       <div
         style={{

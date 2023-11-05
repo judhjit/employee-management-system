@@ -16,6 +16,12 @@ function App() {
   const [showNewsFeed, setShowNewsFeed] = useState(true);
   const [selectedDates, setSelectedDates] = useState([]);
   const [isAdmin,setIsAdmin] = useState(true);
+  const [user,setUser]=useState({empId:"",
+  empName:"",
+selectedDate:[],
+selectedSeat:[],
+cabSlot:[],
+meal:[]}) 
   return (
     <BrowserRouter>
     <div>
@@ -42,17 +48,19 @@ function App() {
             showNewsFeed={showNewsFeed}
             selectedDates={selectedDates}
             setSelectedDates={setSelectedDates}
+            user={user}
+            setUser={setUser}
           />}/>
           <Route path="/deskbooking" element={<DeskBooking selectedDates={selectedDates}/>}/>
           <Route path="/cabbooking" element={<CabBooking/>}/>
           
-          <Route path="/lunchandcabbook" element={<LunchAndCabbook/>}/>  
+          <Route path="/lunchandcabbook" element={<LunchAndCabbook selectedDates={selectedDates}/>} />  
           <Route path="/grantaccess" element={<GrantAccess/>}/>        
           <Route path="/requests" element={<Requests/>}/>        
 
           </Routes>
           
-          {showNewsFeed && (
+          {/* {showNewsFeed && (
             <div
               style={{
                 width: "350px",
@@ -63,7 +71,7 @@ function App() {
               <NewsFeed style={{ height: "100%" }} isAdmin={isAdmin}/>
             </div>
             
-          )}
+          )} */}
           
         </div>
       
