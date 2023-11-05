@@ -1,32 +1,29 @@
-import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom'; 
+import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import Navbar from "./Login.navbar";
 import classes from "./Login.module.css";
 import bg from "../../assets/background-img2.jpg";
+import { Button } from "@mui/material";
 
 function Login() {
-  const navigate = useNavigate(); 
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+  const navigate = useNavigate();
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
 
   const handleLogin = () => {
     // Check the email and password entered by the user
-    if (email === 'user@gmail.com' && password === 'userpassword') {
+    if (email === "admin@gmail.com" && password === "adminpassword") {
       // Navigate to the Meal page for the user
-      navigate('/meal');
-    } else if (email === 'admin@gmail.com' && password === 'adminpassword') {
-      // Navigate to the Analytics page for the admin
-      navigate('/analytics');
-    } else {
-      // Handle incorrect login here (e.g., show an error message)
-      alert('Invalid email or password. Please try again.');
-    }
+      navigate("/MultiDateCalendar")};
   };
 
   return (
     <div className={classes.mainlogin}>
       <Navbar />
-      <div className={classes.bgcover} style={{ backgroundImage: `url(${bg})` }}>
+      <div
+        className={classes.bgcover}
+        style={{ backgroundImage: `url(${bg})` }}
+      >
         <div className={classes.loginContainer}>
           <div className={classes.loginBox}>
             <h2>Login</h2>
@@ -55,9 +52,14 @@ function Login() {
                 <input type="checkbox" id="terms" />
                 <label htmlFor="terms">Accept all terms and conditions</label>
               </div>
-              <button type="button" onClick={handleLogin}>
+              <Button variant="contained" size="large"
+                onClick={handleLogin}
+              >
                 Login
-              </button>
+              </Button>
+              {/* <button type="button" onClick={handleLogin}>
+                Login
+              </button> */}
             </form>
           </div>
         </div>

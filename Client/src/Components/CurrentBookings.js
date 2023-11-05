@@ -1,14 +1,15 @@
+
+
+
 import React, { useState } from 'react';
-import './CurrentBookings.css'; 
+import './CurrentBookings.css'; // Import CSS file
 import { Button } from '@mui/material';
 
 const CurrentBookings = () => {
-
+  // Sample data for the table
   const initialData = [
-    { Slno: 1, date: '2023-11-15', desk: 'Desk 1', cab: '9:00-5:00', meal: 'Veg' },
+    { Slno: 1, date: '2023-10-31', desk: 'Desk 1', cab: '9:00-5:00', meal: 'Veg' },
     { Slno: 2, date: '2023-11-01', desk: 'Desk 2', cab: '9:00-5:00', meal: 'Non Veg' },
-    { Slno: 3, date: '2023-11-05', desk: 'Desk 4', cab: '5:00-2:00', meal: 'Veg' },
-    { Slno: 4, date: '2023-11-015', desk: 'Desk 5', cab: '9:00-5:00', meal: 'Non Veg' },
    
   ];
 
@@ -110,3 +111,8 @@ const CurrentBookings = () => {
 };
 
 export default CurrentBookings;
+
+
+
+
+

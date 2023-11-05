@@ -1,14 +1,12 @@
 import React, { useState } from 'react';
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js';
 import { Doughnut } from 'react-chartjs-2';
-import Navbar from '../../../Navbar';
-import CurrentBookings from '../../../Bookings/CurrentBookings';
 
 ChartJS.register(ArcElement, Tooltip, Legend);
 
 function Analytics() {
   const [selectedFilter, setSelectedFilter] = useState('monthly');
-//   const [selectedDate, setSelectedDate] = useState('2023-01-01'); // FOR DATE
+  const [selectedDate, setSelectedDate] = useState('2023-01-01'); // FOR DATE
 
   const data = {
     monthly: {
@@ -100,6 +98,34 @@ function Analytics() {
     },
   };
 
+  // Dummy data for "cab," "desk," and "meal" bookings based on the selected date
+  const getChartDataForDate = (date) => {
+    // Replace this with your data calculation or fetching logic based on the selected date
+    // For now, we'll use some dummy data for demonstration
+    if (date === '2023-01-01') {
+      return {
+        desk: [45, 55], // Example data for January 1, 2023
+        cab: [60, 40],  // Example data for January 1, 2023
+        meal: [25, 75], // Example data for January 1, 2023
+      };
+    } else if (date === '2023-05-05') {
+      return {
+        desk: [35, 65], // Example data for May 5, 2023
+        cab: [50, 90],  // Example data for May 5, 2023
+        meal: [30, 70], // Example data for May 5, 2023
+      };
+    } else {
+      return {
+        desk: [50, 85], // Default data for other dates
+        cab: [70, 90],  // Default data for other dates
+        meal: [65, 67], // Default data for other dates
+      };
+    }
+  };
+
+  // Calculate data for "cab," "desk," and "meal" based on the selected date
+  const selectedChartData = getChartDataForDate(selectedDate);
+
   const options = {
     animation: {
       duration: 1000,
@@ -125,9 +151,8 @@ function Analytics() {
   const selectedData = data[selectedFilter];
 
   return (
-    <div style={{ backgroundColor: '#eeecf3' }}>
-      <Navbar />
-      <h3 style={{ fontSize: '40px' }}>
+    <div>
+      <h3 style={{ fontSize: '40px', paddingLeft: '70px' }}>
         Booking <span style={{ color: '#0066b2' }}>Insights</span>
       </h3>
       <div>
@@ -151,8 +176,7 @@ function Analytics() {
               <option value="daily">Daily</option>
             </select>
           </label>
-          {/* DATE FILTER */}
-          {/* <label style={{ marginLeft: '20px' }}>
+          <label style={{ marginLeft: '20px' }}>
             Select Date:
             <input
               type="date"
@@ -161,18 +185,27 @@ function Analytics() {
               style={{
                 padding: '6px',
                 fontSize: '13px',
+                backgroundColor: '#f5f5f5',
                 border: '1px solid #ccc',
                 borderRadius: '6px',
                 marginLeft: '8px',
               }}
             />
-          </label> */}
+          </label>
         </div>
-        <div style={{ display: 'flex', justifyContent: 'space-around', width: '100%' }}>
+        <div style={{ display: 'flex', justifyContent: 'space-between', width: '100%', paddingLeft: '190px' }}>
           <div>
             <Doughnut
               key={`desk-${selectedFilter}`}
-              data={selectedData.desk}
+              data={{
+                labels: ['Booked', 'Available'],
+                datasets: [
+                  {
+                    data: selectedChartData.desk,
+                    backgroundColor: ['lightblue', 'teal'],
+                  },
+                ],
+              }}
               options={options}
               plugins={[doughnutLabel]}
             />
@@ -181,7 +214,15 @@ function Analytics() {
           <div>
             <Doughnut
               key={`cab-${selectedFilter}`}
-              data={selectedData.cab}
+              data={{
+                labels: ['Booked', 'Available'],
+                datasets: [
+                  {
+                    data: selectedChartData.cab,
+                    backgroundColor: ['pink', 'Maroon'],
+                  },
+                ],
+              }}
               options={options}
               plugins={[doughnutLabel]}
             />
@@ -190,7 +231,15 @@ function Analytics() {
           <div>
             <Doughnut
               key={`meal-${selectedFilter}`}
-              data={selectedData.meal}
+              data={{
+                labels: ['Booked', 'Available'],
+                datasets: [
+                  {
+                    data: selectedChartData.meal,
+                    backgroundColor: ['LightGreen', 'green'],
+                  },
+                ],
+              }}
               options={options}
               plugins={[doughnutLabel]}
             />
@@ -198,10 +247,6 @@ function Analytics() {
           </div>
         </div>
       </div>
-      <section id='bookings'>
-      <CurrentBookings />
-      </section>
-      
     </div>
   );
 }

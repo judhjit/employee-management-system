@@ -1,20 +1,17 @@
 .table-container {
-    max-height: 400px; 
-    overflow-y: auto; 
-    padding-top: 100px;
-    
+    max-height: 400px; /* Set the maximum height for the table container */
+    overflow-y: auto; /* Enable vertical scrolling for the table body */
   }
   
   table {
     border-collapse: collapse;
     width: 100%;
- 
   }
   
   thead {
     position: sticky;
-    top: 0;
-    
+    top: 0; /* Stick the header to the top */
+    background-color: #f5f5f5; /* Background color for the header */
   }
   
   th, td {
@@ -23,7 +20,7 @@
     text-align: left;
   }
   
-  
+  /* Fix the header in place when scrolling */
   .sticky-thead {
     position: sticky;
     top: 0;
@@ -32,12 +29,9 @@
   
   .booking{
     text-align: center;
-    size: 10px;
-    
-    color: black
   }
   
- 
+  /* Add a style for the red Cancel button */
 .red-button {
     background-color: red;
     color: white;
@@ -46,16 +40,4 @@
     padding: 6px 12px;
     cursor: pointer;
   }
-
-  th {
-    background-color: #044280;
-    color: #fff;
-  }
   
-  tr:nth-child(even) {
-    background-color: #f2f2f2;
-  }
-  
-  tr:nth-child(odd) {
-    background-color: #fff;
-  }
