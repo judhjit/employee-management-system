@@ -5,7 +5,7 @@ import { Doughnut } from 'react-chartjs-2';
 ChartJS.register(ArcElement, Tooltip, Legend);
 
 function Analytics() {
-  const [selectedFilter, setSelectedFilter] = useState('monthly');
+  const [selectedFilter, setSelectedFilter] = useState('monthly'); // FOR RANGE FILTER
   const [selectedDate, setSelectedDate] = useState('2023-01-01'); // FOR DATE
 
   const data = {
@@ -98,33 +98,29 @@ function Analytics() {
     },
   };
 
-  // Dummy data for "cab," "desk," and "meal" bookings based on the selected date
   const getChartDataForDate = (date) => {
-    // Replace this with your data calculation or fetching logic based on the selected date
-    // For now, we'll use some dummy data for demonstration
     if (date === '2023-01-01') {
       return {
-        desk: [45, 55], // Example data for January 1, 2023
-        cab: [60, 40],  // Example data for January 1, 2023
-        meal: [25, 75], // Example data for January 1, 2023
+        desk: [45, 55], 
+        cab: [60, 40],  
+        meal: [25, 75], 
       };
     } else if (date === '2023-05-05') {
       return {
-        desk: [35, 65], // Example data for May 5, 2023
-        cab: [50, 90],  // Example data for May 5, 2023
-        meal: [30, 70], // Example data for May 5, 2023
+        desk: [35, 65], 
+        cab: [50, 90],  
+        meal: [30, 70], 
       };
     } else {
       return {
-        desk: [50, 85], // Default data for other dates
-        cab: [70, 90],  // Default data for other dates
-        meal: [65, 67], // Default data for other dates
+        desk: [50, 85], 
+        cab: [70, 90],  
+        meal: [65, 67], 
       };
     }
   };
 
-  // Calculate data for "cab," "desk," and "meal" based on the selected date
-  const selectedChartData = getChartDataForDate(selectedDate);
+const selectedChartData = getChartDataForDate(selectedDate);
 
   const options = {
     animation: {

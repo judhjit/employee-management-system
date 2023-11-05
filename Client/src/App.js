@@ -12,10 +12,14 @@ import CurrentBookings from "./components/CurrentBookings";
 import LunchAndCabbook from "./components/LunchAndCabbook";
 import GrantAccess from "./components/admin/GrantAccess";
 import Requests from "./components/admin/Requests";
+import Analytics from "./components/admin/Analytics";
+
 function App() {
   const [showNewsFeed, setShowNewsFeed] = useState(true);
   const [selectedDates, setSelectedDates] = useState([]);
   const [isAdmin,setIsAdmin] = useState(true);
+  const [isUser,setisUser] = useState(false);
+  const [isNewsadmin,setNewsadmin] = useState(false);
   const [user,setUser]=useState({empId:"",
   empName:"",
 selectedDate:[],
@@ -57,21 +61,23 @@ meal:[]})
           <Route path="/lunchandcabbook" element={<LunchAndCabbook selectedDates={selectedDates}/>} />  
           <Route path="/grantaccess" element={<GrantAccess/>}/>        
           <Route path="/requests" element={<Requests/>}/>        
+          <Route path="/analytics" element={<Analytics/>}/>        
 
           </Routes>
           
-          {/* {showNewsFeed && (
+          {showNewsFeed && (
             <div
               style={{
                 width: "350px",
                 backgroundColor: "#12184c",
                 overflowY: "auto",
+                height:"805px"
               }}
             >
-              <NewsFeed style={{ height: "100%" }} isAdmin={isAdmin}/>
+              <NewsFeed style={{ height: "100%" }} isNewsadmin={isNewsadmin}/>
             </div>
             
-          )} */}
+          )}
           
         </div>
       
