@@ -30,26 +30,6 @@ class CabBookings {
         return cabBookings;
     }
 
-    static async getAllCabBookings() {
-        let bookings;
-        try {
-            bookings = await db.any(`SELECT public."CabBookings"."user_id",
-            public."CabBookings"."pickup_date", public."CabBookings"."work_slot",
-            public."Users"."first_name", public."Users"."last_name"
-            FROM public."CabBookings"
-            INNER JOIN public."Users" ON public."CabBookings"."user_id" = public."Users"."user_id"
-            ORDER BY public."CabBookings"."pickup_date";`);
-        } catch (error) {
-            console.error(error);
-        }
-        try {
-            bookings = await this.formatCabBookings(bookings);
-        } catch (error) {
-            console.error(error);
-        }
-        return bookings;
-    }
-
     static async getAllFutureCabBookings() {
         let bookings;
         try {
@@ -60,28 +40,6 @@ class CabBookings {
             INNER JOIN public."Users" ON public."CabBookings"."user_id" = public."Users"."user_id"
             WHERE public."CabBookings"."pickup_date" >= CURRENT_DATE
             ORDER BY public."CabBookings"."pickup_date";`);
-        } catch (error) {
-            console.error(error);
-        }
-        try {
-            bookings = await this.formatCabBookings(bookings);
-        } catch (error) {
-            console.error(error);
-        }
-        return bookings;
-    }
-
-    static async getCabBookingsForUser(userId) {
-        if (!userId) return null; //if userId is undefined, then return null
-        let bookings;
-        try {
-            bookings = await db.any(`SELECT public."CabBookings"."user_id",
-            public."CabBookings"."pickup_date", public."CabBookings"."work_slot",
-            public."Users"."first_name", public."Users"."last_name"
-            FROM public."CabBookings"
-            INNER JOIN public."Users" ON public."CabBookings"."user_id" = public."Users"."user_id"
-            WHERE public."CabBookings"."user_id" = $1
-            ORDER BY public."CabBookings"."pickup_date";`, [userId]);
         } catch (error) {
             console.error(error);
         }
@@ -211,6 +169,30 @@ class CabBookings {
         return bookings;
     }
 
+    static async getCabBookingsForUserBetweenDates(userId, startDate, endDate) { //returns an array of all cab bookings for a user between two dates
+        if (!userId || !startDate || !endDate) return null; //if userId, startDate or endDate is undefined, then return null
+        startDate = moment(startDate).format('YYYY-MM-DD');
+        endDate = moment(endDate).format('YYYY-MM-DD');
+        let bookings;
+        try {
+            bookings = await db.any(`SELECT public."CabBookings"."user_id",
+            public."CabBookings"."pickup_date", public."CabBookings"."work_slot",
+            public."Users"."first_name", public."Users"."last_name"
+            FROM public."CabBookings"
+            INNER JOIN public."Users" ON public."CabBookings"."user_id" = public."Users"."user_id"
+            WHERE "pickup_date" BETWEEN $1 AND $2 AND public."CabBookings"."user_id" = $3
+            ORDER BY "pickup_date";`, [startDate, endDate, userId]);
+        } catch (error) {
+            console.error(error);
+        }
+        try {
+            bookings = await this.formatCabBookings(bookings);
+        } catch (error) {
+            console.error(error);
+        }
+        return bookings;
+    }
+
     static async bookCab(userId, dates, workSlot) { //book cab function to book a cab using user id, dates and work slot for multiple dates by inserting them into cab bookings table
         if (!userId || !dates || !workSlot) return null; //if userId, dates or workSlot is undefined, then return null
         if (!Array.isArray(dates)) dates = [dates]; //if dates is not an array, then set dates to an array containing dates
@@ -237,8 +219,9 @@ class CabBookings {
 
     static async cancelCabBooking(userId, date) { //function to cancel a cab booking using booking id, user id and date
         if (!userId || !date) return null; //if bookingId, userId or date is undefined, then return null
+        if (!Array.isArray(date)) date = [date]; //if date is not an array, then set date to an array containing date
         try {
-            await db.any('DELETE FROM public."CabBookings" WHERE "user_id" = $1 AND "pickup_date" = $2', [userId, date]);
+            await db.any('DELETE FROM public."CabBookings" WHERE "user_id" = $1 AND "pickup_date" = $2', [userId, date[0]]);
         } catch (error) {
             console.error(error);
         }

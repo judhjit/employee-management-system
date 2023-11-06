@@ -2,15 +2,15 @@ const express = require('express');
 
 const router = express.Router();
 
-const newsControllers = require('../controllers/news-controller');
+const newsAdminControllers = require('../controllers/news-controller');
 
-// /newsAdmin?newsId=newsId => POST
-router.post('/', newsControllers.createNewsFeedPost);
+// /newsAdmin/news => POST
+router.post('/news', newsAdminControllers.createNewsFeedPost); //create a news feed post
 
-// /newsAdmin?newsId=newsId => PUT
-router.put('/', newsControllers.updateNewsFeedPost);
+// /newsAdmin/news => PATCH
+router.patch('/news', newsAdminControllers.updateNewsFeedPost); //update a news feed post
 
-// /newsAdmin?newsId=newsId => DELETE
-router.delete('/', newsControllers.deleteNewsFeedPost);
+// /newsAdmin/news => DELETE
+router.delete('/news', newsAdminControllers.deleteNewsFeedPost); //delete a news feed post
 
 module.exports = router;
