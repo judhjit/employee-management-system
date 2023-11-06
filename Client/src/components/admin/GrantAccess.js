@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import './GrantAccess.css';
 import {
   Table,
   TableBody,
@@ -38,7 +39,8 @@ const GrantAccess = () => {
   return (
     <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', height: '80vh' }}>
       <h2 style={{ textAlign: 'center' }}>Grant Access Requests</h2>
-      <TableContainer component={Paper} style={{ width: '1000px', margin: 'auto' }}>
+      <Button style={{right:'-700px',fontSize:'0.8vw'}}>View all news Admins</Button>
+      <TableContainer component={Paper} style={{ width: '1300px', margin: 'auto',paddingLeft:'80px' }}>
         <Table>
           <TableHead>
             <TableRow>
@@ -54,19 +56,21 @@ const GrantAccess = () => {
                 <TableCell>{request.empID}</TableCell>
                 <TableCell>{request.name}</TableCell>
                 <TableCell>{request.status}</TableCell>
-                <TableCell>
+                <TableCell style={{paddingRight:'60px'}}>
                   {request.status === 'Pending' && (
                     <>
                       <Button
+                          style={{marginRight:'10px', backgroundColor:"#008000"}}
                         variant="contained"
-                        color="primary"
+                       
                         onClick={() => handleAccept(request.empID)}
                       >
                         Accept
                       </Button>
-                      <Button
+                      <Button style={{backgroundColor:"#A52A2A"}}
+                      
                         variant="contained"
-                        color="secondary"
+                        
                         onClick={() => handleReject(request.empID)}
                       >
                         Reject
@@ -79,6 +83,7 @@ const GrantAccess = () => {
           </TableBody>
         </Table>
       </TableContainer>
+
     </div>
   );
 };

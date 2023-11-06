@@ -105,15 +105,15 @@ const LunchAndCabbook = ({selectedDates}) => {
     }
     setActive(updatedActive);
   };
-
+  
   const handleSelectAllDates = () => {
+    setSelectAllDates(!selectAllDates);
     if (!selectAllDates) {
       const allIndices = selectedDates.map((_, index) => index);
       setActive(allIndices);
     } else {
       setActive([]);
     }
-    setSelectAllDates(!selectAllDates);
   };
 
   return (
