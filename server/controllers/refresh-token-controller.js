@@ -18,7 +18,7 @@ async function handleRefreshToken(req, res) {
         console.error(error);
         return res.status(500).json({ message: 'Internal Server Error' });
     }
-    if (!foundUser) { //if refreshToken is not present in 
+    if (!foundUser) { //if refreshToken is not present in database
         jwt.verify(refreshToken, secretKey, async function (err, decoded) { //verify refresh token and check if it is expired or not and if it is expired then err will be set to true and decoded will be undefined else err will be set to null and decoded will be set to the decoded value of refresh token
             if (err) { //if refresh token is expired
                 return res.status(403).json({ message: 'Forbidden' });
@@ -43,7 +43,7 @@ async function handleRefreshToken(req, res) {
     }
 
     const newRefreshTokenArray = foundUser.refreshTokens.filter((token) => token !== refreshToken); //remove refreshToken from foundUser.refreshTokens array
-    if(!newRefreshTokenArray) newRefreshTokenArray = []; //if newRefreshTokenArray is undefined, then set newRefreshTokenArray to empty array
+    if (!newRefreshTokenArray) newRefreshTokenArray = []; //if newRefreshTokenArray is undefined, then set newRefreshTokenArray to empty array
     // evaluate jwt 
     jwt.verify(
         refreshToken,
@@ -86,7 +86,7 @@ async function handleRefreshToken(req, res) {
                 maxAge: Number(process.env.JWT_REFRESH_TOKEN_EXPIRATION),
             });
 
-            res.json({ accessToken, userId: foundUser.user_id, firstName: foundUser.first_name, lastName: foundUser.last_name, isAdmin: foundUser.isAdmin, isNewsAdmin: foundUser.isNewsAdmin });
+            res.json({ message: 'Access token refreshed successfully', accessToken, userId: foundUser.user_id, firstName: foundUser.first_name, lastName: foundUser.last_name, isAdmin: foundUser.isAdmin, isNewsAdmin: foundUser.isNewsAdmin });
         }
     );
 }

@@ -24,7 +24,7 @@ class News {
     static async getAllNews() {
         let news;
         try {
-            let result = await db.any('SELECT * FROM public."NewsFeedPosts"');
+            let result = await db.any('SELECT * FROM public."NewsFeedPosts" ORDER BY "date_of_posting"');
             if (!result) return null; //if result is undefined, then return null
             for (let i = 0; i < result.length; i++) {
                 result[i] = await News.formatNews(result[i]);
@@ -36,26 +36,12 @@ class News {
         return news;
     }
 
-    static async getNewsById(newsId) {
-        if (!newsId) return null; //if newsId is undefined, then return null
-        let news;
-        try {
-            let result = await db.any('SELECT * FROM public."NewsFeedPosts" WHERE news_id = $1', [newsId]);
-            news = result[0];
-            if (!news) return null; //if news is undefined, then return null
-            news = await News.formatNews(news);
-        } catch (error) {
-            console.error(error);
-        }
-        return news;
-    }
-
     static async createNews(userId, news) {
         if (!userId || !news) return null; //if userId or news is undefined, then return null
         let newsId;
         try {
             newsId = uuidv4();
-            await db.any('INSERT INTO public."NewsFeedPosts" (news_id, user_id, date_of_posting, news) VALUES ($1, $2, CURRENT_DATE, $3)', [newsId, userId, news]);
+            await db.any('INSERT INTO public."NewsFeedPosts" (news_id, user_id, date_of_posting, news) VALUES ($1, $2, CURRENT_TIMESTAMP, $3)', [newsId, userId, news]);
         } catch (error) {
             console.error(error);
         }
