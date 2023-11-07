@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import './NewsFeed.css';
+import React, { useState , useEffect} from "react";
+import "./NewsFeed.css";
 import {
   Container,
   Typography,
@@ -7,20 +7,35 @@ import {
   Button,
   Paper,
   IconButton,
-} from '@mui/material';
-import DeleteIcon from '@mui/icons-material/Delete';
-import EditIcon from '@mui/icons-material/Edit';
+  Dialog,
+  DialogTitle,
+  DialogContent,
+  DialogActions,
+} from "@mui/material";
+import DeleteIcon from "@mui/icons-material/Delete";
+import EditIcon from "@mui/icons-material/Edit";
+import AddIcon from "@mui/icons-material/Add";
 
-const NewsFeed = ({ isNewsadmin }) => {
+const NewsFeed = ({ isUser, isNewsadmin }) => {
   const [posts, setPosts] = useState([]);
-  const [newPost, setNewPost] = useState('');
+  const [newPost, setNewPost] = useState("");
   const [editingPostId, setEditingPostId] = useState(null);
-  const [editedText, setEditedText] = useState('');
+  const [editedText, setEditedText] = useState("");
+  const [showConfirmation, setShowConfirmation] = useState(false);
+  const [error, setError] = useState("");
+  const [confirmationMessage, setConfirmationMessage] = useState("");
+
+  const hideMessageAfterDuration = (messageStateSetter) => {
+    setTimeout(() => {
+      messageStateSetter("");
+    },5000); 
+  };
 
   const handleCreatePost = () => {
-    if (newPost.trim() === '') {
-      alert("Empty post is not accepted!!!");
-      return; 
+    if (newPost.trim() === "") {
+      setError("Empty post is not accepted!!!");
+      hideMessageAfterDuration(setError);
+      return;
     }
 
     const newPostObj = {
@@ -29,7 +44,8 @@ const NewsFeed = ({ isNewsadmin }) => {
     };
 
     setPosts([...posts, newPostObj]);
-    setNewPost('');
+    setNewPost("");
+    setError("");
   };
 
   const handleDeletePost = (postId) => {
@@ -48,12 +64,39 @@ const NewsFeed = ({ isNewsadmin }) => {
       )
     );
     setEditingPostId(null);
-    setEditedText('');
+    setEditedText("");
   };
-  
+
+  const handleShowConfirmation = () => {
+    setShowConfirmation(true);
+  };
+
+  const handleConfirmPost = () => {
+    setConfirmationMessage("Your request has been sent to admin");
+    hideMessageAfterDuration(setConfirmationMessage);
+    setShowConfirmation(false);
+  };
+
+  const handleCancelConfirmation = () => {
+    setShowConfirmation(false);
+  };
+  useEffect(() => {
+    if (error) {
+      hideMessageAfterDuration(setError);
+    }
+    if (confirmationMessage) {
+      hideMessageAfterDuration(setConfirmationMessage);
+    }
+  }, [error, confirmationMessage]);
+
   return (
     <Container>
-      <Typography variant="h5" component="h2" gutterBottom style={{color:'white', marginTop:'10px', textAlign:'center'}}>
+      <Typography
+        variant="h5"
+        component="h2"
+        gutterBottom
+        style={{ color: "white", marginTop: "10px", textAlign: "center" }}
+      >
         News Feed
       </Typography>
       <div>
@@ -82,28 +125,64 @@ const NewsFeed = ({ isNewsadmin }) => {
           </Paper>
         ))}
       </div>
-      
       {/* to Conditionally render the "Post" input and button based on newsfeedadmin */}
       {isNewsadmin && (
         <>
           <TextField
             label="New Post"
             margin='normal'
-            // color='secondary'
+            color='secondary'
             multiline minRows={3}
-            sx={{ input: { color: 'red' } }}
             value={newPost}
-            InputLabelProps={{ style: { color: 'white' } }}
-            InputProps={{ style: { color: 'white', border:'2px solid white'} }}
+            InputLabelProps={{ style: { color: 'white', } }}
+            InputProps={{ style: { color: 'white' }}}
             className="input-text-color"
             onChange={(e) => setNewPost(e.target.value)}
             fullWidth
             variant="outlined"
           />
-          <Button variant="contained" onClick={handleCreatePost} style={{margin:'10px'}}>
+          <Button
+            variant="contained"
+            onClick={handleCreatePost}
+            style={{ margin: "10px" }}
+          >
             Post
           </Button>
+          {error && <Typography style={{ color: "red" }}>{error}</Typography>}
         </>
+      )}
+
+      {/* to Conditionally render the button based on user */}
+      {isUser && (
+        <div>
+          <IconButton
+            onClick={handleShowConfirmation}
+            style={{
+              backgroundColor: "blue", 
+              color: "white", 
+              borderRadius: "30px", 
+              padding: "8px", 
+              cursor: "pointer", 
+            }}
+          >
+            <AddIcon />
+          </IconButton>
+          <Dialog open={showConfirmation} onClose={handleCancelConfirmation}>
+            <DialogTitle>Confirmation</DialogTitle>
+            <DialogContent>
+              <Typography>Do you want to post?</Typography>
+            </DialogContent>
+            <DialogActions>
+              <Button onClick={handleCancelConfirmation}>No</Button>
+              <Button onClick={handleConfirmPost}>Yes</Button>
+            </DialogActions>
+          </Dialog>
+          {confirmationMessage && (
+            <Typography style={{ color: "green", textAlign: "center" }}>
+              {confirmationMessage}
+            </Typography>
+          )}
+        </div>
       )}
     </Container>
   );
