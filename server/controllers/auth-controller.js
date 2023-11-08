@@ -3,7 +3,46 @@ const createAccessToken = require("../middlewares/create-jwt-token").createAcces
 const createRefreshToken = require("../middlewares/create-jwt-token").createRefreshToken;
 
 async function signup(req, res, next) {
-    const { userId, firstName, lastName, email, password } = req.body;
+    const { userId, firstName, lastName, email, password, confirmPassword } = req.body;
+    //verify if all fields are present
+    if (!userId || userId === "") {
+        return res.status(400).json({ message: "User ID not provided" });
+    }
+    if (!firstName || firstName === "") {
+        return res.status(400).json({ message: "First name not provided" });
+    }
+    if (!lastName || lastName === "") {
+        return res.status(400).json({ message: "Last name not provided" });
+    }
+    if (!email || email === "") {
+        return res.status(400).json({ message: "Email not provided" });
+    }
+    if(email.length <= 13) {
+        return res.status(400).json({ message: "Email must be more than 13 characters" });
+    }
+    //verify that email belongs to abcgroup domain
+    if (!email.endsWith("@abcgroup.com")) {
+        return res.status(400).json({ message: "Email must belong to abcgroup domain" });
+    }
+    if (!password || password === "") {
+        return res.status(400).json({ message: "Password not provided" });
+    }
+    //verify that password contains 6 or more characters
+    if (password.length < 6) {
+        return res.status(400).json({ message: "Password must contain 6 or more characters" });
+    }
+    //verify that password contains at least 8 characters, 1 uppercase letter, 1 lowercase letter, 1 number and 1 special character
+    // const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&_-]{8,}$/;
+    // if (!passwordRegex.test(password)) {
+    //     return res.status(400).json({ message: "Password must contain at least 8 characters, 1 uppercase letter, 1 lowercase letter, 1 number and 1 special character" });
+    // }
+    if (!confirmPassword || confirmPassword === "") {
+        return res.status(400).json({ message: "Confirm password not provided" });
+    }
+    //verify if password and confirm password are same
+    if (password !== confirmPassword) {
+        return res.status(400).json({ message: "Password and confirm password do not match" });
+    }
     try {
         const existingUser = await User.findOne(email); //check if user already exists
         if (existingUser) {
