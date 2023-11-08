@@ -55,7 +55,7 @@ const Navbar = ({ showNewsFeed, setShowNewsFeed, isAdmin }) => {
               <Button variant="contained" onClick={() => navigate("/grantaccess")}>
                 Grant Access
               </Button>
-              <Button variant="contained">Analytics</Button>
+              <Button variant="contained" onClick={() => navigate('/analytics')}>Analytics</Button>
             </div>
           )}
         </div>
@@ -63,7 +63,7 @@ const Navbar = ({ showNewsFeed, setShowNewsFeed, isAdmin }) => {
           icon={faNewspaper}
           size="2x"
           style={{ paddingLeft: '2vw', height: '1.5vw', width: '1.5vw' }}
-         
+          onClick={() => setShowNewsFeed(!showNewsFeed)}
         />
         <FontAwesomeIcon
           icon={faUser}

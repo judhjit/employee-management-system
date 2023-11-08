@@ -116,16 +116,16 @@ const Requests = () => {
     return (
         <div>
             <div style={{ paddingTop: '20px', display: 'flex', paddingRight: '20px' }}>
-                <label>
-                    Filter by Date:
-                    <select value={filterRange} onChange={handleFilterChange}>
-                        <option value="all">All</option>
-                        <option value="1w">1 week</option>
-                        <option value="1m">1 month</option>
-                        <option value="6m">6 months</option>
-                    </select>
+            <label >
+                    Filter by Employee ID:
+                    <input
+                        type="text"
+                        value={filterEmpID}
+                        onChange={handleEmpIDFilterChange}
+                    />
                 </label>
-                <label style={{ marginLeft: '320px' }}>
+                
+                <label style={{ marginLeft: '110px' }}>
                     Filter by Service:
                     <select value={filterService} onChange={handleServiceFilterChange}>
                         <option value="all">All</option>
@@ -134,16 +134,18 @@ const Requests = () => {
                         <option value="Desk">Desk</option>
                     </select>
                 </label>
-                <label>
-                    Filter by Employee ID:
-                    <input
-                        type="text"
-                        value={filterEmpID}
-                        onChange={handleEmpIDFilterChange}
-                    />
+                <label style={{ marginLeft: '250px' }}>
+                    Filter by Date:
+                    <select value={filterRange} onChange={handleFilterChange}>
+                        <option value="all">All</option>
+                        <option value="1w">1 week</option>
+                        <option value="1m">1 month</option>
+                        <option value="6m">6 months</option>
+                    </select>
                 </label>
+                
                 <div style={{ paddingLeft: '10px' }}>
-                    <Button variant="contained" onClick={exportToExcel} style={{ marginLeft: '670px', height: '2vw', width: '7vw', backgroundColor: '#FFDB58' }}>
+                    <Button variant="contained" onClick={exportToExcel} style={{ marginLeft: '250px', height: '2vw', width: '7vw', backgroundColor: '#FFDB58' }}>
                         Download
                     </Button>
                 </div>

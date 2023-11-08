@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import './GrantAccess.css';
+
 import {
   Table,
   TableBody,
@@ -10,8 +11,10 @@ import {
   Paper,
   Button,
 } from '@mui/material';
+import { useNavigate } from 'react-router-dom';
 
 const GrantAccess = () => {
+  const navigate = useNavigate();
   const [requests, setRequests] = useState([
     { empID: '1234', name: 'ajeet', status: 'Pending' },
     { empID: '1235', name: 'sumit', status: 'Pending' },
@@ -38,8 +41,8 @@ const GrantAccess = () => {
 
   return (
     <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', height: '80vh' }}>
-      <h2 style={{ textAlign: 'center' }}>Grant Access Requests</h2>
-      <Button style={{right:'-700px',fontSize:'0.8vw'}}>View all news Admins</Button>
+      <h2 style={{ textAlign: 'center' }} onClick={() => navigate('/analytics')}>Grant Access Requests</h2>
+      <Button style={{ right: '-700px', fontSize: '0.8vw' }} onClick={ ()=>navigate('/viewAllAdmin')}>View all news Admins</Button>
       <TableContainer component={Paper} style={{ width: '1300px', margin: 'auto',paddingLeft:'80px' }}>
         <Table>
           <TableHead>
@@ -89,3 +92,4 @@ const GrantAccess = () => {
 };
 
 export default GrantAccess;
+

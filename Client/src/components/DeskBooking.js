@@ -45,11 +45,35 @@ const DeskBooking = ({ selectedDates }) => {
 
   // }
 
+
+
   const handleTableSelect = (e) => {
     setSeat(e.target.name)
-    e.target.style.backgroundColor='green'
+    e.target.style.backgroundColor='yellow'
     console.log(seat)
   };
+
+  // const handleTableSelect = (e) => {
+  //   if (selectedDates && selectedDates[active]) {
+  //   const selectedDate = selectedDates[active].toDateString();
+  //   const tableNo = e.target.name; // Get the table name
+  
+  
+  //   const dateIndex = table.findIndex((record) => record.date === selectedDate);
+  
+  //   if (dateIndex !== -1) {
+           
+  //     table[dateIndex].tableno = tableNo;
+  //   } else {
+  //     // If it doesn't exist, add it to the table
+  //     bookTable([...table, { date: selectedDate, id: active, tableno: tableNo }]);
+  //   }
+    
+  //   setSeat(tableNo); // Update the 'seat' state
+  //   e.target.style.backgroundColor = 'green';
+  //   console.log(table);
+  // };
+  
 
   // const isSeatSelected = (event,name) =>{ 
   //   if(selectedSeats.includes(name)){
@@ -66,7 +90,9 @@ const DeskBooking = ({ selectedDates }) => {
               variant="contained"
               onClick={() => {
                 handleDeskView(index)
+               
               }}
+              style={{paddingLeft:'10px'}}
               color={index === active ? 'success' : 'primary'}
             >
               {d.toDateString()}
@@ -74,7 +100,7 @@ const DeskBooking = ({ selectedDates }) => {
             {index === active }
           </div>
         ))}
-        <Button variant="outlined" onClick={() => navigate('/cabbooking')}>next</Button>
+        <Button variant="outlined" onClick={() => navigate('/lunchandcabbook')}>next</Button>
       </div>
       <div style={{marginLeft:'10%'}}>
         <img src={offPhoto} style={{ height: "500px", width: '900px', display: 'block', position: 'relative' }} />
@@ -98,28 +124,28 @@ const DeskBooking = ({ selectedDates }) => {
         <button style={{ position: 'relative', top: '-30rem', left: '30rem' }} name='U3' onClick={handleTableSelect}>
           U3
         </button>
-        <button style={{ position: 'relative', top: '-30.8rem', left: '34.5rem' }} name='R1' onClick={handleTableSelect}>
+        <button style={{ position: 'relative', top: '-30.8rem', left: '34rem' }} name='R1' onClick={handleTableSelect}>
           R1
         </button>
-        <button style={{ position: 'relative', top: '-30.8rem', left: '38.3rem' }} name='R2' onClick={handleTableSelect}>
+        <button style={{ position: 'relative', top: '-30.8rem', left: '37rem' }} name='R2' onClick={handleTableSelect}>
           R2
         </button>
-        <button style={{ position: 'relative', top: '-20.8rem', left: '7.3rem' }} name='C1' onClick={handleTableSelect}>
+        <button style={{ position: 'relative', top: '-20.8rem', left: '5.9rem' }} name='C1' onClick={handleTableSelect}>
           C1
         </button>
-        <button style={{ position: 'relative', top: '-20.8rem', left: '11.2rem' }} name='C2' onClick={handleTableSelect}>
+        <button style={{ position: 'relative', top: '-20.8rem', left: '9rem' }} name='C2' onClick={handleTableSelect}>
           C2
         </button>
-        <button style={{ position: 'relative', top: '-20.8rem', left: '16.9rem' }} name='C3' onClick={handleTableSelect}>
+        <button style={{ position: 'relative', top: '-20.8rem', left: '14.899999999999999rem' }} name='C3' onClick={handleTableSelect}>
           C3
         </button>
-        <button style={{ position: 'relative', top: '-20.8rem', left: '20.6rem' }} name='C4' onClick={handleTableSelect}>
+        <button style={{ position: 'relative', top: '-20.8rem', left: '17.6rem' }} name='C4' onClick={handleTableSelect}>
           C4
         </button>
-        <button style={{ position: 'relative', top: '-20.8rem', left: '25.9rem' }} name='C5' onClick={handleTableSelect}>
+        <button style={{ position: 'relative', top: '-20.8rem', left: '22.9rem' }} name='C5' onClick={handleTableSelect}>
           C5
         </button>
-        <button style={{ position: 'relative', top: '-20.8rem', left: '29.9rem' }} name='C6' onClick={handleTableSelect}>
+        <button style={{ position: 'relative', top: '-20.8rem', left: '26.9rem' }} name='C6' onClick={handleTableSelect}>
           C6
         </button>
         
@@ -129,6 +155,8 @@ const DeskBooking = ({ selectedDates }) => {
 };
 
 export default DeskBooking;
+
+
 {/* <map name="officeMap">
 <area shape='rect' coords='381,390,500,479 ' alt='point' href='seat.htm'/>
 <area shape='rect' coords='380,317,499,408' alt='point' href='seat.htm'/>
@@ -136,6 +164,7 @@ export default DeskBooking;
 <area shape='rect' coords='504,434,602,493' alt='point' href='seat.htm'/>
 <area shape='rect' coords='401,197,499,256' alt='point' href='seat.htm'/>
 <area shape='rect' coords='621,216,667,244' alt='point' href='seat.htm'/>
+<area shape='rect' coords='10,105,116,339' alt='point' href='seat.htm' style={{backgroundColor:'blue'}}/>
 <area shape='rect' coords='10,105,116,339' alt='point' href='seat.htm' style={{backgroundColor:'blue'}}/>
 
 </map>  */}
