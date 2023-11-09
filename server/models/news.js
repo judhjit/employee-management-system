@@ -1,6 +1,5 @@
-
 const db = require("../data/database");
-const moment = require("moment");
+const dateFns = require('date-fns');
 const { v4: uuidv4 } = require('uuid');
 
 class News {
@@ -15,7 +14,7 @@ class News {
         const formattedNews = {
             newsId: news.news_id,
             userId: news.user_id,
-            dateOfPosting: moment(news.date_of_posting).format('YYYY-MM-DD HH:mm:ss', true),
+            dateOfPosting: dateFns.format(new Date(news.date_of_posting), 'yyyy-MM-dd HH:mm:ss'),
             news: news.news
         };
         return formattedNews;
