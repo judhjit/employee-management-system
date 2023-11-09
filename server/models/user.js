@@ -1,9 +1,6 @@
-//User Model - User.js for POSTGRES
-
 const db = require("../data/database");
 const bcrypt = require("bcrypt");
 const { v4: uuidv4 } = require('uuid');
-// const jwt = require("jsonwebtoken");
 
 class User {
     constructor(userId, firstName, lastName, email, password) {
@@ -88,6 +85,21 @@ class User {
             console.error(error);
         }
         return newsAdmins;
+    }
+
+    static async getAllUsers() {
+        let users;
+        try {
+            users = await db.any('SELECT * FROM public."Users"');
+        } catch (error) {
+            console.error(error);
+        }
+        try {
+            users = await this.formatUser(users);
+        } catch (error) {
+            console.error(error);
+        }
+        return users;
     }
 
     static async requestNewsAdminAccess(userId) {
