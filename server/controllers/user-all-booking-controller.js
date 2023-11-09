@@ -1,7 +1,7 @@
 const DeskBookings = require('../models/desk-booking');
 const CabBookings = require('../models/cab-booking');
 const FoodBookings = require('../models/food-booking');
-const moment = require('moment');
+const dateFns = require('date-fns');
 require("dotenv").config("../.env");
 
 async function getAllFutureBookingsForUser(req, res, next) { //function to get all bookings for a user
@@ -62,6 +62,69 @@ async function getAllFutureBookingsForUser(req, res, next) { //function to get a
     return res.status(200).json(bookings);
 }
 
+async function getCountOfAllFutureBookingsForUser(req, res, next) { //function to get count of all bookings for a user
+    const userId = req.userId;
+    //is req.body contains startDate and endDate, forward the request to getAllBookingsForUserBetweenDates controller
+    if (req.body.startDate && req.body.endDate) {
+        return getCountOfAllBookingsForUserBetweenDates(req, res, next);
+    }
+    const isDeskRequired = req.body.isDeskRequired;
+    const isCabRequired = req.body.isCabRequired;
+    const isFoodRequired = req.body.isFoodRequired;
+    let deskBookingsCount = 0, cabBookingsCount = 0, foodBookingsCount = 0;
+    if (!isDeskRequired && !isCabRequired && !isFoodRequired) {
+        return res.status(400).json({ message: 'Desk, cab and food bookings not required' });
+    }
+    try {
+        if (isDeskRequired) {
+            deskBookingsCount = await DeskBookings.getCountOfFutureDeskBookingsForUser(userId);
+        }
+        if (isCabRequired) {
+            cabBookingsCount = await CabBookings.getCountOfFutureCabBookingsForUser(userId);
+        }
+        if (isFoodRequired) {
+            foodBookingsCount = await FoodBookings.getCountOfFutureFoodBookingsForUser(userId);
+        }
+    } catch (error) {
+        console.error(error);
+        return res.status(500).json({ message: 'Internal Server Error' });
+    }
+    return res.status(200).json({ deskBookingsCount: deskBookingsCount, cabBookingsCount: cabBookingsCount, foodBookingsCount: foodBookingsCount });
+}
+
+async function getCountOfAllBookingsForUserBetweenDates(req, res, next) { //function to get count of all bookings for a user between two dates
+    const userId = req.userId;
+    let startDate = req.body.startDate;
+    let endDate = req.body.endDate;
+    if (!startDate || !endDate) {
+        return res.status(400).json({ message: 'Start date or end date not provided' });
+    }
+    startDate = dateFns.format(new Date(startDate), 'yyyy-MM-dd');
+    endDate = dateFns.format(new Date(endDate), 'yyyy-MM-dd');
+    const isDeskRequired = req.body.isDeskRequired;
+    const isCabRequired = req.body.isCabRequired;
+    const isFoodRequired = req.body.isFoodRequired;
+    if (!isDeskRequired && !isCabRequired && !isFoodRequired) {
+        return res.status(400).json({ message: 'Desk, cab and food bookings not required' });
+    }
+    let deskBookingsCount = 0, cabBookingsCount = 0, foodBookingsCount = 0;
+    try {
+        if (isDeskRequired) {
+            deskBookingsCount = await DeskBookings.getCountOfDeskBookingsForUserBetweenDates(userId, startDate, endDate);
+        }
+        if (isCabRequired) {
+            cabBookingsCount = await CabBookings.getCountOfCabBookingsForUserBetweenDates(userId, startDate, endDate);
+        }
+        if (isFoodRequired) {
+            foodBookingsCount = await FoodBookings.getCountOfFoodBookingsForUserBetweenDates(userId, startDate, endDate);
+        }
+    } catch (error) {
+        console.error(error);
+        return res.status(500).json({ message: 'Internal Server Error' });
+    }
+    return res.status(200).json({ deskBookingsCount: deskBookingsCount, cabBookingsCount: cabBookingsCount, foodBookingsCount: foodBookingsCount });
+}
+
 async function getAllBookingsForUserBetweenDates(req, res, next) { //function to get all bookings for a user between two dates
     const userId = req.userId;
     let startDate = req.body.startDate;
@@ -69,8 +132,8 @@ async function getAllBookingsForUserBetweenDates(req, res, next) { //function to
     if (!startDate || !endDate) {
         return res.status(400).json({ message: 'Start date or end date not provided' });
     }
-    startDate = moment(startDate).format('YYYY-MM-DD');
-    endDate = moment(endDate).format('YYYY-MM-DD');
+    startDate = dateFns.format(new Date(startDate), 'yyyy-MM-dd');
+    endDate = dateFns.format(new Date(endDate), 'yyyy-MM-dd');
     const isDeskRequired = req.body.isDeskRequired;
     const isCabRequired = req.body.isCabRequired;
     const isFoodRequired = req.body.isFoodRequired;
@@ -157,31 +220,31 @@ async function bookAll(req, res, next) { //function to book a desk, cab and food
     }
     if (!Array.isArray(dates)) dates = [dates];
     for (let i = 0; i < dates.length; i++) {
-        dates[i] = moment(dates[i]).format('YYYY-MM-DD');
+        dates[i] = dateFns.format(new Date(dates[i]), 'yyyy-MM-dd');
     }
     if (isDeskRequired) {
         //verify if date is in future starting "duration" "units" from now
-        const durationUnitsFromNow = moment().add(Number(process.env.DESK_BUFFER_DURATION), process.env.DESK_BUFFER_UNIT).format('YYYY-MM-DD');
+        const durationUnitsFromNow = dateFns.format(dateFns.addDays(new Date(), Number(process.env.DESK_BUFFER_DURATION)), 'yyyy-MM-dd');
         for (let i = 0; i < dates.length; i++) {
-            if (moment(dates[i]).isBefore(durationUnitsFromNow)) {
+            if (dateFns.isBefore(new Date(dates[i]), new Date(durationUnitsFromNow))) { //if date is before durationUnitsFromNow
                 return res.status(400).json({ message: 'Date is not ' + process.env.DESK_BUFFER_DURATION + ' ' + process.env.DESK_BUFFER_UNIT + ' ahead from today for desk booking!' });
             }
         }
     }
     if (isCabRequired) {
         //verify if date is in future starting "duration" "units" from now
-        const durationUnitsFromNow = moment().add(Number(process.env.CAB_BUFFER_DURATION), process.env.CAB_BUFFER_UNIT).format('YYYY-MM-DD');
+        const durationUnitsFromNow = dateFns.format(dateFns.addDays(new Date(), Number(process.env.CAB_BUFFER_DURATION)), 'yyyy-MM-dd');
         for (let i = 0; i < dates.length; i++) {
-            if (moment(dates[i]).isBefore(durationUnitsFromNow)) {
+            if (dateFns.isBefore(new Date(dates[i]), new Date(durationUnitsFromNow))) { //if date is before durationUnitsFromNow
                 return res.status(400).json({ message: 'Date is not ' + process.env.CAB_BUFFER_DURATION + ' ' + process.env.CAB_BUFFER_UNIT + ' ahead from today for cab booking!' });
             }
         }
     }
     if (isFoodRequired) {
         //verify if date is in future starting "duration" "units" from now
-        const durationUnitsFromNow = moment().add(Number(process.env.FOOD_BUFFER_DURATION), process.env.FOOD_BUFFER_UNIT).format('YYYY-MM-DD');
+        const durationUnitsFromNow = dateFns.format(dateFns.addDays(new Date(), Number(process.env.FOOD_BUFFER_DURATION)), 'yyyy-MM-dd');
         for (let i = 0; i < dates.length; i++) {
-            if (moment(dates[i]).isBefore(durationUnitsFromNow)) {
+            if (dateFns.isBefore(new Date(dates[i]), new Date(durationUnitsFromNow))) { //if date is before durationUnitsFromNow
                 return res.status(400).json({ message: 'Date is not ' + process.env.FOOD_BUFFER_DURATION + ' ' + process.env.FOOD_BUFFER_UNIT + ' ahead from today for food booking!' });
             }
         }
@@ -300,10 +363,10 @@ async function modifyAll(req, res, next) { //function to modify a cab or food bo
         return res.status(400).json({ message: 'Nothing to be modified' });
     }
     if (!Array.isArray(dates)) dates = [dates];
-    dates[0] = moment(dates[0]).format('YYYY-MM-DD');
+    dates[0] = dateFns.format(new Date(dates[0]), 'yyyy-MM-dd');
     //verify if date is in future starting next day
-    const durationUnitsFromNow = moment().add(1, 'days').format('YYYY-MM-DD');
-    if (moment(dates[0]).isBefore(durationUnitsFromNow)) {
+    const durationUnitsFromNow = dateFns.format(dateFns.addDays(new Date(), 1), 'yyyy-MM-dd');
+    if (dateFns.isBefore(new Date(dates[0]), new Date(durationUnitsFromNow))) { //if date is before durationUnitsFromNow
         return res.status(400).json({ message: 'Date should be a day ahead from today for modification!' });
     }
     if (modifyCab) {
@@ -361,28 +424,28 @@ async function cancelAll(req, res, next) { //function to cancel a desk, cab and 
         dates = req.body.dates;
     }
     if (!Array.isArray(dates)) dates = [dates];
-    dates[0] = moment(dates[0]).format('YYYY-MM-DD');
+    dates[0] = dateFns.format(new Date(dates[0]), 'yyyy-MM-dd');
     if (!cancelDesk && !cancelCab && !cancelFood) {
         return res.status(400).json({ message: 'Desk, cab and food not to be cancelled' });
     }
     //verify if date is in future starting next day
-    const durationUnitsFromNow = moment().add(1, 'days').format('YYYY-MM-DD');
-    if (moment(dates[0]).isBefore(durationUnitsFromNow)) {
+    const durationUnitsFromNow = dateFns.format(dateFns.addDays(new Date(), 1), 'yyyy-MM-dd');
+    if (dateFns.isBefore(new Date(dates[0]), new Date(durationUnitsFromNow))) { //if date is before durationUnitsFromNow
         return res.status(400).json({ message: 'Date should be a day ahead from today for cancellation!' });
     }
     let deskBookings, cabBookings, foodBookings;
-    // if (cancelDesk || cancelCab || cancelFood) {
-    //     //verify that there is a desk booking for the date
-    //     try {
-    //         deskBookings = await DeskBookings.getDeskBookingsForUserForDates(userId, dates);
-    //     } catch (error) {
-    //         console.error(error);
-    //         return res.status(500).json({ message: 'Internal Server Error' });
-    //     }
-    //     if (!deskBookings || deskBookings.length === 0) {
-    //         return res.status(404).json({ message: 'No desk booking found for the date' });
-    //     }
-    // }
+    if (cancelDesk || cancelCab || cancelFood) {
+        //verify that there is a desk booking for the date
+        try {
+            deskBookings = await DeskBookings.getDeskBookingsForUserForDates(userId, dates);
+        } catch (error) {
+            console.error(error);
+            return res.status(500).json({ message: 'Internal Server Error' });
+        }
+        if (!deskBookings || deskBookings.length === 0) {
+            return res.status(404).json({ message: 'No desk booking found for the date' });
+        }
+    }
     if (cancelDesk) {
         //check if there is a cab booking for the date 
         try {
@@ -457,9 +520,11 @@ async function cancelAll(req, res, next) { //function to cancel a desk, cab and 
 }
 
 module.exports = {
-    getAllFutureBookingsForUser,
-    getAllBookingsForUserBetweenDates,
-    bookAll,
-    modifyAll,
-    cancelAll
+    getAllFutureBookingsForUser: getAllFutureBookingsForUser,
+    getCountOfAllFutureBookingsForUser: getCountOfAllFutureBookingsForUser,
+    getCountOfAllBookingsForUserBetweenDates: getCountOfAllBookingsForUserBetweenDates,
+    getAllBookingsForUserBetweenDates: getAllBookingsForUserBetweenDates,
+    bookAll: bookAll,
+    modifyAll: modifyAll,
+    cancelAll: cancelAll
 }
