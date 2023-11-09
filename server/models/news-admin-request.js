@@ -1,7 +1,6 @@
 
 const db = require("../data/database");
-const moment = require("moment");
-const { v4: uuidv4 } = require('uuid');
+const dateFns = require('date-fns');
 
 class NewsAdminRequest {
     constructor(requestId, userId, dateOfRequest, request) {
@@ -16,7 +15,7 @@ class NewsAdminRequest {
             request.name = `${request.first_name} ${request.last_name}`;
             request.firstName = request.first_name;
             request.lastName = request.last_name;
-            request.requestDate = moment(request.date_of_request).format('YYYY-MM-DD');
+            request.requestDate = dateFns.format(new Date(request.date_of_request), 'yyyy-MM-dd');
             delete request.user_id;
             delete request.first_name;
             delete request.last_name;

@@ -1,6 +1,6 @@
 const db = require('../data/database');
 const { v4: uuidv4 } = require('uuid');
-const moment = require('moment');
+const dateFns = require('date-fns');
 
 class FoodBookings {
 
@@ -20,7 +20,7 @@ class FoodBookings {
             booking.name = `${booking.first_name} ${booking.last_name}`;
             booking.firstName = booking.first_name;
             booking.lastName = booking.last_name;
-            booking.dateBooked = moment(booking.delivery_date).format('YYYY-MM-DD');
+            booking.dateBooked = dateFns.format(new Date(booking.delivery_date), 'yyyy-MM-dd');
             delete booking.last_name;
             delete booking.first_name;
             delete booking.delivery_date;
@@ -50,6 +50,16 @@ class FoodBookings {
         return bookings;
     }
 
+    static async getCountOfFutureFoodBookings() {
+        let count;
+        try {
+            count = await db.any(`SELECT COUNT(*) FROM public."FoodBookings" WHERE "delivery_date" >= CURRENT_DATE`);
+        } catch (error) {
+            console.error(error);
+        }
+        return count[0].count;
+    }
+
     static async getFutureFoodBookingsForUser(userId) {
         if (!userId) return null; //if userId is undefined, then return null
         let bookings;
@@ -72,11 +82,22 @@ class FoodBookings {
         return bookings;
     }
 
+    static async getCountOfFutureFoodBookingsForUser(userId) {
+        if (!userId) return null; //if userId is undefined, then return null
+        let count;
+        try {
+            count = await db.any(`SELECT COUNT(*) FROM public."FoodBookings" WHERE "user_id" = $1 AND "delivery_date" >= CURRENT_DATE`, [userId]);
+        } catch (error) {
+            console.error(error);
+        }
+        return count[0].count;
+    }
+
     static async getFoodBookingsForDates(dates) { //returns an array of all food bookings for multiple dates (array of dates)
         if (!dates) return null; //if dates is undefined, then return null
         if (!Array.isArray(dates)) dates = [dates]; //if dates is not an array, then set dates to an array containing dates
         for (let i = 0; i < dates.length; i++) {
-            dates[i] = moment(dates[i]).format('YYYY-MM-DD');
+            dates[i] = dateFns.format(new Date(dates[i]), 'yyyy-MM-dd');
         }
         //sort dates in ascending order
         dates.sort((a, b) => {
@@ -110,8 +131,8 @@ class FoodBookings {
 
     static async getFoodBookingsBetweenDates(startDate, endDate) { //returns an array of all food bookings between two dates
         if (!startDate || !endDate) return null; //if startDate or endDate is undefined, then return null
-        startDate = moment(startDate).format('YYYY-MM-DD');
-        endDate = moment(endDate).format('YYYY-MM-DD');
+        startDate = dateFns.format(new Date(startDate), 'yyyy-MM-dd');
+        endDate = dateFns.format(new Date(endDate), 'yyyy-MM-dd');
         let bookings;
         try {
             bookings = await db.any(`SELECT public."FoodBookings"."user_id",
@@ -132,11 +153,25 @@ class FoodBookings {
         return bookings;
     }
 
+    static async getCountOfFoodBookingsBetweenDates(startDate, endDate) { //returns an array of all food bookings between two dates
+        if (!startDate || !endDate) return null; //if startDate or endDate is undefined, then return null
+        startDate = dateFns.format(new Date(startDate), 'yyyy-MM-dd');
+        endDate = dateFns.format(new Date(endDate), 'yyyy-MM-dd');
+        let count;
+        try {
+            count = await db.any(`SELECT COUNT(*) FROM public."FoodBookings" WHERE "delivery_date" BETWEEN $1 AND $2`, [startDate, endDate]);
+        } catch (error) {
+            console.error(error);
+        }
+        if(!count || count.length === 0) return 0;
+        return count[0].count;
+    }
+
     static async getFoodBookingsForUserForDates(userId, dates) { //returns an array of all food bookings for a user for multiple dates (array of dates)
         if (!userId || !dates) return null; //if userId or dates is undefined, then return null
         if (!Array.isArray(dates)) dates = [dates]; //if dates is not an array, then set dates to an array containing dates
         for (let i = 0; i < dates.length; i++) {
-            dates[i] = moment(dates[i]).format('YYYY-MM-DD');
+            dates[i] = dateFns.format(new Date(dates[i]), 'yyyy-MM-dd');
         }
         //sort dates in ascending order
         dates.sort((a, b) => {
@@ -170,8 +205,8 @@ class FoodBookings {
 
     static async getFoodBookingsForUserBetweenDates(userId, startDate, endDate) { //returns an array of all food bookings for a user between two dates
         if (!userId || !startDate || !endDate) return null; //if userId, startDate or endDate is undefined, then return null
-        startDate = moment(startDate).format('YYYY-MM-DD');
-        endDate = moment(endDate).format('YYYY-MM-DD');
+        startDate = dateFns.format(new Date(startDate), 'yyyy-MM-dd');
+        endDate = dateFns.format(new Date(endDate), 'yyyy-MM-dd');
         let bookings;
         try {
             bookings = await db.any(`SELECT public."FoodBookings"."user_id",
@@ -190,6 +225,20 @@ class FoodBookings {
             console.error(error);
         }
         return bookings;
+    }
+
+    static async getCountOfFoodBookingsForUserBetweenDates(userId, startDate, endDate) { //returns an array of all food bookings for a user between two dates
+        if (!userId || !startDate || !endDate) return null; //if userId, startDate or endDate is undefined, then return null
+        startDate = dateFns.format(new Date(startDate), 'yyyy-MM-dd');
+        endDate = dateFns.format(new Date(endDate), 'yyyy-MM-dd');
+        let count;
+        try {
+            count = await db.any(`SELECT COUNT(*) FROM public."FoodBookings" WHERE "delivery_date" BETWEEN $1 AND $2 AND "user_id" = $3`, [startDate, endDate, userId]);
+        } catch (error) {
+            console.error(error);
+        }
+        if(!count || count.length === 0) return 0;
+        return count[0].count;
     }
 
     static async bookFood(userId, dates, preference) { //book food function to book food using user id, dates and preference for multiple dates by inserting them into food bookings table

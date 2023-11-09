@@ -20,6 +20,8 @@ router.patch('/bookings', userAllBookingsControllers.modifyAll); //update all or
 // /user/bookings => DELETE
 router.delete('/bookings', userAllBookingsControllers.cancelAll); //cancel all or any of desk, cab and food
 
+// /user/countAllBookings => GET
+router.get('/countAllBookings', userAllBookingsControllers.getCountOfAllFutureBookingsForUser); //count all or any of desk, cab, meal future bookings or bookings between dates for user based on request body parameters startDate and endDate (if present)
 
 //Desk availability related routes
 // /user/desks => GET

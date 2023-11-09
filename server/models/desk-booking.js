@@ -1,6 +1,6 @@
 const db = require('../data/database');
 const { v4: uuidv4 } = require('uuid');
-const moment = require('moment');
+const dateFns = require('date-fns');
 
 class DeskBookings {
     constructor(bookingId, deskId, userId, bookedForDate, dateOfBooking) {
@@ -18,7 +18,7 @@ class DeskBookings {
             booking.name = `${booking.first_name} ${booking.last_name}`;
             booking.firstName = booking.first_name;
             booking.lastName = booking.last_name;
-            booking.dateBooked = moment(booking.booked_for_date).format('YYYY-MM-DD');
+            booking.dateBooked = dateFns.format(new Date(booking.booked_for_date), 'yyyy-MM-dd');
             booking.deskId = booking.desk_id;
             booking.userId = booking.user_id;
             delete booking.last_name;
@@ -32,7 +32,7 @@ class DeskBookings {
 
     static async getDeskLayout() { //returns an object with desk id as key and an object containing deskNumber and bookedBy as values
         let desks = {
-            dateBooked: null,
+            dateBooked: [],
             A1: {
                 deskId: 'A1',
                 deskNumber: 1,
@@ -542,7 +542,8 @@ class DeskBookings {
         let desks, bookings;
         try {
             desks = await this.getDeskLayout();
-            desks.dateBooked = moment(date).format('YYYY-MM-DD');
+            desks.dateBooked = [];
+            desks.dateBooked.push(dateFns.format(new Date(date), 'yyyy-MM-dd'));
             bookings = await this.getDeskBookingsByDate(date);
         } catch (error) {
             console.error(error);
@@ -574,6 +575,17 @@ class DeskBookings {
         return bookings;
     }
 
+    static async getCountOfFutureDeskBookings() { //returns the count of all future desk bookings
+        let count;
+        try {
+            count = await db.any(`SELECT COUNT(*) FROM public."DeskBookings" WHERE "booked_for_date" >= CURRENT_DATE`);
+        } catch (error) {
+            console.error(error);
+        }
+        if (!count || count.length === 0) return 0;
+        return count[0].count;
+    }
+
     static async getFutureDeskBookingsForUser(userId) { //returns an array of all future desk bookings for a user
         if (!userId) return null; //if userId is undefined, then return null
         let bookings;
@@ -596,9 +608,21 @@ class DeskBookings {
         return bookings;
     }
 
+    static async getCountOfFutureDeskBookingsForUser(userId) { //returns the count of all future desk bookings for a user
+        if (!userId) return null; //if userId is undefined, then return null
+        let count;
+        try {
+            count = await db.any(`SELECT COUNT(*) FROM public."DeskBookings" WHERE "user_id" = $1 AND "booked_for_date" >= CURRENT_DATE`, [userId]);
+        } catch (error) {
+            console.error(error);
+        }
+        if (!count || count.length === 0) return 0;
+        return count[0].count;
+    }
+
     static async getDeskBookingsByDate(date) { //returns an array of all desk bookings for a date
         if (!date) return null; //if date is undefined, then return null
-        date = moment(date).format('YYYY-MM-DD');
+        date = dateFns.format(new Date(date), 'yyyy-MM-dd');
         let bookings;
         try {
             bookings = await db.any(`SELECT public."DeskBookings"."desk_id", public."DeskBookings"."user_id",
@@ -622,7 +646,7 @@ class DeskBookings {
         if (!dates) return null; //if dates is undefined, then return null
         if (!Array.isArray(dates)) dates = [dates]; //if dates is not an array, then set dates to an array containing dates
         for (let i = 0; i < dates.length; i++) {
-            dates[i] = moment(dates[i]).format('YYYY-MM-DD');
+            dates[i] = dateFns.format(new Date(dates[i]), 'yyyy-MM-dd');
         }
         //sort dates in ascending order
         dates.sort((a, b) => {
@@ -657,7 +681,7 @@ class DeskBookings {
         if (!userId || !dates) return null; //if userId or dates is undefined, then return null
         if (!Array.isArray(dates)) dates = [dates]; //if dates is not an array, then set dates to an array containing dates
         for (let i = 0; i < dates.length; i++) {
-            dates[i] = moment(dates[i]).format('YYYY-MM-DD');
+            dates[i] = dateFns.format(new Date(dates[i]), 'yyyy-MM-dd');
         }
         //sort dates in ascending order
         dates.sort((a, b) => {
@@ -691,8 +715,8 @@ class DeskBookings {
 
     static async getDeskBookingsForUserBetweenDates(userId, startDate, endDate) { //returns an array of all desk bookings for a user between two dates
         if (!userId || !startDate || !endDate) return null; //if userId, startDate or endDate is undefined, then return null
-        startDate = moment(startDate).format('YYYY-MM-DD');
-        endDate = moment(endDate).format('YYYY-MM-DD');
+        startDate = dateFns.format(new Date(startDate), 'yyyy-MM-dd');
+        endDate = dateFns.format(new Date(endDate), 'yyyy-MM-dd');
         let bookings;
         try {
             bookings = await db.any(`SELECT public."DeskBookings"."desk_id", public."DeskBookings"."user_id",
@@ -713,10 +737,24 @@ class DeskBookings {
         return bookings;
     }
 
+    static async getCountOfDeskBookingsForUserBetweenDates(userId, startDate, endDate) { //returns the count of all desk bookings for a user between two dates
+        if (!userId || !startDate || !endDate) return null; //if userId, startDate or endDate is undefined, then return null
+        startDate = dateFns.format(new Date(startDate), 'yyyy-MM-dd');
+        endDate = dateFns.format(new Date(endDate), 'yyyy-MM-dd');
+        let count;
+        try {
+            count = await db.any(`SELECT COUNT(*) FROM public."DeskBookings" WHERE "user_id" = $1 AND "booked_for_date" BETWEEN $2 AND $3`, [userId, startDate, endDate]);
+        } catch (error) {
+            console.error(error);
+        }
+        if (!count || count.length === 0) return 0;
+        return count[0].count;
+    }
+
     static async getDeskBookingsBetweenDates(startDate, endDate) { //returns an array of all desk bookings between two dates
         if (!startDate || !endDate) return null; //if startDate or endDate is undefined, then return null
-        startDate = moment(startDate).format('YYYY-MM-DD');
-        endDate = moment(endDate).format('YYYY-MM-DD');
+        startDate = dateFns.format(new Date(startDate), 'yyyy-MM-dd');
+        endDate = dateFns.format(new Date(endDate), 'yyyy-MM-dd');
         let bookings;
         try {
             bookings = await db.any(`SELECT public."DeskBookings"."desk_id", public."DeskBookings"."user_id",
@@ -734,6 +772,20 @@ class DeskBookings {
             console.error(error);
         }
         return bookings;
+    }
+
+    static async getCountOfDeskBookingsBetweenDates(startDate, endDate) { //returns the count of all desk bookings between two dates
+        if (!startDate || !endDate) return null; //if startDate or endDate is undefined, then return null
+        startDate = dateFns.format(new Date(startDate), 'yyyy-MM-dd');
+        endDate = dateFns.format(new Date(endDate), 'yyyy-MM-dd');
+        let count;
+        try {
+            count = await db.any(`SELECT COUNT(*) FROM public."DeskBookings" WHERE "booked_for_date" BETWEEN $1 AND $2`, [startDate, endDate]);
+        } catch (error) {
+            console.error(error);
+        }
+        if (!count || count.length === 0) return 0;
+        return count[0].count;
     }
 
     static async getDeskBookingByDeskIdAndDates(deskId, dates) { //returns an array of all desk bookings for a desk id for the dates, used to check if desk is already booked for any of the dates in dates array
