@@ -41,10 +41,10 @@ const GrantAccess = () => {
 
   return (
     <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', height: '80vh' }}>
-      <h2 style={{ textAlign: 'center' }} onClick={() => navigate('/analytics')}>Grant Access Requests</h2>
+      <h2 style={{ textAlign: 'center' }} onClick={() => navigate('/analytics')}>Grant News Access Requests</h2>
       <Button style={{ right: '-700px', fontSize: '0.8vw' }} onClick={ ()=>navigate('/viewAllAdmin')}>View all news Admins</Button>
-      <TableContainer component={Paper} style={{ width: '1300px', margin: 'auto',paddingLeft:'80px' }}>
-        <Table>
+      <TableContainer component={Paper} style={{ width: '80vw', margin: 'auto',paddingLeft:'10vw' }}>
+        <Table stickyHeader>
           <TableHead>
             <TableRow>
               <TableCell>Employee ID</TableCell>

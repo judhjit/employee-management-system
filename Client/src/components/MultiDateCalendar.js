@@ -30,38 +30,57 @@ const MultiDateCalendar = ({ selectedDates, setSelectedDates, user, setUser }) =
 
     setSelectedDates(newSelectedDates);
 
-    // Update the user state with the new selected dates
+    
     setUser((prevUser) => ({ ...prevUser, selectedDate: newSelectedDates }));
   };
 
   const navigate = useNavigate();
 
   return (
-    <div style={{ backgroundColor: '#D9DAE9', height: '741px', width: '100vw' }}>
-      <div style={{ display: 'flex' }}>
-        <div style={{ flex: 1, padding: '20px' }}>
-          <h style={{ fontSize: '32px', textAlign: 'left', fontWeight: '500', margin: '50px' }}>
-            <span style={{ color: '#0071BA' }}>Plan </span>
-            <span>Your Day:</span>
-          </h>
-          <div className="calendar">
-            <Calendar
-              onClickDay={handleDateClick}
-              tileDisabled={({ date }) => date.getDay() === 0 || date.getDay() === 6}
-              tileClassName={({ date }) =>
-                selectedDates.find(
-                  (selectedDate) => selectedDate.toDateString() === date.toDateString()
-                )
-                  ? 'selected'
-                  : ''}
-              />
-            <Button variant="contained" color="primary" style={{ height: '2vw', width: '1.5vw' }} onClick={() => {
+    <div
+      style={{
+        backgroundColor: '#D9DAE9',
+        height: '741px',
+        width: '100vw',
+        textAlign: 'center',
+        margin: '0 auto' 
+      }}
+    >
+      <div style={{ padding: '20px' }}>
+        <h
+          style={{
+            fontSize: '32px',
+            textAlign: 'center',
+            fontWeight: '500',
+            margin: '50px'
+          }}
+        >
+          <span style={{ color: '#0071BA' }}>Plan </span>
+          <span>Your Day:</span>
+        </h>
+        <div className="calendar" style={{ marginLeft:'30vw'}}>
+          <Calendar
+            onClickDay={handleDateClick}
+            tileDisabled={({ date }) => date.getDay() === 0}
+            tileClassName={({ date }) =>
+              selectedDates.find(
+                selectedDate => selectedDate.toDateString() === date.toDateString()
+              )
+                ? 'selected'
+                : ''
+            }
+          />
+          <Button
+            variant="contained"
+            color="primary"
+            style={{ height: '2vw', width: '1.5vw', marginTop: '10px' }}
+            onClick={() => {
               console.log(user);
-              navigate("/deskbooking");
-            }}>
-              Book
-            </Button>
-          </div>
+              navigate('/deskbooking');
+            }}
+          >
+            Book
+          </Button>
         </div>
       </div>
       <CurrentBookings />

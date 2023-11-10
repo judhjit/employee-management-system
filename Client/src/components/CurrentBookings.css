@@ -1,7 +1,4 @@
-.table-container {
-    max-height: 400px; /* Set the maximum height for the table container */
-    overflow-y: auto; /* Enable vertical scrolling for the table body */
-  }
+
   
   table {
     border-collapse: collapse;
@@ -10,8 +7,8 @@
   
   thead {
     position: sticky;
-    top: 0; /* Stick the header to the top */
-    background-color: #f5f5f5; /* Background color for the header */
+    top: 0; 
+    background-color: #f5f5f5;
   }
   
   th, td {
@@ -20,7 +17,7 @@
     text-align: left;
   }
   
-  /* Fix the header in place when scrolling */
+
   .sticky-thead {
     position: sticky;
     top: 0;
@@ -31,7 +28,7 @@
     text-align: center;
   }
   
-  /* Add a style for the red Cancel button */
+  
 .red-button {
     background-color: red;
     color: white;
@@ -39,5 +36,24 @@
     border-radius: 4px;
     padding: 6px 12px;
     cursor: pointer;
+  }
+  
+  .table-container {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: white; 
+    z-index: 1000; 
+  }
+  
+  .scrolled .table-container {
+    display: block;
+  }
+  
+ 
+  body.scrolled {
+    padding-top: 50px; 
   }
   

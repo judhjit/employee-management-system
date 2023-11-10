@@ -20,6 +20,7 @@ function App() {
   const [selectedDates, setSelectedDates] = useState([]);
   const [isAdmin,setIsAdmin] = useState(true);
   const [isNewsadmin,setNewsadmin] = useState(true);
+  const [nightLight,setNightLight] = useState(false);
   const [user,setUser]=useState({empId:"",
   empName:"",
 selectedDate:[],
@@ -28,7 +29,7 @@ cabSlot:[],
 meal:[]}) 
   return (
     <BrowserRouter>
-    <div>
+    <div >
 
       <Navbar 
         selectedDates={selectedDates}
@@ -36,6 +37,7 @@ meal:[]})
         setShowNewsFeed={setShowNewsFeed}
 
         isAdmin={isAdmin}
+        
         
       />
 
@@ -65,7 +67,7 @@ meal:[]})
           <Route path="/viewAllAdmin" element={<ViewAllAdmin/>} />
           </Routes>
           
-          {showNewsFeed && (
+          {/* {showNewsFeed && (
             <div
               style={{
                 width: "350px",
@@ -77,7 +79,7 @@ meal:[]})
               <NewsFeed style={{ height: "100%" }} isNewsadmin={isNewsadmin}/>
             </div>
             
-          )}
+          )} */}
           
         </div>
       
