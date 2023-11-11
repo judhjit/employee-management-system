@@ -51,7 +51,7 @@ const DeskBooking = ({ selectedDates }) => {
           
         </div>
       ))}
-      <Button variant="outlined" onClick={() => navigate('/lunchandcabbook')} >next</Button>
+      <Button variant="outlined" style={{height:'39px'}}onClick={() => navigate('/lunchandcabbook')} >next</Button>
     </div>
   );
 };

@@ -1,133 +1,67 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js';
 import { Doughnut } from 'react-chartjs-2';
+import Box from '@mui/material/Box';
 
 ChartJS.register(ArcElement, Tooltip, Legend);
 
 function Analytics() {
-  const [selectedFilter, setSelectedFilter] = useState('monthly'); // FOR RANGE FILTER
-  const [selectedDate, setSelectedDate] = useState('2023-01-01'); // FOR DATE
+  const [selectedFilter, setSelectedFilter] = useState('monthly');
+  const [selectedDate, setSelectedDate] = useState('2023-01-01');
+  const [chartData, setChartData] = useState(null);
 
-  const data = {
-    monthly: {
-      desk: {
-        labels: ['Booked', 'Available'],
-        datasets: [
-          {
-            data: [45, 55], 
-            backgroundColor: ['LightBlue','Teal' ],
-          },
-        ],
-      },
-      cab: {
-        labels: ['Booked', 'Available'],
-        datasets: [
-          {
-            data: [60, 40], 
-            backgroundColor: ['pink', 'Maroon'],
-          },
-        ],
-      },
-      meal: {
-        labels: ['Booked', 'Available'],
-        datasets: [
-          {
-            data: [25, 75], 
-            backgroundColor: ['LightGreen', 'green'],
-          },
-        ],
-      },
-    },
-    weekly: {
-      desk: {
-        labels: ['Booked', 'Available'],
-        datasets: [
-          {
-            data: [30, 70], 
-            backgroundColor: ['LightBlue','Teal' ],
-          },
-        ],
-      },
-      cab: {
-        labels: ['Booked', 'Available'],
-        datasets: [
-          {
-            data: [55, 45], 
-            backgroundColor: ['pink', 'Maroon'],
-          },
-        ],
-      },
-      meal: {
-        labels: ['Booked', 'Available'],
-        datasets: [
-          {
-            data: [20, 80], 
-            backgroundColor: ['LightGreen', 'green'],
-          },
-        ],
-      },
-    },
-    daily: {
-      desk: {
-        labels: ['Booked', 'Available'],
-        datasets: [
-          {
-            data: [15, 85], 
-            backgroundColor: ['LightBlue','Teal' ],
-          },
-        ],
-      },
-      cab: {
-        labels: ['Booked', 'Available'],
-        datasets: [
-          {
-            data: [40, 60], 
-            backgroundColor: ['pink', 'Maroon'],
-          },
-        ],
-      },
-      meal: {
-        labels: ['Booked', 'Available'],
-        datasets: [
-          {
-            data: [10, 90], 
-            backgroundColor: ['LightGreen', 'green'],
-          },
-        ],
-      },
-    },
-  };
-
-  const getChartDataForDate = (date) => {
-    if (date === '2023-01-01') {
-      return {
-        desk: [45, 55], 
-        cab: [60, 40],  
-        meal: [25, 75], 
-      };
-    } else if (date === '2023-05-05') {
-      return {
-        desk: [35, 65], 
-        cab: [50, 90],  
-        meal: [30, 70], 
-      };
+  const calculateDateRange = () => {
+    const currentDate = new Date();
+    currentDate.setHours(0, 0, 0, 0);
+  
+    //if monthly is choosen as filter
+    if (selectedFilter === 'monthly') {
+      const startDate = new Date(currentDate);
+      startDate.setMonth(currentDate.getMonth() - 1);
+      return { startDate, endDate: currentDate };
+    } else if (selectedFilter === 'weekly') {
+      const startDate = new Date(currentDate);
+      startDate.setDate(currentDate.getDate() - 7);
+      return { startDate, endDate: currentDate };
+    } else if (selectedDate) {
+      // If a specific date is chosen from the calendar
+      const selected = new Date(selectedDate);
+      selected.setHours(0, 0, 0, 0);
+      return { startDate: selected, endDate: selected };
     } else {
-      return {
-        desk: [50, 85], 
-        cab: [70, 90],  
-        meal: [65, 67], 
-      };
+      // If no filter or specific date is chosen, default to showing all future bookings
+      return { startDate: currentDate, endDate: currentDate };
     }
   };
 
-const selectedChartData = getChartDataForDate(selectedDate);
+  //took some dummy data as backend integration is not done
+  const dummyData = [
+    { deskBooked: 30, deskAvailable: 70 },
+    { cabBooked: 45, cabAvailable: 55 },
+    { mealBooked: 25, mealAvailable: 75 },
+  ];
 
+  useEffect(() => {
+    const { startDate, endDate } = calculateDateRange();
+
+    // Used dummy data array
+    const selectedChartData = dummyData.map((data) => ({
+      desk: [data.deskBooked, data.deskAvailable],
+      cab: [data.cabBooked, data.cabAvailable],
+      meal: [data.mealBooked, data.mealAvailable],
+    }));
+
+    setChartData(selectedChartData);
+  }, [selectedFilter, selectedDate]);
+
+  //for giving animations to chart
   const options = {
     animation: {
       duration: 1000,
       easing: 'easeInOutCubic',
     },
   };
+
 
   const doughnutLabel = {
     id: 'doughnutLabel',
@@ -144,9 +78,8 @@ const selectedChartData = getChartDataForDate(selectedDate);
     },
   };
 
-  const selectedData = data[selectedFilter];
-
   return (
+    <Box>
     <div>
       <h3 style={{ fontSize: '40px', paddingLeft: '70px' }}>
         Booking <span style={{ color: '#0066b2' }}>Insights</span>
@@ -169,7 +102,7 @@ const selectedChartData = getChartDataForDate(selectedDate);
             >
               <option value="monthly">Monthly</option>
               <option value="weekly">Weekly</option>
-              <option value="daily">Daily</option>
+             
             </select>
           </label>
           <label style={{ marginLeft: '20px' }}>
@@ -190,14 +123,14 @@ const selectedChartData = getChartDataForDate(selectedDate);
           </label>
         </div>
         <div style={{ display: 'flex', justifyContent: 'space-between', width: '100%', paddingLeft: '190px' }}>
-          <div>
+          <div style={{ textAlign: 'center' }}>
             <Doughnut
               key={`desk-${selectedFilter}`}
               data={{
                 labels: ['Booked', 'Available'],
                 datasets: [
                   {
-                    data: selectedChartData.desk,
+                    data: chartData ? chartData[0].desk : [0, 0],
                     backgroundColor: ['lightblue', 'teal'],
                   },
                 ],
@@ -207,14 +140,14 @@ const selectedChartData = getChartDataForDate(selectedDate);
             />
             <h4 style={{ color: 'black' }}>Desk Bookings</h4>
           </div>
-          <div>
+          <div style={{ textAlign: 'center' }}>
             <Doughnut
               key={`cab-${selectedFilter}`}
               data={{
                 labels: ['Booked', 'Available'],
                 datasets: [
                   {
-                    data: selectedChartData.cab,
+                    data: chartData ? chartData[1].cab : [0, 0],
                     backgroundColor: ['pink', 'Maroon'],
                   },
                 ],
@@ -224,14 +157,14 @@ const selectedChartData = getChartDataForDate(selectedDate);
             />
             <h4 style={{ color: 'black' }}>Cab Bookings</h4>
           </div>
-          <div>
+          <div style={{ textAlign: 'center' }}>
             <Doughnut
               key={`meal-${selectedFilter}`}
               data={{
                 labels: ['Booked', 'Available'],
                 datasets: [
                   {
-                    data: selectedChartData.meal,
+                    data: chartData ? chartData[2].meal : [0, 0],
                     backgroundColor: ['LightGreen', 'green'],
                   },
                 ],
@@ -244,6 +177,7 @@ const selectedChartData = getChartDataForDate(selectedDate);
         </div>
       </div>
     </div>
+    </Box>
   );
 }
 

@@ -13,12 +13,18 @@ import LunchAndCabbook from "./components/LunchAndCabbook";
 import GrantAccess from "./components/admin/GrantAccess";
 import Requests from "./components/admin/Requests";
 import Analytics from "./components/admin/Analytics";
+import Profile from "./components/Profile";
+
+import Timeline from "./components/Timeline"
+import { ToggleButton } from "@mui/material";
+import ViewAllAdmin from "./components/admin/ViewAllAdmin";
+
 
 function App() {
   const [showNewsFeed, setShowNewsFeed] = useState(true);
   const [selectedDates, setSelectedDates] = useState([]);
   const [isAdmin,setIsAdmin] = useState(true);
-  const [isUser,setisUser] = useState(false);
+  const [isUser,setisUser] = useState(false); 
   const [isNewsadmin,setNewsadmin] = useState(false);
   const [user,setUser]=useState({empId:"",
   empName:"",
@@ -36,6 +42,10 @@ meal:[]})
         setShowNewsFeed={setShowNewsFeed}
 
         isAdmin={isAdmin}
+        isUser={isUser}
+        isNewsadmin={isNewsadmin}
+
+
         
       />
 
@@ -48,7 +58,7 @@ meal:[]})
         >
           <Routes>
 
-            <Route path="/" element={<MultiDateCalendar
+            <Route path="/multidatecalendar" element={<MultiDateCalendar
             showNewsFeed={showNewsFeed}
             selectedDates={selectedDates}
             setSelectedDates={setSelectedDates}
@@ -62,22 +72,27 @@ meal:[]})
           <Route path="/grantaccess" element={<GrantAccess/>}/>        
           <Route path="/requests" element={<Requests/>}/>        
           <Route path="/analytics" element={<Analytics/>}/>        
+          <Route path="/profile" element={<Profile/>}/>   
+          <Route path="/togglebutton" element={<ToggleButton/>}/>   
+          <Route path="/viewAllAdmin" element={<ViewAllAdmin/>} />
+          <Route path="/timeline" element={<Timeline selectedDates={selectedDates}/>}/>   
+          <Route path="/newsfeed" element={<NewsFeed isUser={isUser} isNewsadmin={isNewsadmin}/>}/>            
 
           </Routes>
           
-          {showNewsFeed && (
+          {/* {showNewsFeed && (
             <div
               style={{
-                width: "350px",
+                width: "290px",
                 backgroundColor: "#12184c",
                 overflowY: "auto",
                 height:"805px"
               }}
             >
-              <NewsFeed style={{ height: "100%" }} isNewsadmin={isNewsadmin}/>
+              <NewsFeed style={{ height: "100%" }} isUser={isUser} isNewsadmin={isNewsadmin}/>
             </div>
             
-          )}
+          )} */}
           
         </div>
       
