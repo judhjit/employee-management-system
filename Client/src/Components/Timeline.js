@@ -16,7 +16,6 @@ import Radio from '@mui/material/Radio';
 import RadioGroup from '@mui/material/RadioGroup';
 import FormControlLabel from '@mui/material/FormControlLabel';
 
-
 const steps = ['Desk Booking', 'Cab Booking', 'Lunch Booking', 'Review'];
 
 const Timeline = ({ selectedDates }) => {

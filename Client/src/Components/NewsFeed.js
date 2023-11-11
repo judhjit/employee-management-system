@@ -28,7 +28,7 @@ const NewsFeed = ({ isUser, isNewsadmin }) => {
   const hideMessageAfterDuration = (messageStateSetter) => {
     setTimeout(() => {
       messageStateSetter("");
-    },5000); // 20 seconds in milliseconds
+    },5000); 
   };
 
   const handleCreatePost = () => {
@@ -90,23 +90,12 @@ const NewsFeed = ({ isUser, isNewsadmin }) => {
   }, [error, confirmationMessage]);
 
   return (
-    <Container style={{
-      width: "290px",
-      backgroundColor: "#12184c",
-      overflowY: "auto",
-      height:"900px"
-    }}>
-      
+    <Container>
       <Typography
         variant="h5"
         component="h2"
         gutterBottom
-        style={{
-          color: "white",
-          marginTop: "10px",
-          textAlign: "center",
-          position: "sticky", 
-        }}
+        style={{ color: "white", marginTop: "10px", textAlign: "center" }}
       >
         News Feed
       </Typography>
@@ -136,7 +125,7 @@ const NewsFeed = ({ isUser, isNewsadmin }) => {
           </Paper>
         ))}
       </div>
-
+      {/* to Conditionally render the "Post" input and button based on newsfeedadmin */}
       {isNewsadmin && (
         <>
           <TextField
@@ -163,6 +152,7 @@ const NewsFeed = ({ isUser, isNewsadmin }) => {
         </>
       )}
 
+      {/* to Conditionally render the button based on user */}
       {isUser && (
         <div>
           <IconButton
