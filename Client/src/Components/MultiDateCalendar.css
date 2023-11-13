@@ -24,7 +24,7 @@
     color: black !important;
   } */
   .react-calendar {
-    width: 500px;
+    width: 700px;
     max-width: 100%;
     background: white;
     border: 1px solid #a0a096;
@@ -34,6 +34,18 @@
 }
 
 .calendar{
-    padding-top:30px;
-    padding-left:50px;
+    padding-top:10px;
+    padding-left:10px;
+}
+button.bookbutton{
+  height: 2vw;
+  width: 2vw;
+  background-color: #004B81;
+  margin-top:10px;
+ 
+
+}
+button.bookbutton:hover{
+  transform: scale(1.1);
+  color: white;
 }

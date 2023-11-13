@@ -4,6 +4,7 @@
   }
   
   table {
+    margin-top: 10px;
     border-collapse: collapse;
     width: 100%;
   }
@@ -11,7 +12,8 @@
   thead {
     position: sticky;
     top: 0; /* Stick the header to the top */
-    background-color: #f5f5f5; /* Background color for the header */
+    background-color: #0071BA; /* Background color for the header */
+    color: white;
   }
   
   th, td {
@@ -28,7 +30,8 @@
   }
   
   .booking{
-    text-align: center;
+    text-align: left;
+    margin-left: 60px;
   }
   
   /* Add a style for the red Cancel button */

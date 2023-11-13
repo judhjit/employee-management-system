@@ -3,7 +3,9 @@
 
 import React, { useState } from 'react';
 import './CurrentBookings.css'; // Import CSS file
-import { Button } from '@mui/material';
+import { Button, IconButton} from '@mui/material';
+import DeleteIcon from '@mui/icons-material/Delete';
+import EditIcon from '@mui/icons-material/Edit';
 
 const CurrentBookings = () => {
   // Sample data for the table
@@ -45,16 +47,19 @@ const CurrentBookings = () => {
 
   return (
     <div className="table-container">
-      <h2 className='booking' >Current Bookings</h2>
+      <h style={{ fontSize: '25px', textAlign: 'left', fontWeight: '500'}} className="booking">
+            <span style={{ color: '#0071BA' }}>Current </span>
+            <span>Bookings</span>
+          </h>
       <table>
         <thead className="sticky-thead">
           <tr>
-            <th>Slno</th>
-            <th>date</th>
-            <th>desk</th>
-            <th>cab</th>
-            <th>meal</th>
-            <th>Action</th>
+            <th>SL NO</th>
+            <th>DATE</th>
+            <th>DESK</th>
+            <th>CAB</th>
+            <th>MEAL</th>
+            <th>ACTION</th>
           </tr>
         </thead>
         <tbody>
@@ -63,7 +68,13 @@ const CurrentBookings = () => {
               <td>{row.Slno}</td>
               <td>{row.date}</td>
               <td>
-                {row.desk} <Button variant="contained"  style={{ backgroundColor: 'red', color: 'white' }} onClick={() => handleCancelDesk(index)}>Cancel</Button>
+                {row.desk} <IconButton
+                  variant="contained"
+                  style={{ color: 'red' }}
+                  onClick={() => handleCancelDesk(index)}
+                >
+                  <DeleteIcon />
+                </IconButton>
               </td>
               <td>
                 {editIndex === index ? (
@@ -95,11 +106,13 @@ const CurrentBookings = () => {
               <td>
                 {editIndex === index ? (
                   <Button variant="contained"
-                  style={{ backgroundColor: 'red', color: 'white' }}
+                  style={{ backgroundColor: 'green', color: 'white' }}
                   onClick={() => handleSave(index)}
                 >Save</Button>
                 ) : (
-                  <Button variant="contained" onClick={() => handleEdit(index)}>Edit</Button>
+                  <IconButton variant="contained" onClick={() => handleEdit(index)}>
+                    <EditIcon />
+                  </IconButton>
                 )}
               </td>
             </tr>
