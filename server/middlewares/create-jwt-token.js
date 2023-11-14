@@ -1,7 +1,14 @@
 require("dotenv").config("../.env");
 const jwt = require("jsonwebtoken");
 
+const logger = require('../logger/index');
+const childLogger = logger.child({ module: 'create-jwt-token' });
+
+let service = "";
+
 function createAccessToken(userId, isAdmin, isNewsAdmin) {
+    service = "createAccessToken";
+    childLogger.info("Creating access token", { service: service, userId: userId });
     return jwt.sign(
         {
             "UserInfo": {
@@ -14,6 +21,8 @@ function createAccessToken(userId, isAdmin, isNewsAdmin) {
 };
 
 function createRefreshToken(userId) {
+    service = "createRefreshToken";
+    childLogger.info("Creating refresh token", { service: service, userId: userId });
     return jwt.sign(
         {
             "userId": userId,
