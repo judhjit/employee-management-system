@@ -4,13 +4,13 @@ const router = express.Router();
 
 const newsAdminControllers = require('../controllers/news-controller');
 
-// /newsAdmin/news => POST
+// /newsadmin/news => POST
 router.post('/news', newsAdminControllers.createNewsFeedPost); //create a news feed post
 
-// /newsAdmin/news => PATCH
+// /newsadmin/news => PATCH
 router.patch('/news', newsAdminControllers.updateNewsFeedPost); //update a news feed post
 
-// /newsAdmin/news => DELETE
-router.delete('/news', newsAdminControllers.deleteNewsFeedPost); //delete a news feed post
+// /newsadmin/deletenews => DELETE
+router.post('/deletenews', newsAdminControllers.deleteNewsFeedPost); //delete a news feed post
 
 module.exports = router;
