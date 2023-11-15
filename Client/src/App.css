@@ -38,4 +38,10 @@
 }
 body, html {
   font-size:16px;
+  font-family: 'Poppins', sans-serif;
+}
+
+*{
+  font-family: 'Poppins', sans-serif;
+  
 }

@@ -3,12 +3,13 @@
    
     top: 0;
      
-    width: 500px;
-    background-color: #12184c;
+    width: 900px;
+    background-color:black;
     padding: 10px;
    
     border-radius: 5px;
     transition: right 0.3s; 
+    font-family: 'Poppins', sans-serif;
   }
   
   .news-feed h2 {

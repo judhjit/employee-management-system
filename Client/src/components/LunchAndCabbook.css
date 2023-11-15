@@ -1,7 +1,7 @@
-.lunch-booking {
+/* .lunch-booking {
     padding: 10px;
     
-    background-color: #f0f0f0;
+  
     border-radius: 10px;
     margin-left: 150px;
     margin-top: -20px;
@@ -20,47 +20,18 @@
     height:400px;
     width:350px;
     box-sizing: border-box;
-  }
+  } */
   
   
-  .lunch-booking h4 {
-    margin-bottom: 10px;
-    font-weight: bold;
-  }
+  /* .lunch-booking h4 {
+    /* margin-bottom: 10px; */
+    /* font-weight: bold; */
+  /* } */
   
-  .lunch-booking .MuiFormGroup-root {
-    display: flex;
-    flex-direction: column; /* Ensure radio buttons are displayed one after the other */
-  }
+  /*  */
   
-  .lunch-booking .MuiFormControlLabel-root {
-    margin: 5px 0; /* Adjust the spacing between radio buttons */
-  }
-  
-  .select {
-    width: 200px;
-  }
-  
-  .slots {
-    margin-top: 20px;
-  }
-  /* Radio button color when selected */
-.Mui-checked .MuiSvgIcon-root {
-    color: green;
-  }
-  
-  /* Radio button color when not selected */
-  .MuiRadio-colorSecondary.Mui-checked {
-    color: green;
-  }
-  
-  .cab-map{
-    position:absolute;
-    left:1100px;
-    height:400px;
-    width:418px;
-    top:280px;
-    opacity:0.08;
-  }
-  
+  .MuiPaper-root {
+    background: none;
+    box-shadow: none !important;
+}
   

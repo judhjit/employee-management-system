@@ -39,9 +39,9 @@ const MultiDateCalendar = ({ selectedDates, setSelectedDates, user, setUser }) =
   return (
     <div
       style={{
-        backgroundColor: '#D9DAE9',
+        backgroundColor: 'white',
         height: '741px',
-        width: '100vw',
+        width: '75vw',
         textAlign: 'center',
         margin: '0 auto' 
       }}
@@ -58,7 +58,7 @@ const MultiDateCalendar = ({ selectedDates, setSelectedDates, user, setUser }) =
           <span style={{ color: '#0071BA' }}>Plan </span>
           <span>Your Day:</span>
         </h>
-        <div className="calendar" style={{ marginLeft:'30vw'}}>
+        <div className="calendar" >
           <Calendar
             onClickDay={handleDateClick}
             tileDisabled={({ date }) => date.getDay() === 0}
