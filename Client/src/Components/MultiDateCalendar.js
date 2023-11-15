@@ -198,15 +198,17 @@ const MultiDateCalendar = ({ selectedDates, setSelectedDates, user, setUser }) =
   const navigate = useNavigate();
   return (
     
-    <div style={{ height: '741px', width: '100vw', marginLeft:'60px'}}>
+    <div style={{ height: '600px', width: '100vw', marginLeft:'60px'}}>
       <div style={{ display: 'flex' }}>
-        <div style={{ flex: 1, padding: '20px' }}>
-          <h style={{ fontSize: '25px', textAlign: 'left', fontWeight: '500'}}>
+        <div style={{ flex: 1}}>
+          <h style={{ fontSize: '18px', textAlign: 'left', fontWeight: '500'}}>
             <span style={{ color: '#0071BA' }}>Plan </span>
             <span>Your Day:</span>
           </h>
-          <div className="calendar">
+          <div className="calendar" >
             <Calendar
+              className="custom-calendar"
+              style={{height:'100px'}}
               onClickDay={handleDateClick}
               tileDisabled={({ date }) => date.getDay() === 0 || date.getDay() === 6}
               tileClassName={({ date }) =>
@@ -218,7 +220,7 @@ const MultiDateCalendar = ({ selectedDates, setSelectedDates, user, setUser }) =
               />
             <Button variant="contained" className="bookbutton"  onClick={() => {
               console.log(user);
-              navigate("/deskbooking");
+              navigate('/deskbooking');
             }}>
               Book
             </Button>

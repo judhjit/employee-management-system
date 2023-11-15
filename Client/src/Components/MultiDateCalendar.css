@@ -17,6 +17,7 @@
 .selected {
     background-color: #3498db;
     color: #fff;
+    border-radius: 5px;
     border: 2px solid #3498db;
   }
   /* .selected {
@@ -24,7 +25,8 @@
     color: black !important;
   } */
   .react-calendar {
-    width: 700px;
+    width: 600px;
+    height: 250px;
     max-width: 100%;
     background: white;
     border: 1px solid #a0a096;
@@ -34,18 +36,33 @@
 }
 
 .calendar{
+ 
     padding-top:10px;
     padding-left:10px;
+   
 }
 button.bookbutton{
-  height: 2vw;
+  height: 1.6vw;
   width: 2vw;
   background-color: #004B81;
   margin-top:10px;
+  font-size: 11px;
  
 
 }
 button.bookbutton:hover{
   transform: scale(1.1);
   color: white;
+}
+/* Example styles for adjusting date picker elements */
+.custom-calendar .react-calendar__tile {
+  height: 25px; /* Adjust the height of each date tile */
+}
+
+.custom-calendar .react-calendar__navigation {
+  height: 25px; /* Adjust the height of the month and year navigation */
+}
+
+.custom-calendar .react-calendar__month-view__days__day {
+  height: 25px; /* Adjust the height of individual days */
 }

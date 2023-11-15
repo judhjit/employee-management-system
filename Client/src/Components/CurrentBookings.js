@@ -47,7 +47,7 @@ const CurrentBookings = () => {
 
   return (
     <div className="table-container">
-      <h style={{ fontSize: '25px', textAlign: 'left', fontWeight: '500'}} className="booking">
+      <h style={{ fontSize: '18px', textAlign: 'left', fontWeight: '500'}} className="booking">
             <span style={{ color: '#0071BA' }}>Current </span>
             <span>Bookings</span>
           </h>

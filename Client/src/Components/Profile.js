@@ -1,47 +1,51 @@
 import React from 'react';
 import { Avatar, Box, Divider, Grid, Typography } from '@mui/material';
+import './Profile.css'
 
 const Profile = () => {
   const userData = {
     firstName: 'John',
     lastName: 'Doe',
     employeeId: 'EMP123',
-    userType: 'Employee',
+    emailId:'Johndoe@abcgroup.com'
   };
 
   const itemBoxStyle = {
-    border: '1px solid #ccc',
-    padding: '20px',
+    border: '2px solid #004B81',
+    padding: '12px',
+    backgroundColor:'#FAF9F6',
+    height:'25px',
     marginBottom: '20px',
     borderRadius: '8px',
-    boxShadow: '0 0 10px rgba(0, 0, 0, 0.1)',
+    boxShadow: '0 0 10px rgba(0, 0, 0, 0.2)',
   };
 
   const labelStyle = {
     fontWeight: 'bold',
-    fontSize: '18px',
+    fontSize: '14px',
   };
 
   const valueStyle = {
-    fontSize: '16px',
+    fontSize: '14px',
   };
 
   return (
-    <div className="profile-container" style={{ marginLeft: '270px', marginTop: '70px' }}>
+    <div className="profile-container" style={{ marginLeft: '250px', marginTop: '50px'}}>
       <Grid container justifyContent="center" alignItems="center" spacing={2}>
         <Grid item>
           <Avatar
             alt="Profile Avatar"
-            sx={{ width: 100, height: 100, backgroundColor: 'primary.main' }}
+            sx={{ width: 75, height: 75, backgroundColor: 'primary.main' }}
           >
             {userData.firstName.charAt(0).toUpperCase()}
             {userData.lastName.charAt(0).toUpperCase()}
           </Avatar>
         </Grid>
         <Grid item>
-          <Typography variant="h4" sx={{ fontWeight: 'bold' }}>
-            My Profile
-          </Typography>
+        <h style={{ fontSize: '35px', textAlign: 'left', fontWeight: '500'}}>
+            <span style={{ color: '#0071BA' }}>My </span>
+            <span>Profile</span>
+          </h>
         </Grid>
       </Grid>
 
@@ -81,10 +85,10 @@ const Profile = () => {
         <Grid item xs={12}>
           <Box sx={itemBoxStyle}>
             <Typography variant="h6" sx={labelStyle} style={{ display: 'inline', marginRight: '10px' }}>
-              User Type:
+              Email Id:
             </Typography>
             <Typography variant="body1" sx={valueStyle} style={{ display: 'inline' }}>
-              {userData.userType}
+              {userData.emailId}
             </Typography>
           </Box>
         </Grid>
@@ -94,3 +98,5 @@ const Profile = () => {
 };
 
 export default Profile;
+
+

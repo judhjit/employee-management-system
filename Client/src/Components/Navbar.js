@@ -255,8 +255,8 @@ const Navbar = ({
   const handleLogout = () => {};
   const CustomTextButton = styled(Button)(({ theme }) => ({
     color: 'black', 
-    fontSize: '16px', 
-  fontWeight: 600,
+    fontSize: '13px', 
+  fontWeight: 550,
     '&:hover': {
       color: '#0071BA',
       backgroundColor: 'transparent', 
@@ -266,8 +266,8 @@ const Navbar = ({
   return (
     <div>
     <AppBar
-      position="static"
-      style={{ backgroundColor: "white", boxShadow: "none" }}
+      position="sticky"
+      style={{ backgroundColor: "white", boxShadow: "none", height:'50px'}}
     >
       <Toolbar>
         

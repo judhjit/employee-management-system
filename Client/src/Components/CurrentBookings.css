@@ -1,5 +1,6 @@
 .table-container {
-    max-height: 400px; /* Set the maximum height for the table container */
+  height: 200px;
+    /* max-height: 400px;  */
     overflow-y: auto; /* Enable vertical scrolling for the table body */
   }
   
@@ -7,6 +8,7 @@
     margin-top: 10px;
     border-collapse: collapse;
     width: 100%;
+    
   }
   
   thead {
@@ -17,7 +19,9 @@
   }
   
   th, td {
-    padding: 8px;
+    font-size: 12px;
+    /* height: 3px; */
+    padding: 6px;
     border: 1px solid #ddd;
     text-align: left;
   }

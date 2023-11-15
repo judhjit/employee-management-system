@@ -55,11 +55,11 @@ import './LandingPage.css';
 
 function LandingPage({ selectedDates, setSelectedDates, user, setUser }) {
   return (
-    <Grid container>
+    <Grid container style={{ overflow: 'hidden'}}>
       {/* Left Grid */}
       <Grid item xs={12} sm={9} style={{ backgroundColor: 'lightblue', height: '100vh', display: 'flex', flexDirection: 'column' }}>
         <Grid item style={{ flex: 0,height: '8%', backgroundColor: '#003A64' }}>
-        <marquee behavior="scroll" direction="left" height="50px"style={{ color: 'white', fontSize:'20px'}}>
+        <marquee behavior="scroll" direction="left" height="30px"style={{ color: 'white', fontSize:'12px'}}>
              <p className='text-update'>As the world's leading derivatives marketplace, CME Group enables clients to trade futures, options, cash and OTC markets, optimize portfolios, and analyze data – empowering market participants worldwide to efficiently manage risk and capture opportunities. </p>
         </marquee>
         
@@ -76,7 +76,7 @@ function LandingPage({ selectedDates, setSelectedDates, user, setUser }) {
          
          
         </Grid>
-        <Grid item style={{ flex: 0,height: '35%', backgroundColor: 'DEF3FF', padding: '20px' }}>
+        <Grid item style={{ flex: 0,height: '36%', backgroundColor: 'DEF3FF', padding: '20px' }}>
           <CurrentBookings />
         </Grid>
       </Grid>
