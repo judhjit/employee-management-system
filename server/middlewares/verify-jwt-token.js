@@ -3,7 +3,7 @@ require('dotenv').config("../.env");
 const secretKey = process.env.JWT_SECRET_KEY;
 
 const logger = require('../logger/index');
-const childLogger = logger.child({ module: 'create-jwt-token' });
+const childLogger = logger.child({ module: 'verify-jwt-token' });
 
 let service = "";
 

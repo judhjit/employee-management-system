@@ -1,5 +1,5 @@
 const logger = require('../logger/index');
-const childLogger = logger.child({ module: 'create-jwt-token' });
+const childLogger = logger.child({ module: 'protect-routes' });
 
 let service = "";
 

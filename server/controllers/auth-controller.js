@@ -170,7 +170,7 @@ async function login(req, res, next) {
             childLogger.error("Failed to replace refresh tokens", { service: service, userId: existingUser.user_id, error: error });
             return res.status(500).json({ message: "Internal Server Error" });
         }
-        //reuse of refresh token detected so tells user that it is forbidden
+        //reuse of refresh token detected so tell user that it is forbidden
         if (!foundToken) {
             childLogger.error("Forbidden! Reuse of refresh token detected", { service: service, userId: existingUser.user_id });
             return res.status(403).json({ message: "Forbidden! Token reuse detected." });
@@ -195,7 +195,7 @@ async function login(req, res, next) {
         maxAge: Number(process.env.JWT_REFRESH_TOKEN_EXPIRATION),
     }); //set cookie with token
     childLogger.info("Successfully logged in user", { service: service, userId: existingUser.user_id });
-    return res.status(200).json({ message: "User logged in successfully", accessToken: accessToken, userId: existingUser.user_id, firstName: existingUser.first_name, lastName: existingUser.last_name, isAdmin: existingUser.isAdmin, isNewsAdmin: existingUser.isNewsAdmin });
+    return res.status(200).json({ message: "User logged in successfully", accessToken: accessToken, userId: existingUser.user_id, firstName: existingUser.first_name, lastName: existingUser.last_name, email: existingUser.email, isAdmin: existingUser.isAdmin, isNewsAdmin: existingUser.isNewsAdmin });
 }
 
 
