@@ -1,0 +1,44 @@
+
+ 
+
+
+  /* .MuiSelect-root {
+    z-index: 1;
+ }
+
+.table1{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+}
+   */
+  /* Set the table to be transparent */
+  /* .MuiPaper-root {
+    background: transparent !important;
+    box-shadow: none !important;
+  } */
+  
+  /* Set the table lines and text color to white */
+  /* .MuiTableCell-head, .MuiTableCell-body {
+    color: white !important;
+    border-color: white !important;
+  }
+   */
+  /* Optional: Add some padding to the table cells */
+  /* .MuiTableCell-paddingNone {
+    padding: 8px;
+  }
+   */
+
+  /* .tablehead {
+    position: sticky;
+    top: 0;
+    background-color: #1176bd; /* Set the background color of the sticky header */
+    /* z-index: 1; */
+  /* } */
+   
+
+  .tablehead{
+    color:white;
+  }
