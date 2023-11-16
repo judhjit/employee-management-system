@@ -6,15 +6,25 @@ import offPhoto from '../assets/OfficeLayout.jpeg'
 import './DeskBooking.css'
 import { green } from '@mui/material/colors';
 
+import api from '../api';
+
 const DeskBooking = ({ selectedDates }) => {
   const navigate = useNavigate();
   const [active, setActive] = useState(null);
-
+  
   const [table, bookTable] = useState([{ date: "", id: "", tableno: "" }])
-
+  
   const [selectedSeats, setSelectedSeats] = useState([]);
-  const [seat,setSeat] = useState("")
+  const [seat,setSeat] = useState("");
+  
+  // const response = api.post('/user/getbookings', { isDeskRequired: true, isCabRequired : true, isFoodRequired : true});
+  
+  // console.log(response);
 
+  const tomorrow = new Date(new Date().getTime() + (24 * 60 * 60 * 1000));
+  const response = api.post('/user/getdesks', {dates: tomorrow});
+  console.log(response);
+  
   const theme = createTheme({
     palette: {
       primary: {
