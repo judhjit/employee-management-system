@@ -1,6 +1,6 @@
 const db = require('../data/database');
 const { v4: uuidv4 } = require('uuid');
-const dateFns = require('date-fns');
+const moment = require('moment');
 
 class CabBookings {
     constructor(bookingId, userId, bookedForDate, workSlot, dateOfBooking) {
@@ -20,7 +20,7 @@ class CabBookings {
             booking.firstName = booking.first_name;
             booking.lastName = booking.last_name;
             booking.workSlot = booking.work_slot;
-            booking.dateBooked = dateFns.format(new Date(booking.pickup_date), 'yyyy-MM-dd');
+            booking.dateBooked = moment(booking.pickup_date).format('YYYY-MM-DD');
             delete booking.last_name;
             delete booking.first_name;
             delete booking.work_slot;
@@ -28,6 +28,26 @@ class CabBookings {
             delete booking.user_id;
         });
         return cabBookings;
+    }
+
+    static async getAllCabBookings() {
+        let bookings;
+        try {
+            bookings = await db.any(`SELECT public."CabBookings"."user_id",
+            public."CabBookings"."pickup_date", public."CabBookings"."work_slot",
+            public."Users"."first_name", public."Users"."last_name"
+            FROM public."CabBookings"
+            INNER JOIN public."Users" ON public."CabBookings"."user_id" = public."Users"."user_id"
+            ORDER BY public."CabBookings"."pickup_date";`);
+        } catch (error) {
+            console.error(error);
+        }
+        try {
+            bookings = await this.formatCabBookings(bookings);
+        } catch (error) {
+            console.error(error);
+        }
+        return bookings;
     }
 
     static async getAllFutureCabBookings() {
@@ -51,16 +71,26 @@ class CabBookings {
         return bookings;
     }
 
-    static async getCountOfAllFutureCabBookings() {
-        let count;
+    static async getCabBookingsForUser(userId) {
+        if (!userId) return null; //if userId is undefined, then return null
+        let bookings;
         try {
-            count = await db.any(`SELECT COUNT(*) FROM public."CabBookings" WHERE public."CabBookings"."pickup_date" >= CURRENT_DATE`);
-        }
-        catch (error) {
+            bookings = await db.any(`SELECT public."CabBookings"."user_id",
+            public."CabBookings"."pickup_date", public."CabBookings"."work_slot",
+            public."Users"."first_name", public."Users"."last_name"
+            FROM public."CabBookings"
+            INNER JOIN public."Users" ON public."CabBookings"."user_id" = public."Users"."user_id"
+            WHERE public."CabBookings"."user_id" = $1
+            ORDER BY public."CabBookings"."pickup_date";`, [userId]);
+        } catch (error) {
             console.error(error);
         }
-        if(!count || count.length === 0) return 0;
-        return count[0].count;
+        try {
+            bookings = await this.formatCabBookings(bookings);
+        } catch (error) {
+            console.error(error);
+        }
+        return bookings;
     }
 
     static async getFutureCabBookingsForUser(userId) {
@@ -85,24 +115,11 @@ class CabBookings {
         return bookings;
     }
 
-    static async getCountOfFutureCabBookingsForUser(userId) {
-        if (!userId) return null; //if userId is undefined, then return null
-        let count;
-        try {
-            count = await db.any(`SELECT COUNT(*) FROM public."CabBookings" WHERE public."CabBookings"."user_id" = $1 AND public."CabBookings"."pickup_date" >= CURRENT_DATE`, [userId]);
-        }
-        catch (error) {
-            console.error(error);
-        }
-        if(!count || count.length === 0) return 0;
-        return count[0].count;
-    }
-
     static async getCabBookingsForDates(dates) { //returns an array of all cab bookings for multiple dates (array of dates)
         if (!dates) return null; //if dates is undefined, then return null
         if (!Array.isArray(dates)) dates = [dates]; //if dates is not an array, then set dates to an array containing dates
         for (let i = 0; i < dates.length; i++) {
-            dates[i] = dateFns.format(new Date(dates[i]), 'yyyy-MM-dd');
+            dates[i] = moment(dates[i]).format('YYYY-MM-DD');
         }
         //sort dates in ascending order
         dates.sort((a, b) => {
@@ -136,8 +153,8 @@ class CabBookings {
 
     static async getCabBookingsBetweenDates(startDate, endDate) { //returns an array of all cab bookings between two dates
         if (!startDate || !endDate) return null; //if startDate or endDate is undefined, then return null
-        startDate = dateFns.format(new Date(startDate), 'yyyy-MM-dd');
-        endDate = dateFns.format(new Date(endDate), 'yyyy-MM-dd');
+        startDate = moment(startDate).format('YYYY-MM-DD');
+        endDate = moment(endDate).format('YYYY-MM-DD');
         let bookings;
         try {
             bookings = await db.any(`SELECT public."CabBookings"."user_id",
@@ -158,25 +175,11 @@ class CabBookings {
         return bookings;
     }
 
-    static async getCountOfCabBookingsBetweenDates(startDate, endDate) { //returns an array of all cab bookings between two dates
-        if (!startDate || !endDate) return null; //if startDate or endDate is undefined, then return null
-        startDate = dateFns.format(new Date(startDate), 'yyyy-MM-dd');
-        endDate = dateFns.format(new Date(endDate), 'yyyy-MM-dd');
-        let count;
-        try {
-            count = await db.any(`SELECT COUNT(*) FROM public."CabBookings" WHERE "pickup_date" BETWEEN $1 AND $2`, [startDate, endDate]);
-        } catch (error) {
-            console.error(error);
-        }
-        if(!count || count.length === 0) return 0;
-        return count[0].count;
-    }
-
     static async getCabBookingsForUserForDates(userId, dates) { //returns an array of all cab bookings for a user for multiple dates (array of dates)
         if (!userId || !dates) return null; //if userId or dates is undefined, then return null
         if (!Array.isArray(dates)) dates = [dates]; //if dates is not an array, then set dates to an array containing dates
         for (let i = 0; i < dates.length; i++) {
-            dates[i] = dateFns.format(new Date(dates[i]), 'yyyy-MM-dd');
+            dates[i] = moment(dates[i]).format('YYYY-MM-DD');
         }
         //sort dates in ascending order
         dates.sort((a, b) => {
@@ -208,44 +211,6 @@ class CabBookings {
         return bookings;
     }
 
-    static async getCabBookingsForUserBetweenDates(userId, startDate, endDate) { //returns an array of all cab bookings for a user between two dates
-        if (!userId || !startDate || !endDate) return null; //if userId, startDate or endDate is undefined, then return null
-        startDate = dateFns.format(new Date(startDate), 'yyyy-MM-dd');
-        endDate = dateFns.format(new Date(endDate), 'yyyy-MM-dd');
-        let bookings;
-        try {
-            bookings = await db.any(`SELECT public."CabBookings"."user_id",
-            public."CabBookings"."pickup_date", public."CabBookings"."work_slot",
-            public."Users"."first_name", public."Users"."last_name"
-            FROM public."CabBookings"
-            INNER JOIN public."Users" ON public."CabBookings"."user_id" = public."Users"."user_id"
-            WHERE "pickup_date" BETWEEN $1 AND $2 AND public."CabBookings"."user_id" = $3
-            ORDER BY "pickup_date";`, [startDate, endDate, userId]);
-        } catch (error) {
-            console.error(error);
-        }
-        try {
-            bookings = await this.formatCabBookings(bookings);
-        } catch (error) {
-            console.error(error);
-        }
-        return bookings;
-    }
-
-    static async getCountOfCabBookingsForUserBetweenDates(userId, startDate, endDate) { //returns an array of all cab bookings for a user between two dates
-        if (!userId || !startDate || !endDate) return null; //if userId, startDate or endDate is undefined, then return null
-        startDate = dateFns.format(new Date(startDate), 'yyyy-MM-dd');
-        endDate = dateFns.format(new Date(endDate), 'yyyy-MM-dd');
-        let count;
-        try {
-            count = await db.any(`SELECT COUNT(*) FROM public."CabBookings" WHERE "pickup_date" BETWEEN $1 AND $2 AND public."CabBookings"."user_id" = $3`, [startDate, endDate, userId]);
-        } catch (error) {
-            console.error(error);
-        }
-        if(!count || count.length === 0) return 0;
-        return count[0].count;
-    }
-
     static async bookCab(userId, dates, workSlot) { //book cab function to book a cab using user id, dates and work slot for multiple dates by inserting them into cab bookings table
         if (!userId || !dates || !workSlot) return null; //if userId, dates or workSlot is undefined, then return null
         if (!Array.isArray(dates)) dates = [dates]; //if dates is not an array, then set dates to an array containing dates
@@ -272,9 +237,8 @@ class CabBookings {
 
     static async cancelCabBooking(userId, date) { //function to cancel a cab booking using booking id, user id and date
         if (!userId || !date) return null; //if bookingId, userId or date is undefined, then return null
-        if (!Array.isArray(date)) date = [date]; //if date is not an array, then set date to an array containing date
         try {
-            await db.any('DELETE FROM public."CabBookings" WHERE "user_id" = $1 AND "pickup_date" = $2', [userId, date[0]]);
+            await db.any('DELETE FROM public."CabBookings" WHERE "user_id" = $1 AND "pickup_date" = $2', [userId, date]);
         } catch (error) {
             console.error(error);
         }
