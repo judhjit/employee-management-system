@@ -16,12 +16,15 @@ const verifyJWTTokenMiddleware = require('./middlewares/verify-jwt-token');
 
 const protectRoutesMiddleware = require('./middlewares/protect-routes');
 
+const logger = require('./logger/index');
+
 
 const corsOptions = {
     origin: process.env.CLIENT_URL,
+    // origin: '*',
     credentials: true,
     methods: ['GET', 'POST', 'PUT', 'DELETE'],
-    allowedHeaders: ['Content-Type', 'Authorization', 'Set-Cookie', 'Cookie', 'Access-Control-Allow-Credentials'],
+    allowedHeaders: ['Content-Type', 'Authorization', 'Set-Cookie', 'Cookie', 'Access-Control-Allow-Headers', 'Access-Control-Allow-Credentials', 'Access-Control-Allow-Origin', 'Origin', 'X-Requested-With', 'Accept', 'withCredentials'],
     optionsSuccessStatus: 200
 };
 
@@ -66,21 +69,21 @@ app.use('/user', userRoutes); //registering a middleware triggered for all incom
 
 app.use(protectRoutesMiddleware); //registering a middleware to protect routes requiring authentication and authorization
 
-app.use('/newsAdmin', newsAdminRoutes); //registering a middleware triggered for all incoming requests with /newsAdmin prefix
+app.use('/newsadmin', newsAdminRoutes); //registering a middleware triggered for all incoming requests with /newsAdmin prefix
 
 app.use('/admin', adminRoutes); //registering a middleware triggered for all incoming requests with /admin prefix
 
 app.use(errorHandlerMiddleware);
 
 db.connect().then(() => {
-    console.log(`Connected to database ${process.env.DB_DATABASE} on port ${process.env.DB_PORT} at ${process.env.DB_HOST}`);
+    logger.info(`Connected to database ${process.env.DB_DATABASE} on port ${process.env.DB_PORT} at ${process.env.DB_HOST}`);
 }).catch((err) => {
-    console.log(err);
+    logger.error(err);
 });
 
 
 const port = process.env.DEV_PORT || process.env.PROD_PORT || 3000;
 
 app.listen(port, () => {
-    console.log(`Server listening on port ${port}`);
+    logger.info(`Server listening on port ${port}`);
 });
