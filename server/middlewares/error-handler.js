@@ -1,5 +1,5 @@
 const logger = require('../logger/index');
-const childLogger = logger.child({ module: 'create-jwt-token' });
+const childLogger = logger.child({ module: 'error-handler' });
 
 let service = "";
 
@@ -11,7 +11,7 @@ function handleErrors(error, req, res, next) { //something went wrong on the ser
         return res.status(404).json({ message: 'Not Found' });
     }
     childLogger.error("Internal Server Error", { service: service });
-    res.status(500).json({ message: 'Internal Server Error' });
+    return res.status(500).json({ message: 'Internal Server Error' });
 }
 
 module.exports = handleErrors;

@@ -36,6 +36,17 @@ const MultiDateCalendar = ({ selectedDates, setSelectedDates, user, setUser }) =
 
   const navigate = useNavigate();
 
+  if(!user || !user.userId || user.userId === ''){
+    // navigate("/login");
+    window.location.href = "/login";
+  }
+
+  // if(!user.isAdmin){
+  //   return (
+  //     <div>Unauthorized!</div>
+  //   )
+  // }
+
   return (
     <div style={{ backgroundColor: '#D9DAE9', height: '741px', width: '100vw' }}>
       <div style={{ display: 'flex' }}>

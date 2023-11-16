@@ -15,74 +15,84 @@ import Requests from "./components/admin/Requests";
 import Analytics from "./components/admin/Analytics";
 import ViewAllAdmin from "./components/admin/ViewAllAdmin";
 
+import Login from "./components/Login"
+import Signup from "./components/Signup"
+
 function App() {
   const [showNewsFeed, setShowNewsFeed] = useState(true);
   const [selectedDates, setSelectedDates] = useState([]);
-  const [isAdmin,setIsAdmin] = useState(true);
-  const [isNewsadmin,setNewsadmin] = useState(true);
-  const [user,setUser]=useState({empId:"",
-  empName:"",
-selectedDate:[],
-selectedSeat:[],
-cabSlot:[],
-meal:[]}) 
+  // const [isAdmin, setIsAdmin] = useState(true);
+  // const [isNewsadmin, setNewsadmin] = useState(true);
+  const [user, setUser] = useState({
+    email: '',
+    userId: '',
+    firstName: '',
+    lastName: '',
+    isAdmin: false,
+    isNewsAdmin: false
+  });
   return (
     <BrowserRouter>
-    <div>
+      <div>
 
-      <Navbar 
-        selectedDates={selectedDates}
-        showNewsFeed={showNewsFeed}
-        setShowNewsFeed={setShowNewsFeed}
+        <Navbar
+          selectedDates={selectedDates}
+          showNewsFeed={showNewsFeed}
+          setShowNewsFeed={setShowNewsFeed}
 
-        isAdmin={isAdmin}
-        
-      />
+          isAdmin={user.isAdmin}
 
-      <div className="App" style={{ display: "flex" }}>
-        <div
-          style={{
-            display: "flex",
-            flex: 1,justifyContent:'space-between',width:'100vw'
-          }}
-        >
-          <Routes>
+        />
 
-            <Route path="/" element={<MultiDateCalendar
-            showNewsFeed={showNewsFeed}
-            selectedDates={selectedDates}
-            setSelectedDates={setSelectedDates}
-            user={user}
-            setUser={setUser}
-          />}/>
-          <Route path="/deskbooking" element={<DeskBooking selectedDates={selectedDates}/>}/>
-          <Route path="/cabbooking" element={<CabBooking/>}/>
-          
-          <Route path="/lunchandcabbook" element={<LunchAndCabbook selectedDates={selectedDates}/>} />  
-          <Route path="/grantaccess" element={<GrantAccess/>}/>        
-          <Route path="/requests" element={<Requests/>}/>        
-          <Route path="/analytics" element={<Analytics/>}/>
-          <Route path="/viewAllAdmin" element={<ViewAllAdmin/>} />
-          </Routes>
-          
-          {showNewsFeed && (
-            <div
-              style={{
-                width: "350px",
-                backgroundColor: "#12184c",
-                overflowY: "auto",
-                height:"805px"
-              }}
-            >
-              <NewsFeed style={{ height: "100%" }} isNewsadmin={isNewsadmin}/>
-            </div>
-            
-          )}
-          
+        <div className="App" style={{ display: "flex" }}>
+          <div
+            style={{
+              display: "flex",
+              flex: 1, justifyContent: 'space-between', width: '100vw'
+            }}
+          >
+            <Routes>
+
+              <Route path="/" element={<MultiDateCalendar
+                showNewsFeed={showNewsFeed}
+                selectedDates={selectedDates}
+                setSelectedDates={setSelectedDates}
+                user={user}
+                setUser={setUser}
+              />} />
+              <Route path="/login" element={<Login
+                user={user}
+                setUser={setUser}
+              />} />
+              <Route path="/signup" element={<Signup />} />
+              <Route path="/deskbooking" element={<DeskBooking selectedDates={selectedDates} />} />
+              <Route path="/cabbooking" element={<CabBooking />} />
+
+              <Route path="/lunchandcabbook" element={<LunchAndCabbook selectedDates={selectedDates} />} />
+              <Route path="/grantaccess" element={<GrantAccess />} />
+              <Route path="/requests" element={<Requests />} />
+              <Route path="/analytics" element={<Analytics />} />
+              <Route path="/viewAllAdmin" element={<ViewAllAdmin />} />
+            </Routes>
+
+            {showNewsFeed && (
+              <div
+                style={{
+                  width: "350px",
+                  backgroundColor: "#12184c",
+                  overflowY: "auto",
+                  height: "805px"
+                }}
+              >
+                <NewsFeed style={{ height: "100%" }} isNewsadmin={user.isNewsAdmin} />
+              </div>
+
+            )}
+
+          </div>
+
         </div>
-      
       </div>
-    </div>
     </BrowserRouter>
   );
 }
