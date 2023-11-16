@@ -36,5 +36,10 @@
 
    */
   /* Profile.css */
-
+img{
+  margin-top: 135px;
+  max-width: 100%;
+    max-height: 63%;
+    margin-left: 10px;
+}
 

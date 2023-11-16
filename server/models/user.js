@@ -38,7 +38,6 @@ class User {
         });
         childLogger.info("Successfully formatted user", { service: service });
         return user;
-    
     }
 
     async create() {
