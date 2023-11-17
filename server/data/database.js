@@ -2,13 +2,18 @@ let pgp = require('pg-promise')();
 const dotenv = require('dotenv');
 dotenv.config("../.env");
 
+const { PGHOST, PGDATABASE, PGUSER, PGPASSWORD, ENDPOINT_ID } = process.env;
 
 const db = pgp({
-    user: process.env.DB_USER,
-    host: process.env.DB_HOST,
-    database: process.env.DB_DATABASE,
-    password: process.env.DB_PASSWORD,
-    port: process.env.DB_PORT
+    host: PGHOST,
+    database: PGDATABASE,
+    username: PGUSER,
+    password: PGPASSWORD,
+    port: 5432,
+    ssl: true,
+    // connection: {
+    //     options: `project=${ENDPOINT_ID}`,
+    // },
 });
 
 module.exports = db;

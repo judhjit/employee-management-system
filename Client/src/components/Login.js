@@ -1,5 +1,6 @@
 
 
+
 import React, { useState } from 'react';
 import { TextField, Button, Grid, Paper, Typography } from '@mui/material';
 import { useNavigate, Link} from 'react-router-dom';
@@ -13,15 +14,18 @@ const Login = ({showNewsFeed,setShowNewsFeed}) => {
     password: '',
   });
 
+
   const [errors, setErrors] = useState({
     email: '',
     password: '',
   });
 
+
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData((prevData) => ({
       ...prevData,
+
       [name]: value,
     }));
     setErrors((prevErrors) => ({
@@ -33,7 +37,9 @@ const Login = ({showNewsFeed,setShowNewsFeed}) => {
   const handleBlur = (e) => {
     const { name, value } = e.target;
 
-    // Perform validation
+
+    
+
     switch (name) {
       case 'email':
         const emailRegex = /^[^\s@]+@abcgroup\.com$/;
@@ -59,6 +65,7 @@ const Login = ({showNewsFeed,setShowNewsFeed}) => {
     }
   };
 
+
   const handleSubmit = (e) => {
     e.preventDefault();
 
@@ -66,6 +73,7 @@ const Login = ({showNewsFeed,setShowNewsFeed}) => {
     let isValid = true;
     Object.keys(formData).forEach((key) => {
       if (!formData[key].trim()) {
+
         setErrors((prevErrors) => ({
           ...prevErrors,
           [key]: 'This field is required',
@@ -77,6 +85,7 @@ const Login = ({showNewsFeed,setShowNewsFeed}) => {
     if (!isValid) {
       return;
     }
+
 
     console.log('Login successful:', formData);
     setShowNewsFeed(true);
@@ -93,40 +102,49 @@ const Login = ({showNewsFeed,setShowNewsFeed}) => {
             Login
           </Typography>
           <form onSubmit={handleSubmit} style={{marginLeft:'29px'}}>
+
             <TextField
               label="Email"
               type="email"
               name="email"
+
               variant="outlined"
               value={formData.email}
+
               onChange={handleChange}
               onBlur={handleBlur}
               fullWidth
               required
               error={!!errors.email}
               helperText={errors.email}
+
               InputLabelProps={{
                 style: { color: '#07345f', fontSize:'11px'} 
               }}
               style={{ marginTop:'50px',marginBottom: '27px' }} 
+
             />
 
             <TextField
               label="Password"
               type="password"
+
               variant="outlined"
               name="password"
               value={formData.password}
+
               onChange={handleChange}
               onBlur={handleBlur}
               fullWidth
               required
               error={!!errors.password}
               helperText={errors.password}
+
               InputLabelProps={{
                 style: { color: '#07345f', fontSize:'11px'} 
               }}
               style={{ marginBottom: '40px' }} 
+
             />
 
             <Button
@@ -138,13 +156,17 @@ const Login = ({showNewsFeed,setShowNewsFeed}) => {
               Login
             </Button>
           </form>
+
           <p>Not Registered?<Link to="/signup" style={{fontStyle:'italic'}}>Signup</Link></p>
           
         </div>
       {/* </Grid> */}
     </div>
+
   );
 };
 
 export default Login;
+
+
 

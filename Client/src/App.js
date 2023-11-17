@@ -116,9 +116,13 @@ import Layout from "./components/Layout";
 import Bookings from "./components/Bookings";
 import Profile from "./components/Profile";
 
+import Login from "./components/Login"
+import Signup from "./components/Signup"
+
 function App() {
   const [showNewsFeed, setShowNewsFeed] = useState(true);
   const [selectedDates, setSelectedDates] = useState([]);
+
   const [isAdmin,setIsAdmin] = useState(true);
   const [isNewsadmin,setNewsadmin] = useState(true);
   const [nightLight,setNightLight] = useState(false);
@@ -188,10 +192,9 @@ meal:[]})
             
           )}
           
+
         </div>
-      
       </div>
-    </div>
     </BrowserRouter>
   );
 }

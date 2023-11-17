@@ -1,24 +1,35 @@
 const db = require('../data/database');
 const { v4: uuidv4 } = require('uuid');
-const moment = require('moment');
+const dateFns = require('date-fns');
+
+const logger = require('../logger/index');
+const childLogger = logger.child({ module: 'desk-booking' });
+
+let service = "";
 
 class DeskBookings {
     constructor(bookingId, deskId, userId, bookedForDate, dateOfBooking) {
+        service = "DeskBookings constructor";
         this.bookingId = bookingId;
         this.deskId = deskId;
         this.userId = userId;
         this.bookedForDate = bookedForDate;
         this.dateOfBooking = dateOfBooking;
+        childLogger.info("DeskBookings object created", { service: service });
     }
 
     static async formatDeskBoookings(deskBookings) {
-        if (!deskBookings) return null; //if deskBookings is undefined, then return null
+        service = "formatDeskBoookings";
+        if (!deskBookings) {
+            childLogger.error("Desk bookings is undefined", { service: service });
+            return null; //if deskBookings is undefined, then return null
+        } 
         if (!Array.isArray(deskBookings)) deskBookings = [deskBookings]; //if deskBookings is not an array, then set deskBookings to an array containing deskBookings
         deskBookings.forEach((booking) => {
             booking.name = `${booking.first_name} ${booking.last_name}`;
             booking.firstName = booking.first_name;
             booking.lastName = booking.last_name;
-            booking.dateBooked = moment(booking.booked_for_date).format('YYYY-MM-DD');
+            booking.dateBooked = dateFns.format(new Date(booking.booked_for_date), 'yyyy-MM-dd');
             booking.deskId = booking.desk_id;
             booking.userId = booking.user_id;
             delete booking.last_name;
@@ -27,534 +38,550 @@ class DeskBookings {
             delete booking.desk_id;
             delete booking.user_id;
         });
+        childLogger.info("Successfully formatted desk bookings", { service: service });
         return deskBookings;
     }
 
     static async getDeskLayout() { //returns an object with desk id as key and an object containing deskNumber and bookedBy as values
+        service = "getDeskLayout";
         let desks = {
-            dateBooked: null,
+            dateBooked: [],
             A1: {
                 deskId: 'A1',
                 deskNumber: 1,
-                bookedBy: null,
+                bookedBy: [],
             },
             A2: {
                 deskId: 'A2',
                 deskNumber: 2,
-                bookedBy: null,
+                bookedBy: [],
             },
             A3: {
                 deskId: 'A3',
                 deskNumber: 3,
-                bookedBy: null,
+                bookedBy: [],
             },
             A4: {
                 deskId: 'A4',
                 deskNumber: 4,
-                bookedBy: null,
+                bookedBy: [],
             },
             A5: {
                 deskId: 'A5',
                 deskNumber: 5,
-                bookedBy: null,
+                bookedBy: [],
             },
             A6: {
                 deskId: 'A6',
                 deskNumber: 6,
-                bookedBy: null,
+                bookedBy: [],
             },
             A7: {
                 deskId: 'A7',
                 deskNumber: 7,
-                bookedBy: null,
+                bookedBy: [],
             },
             A8: {
                 deskId: 'A8',
                 deskNumber: 8,
-                bookedBy: null,
+                bookedBy: [],
             },
             A9: {
                 deskId: 'A9',
                 deskNumber: 9,
-                bookedBy: null,
+                bookedBy: [],
             },
             A10: {
                 deskId: 'A10',
                 deskNumber: 10,
-                bookedBy: null,
+                bookedBy: [],
             },
             B1: {
                 deskId: 'B1',
                 deskNumber: 11,
-                bookedBy: null,
+                bookedBy: [],
             },
             B2: {
                 deskId: 'B2',
                 deskNumber: 12,
-                bookedBy: null,
+                bookedBy: [],
             },
             B3: {
                 deskId: 'B3',
                 deskNumber: 13,
-                bookedBy: null,
+                bookedBy: [],
             },
             B4: {
                 deskId: 'B4',
                 deskNumber: 14,
-                bookedBy: null,
+                bookedBy: [],
             },
             B5: {
                 deskId: 'B5',
                 deskNumber: 15,
-                bookedBy: null,
+                bookedBy: [],
             },
             B6: {
                 deskId: 'B6',
                 deskNumber: 16,
-                bookedBy: null,
+                bookedBy: [],
             },
             B7: {
                 deskId: 'B7',
                 deskNumber: 17,
-                bookedBy: null,
+                bookedBy: [],
             },
             B8: {
                 deskId: 'B8',
                 deskNumber: 18,
-                bookedBy: null,
+                bookedBy: [],
             },
             B9: {
                 deskId: 'B9',
                 deskNumber: 19,
-                bookedBy: null,
+                bookedBy: [],
             },
             B10: {
                 deskId: 'B10',
                 deskNumber: 20,
-                bookedBy: null,
+                bookedBy: [],
             },
             C1: {
                 deskId: 'C1',
                 deskNumber: 21,
-                bookedBy: null,
+                bookedBy: [],
             },
             C2: {
                 deskId: 'C2',
                 deskNumber: 22,
-                bookedBy: null,
+                bookedBy: [],
             },
             C3: {
                 deskId: 'C3',
                 deskNumber: 23,
-                bookedBy: null,
+                bookedBy: [],
             },
             C4: {
                 deskId: 'C4',
                 deskNumber: 24,
-                bookedBy: null,
+                bookedBy: [],
             },
             C5: {
                 deskId: 'C5',
                 deskNumber: 25,
-                bookedBy: null,
+                bookedBy: [],
             },
             C6: {
                 deskId: 'C6',
                 deskNumber: 26,
-                bookedBy: null,
+                bookedBy: [],
             },
             C7: {
                 deskId: 'C7',
                 deskNumber: 27,
-                bookedBy: null,
+                bookedBy: [],
             },
             C8: {
                 deskId: 'C8',
                 deskNumber: 28,
-                bookedBy: null,
+                bookedBy: [],
             },
             C9: {
                 deskId: 'C9',
                 deskNumber: 29,
-                bookedBy: null,
+                bookedBy: [],
             },
             C10: {
                 deskId: 'C10',
                 deskNumber: 30,
-                bookedBy: null,
+                bookedBy: [],
             },
             D1: {
                 deskId: 'D1',
                 deskNumber: 31,
-                bookedBy: null,
+                bookedBy: [],
             },
             D2: {
                 deskId: 'D2',
                 deskNumber: 32,
-                bookedBy: null,
+                bookedBy: [],
             },
             D3: {
                 deskId: 'D3',
                 deskNumber: 33,
-                bookedBy: null,
+                bookedBy: [],
             },
             D4: {
                 deskId: 'D4',
                 deskNumber: 34,
-                bookedBy: null,
+                bookedBy: [],
             },
             D5: {
                 deskId: 'D5',
                 deskNumber: 35,
-                bookedBy: null,
+                bookedBy: [],
             },
             D6: {
                 deskId: 'D6',
                 deskNumber: 36,
-                bookedBy: null,
+                bookedBy: [],
             },
             D7: {
                 deskId: 'D7',
                 deskNumber: 37,
-                bookedBy: null,
+                bookedBy: [],
             },
             D8: {
                 deskId: 'D8',
                 deskNumber: 38,
-                bookedBy: null,
+                bookedBy: [],
             },
             D9: {
                 deskId: 'D9',
                 deskNumber: 39,
-                bookedBy: null,
+                bookedBy: [],
             },
             D10: {
                 deskId: 'D10',
                 deskNumber: 40,
-                bookedBy: null,
+                bookedBy: [],
             },
             E1: {
                 deskId: 'E1',
                 deskNumber: 41,
-                bookedBy: null,
+                bookedBy: [],
             },
             E2: {
                 deskId: 'E2',
                 deskNumber: 42,
-                bookedBy: null,
+                bookedBy: [],
             },
             E3: {
                 deskId: 'E3',
                 deskNumber: 43,
-                bookedBy: null,
+                bookedBy: [],
             },
             E4: {
                 deskId: 'E4',
                 deskNumber: 44,
-                bookedBy: null,
+                bookedBy: [],
             },
             E5: {
                 deskId: 'E5',
                 deskNumber: 45,
-                bookedBy: null,
+                bookedBy: [],
             },
             E6: {
                 deskId: 'E6',
                 deskNumber: 46,
-                bookedBy: null,
+                bookedBy: [],
             },
             E7: {
                 deskId: 'E7',
                 deskNumber: 47,
-                bookedBy: null,
+                bookedBy: [],
             },
             E8: {
                 deskId: 'E8',
                 deskNumber: 48,
-                bookedBy: null,
+                bookedBy: [],
             },
             E9: {
                 deskId: 'E9',
                 deskNumber: 49,
-                bookedBy: null,
+                bookedBy: [],
             },
             E10: {
                 deskId: 'E10',
                 deskNumber: 50,
-                bookedBy: null,
+                bookedBy: [],
             },
             F1: {
                 deskId: 'F1',
                 deskNumber: 51,
-                bookedBy: null,
+                bookedBy: [],
             },
             F2: {
                 deskId: 'F2',
                 deskNumber: 52,
-                bookedBy: null,
+                bookedBy: [],
             },
             F3: {
                 deskId: 'F3',
                 deskNumber: 53,
-                bookedBy: null,
+                bookedBy: [],
             },
             F4: {
                 deskId: 'F4',
                 deskNumber: 54,
-                bookedBy: null,
+                bookedBy: [],
             },
             F5: {
                 deskId: 'F5',
                 deskNumber: 55,
-                bookedBy: null,
+                bookedBy: [],
             },
             F6: {
                 deskId: 'F6',
                 deskNumber: 56,
-                bookedBy: null,
+                bookedBy: [],
             },
             F7: {
                 deskId: 'F7',
                 deskNumber: 57,
-                bookedBy: null,
+                bookedBy: [],
             },
             F8: {
                 deskId: 'F8',
                 deskNumber: 58,
-                bookedBy: null,
+                bookedBy: [],
             },
             F9: {
                 deskId: 'F9',
                 deskNumber: 59,
-                bookedBy: null,
+                bookedBy: [],
             },
             F10: {
                 deskId: 'F10',
                 deskNumber: 60,
-                bookedBy: null,
+                bookedBy: [],
             },
             G1: {
                 deskId: 'G1',
                 deskNumber: 61,
-                bookedBy: null,
+                bookedBy: [],
             },
             G2: {
                 deskId: 'G2',
                 deskNumber: 62,
-                bookedBy: null,
+                bookedBy: [],
             },
             G3: {
                 deskId: 'G3',
                 deskNumber: 63,
-                bookedBy: null,
+                bookedBy: [],
             },
             G4: {
                 deskId: 'G4',
                 deskNumber: 64,
-                bookedBy: null,
+                bookedBy: [],
             },
             G5: {
                 deskId: 'G5',
                 deskNumber: 65,
-                bookedBy: null,
+                bookedBy: [],
             },
             G6: {
                 deskId: 'G6',
                 deskNumber: 66,
-                bookedBy: null,
+                bookedBy: [],
             },
             G7: {
                 deskId: 'G7',
                 deskNumber: 67,
-                bookedBy: null,
+                bookedBy: [],
             },
             G8: {
                 deskId: 'G8',
                 deskNumber: 68,
-                bookedBy: null,
+                bookedBy: [],
             },
             G9: {
                 deskId: 'G9',
                 deskNumber: 69,
-                bookedBy: null,
+                bookedBy: [],
             },
             G10: {
                 deskId: 'G10',
                 deskNumber: 70,
-                bookedBy: null,
+                bookedBy: [],
             },
             H1: {
                 deskId: 'H1',
                 deskNumber: 71,
-                bookedBy: null,
+                bookedBy: [],
             },
             H2: {
                 deskId: 'H2',
                 deskNumber: 72,
-                bookedBy: null,
+                bookedBy: [],
             },
             H3: {
                 deskId: 'H3',
                 deskNumber: 73,
-                bookedBy: null,
+                bookedBy: [],
             },
             H4: {
                 deskId: 'H4',
                 deskNumber: 74,
-                bookedBy: null,
+                bookedBy: [],
             },
             H5: {
                 deskId: 'H5',
                 deskNumber: 75,
-                bookedBy: null,
+                bookedBy: [],
             },
             H6: {
                 deskId: 'H6',
                 deskNumber: 76,
-                bookedBy: null,
+                bookedBy: [],
             },
             H7: {
                 deskId: 'H7',
                 deskNumber: 77,
-                bookedBy: null,
+                bookedBy: [],
             },
             H8: {
                 deskId: 'H8',
                 deskNumber: 78,
-                bookedBy: null,
+                bookedBy: [],
             },
             H9: {
                 deskId: 'H9',
                 deskNumber: 79,
-                bookedBy: null,
+                bookedBy: [],
             },
             H10: {
                 deskId: 'H10',
                 deskNumber: 80,
-                bookedBy: null,
+                bookedBy: [],
             },
             I1: {
                 deskId: 'I1',
                 deskNumber: 81,
-                bookedBy: null,
+                bookedBy: [],
             },
             I2: {
                 deskId: 'I2',
                 deskNumber: 82,
-                bookedBy: null,
+                bookedBy: [],
             },
             I3: {
                 deskId: 'I3',
                 deskNumber: 83,
-                bookedBy: null,
+                bookedBy: [],
             },
             I4: {
                 deskId: 'I4',
                 deskNumber: 84,
-                bookedBy: null,
+                bookedBy: [],
             },
             I5: {
                 deskId: 'I5',
                 deskNumber: 85,
-                bookedBy: null,
+                bookedBy: [],
             },
             I6: {
                 deskId: 'I6',
                 deskNumber: 86,
-                bookedBy: null,
+                bookedBy: [],
             },
             I7: {
                 deskId: 'I7',
                 deskNumber: 87,
-                bookedBy: null,
+                bookedBy: [],
             },
             I8: {
                 deskId: 'I8',
                 deskNumber: 88,
-                bookedBy: null,
+                bookedBy: [],
             },
             I9: {
                 deskId: 'I9',
                 deskNumber: 89,
-                bookedBy: null,
+                bookedBy: [],
             },
             I10: {
                 deskId: 'I10',
                 deskNumber: 90,
-                bookedBy: null,
+                bookedBy: [],
             },
             J1: {
                 deskId: 'J1',
                 deskNumber: 91,
-                bookedBy: null,
+                bookedBy: [],
             },
             J2: {
                 deskId: 'J2',
                 deskNumber: 92,
-                bookedBy: null,
+                bookedBy: [],
             },
             J3: {
                 deskId: 'J3',
                 deskNumber: 93,
-                bookedBy: null,
+                bookedBy: [],
             },
             J4: {
                 deskId: 'J4',
                 deskNumber: 94,
-                bookedBy: null,
+                bookedBy: [],
             },
             J5: {
                 deskId: 'J5',
                 deskNumber: 95,
-                bookedBy: null,
+                bookedBy: [],
             },
             J6: {
                 deskId: 'J6',
                 deskNumber: 96,
-                bookedBy: null,
+                bookedBy: [],
             },
             J7: {
                 deskId: 'J7',
                 deskNumber: 97,
-                bookedBy: null,
+                bookedBy: [],
             },
             J8: {
                 deskId: 'J8',
                 deskNumber: 98,
-                bookedBy: null,
+                bookedBy: [],
             },
             J9: {
                 deskId: 'J9',
                 deskNumber: 99,
-                bookedBy: null,
+                bookedBy: [],
             },
             J10: {
                 deskId: 'J10',
                 deskNumber: 100,
-                bookedBy: null,
+                bookedBy: [],
             },
         }
+        childLogger.info("Successfully returned desk layout", { service: service });
         return desks;
     }
 
     static async getDesksAvailabilityByDate(date) { //uses desk layout to get availability of all desks by date
-        if (!date) return null; //if date is undefined, then return null
+        service = "getDesksAvailabilityByDate";
+        if (!date) {
+            childLogger.error("Date not provided", { service: service });
+            return null; //if date is undefined, then return null
+        }
         let desks, bookings;
         try {
             desks = await this.getDeskLayout();
-            desks.dateBooked = moment(date).format('YYYY-MM-DD');
+            childLogger.info("Successfully got desk layout", { service: service });
+            desks.dateBooked = [];
+            desks.dateBooked.push(dateFns.format(new Date(date), 'yyyy-MM-dd'));
             bookings = await this.getDeskBookingsByDate(date);
+            childLogger.info("Successfully got desk bookings for a particular date", { service: service, request: { date: date } });
         } catch (error) {
-            console.error(error);
+            childLogger.error("Failed to get desk bookings for a particular date", { service: service, request: { date: date }, error: error });
         }
-        if (!bookings || bookings.length === 0) return desks;
         bookings.forEach((booking) => {
-            desks[booking.deskId].bookedBy = booking.name;
+            desks[booking.deskId].bookedBy.push(booking.name);
         });
+        //iterate over desks object and set bookedBy to null if bookedBy is empty
+        for (const key in desks) {
+            if (key == "dateBooked") continue;
+            if (desks[key].bookedBy.length === 0) desks[key].bookedBy.push(null);
+        }
+        childLogger.info("Successfully returned availability of all desks for a particular date", { service: service, request: { date: date } });
         return desks;
     }
 
     static async getFutureDeskBookings() { //returns an array of all future desk bookings
+        service = "getFutureDeskBookings";
         let bookings;
         try {
             bookings = await db.any(`SELECT public."DeskBookings"."desk_id", public."DeskBookings"."user_id",
@@ -563,19 +590,43 @@ class DeskBookings {
             INNER JOIN public."Users" ON public."DeskBookings"."user_id" = public."Users"."user_id"
             WHERE "booked_for_date" >= CURRENT_DATE
             ORDER BY "booked_for_date";`);
+            childLogger.info("Successfully got all future desk bookings", { service: service });
         } catch (error) {
-            console.error(error);
+            childLogger.error("Failed to get all future desk bookings", { service: service, error: error });
         }
         try {
             bookings = await this.formatDeskBoookings(bookings);
+            childLogger.info("Successfully formatted all future desk bookings", { service: service });
         } catch (error) {
-            console.error(error);
+            childLogger.error("Failed to format all future desk bookings", { service: service, error: error });
         }
+        childLogger.info("Successfully returned all future desk bookings", { service: service });
         return bookings;
     }
 
+    static async getCountOfFutureDeskBookings() { //returns the count of all future desk bookings
+        service = "getCountOfFutureDeskBookings";
+        let count;
+        try {
+            count = await db.any(`SELECT COUNT(*) FROM public."DeskBookings" WHERE "booked_for_date" >= CURRENT_DATE`);
+            childLogger.info("Successfully got count of all future desk bookings", { service: service });
+        } catch (error) {
+            childLogger.error("Failed to get count of all future desk bookings", { service: service, error: error });
+        }
+        if (!count || count.length === 0) {
+            childLogger.info("Count of all future desk bookings is 0", { service: service });
+            return 0;
+        }
+        childLogger.info("Successfully returned count of all future desk bookings", { service: service });
+        return count[0].count;
+    }
+
     static async getFutureDeskBookingsForUser(userId) { //returns an array of all future desk bookings for a user
-        if (!userId) return null; //if userId is undefined, then return null
+        service = "getFutureDeskBookingsForUser";
+        if (!userId) {
+            childLogger.error("User id not provided", { service: service });
+            return null; //if userId is undefined, then return null
+        }
         let bookings;
         try {
             bookings = await db.any(`SELECT public."DeskBookings"."desk_id", public."DeskBookings"."user_id",
@@ -585,20 +636,47 @@ class DeskBookings {
             WHERE public."DeskBookings"."user_id" = $1
             AND "booked_for_date" >= CURRENT_DATE
             ORDER BY "booked_for_date";`, [userId]);
+            childLogger.info("Successfully got all future desk bookings for a user", { service: service, userId: userId });
         } catch (error) {
-            console.error(error);
+            childLogger.error("Failed to get all future desk bookings for a user", { service: service, userId: userId, error: error });
         }
         try {
             bookings = await this.formatDeskBoookings(bookings);
+            childLogger.info("Successfully formatted all future desk bookings for a user", { service: service, userId: userId });
         } catch (error) {
-            console.error(error);
+            childLogger.error("Failed to format all future desk bookings for a user", { service: service, userId: userId, error: error });
         }
+        childLogger.info("Successfully returned all future desk bookings for a user", { service: service, userId: userId });
         return bookings;
     }
 
+    static async getCountOfFutureDeskBookingsForUser(userId) { //returns the count of all future desk bookings for a user
+        service = "getCountOfFutureDeskBookingsForUser";
+        if (!userId) {
+            childLogger.error("User id not provided", { service: service });
+            return null; //if userId is undefined, then return null
+        }
+        let count;
+        try {
+            count = await db.any(`SELECT COUNT(*) FROM public."DeskBookings" WHERE "user_id" = $1 AND "booked_for_date" >= CURRENT_DATE`, [userId]);
+            childLogger.info("Successfully got count of all future desk bookings for a user", { service: service, userId: userId });
+        } catch (error) {
+            childLogger.error("Failed to get count of all future desk bookings for a user", { service: service, userId: userId, error: error });
+        }
+        if (!count || count.length === 0) {
+            childLogger.info("Count of all future desk bookings for a user is 0", { service: service, userId: userId });
+        }
+        childLogger.info("Successfully returned count of all future desk bookings for a user", { service: service, userId: userId });
+        return count[0].count;
+    }
+
     static async getDeskBookingsByDate(date) { //returns an array of all desk bookings for a date
-        if (!date) return null; //if date is undefined, then return null
-        date = moment(date).format('YYYY-MM-DD');
+        service = "getDeskBookingsByDate";
+        if (!date) {
+            childLogger.error("Date not provided", { service: service });
+            return null; //if date is undefined, then return null
+        }
+        date = dateFns.format(new Date(date), 'yyyy-MM-dd');
         let bookings;
         try {
             bookings = await db.any(`SELECT public."DeskBookings"."desk_id", public."DeskBookings"."user_id",
@@ -607,22 +685,29 @@ class DeskBookings {
             INNER JOIN public."Users" ON public."DeskBookings"."user_id" = public."Users"."user_id"
             WHERE "booked_for_date" = $1
             ORDER BY "booked_for_date";`, [date]);
+            childLogger.info("Successfully got all desk bookings for a particular date", { service: service, request: { date: date } });
         } catch (error) {
-            console.error(error);
+            childLogger.error("Failed to get all desk bookings for a particular date", { service: service, request: { date: date }, error: error });
         }
         try {
             bookings = await this.formatDeskBoookings(bookings);
+            childLogger.info("Successfully formatted all desk bookings for a particular date", { service: service, request: { date: date } });
         } catch (error) {
-            console.error(error);
+            childLogger.error("Failed to format all desk bookings for a particular date", { service: service, request: { date: date }, error: error });
         }
+        childLogger.info("Successfully returned all desk bookings for a particular date", { service: service, request: { date: date } });
         return bookings;
     }
 
     static async getDeskBookingsForDates(dates) { //returns an array of all desk bookings for multiple dates (array of dates)
-        if (!dates) return null; //if dates is undefined, then return null
+        service = "getDeskBookingsForDates";
+        if (!dates) {
+            childLogger.error("Dates not provided", { service: service });
+            return null; //if dates is undefined, then return null
+        }
         if (!Array.isArray(dates)) dates = [dates]; //if dates is not an array, then set dates to an array containing dates
         for (let i = 0; i < dates.length; i++) {
-            dates[i] = moment(dates[i]).format('YYYY-MM-DD');
+            dates[i] = dateFns.format(new Date(dates[i]), 'yyyy-MM-dd');
         }
         //sort dates in ascending order
         dates.sort((a, b) => {
@@ -642,22 +727,29 @@ class DeskBookings {
                 //concat is used instead of push because push adds the array booking as an element to bookings array, whereas concat adds the elements of booking array to bookings array
                 else bookings = booking;
             }
+            childLogger.info("Successfully got all desk bookings for multiple dates", { service: service, request: { dates: dates }  });
         } catch (error) {
-            console.error(error);
+            childLogger.error("Failed to get all desk bookings for multiple dates", { service: service, request: { dates: dates }, error: error });
         }
         try {
             bookings = await this.formatDeskBoookings(bookings);
+            childLogger.info("Successfully formatted all desk bookings for multiple dates", { service: service, request: { dates: dates } });
         } catch (error) {
-            console.error(error);
+            childLogger.error("Failed to format all desk bookings for multiple dates", { service: service, request: { dates: dates }, error: error });
         }
+        childLogger.info("Successfully returned all desk bookings for multiple dates", { service: service, request: { dates: dates } });
         return bookings;
     }
 
     static async getDeskBookingsForUserForDates(userId, dates) { //returns an array of all desk bookings for a user for multiple dates (array of dates)
-        if (!userId || !dates) return null; //if userId or dates is undefined, then return null
+        service = "getDeskBookingsForUserForDates";
+        if (!userId || !dates) {
+            childLogger.error("User id or dates not provided", { service: service });
+            return null; //if userId or dates is undefined, then return null
+        }
         if (!Array.isArray(dates)) dates = [dates]; //if dates is not an array, then set dates to an array containing dates
         for (let i = 0; i < dates.length; i++) {
-            dates[i] = moment(dates[i]).format('YYYY-MM-DD');
+            dates[i] = dateFns.format(new Date(dates[i]), 'yyyy-MM-dd');
         }
         //sort dates in ascending order
         dates.sort((a, b) => {
@@ -678,21 +770,28 @@ class DeskBookings {
                 //concat is used instead of push because push adds the array booking as an element to bookings array, whereas concat adds the elements of booking array to bookings array
                 else bookings = booking;
             }
+            childLogger.info("Successfully got all desk bookings for a user for multiple dates", { service: service, userId: userId, request: { dates: dates } });
         } catch (error) {
-            console.error(error);
+            childLogger.error("Failed to get all desk bookings for a user for multiple dates", { service: service, userId: userId, request: { dates: dates }, error: error });
         }
         try {
             bookings = await this.formatDeskBoookings(bookings);
+            childLogger.info("Successfully formatted all desk bookings for a user for multiple dates", { service: service, userId: userId, request: { dates: dates } });
         } catch (error) {
-            console.error(error);
+            childLogger.error("Failed to format all desk bookings for a user for multiple dates", { service: service, userId: userId, request: { dates: dates }, error: error });
         }
+        childLogger.info("Successfully returned all desk bookings for a user for multiple dates", { service: service, userId: userId, request: { dates: dates } });
         return bookings;
     }
 
     static async getDeskBookingsForUserBetweenDates(userId, startDate, endDate) { //returns an array of all desk bookings for a user between two dates
-        if (!userId || !startDate || !endDate) return null; //if userId, startDate or endDate is undefined, then return null
-        startDate = moment(startDate).format('YYYY-MM-DD');
-        endDate = moment(endDate).format('YYYY-MM-DD');
+        service = "getDeskBookingsForUserBetweenDates";
+        if (!userId || !startDate || !endDate) {
+            childLogger.error("User id, start date or end date not provided", { service: service });
+            return null; //if userId, startDate or endDate is undefined, then return null
+        }
+        startDate = dateFns.format(new Date(startDate), 'yyyy-MM-dd');
+        endDate = dateFns.format(new Date(endDate), 'yyyy-MM-dd');
         let bookings;
         try {
             bookings = await db.any(`SELECT public."DeskBookings"."desk_id", public."DeskBookings"."user_id",
@@ -702,21 +801,51 @@ class DeskBookings {
             WHERE public."DeskBookings"."user_id" = $1
             AND "booked_for_date" BETWEEN $2 AND $3
             ORDER BY "booked_for_date";`, [userId, startDate, endDate]);
+            childLogger.info("Successfully got all desk bookings for a user between two dates", { service: service, userId: userId, request: { startDate: startDate, endDate: endDate } });
         } catch (error) {
-            console.error(error);
+            childLogger.error("Failed to get all desk bookings for a user between two dates", { service: service, userId: userId, request: { startDate: startDate, endDate: endDate }, error: error });
         }
         try {
             bookings = await this.formatDeskBoookings(bookings);
+            childLogger.info("Successfully formatted all desk bookings for a user between two dates", { service: service, userId: userId, request: { startDate: startDate, endDate: endDate } });
         } catch (error) {
-            console.error(error);
+            childLogger.error("Failed to format all desk bookings for a user between two dates", { service: service, userId: userId, request: { startDate: startDate, endDate: endDate }, error: error });
         }
+        childLogger.info("Successfully returned all desk bookings for a user between two dates", { service: service, userId: userId, request: { startDate: startDate, endDate: endDate } });
         return bookings;
     }
 
+    static async getCountOfDeskBookingsForUserBetweenDates(userId, startDate, endDate) { //returns the count of all desk bookings for a user between two dates
+        service = "getCountOfDeskBookingsForUserBetweenDates";
+        if (!userId || !startDate || !endDate) {
+            childLogger.error("User id, start date or end date not provided", { service: service });
+            return null; //if userId, startDate or endDate is undefined, then return null
+        }
+        startDate = dateFns.format(new Date(startDate), 'yyyy-MM-dd');
+        endDate = dateFns.format(new Date(endDate), 'yyyy-MM-dd');
+        let count;
+        try {
+            count = await db.any(`SELECT COUNT(*) FROM public."DeskBookings" WHERE "user_id" = $1 AND "booked_for_date" BETWEEN $2 AND $3`, [userId, startDate, endDate]);
+            childLogger.info("Successfully got count of all desk bookings for a user between two dates", { service: service, userId: userId, request: { startDate: startDate, endDate: endDate } });
+        } catch (error) {
+            childLogger.error("Failed to get count of all desk bookings for a user between two dates", { service: service, userId: userId, request: { startDate: startDate, endDate: endDate }, error: error });
+        }
+        if (!count || count.length === 0) {
+            childLogger.info("Count of all desk bookings for a user between two dates is 0", { service: service, userId: userId, request: { startDate: startDate, endDate: endDate } });
+            return 0;
+        }
+        childLogger.info("Successfully returned count of all desk bookings for a user between two dates", { service: service, userId: userId, request: { startDate: startDate, endDate: endDate } });
+        return count[0].count;
+    }
+
     static async getDeskBookingsBetweenDates(startDate, endDate) { //returns an array of all desk bookings between two dates
-        if (!startDate || !endDate) return null; //if startDate or endDate is undefined, then return null
-        startDate = moment(startDate).format('YYYY-MM-DD');
-        endDate = moment(endDate).format('YYYY-MM-DD');
+        service = "getDeskBookingsBetweenDates";
+        if (!startDate || !endDate) {
+            childLogger.error("Start date or end date not provided", { service: service });
+            return null; //if startDate or endDate is undefined, then return null
+        }
+        startDate = dateFns.format(new Date(startDate), 'yyyy-MM-dd');
+        endDate = dateFns.format(new Date(endDate), 'yyyy-MM-dd');
         let bookings;
         try {
             bookings = await db.any(`SELECT public."DeskBookings"."desk_id", public."DeskBookings"."user_id",
@@ -725,31 +854,68 @@ class DeskBookings {
             INNER JOIN public."Users" ON public."DeskBookings"."user_id" = public."Users"."user_id"
             WHERE "booked_for_date" BETWEEN $1 AND $2
             ORDER BY "booked_for_date";`, [startDate, endDate]);
+            childLogger.info("Successfully got all desk bookings between two dates", { service: service, request: { startDate: startDate, endDate: endDate } });
+
         } catch (error) {
-            console.error(error);
+            childLogger.error("Failed to get all desk bookings between two dates", { service: service, request: { startDate: startDate, endDate: endDate }, error: error });
         }
         try {
             bookings = await this.formatDeskBoookings(bookings);
+            childLogger.info("Successfully formatted all desk bookings between two dates", { service: service, request: { startDate: startDate, endDate: endDate } });
         } catch (error) {
-            console.error(error);
+            childLogger.error("Failed to format all desk bookings between two dates", { service: service, request: { startDate: startDate, endDate: endDate }, error: error });
         }
+        childLogger.info("Successfully returned all desk bookings between two dates", { service: service, request: { startDate: startDate, endDate: endDate } });
         return bookings;
     }
 
+    static async getCountOfDeskBookingsBetweenDates(startDate, endDate) { //returns the count of all desk bookings between two dates
+        service = "getCountOfDeskBookingsBetweenDates";
+        if (!startDate || !endDate) {
+            childLogger.error("Start date or end date not provided", { service: service });
+            return null; //if startDate or endDate is undefined, then return null
+        }
+        startDate = dateFns.format(new Date(startDate), 'yyyy-MM-dd');
+        endDate = dateFns.format(new Date(endDate), 'yyyy-MM-dd');
+        let count;
+        try {
+            count = await db.any(`SELECT COUNT(*) FROM public."DeskBookings" WHERE "booked_for_date" BETWEEN $1 AND $2`, [startDate, endDate]);
+            childLogger.info("Successfully got count of all desk bookings between two dates", { service: service, request: { startDate: startDate, endDate: endDate } });
+        } catch (error) {
+            childLogger.error("Failed to get count of all desk bookings between two dates", { service: service, request: { startDate: startDate, endDate: endDate }, error: error });
+        }
+        if (!count || count.length === 0) {
+            childLogger.info("Count of all desk bookings between two dates is 0", { service: service, request: { startDate: startDate, endDate: endDate } });
+            return 0;
+        }
+        childLogger.info("Successfully returned count of all desk bookings between two dates", { service: service, request: { startDate: startDate, endDate: endDate } });
+        return count[0].count;
+    }
+
     static async getDeskBookingByDeskIdAndDates(deskId, dates) { //returns an array of all desk bookings for a desk id for the dates, used to check if desk is already booked for any of the dates in dates array
-        if (!deskId || !dates) return null; //if deskId or dates is undefined, then return null
+        service = "getDeskBookingByDeskIdAndDates";
+        if (!deskId || !dates) {
+            childLogger.error("Desk id or dates not provided", { service: service });
+            return null; //if deskId or dates is undefined, then return null
+        }
         if (!Array.isArray(dates)) dates = [dates]; //if dates is not an array, then set dates to an array containing dates
         let bookings;
         try {
             bookings = await db.any('SELECT * FROM public."DeskBookings" WHERE "desk_id" = $1 AND "booked_for_date" IN ($2)', [deskId, ...dates]);
+            childLogger.info("Successfully got all desk bookings for a desk id for the dates", { service: service, request: { deskId: deskId, dates: dates } });
         } catch (error) {
-            console.error(error);
+            childLogger.error("Failed to get all desk bookings for a desk id for the dates", { service: service, request: { deskId: deskId, dates: dates }, error: error });
         }
+        childLogger.info("Successfully returned all desk bookings for a desk id for the dates", { service: service, request: { deskId: deskId, dates: dates } });
         return bookings;
     }
 
     static async bookDesk(deskId, userId, dates) { //book desk function to book a desk using desk id and user id for multiple dates (array of dates) by inserting them into desk bookings table
-        if (!deskId || !userId || !dates) return null; //if deskId, userId or dates is undefined, then return null
+        service = "bookDesk";
+        if (!deskId || !userId || !dates) {
+            childLogger.error("Desk id, user id or dates not provided", { service: service });
+            return null; //if deskId, userId or dates is undefined, then return null
+        }
         if (!Array.isArray(dates)) dates = [dates]; //if dates is not an array, then set dates to an array containing dates
         let bookingId;
         try {
@@ -757,19 +923,26 @@ class DeskBookings {
                 bookingId = uuidv4(); //generate a random booking id
                 await db.any('INSERT INTO public."DeskBookings"("booking_id", "desk_id", "user_id", "booked_for_date", date_of_booking) VALUES($1, $2, $3, $4, CURRENT_TIMESTAMP)', [bookingId, deskId, userId, dates[i]]);
             }
+            childLogger.info("Successfully booked a desk", { service: service, userId: userId, request: { deskId: deskId, dates: dates } });
         } catch (error) {
-            console.error(error);
+            childLogger.error("Failed to book a desk", { service: service, userId: userId, request: { deskId: deskId, dates: dates },  error: error });
         }
+        childLogger.info("Successfully returned booking id", { service: service, bookingId: bookingId });
         return bookingId; //return last booking id
     }
 
     static async cancelDeskBooking(userId, date) { //function to cancel a desk booking using user id and date
-        if (!userId || !date) return null; //if deskId, userId or date is undefined, then return null
+        service = "cancelDeskBooking";
+        if (!userId || !date) {
+            childLogger.error("User id or date not provided", { service: service });
+            return null; //if userId or date is undefined, then return null
+        }
         if (!Array.isArray(date)) date = [date]; //if date is not an array, then set date to an array containing date
         try {
             await db.any('DELETE FROM public."DeskBookings" WHERE "user_id" = $1 AND "booked_for_date" = $2', [userId, date[0]]);
+            childLogger.info("Successfully cancelled a desk booking", { service: service, userId: userId, request: { date: date } });
         } catch (error) {
-            console.error(error);
+            childLogger.error("Failed to cancel a desk booking", { service: service, userId: userId, request: { date: date }, error: error });
         }
     }
 }

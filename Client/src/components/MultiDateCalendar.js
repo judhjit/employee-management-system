@@ -36,6 +36,17 @@ console.log(showNewsFeed);
 
   const navigate = useNavigate();
 
+  if(!user || !user.userId || user.userId === ''){
+    // navigate("/login");
+    window.location.href = "/login";
+  }
+
+  // if(!user.isAdmin){
+  //   return (
+  //     <div>Unauthorized!</div>
+  //   )
+  // }
+
   return (
     <div
       style={{
