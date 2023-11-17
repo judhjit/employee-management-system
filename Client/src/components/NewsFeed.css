@@ -1,4 +1,41 @@
+/* .post {
+  word-wrap: break-word; 
+  white-space: pre-wrap; 
+  padding: 10px;
+  margin: 10px 0;
+  
+}
+.post .MuiSvgIcon-root {
+  font-size: 24px; 
+  margin-left: 12px; 
+  cursor: pointer;
+  color: #0071BA;
+}
 
+
+.post .MuiSvgIcon-root:hover {
+  color: #4CAF50; 
+}
+
+.post .MuiSvgIcon-root:last-child:hover {
+  fill: #FF5722;
+}
+
+
+.post > * {
+  margin-right: 10px;
+}
+
+.post .MuiTextField-root {
+  width: 100%; 
+ }
+
+.post .MuiTextField-root input {
+  word-wrap: break-word; }
+ 
+ */
+
+ 
 .newsfeed {
    
     top: 0;
@@ -22,11 +59,11 @@
   }
   
 
-  
+
 /* element.style {
-    flex: 1 1 0%;
-    background-color: #071356;
-    padding: 20px;
-    max-width: 350px;
-    height: 605px;
+  flex: 1 1 0%;
+  background-color: #071356;
+  padding: 20px;
+  max-width: 350px;
+  height: 605px;
 } */

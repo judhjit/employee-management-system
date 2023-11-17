@@ -15,7 +15,6 @@ import MenuItem from '@mui/material/MenuItem';
 import Radio from '@mui/material/Radio';
 import RadioGroup from '@mui/material/RadioGroup';
 import FormControlLabel from '@mui/material/FormControlLabel';
-import './Form.css';
 
 const steps = ['Desk Booking', 'Cab Booking', 'Lunch Booking', 'Review'];
 
@@ -25,8 +24,8 @@ const Timeline = ({ selectedDates }) => {
   const [lunchPreference, setLunchPreference] = useState('');
   const [cabTiming, setCabTiming] = useState('');
   const [reviewData, setReviewData] = useState({});
-  const [active, setActive] = useState([]); 
-  const [bookings, setBookings] = useState([]); 
+  const [active, setActive] = useState([]); // To Track booked dates
+  const [bookings, setBookings] = useState([]); // To Store booking data for each date
   const [selectAll, setSelectAll] = useState(false);
 
   const isStepOptional = (step) => {
@@ -88,9 +87,9 @@ const Timeline = ({ selectedDates }) => {
     }
 
     if (activeStep === steps.length - 1) {
-      // Handle finishing a booking
+      // To Handle finishing a booking
       if (active.length === 0) {
-        // No date selected, reset everything
+        // If No date selected, reset everything
         setActiveStep(0);
         setLunchPreference('');
         setCabTiming('');
@@ -116,9 +115,9 @@ const Timeline = ({ selectedDates }) => {
     setLunchPreference('');
     setCabTiming('');
     setReviewData({});
-    setActive([]); // Clear booked dates
-    setBookings([]); // Clear all bookings
-    setSelectAll(false); // Uncheck "Select All"
+    setActive([]); // To Clear booked dates
+    setBookings([]); // To Clear all bookings
+    setSelectAll(false); // To Uncheck "Select All"
   };
 
   const handleLunchPreferenceChange = (event) => {
