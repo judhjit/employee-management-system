@@ -1,57 +1,46 @@
 // import { useState } from "react";
 // import "./App.css";
+
 // import MultiDateCalendar from "./components/MultiDateCalendar";
 // import Navbar from "./components/Navbar";
 // import NewsFeed from "./components/NewsFeed";
 // import { BrowserRouter, Routes, Route } from "react-router-dom";
 // import DeskBooking from "./components/DeskBooking";
 // import CabBooking from "./components/CabBooking";
+// // import Stepper from "./components/Stepper";
+
 // import CurrentBookings from "./components/CurrentBookings";
 // import LunchAndCabbook from "./components/LunchAndCabbook";
 // import GrantAccess from "./components/admin/GrantAccess";
 // import Requests from "./components/admin/Requests";
 // import Analytics from "./components/admin/Analytics";
-// import Profile from "./components/Profile";
-// import LandingPage from "./components/LandingPage";
-// import Login from "./components/Login";
-// import Signup from "./components/Signup";
-// import Layout from "./components/Layout";
-// import Timeline from "./components/Timeline"
 // import ViewAllAdmin from "./components/admin/ViewAllAdmin";
 
 // function App() {
 //   const [showNewsFeed, setShowNewsFeed] = useState(true);
 //   const [selectedDates, setSelectedDates] = useState([]);
 //   const [isAdmin,setIsAdmin] = useState(true);
-//   const [isUser,setisUser] = useState(false);
-//   const [isNewsadmin,setNewsadmin] = useState(false);
+//   const [isNewsadmin,setNewsadmin] = useState(true);
+//   const [nightLight,setNightLight] = useState(false);
 //   const [user,setUser]=useState({empId:"",
 //   empName:"",
 // selectedDate:[],
 // selectedSeat:[],
 // cabSlot:[],
-// meal:[]})
+// meal:[]}) 
 //   return (
 //     <BrowserRouter>
-//     <div>
-//     <Navbar
+//     <div >
+
+//       <Navbar 
 //         selectedDates={selectedDates}
 //         showNewsFeed={showNewsFeed}
 //         setShowNewsFeed={setShowNewsFeed}
+
 //         isAdmin={isAdmin}
-//         isUser={isUser}
-//         isNewsadmin={isNewsadmin}
+        
+        
 //       />
-//     <Routes>
-//         <Route path="/" element={<Layout />}>
-//           {/* Nested routes should be prefixed with `/` */}
-//           <Route index element={<Login />} />
-//           <Route path="login" element={<Login />} />
-//           <Route path="signup" element={<Signup />} />
-
-//         </Route>
-
-//       </Routes>
 
 //       <div className="App" style={{ display: "flex" }}>
 //         <div
@@ -62,50 +51,40 @@
 //         >
 //           <Routes>
 
-//           <Route path="/landingpage" element={<LandingPage  showNewsFeed={showNewsFeed}
-//             selectedDates={selectedDates}
-//             setSelectedDates={setSelectedDates}
-//             user={user}
-//             setUser={setUser}/>}/>
-//           <Route path="/deskbooking" element={<DeskBooking selectedDates={selectedDates}/>}/>
-//           <Route path="/cabbooking" element={<CabBooking/>}/>
-//           {/* <Route path="multidatecalendar" element={<MultiDateCalendar
+//             <Route path="/" element={<MultiDateCalendar
 //             showNewsFeed={showNewsFeed}
 //             selectedDates={selectedDates}
 //             setSelectedDates={setSelectedDates}
 //             user={user}
 //             setUser={setUser}
-//           />}/> */}
-//           {/* <Route path="multidatecalendar" element={<MultiDateCalendar />}/> */}
-//           <Route path="/lunchandcabbook" element={<LunchAndCabbook selectedDates={selectedDates}/>} />
-//           <Route path="/grantaccess" element={<GrantAccess/>}/>
-//           <Route path="/requests" element={<Requests/>}/>
-//           <Route path="/login" element={<Login/>}/>
-
+//           />}/>
+//           <Route path="/deskbooking" element={<DeskBooking selectedDates={selectedDates}/>}/>
+//           <Route path="/cabbooking" element={<CabBooking/>}/>
+          
+//           <Route path="/lunchandcabbook" element={<LunchAndCabbook selectedDates={selectedDates}/>} />  
+         
+//           <Route path="/grantaccess" element={<GrantAccess/>}/>        
+//           <Route path="/requests" element={<Requests/>}/>        
 //           <Route path="/analytics" element={<Analytics/>}/>
-//           <Route path="/profile" element={<Profile/>}/>
-//           <Route path="/viewAllAdmin" element={<ViewAllAdmin/>}/>
-//           <Route path="/timeline" element={<Timeline selectedDates={selectedDates}/>}/>
-//           <Route path="/newsfeed" element={<NewsFeed isUser={isUser} isNewsadmin={isNewsadmin}/>}/>
-
+//           <Route path="/viewAllAdmin" element={<ViewAllAdmin/>} />
 //           </Routes>
-
-//           {/* {showNewsFeed && (
+          
+//           {showNewsFeed && (
 //             <div
 //               style={{
-//                 width: "290px",
-//                 backgroundColor: "#12184c",
+//                 width: "350px",
+//                 backgroundColor: "#004B81",
 //                 overflowY: "auto",
 //                 height:"805px"
 //               }}
 //             >
-//               <NewsFeed style={{ height: "100%" }} isUser={isUser} isNewsadmin={isNewsadmin}/>
+//               <NewsFeed style={{ height: "100%" }} isNewsadmin={isNewsadmin}/>
 //             </div>
-
-//           )} */}
-
+            
+//           )}
+          
 //         </div>
-
+      
 //       </div>
 //     </div>
 //     </BrowserRouter>
@@ -116,24 +95,26 @@
 
 import { useState } from "react";
 import "./App.css";
+
 import MultiDateCalendar from "./components/MultiDateCalendar";
 import Navbar from "./components/Navbar";
 import NewsFeed from "./components/NewsFeed";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import DeskBooking from "./components/DeskBooking";
-// import CabBooking from "./components/CabBooking";
+
+// import Stepper from "./components/Stepper";
+
 import CurrentBookings from "./components/CurrentBookings";
 import LunchAndCabbook from "./components/LunchAndCabbook";
 import GrantAccess from "./components/admin/GrantAccess";
 import Requests from "./components/admin/Requests";
 import Analytics from "./components/admin/Analytics";
-import Profile from "./components/Profile";
-import LandingPage from "./components/LandingPage";
+import ViewAllAdmin from "./components/admin/ViewAllAdmin";
 import Login from "./components/Login";
 import Signup from "./components/Signup";
 import Layout from "./components/Layout";
-// import Timeline from "./components/Timeline";
-import ViewAllAdmin from "./components/admin/ViewAllAdmin";
+import Bookings from "./components/Bookings";
+import Profile from "./components/Profile";
 
 import Login from "./components/Login"
 import Signup from "./components/Signup"
@@ -141,20 +122,22 @@ import Signup from "./components/Signup"
 function App() {
   const [showNewsFeed, setShowNewsFeed] = useState(true);
   const [selectedDates, setSelectedDates] = useState([]);
-  // const [isAdmin, setIsAdmin] = useState(true);
-  // const [isNewsadmin, setNewsadmin] = useState(true);
-  const [user, setUser] = useState({
-    email: '',
-    userId: '',
-    firstName: '',
-    lastName: '',
-    isAdmin: false,
-    isNewsAdmin: false
-  });
+
+  const [isAdmin,setIsAdmin] = useState(true);
+  const [isNewsadmin,setNewsadmin] = useState(true);
+  const [nightLight,setNightLight] = useState(false);
+  const [isUser, setisUser] = useState(false);
+  const [user,setUser]=useState({empId:"",
+  empName:"",
+selectedDate:[],
+selectedSeat:[],
+cabSlot:[],
+meal:[]}) 
   return (
     <BrowserRouter>
-      <div>
-        <Navbar
+    <div >
+
+    <Navbar
           selectedDates={selectedDates}
           showNewsFeed={showNewsFeed}
           setShowNewsFeed={setShowNewsFeed}
@@ -162,98 +145,54 @@ function App() {
           isUser={isUser}
           isNewsadmin={isNewsadmin}
         />
-        <Routes>
-          <Route path="/" element={<Layout />}>
-            <Route index element={<Login />} />
-            <Route path="signup" element={<Signup />} />
-          </Route>
-        </Routes>
 
-        <div className="App" style={{ display: "flex" }}>
-          <div
-            style={{
-              display: "flex",
-              flex: 1,
-              justifyContent: "space-between",
-              width: "100vw",
-            }}
-          >
-            <Routes>
-              <Route
-                path="/landingpage"
-                element={
-                  <LandingPage
-                    showNewsFeed={showNewsFeed}
-                    selectedDates={selectedDates}
-                    setSelectedDates={setSelectedDates}
-                    user={user}
-                    setUser={setUser}
-                  />
-                }
-              />
-              <Route
-                path="/deskbooking"
-                element={<DeskBooking selectedDates={selectedDates} />}
-              />
-              {/* <Route path="/cabbooking" element={<CabBooking/>}/> */}
-              {/* <Route path="multidatecalendar" element={<MultiDateCalendar
+      <div className="App" style={{ display: "flex" }}>
+        <div
+          style={{
+            display: "flex",
+            flex: 1,justifyContent:'space-between',width:'100vw'
+          }}
+        >
+          <Routes>
+          <Route path="/" element={<Layout />}>
+                <Route index element={<Login setShowNewsFeed={setShowNewsFeed} showNewsFeed={showNewsFeed}/>} />
+                <Route path="signup" element={<Signup />} />
+              </Route>
+            <Route path="/landingpage" element={<MultiDateCalendar
             showNewsFeed={showNewsFeed}
             selectedDates={selectedDates}
             setSelectedDates={setSelectedDates}
             user={user}
             setUser={setUser}
-          />}/> */}
-              {/* <Route path="multidatecalendar" element={<MultiDateCalendar />}/> */}
-              <Route
-                path="/lunchandcabbook"
-                element={<LunchAndCabbook selectedDates={selectedDates} />}
-              />
-              <Route path="/grantaccess" element={<GrantAccess />} />
-              <Route path="/requests" element={<Requests />} />
-              {/* <Route path="/login" element={<Login/>}/>                */}
-
-              <Route path="/analytics" element={<Analytics />} />
-              <Route path="/profile" element={<Profile />} />
-              <Route path="/viewAllAdmin" element={<ViewAllAdmin />} />
-              {/* <Route
-                path="/timeline"
-                element={<Timeline selectedDates={selectedDates} />}
-              /> */}
-              {/* <Route
-                path="/newsfeed"
-                element={<NewsFeed isUser={isUser} isNewsadmin={isNewsadmin} />}
-              /> */}
-            </Routes>
-
-            {/* {showNewsFeed && (
+          />}/>
+          <Route path="/deskbooking" element={<DeskBooking selectedDates={selectedDates}/>}/>
+          {/* <Route path="/cabbooking" element={<CabBooking/>}/> */}
+          
+          <Route path="/lunchandcabbook" element={<LunchAndCabbook selectedDates={selectedDates}/>} />  
+         
+          <Route path="/grantaccess" element={<GrantAccess/>}/>        
+          <Route path="/requests" element={<Requests/>}/>        
+          <Route path="/analytics" element={<Analytics/>}/>
+          <Route path="/viewAllAdmin" element={<ViewAllAdmin/>} />
+          <Route path="/bookings" element={<Bookings  selectedDates={selectedDates}/>} />
+          <Route path="/profile" element={<Profile />} />
+          </Routes>
+          
+          {showNewsFeed && (
             <div
               style={{
-                width: "290px",
-                backgroundColor: "#12184c",
+                width: "370px",
+                backgroundColor: "#004B81",
                 overflowY: "auto",
-                height:"805px"
+                height:"664px"
               }}
             >
-              <NewsFeed style={{ height: "100%" }} isUser={isUser} isNewsadmin={isNewsadmin}/>
+              <NewsFeed style={{ height: "100%" }} isNewsadmin={isNewsadmin}/>
             </div>
             
-          )} */}
-            {/* {showNewsFeed && (
-              <div
-                style={{
-                  width: "290px",
-                  backgroundColor: "#12184c",
-                  overflowY: "auto",
-                  height: "805px",
-                }}
-              >
-                <NewsFeed
-                  style={{ height: "100%" }}
-                  isNewsadmin={isNewsadmin}
-                />
-              </div>
-            )} */}
-          </div>
+          )}
+          
+
         </div>
       </div>
     </BrowserRouter>

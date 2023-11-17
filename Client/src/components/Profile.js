@@ -106,6 +106,8 @@ import './Profile.css'
 
 
 const Profile = () => {
+
+   
   const userData = {
     firstName: 'John',
     lastName: 'Doe',
@@ -244,13 +246,14 @@ const Profile = () => {
           <Typography variant="body1" sx={valueStyle}>
             {userData.emailId}
           </Typography>
+
         </Box>
+
+
       </div>
     </div>
+    
   );
 };
 
 export default Profile;
-
-
-

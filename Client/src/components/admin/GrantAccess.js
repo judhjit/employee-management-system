@@ -1,3 +1,6 @@
+
+
+
 import React, { useState } from 'react';
 import './GrantAccess.css';
 import DoneIcon from '@mui/icons-material/Done';
@@ -50,14 +53,14 @@ const GrantAccess = () => {
       height: "600px",
       width: "75vw",
       textAlign: "center",
-      margin: "0 auto",
+      margin: "9 auto",
     }} > 
       
-      <h1 style={{margin:'auto'}}>Grant News Access:-</h1>
-      <Button style={{ fontSize: '0.8vw',marginLeft:'55vw' }} onClick={ ()=>navigate('/viewAllAdmin')}>View all news Admins</Button>
+      <h1 style={{marginTop: "3.5vw"}}>Grant News Access:-</h1>
+      <Button style={{ fontSize: '0.8vw',marginLeft:'55vw', marginTop: "-4vw"}} onClick={ ()=>navigate('/viewAllAdmin')}>View all news Admins</Button>
       <TableContainer component={Paper} style={{
       width: "68vw",
-      marginTop: "0.1vw",
+      marginTop: "-2vw",
       marginLeft: "4vw",
       maxHeight: 520,
       justifyContent: "center",

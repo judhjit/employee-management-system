@@ -1,3 +1,5 @@
+
+
 import React, { useState, useEffect } from "react";
 import {
   Button,
@@ -11,6 +13,8 @@ import {
   Select,
   TextField,
   MenuItem,
+  makeStyles,
+  styled,
 } from "@mui/material";
 import * as XLSX from "xlsx";
 import "./Requests.css";
@@ -49,11 +53,26 @@ const Requests = () => {
   const [startDate, setStartDate] = React.useState();
   const [endDate, setEndDate] = React.useState();
 
+
+  const StyledDatePicker = styled(DatePicker)({
+    '& .MuiInputBase-root': {
+      height: '53px', // Adjust the height as needed
+    },
+  });
+
+
+  const exportToExcel = () => {
+            const ws = XLSX.utils.json_to_sheet(initialData);
+            const wb = XLSX.utils.book_new();
+            XLSX.utils.book_append_sheet(wb, ws, 'initial data');
+            XLSX.writeFile(wb, 'aditi.xlsx');
+        };
+
   return (
     <div
       style={{
         backgroundColor: "white",
-        height: "741px",
+        height: "664px",
         width: "75vw",
         textAlign: "center",
         margin: "0 auto",
@@ -63,7 +82,7 @@ const Requests = () => {
         style={{
           display: "flex",
           flexDirection: "row",
-          marginTop: "0.6vw",
+          marginTop: "2.9vw",
           fontFamily: "poppins",
         }}
       >
@@ -80,20 +99,20 @@ const Requests = () => {
             fontFamily: "poppins",
           }}
         >
-          <LocalizationProvider dateAdapter={AdapterDayjs}>
-            <DemoContainer components={["DatePicker", "DatePicker"]}>
-              <DatePicker
+          <LocalizationProvider dateAdapter={AdapterDayjs} style={{ fontFamily: "poppins", height:'51px' }}>
+            <DemoContainer components={["DatePicker", "DatePicker"]} >
+              <StyledDatePicker
                 label="Start Date"
                 value={startDate}
                 onChange={(newValue) => setStartDate(newValue)}
-                style={{ fontFamily: "poppins", fontSize: "8px" }}
+                
               />
             </DemoContainer>
           </LocalizationProvider>
 
           <LocalizationProvider dateAdapter={AdapterDayjs}>
             <DemoContainer components={["DatePicker", "DatePicker"]}>
-              <DatePicker
+              <StyledDatePicker
                 label="end Date"
                 value={endDate}
                 onChange={(newValue) => setEndDate(newValue)}
@@ -102,6 +121,7 @@ const Requests = () => {
             </DemoContainer>
           </LocalizationProvider>
         </div>
+        
         <input
           type="text"
           placeholder="Employee Id"
@@ -229,6 +249,21 @@ const Requests = () => {
             </TableBody>
           </Table>
         </TableContainer>
+        <div style={{ paddingLeft: '5vw' }}>
+            <Button
+
+                  onClick={exportToExcel}
+                  style={{
+                    marginTop:'2vw',
+                      marginLeft: '50vw',
+                      height: '2vw',
+                      width: '12vw',
+                      color: 'black',
+                  }}
+              >
+                  Export To Excel
+              </Button>
+          </div>
       </div>
     </div>
   );

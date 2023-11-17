@@ -26,43 +26,21 @@
   } */
   .react-calendar {
     width: 600px;
-    height: 250px;
+height: 305px;
     max-width: 100%;
-    background: white;
-    border: 1px solid #a0a096;
-    font-family: Arial, Helvetica, sans-serif;
+    background: #FFF;
+    border: 2px solid #E9E9E9;
+    border-radius: 8px;
+    
     line-height: 1.125em;
-    padding-top: 20px;
+    padding-top: 10px;
+    text-align: center;
 }
 
 .calendar{
+    padding-top:5px;
+    padding-left:87px;
+  align-items: center;
  
-    padding-top:10px;
-    padding-left:10px;
-   
-}
-button.bookbutton{
-  height: 1.6vw;
-  width: 2vw;
-  background-color: #004B81;
-  margin-top:10px;
-  font-size: 11px;
- 
-
-}
-button.bookbutton:hover{
-  transform: scale(1.1);
-  color: white;
-}
-/* Example styles for adjusting date picker elements */
-.custom-calendar .react-calendar__tile {
-  height: 25px; /* Adjust the height of each date tile */
-}
-
-.custom-calendar .react-calendar__navigation {
-  height: 25px; /* Adjust the height of the month and year navigation */
-}
-
-.custom-calendar .react-calendar__month-view__days__day {
-  height: 25px; /* Adjust the height of individual days */
+  
 }
