@@ -47,9 +47,9 @@ api.interceptors.response.use(
                 console.error(error);
                 console.log('Redirecting to login page');
                 window.location.href = '/login';
+                // window.location.href = '/';
             }
         }
-
         return Promise.reject(error);
     }
 );

@@ -38,8 +38,8 @@
 //         setShowNewsFeed={setShowNewsFeed}
 
 //         isAdmin={isAdmin}
-        
-        
+
+
 //       />
 
 //       <div className="App" style={{ display: "flex" }}>
@@ -60,15 +60,14 @@
 //           />}/>
 //           <Route path="/deskbooking" element={<DeskBooking selectedDates={selectedDates}/>}/>
 //           <Route path="/cabbooking" element={<CabBooking/>}/>
-          
+
 //           <Route path="/lunchandcabbook" element={<LunchAndCabbook selectedDates={selectedDates}/>} />  
-         
 //           <Route path="/grantaccess" element={<GrantAccess/>}/>        
 //           <Route path="/requests" element={<Requests/>}/>        
 //           <Route path="/analytics" element={<Analytics/>}/>
 //           <Route path="/viewAllAdmin" element={<ViewAllAdmin/>} />
 //           </Routes>
-          
+
 //           {showNewsFeed && (
 //             <div
 //               style={{
@@ -80,11 +79,11 @@
 //             >
 //               <NewsFeed style={{ height: "100%" }} isNewsadmin={isNewsadmin}/>
 //             </div>
-            
+
 //           )}
-          
+
 //         </div>
-      
+
 //       </div>
 //     </div>
 //     </BrowserRouter>
@@ -116,85 +115,97 @@ import Layout from "./components/Layout";
 import Bookings from "./components/Bookings";
 import Profile from "./components/Profile";
 
-import Login from "./components/Login"
-import Signup from "./components/Signup"
-
 function App() {
-  const [showNewsFeed, setShowNewsFeed] = useState(true);
+  const [showNewsFeed, setShowNewsFeed] = useState(false);
   const [selectedDates, setSelectedDates] = useState([]);
-
-  const [isAdmin,setIsAdmin] = useState(true);
-  const [isNewsadmin,setNewsadmin] = useState(true);
-  const [nightLight,setNightLight] = useState(false);
+  const [nightLight, setNightLight] = useState(false);
   const [isUser, setisUser] = useState(false);
-  const [user,setUser]=useState({empId:"",
-  empName:"",
-selectedDate:[],
-selectedSeat:[],
-cabSlot:[],
-meal:[]}) 
+  const [user, setUser] = useState({
+    email: '',
+    userId: '',
+    firstName: '',
+    lastName: '',
+    isAdmin: false,
+    isNewsAdmin: false
+  });
+
   return (
     <BrowserRouter>
-    <div >
+      <div>
 
-    <Navbar
-          selectedDates={selectedDates}
+        {isUser && <Navbar
           showNewsFeed={showNewsFeed}
           setShowNewsFeed={setShowNewsFeed}
-          isAdmin={isAdmin}
+          isAdmin={user.isAdmin}
           isUser={isUser}
-          isNewsadmin={isNewsadmin}
-        />
+          isNewsadmin={user.isNewsAdmin}
+        />}
 
-      <div className="App" style={{ display: "flex" }}>
-        <div
-          style={{
-            display: "flex",
-            flex: 1,justifyContent:'space-between',width:'100vw'
-          }}
-        >
-          <Routes>
-          <Route path="/" element={<Layout />}>
-                <Route index element={<Login setShowNewsFeed={setShowNewsFeed} showNewsFeed={showNewsFeed}/>} />
-                <Route path="signup" element={<Signup />} />
+        <div className="App" style={{ display: "flex" }}>
+          <div
+            style={{
+              display: "flex",
+              flex: 1, justifyContent: 'space-between', width: '100vw'
+            }}
+          >
+            <Routes>
+              <Route path="/" element={<Layout />}>
+                <Route index element={<Login
+                  setShowNewsFeed={setShowNewsFeed}
+                  showNewsFeed={showNewsFeed}
+                  isUser={isUser}
+                  setisUser={setisUser}
+                  setUser={setUser}
+                  />} />
+                <Route path="/signup" element={<Signup />} />
               </Route>
-            <Route path="/landingpage" element={<MultiDateCalendar
-            showNewsFeed={showNewsFeed}
-            selectedDates={selectedDates}
-            setSelectedDates={setSelectedDates}
-            user={user}
-            setUser={setUser}
-          />}/>
-          <Route path="/deskbooking" element={<DeskBooking selectedDates={selectedDates}/>}/>
-          {/* <Route path="/cabbooking" element={<CabBooking/>}/> */}
-          
-          <Route path="/lunchandcabbook" element={<LunchAndCabbook selectedDates={selectedDates}/>} />  
-         
-          <Route path="/grantaccess" element={<GrantAccess/>}/>        
-          <Route path="/requests" element={<Requests/>}/>        
-          <Route path="/analytics" element={<Analytics/>}/>
-          <Route path="/viewAllAdmin" element={<ViewAllAdmin/>} />
-          <Route path="/bookings" element={<Bookings  selectedDates={selectedDates}/>} />
-          <Route path="/profile" element={<Profile />} />
-          </Routes>
-          
-          {showNewsFeed && (
-            <div
-              style={{
-                width: "370px",
-                backgroundColor: "#004B81",
-                overflowY: "auto",
-                height:"664px"
-              }}
-            >
-              <NewsFeed style={{ height: "100%" }} isNewsadmin={isNewsadmin}/>
-            </div>
-            
-          )}
-          
+              <Route path="/" element={<Layout />}>
+                <Route path="login" element={<Login
+                  setShowNewsFeed={setShowNewsFeed}
+                  showNewsFeed={showNewsFeed}
+                  isUser={isUser}
+                  setisUser={setisUser}
+                  setUser={setUser}
+                />} />
+                <Route path="/signup" element={<Signup />} />
+              </Route>
+              <Route path="/landingpage" element={<MultiDateCalendar
+                showNewsFeed={showNewsFeed}
+                selectedDates={selectedDates}
+                setSelectedDates={setSelectedDates}
+                user={user}
+                setUser={setUser}
+                isUser={isUser}
+              />} />
+              <Route path="/deskbooking" element={<DeskBooking selectedDates={selectedDates} />} />
+              {/* <Route path="/cabbooking" element={<CabBooking/>}/> */}
 
+              <Route path="/lunchandcabbook" element={<LunchAndCabbook selectedDates={selectedDates} />} />
+              <Route path="/grantaccess" element={<GrantAccess />} />
+              <Route path="/requests" element={<Requests />} />
+              <Route path="/analytics" element={<Analytics />} />
+              <Route path="/viewAllAdmin" element={<ViewAllAdmin />} />
+              <Route path="/bookings" element={<Bookings selectedDates={selectedDates} />} />
+              <Route path="/profile" element={<Profile />} />
+            </Routes>
+
+            {showNewsFeed && (
+              <div
+                style={{
+                  width: "370px",
+                  backgroundColor: "#004B81",
+                  overflowY: "auto",
+                  height: "664px"
+                }}
+              >
+                <NewsFeed style={{ height: "100%" }} isNewsadmin={user.isNewsAdmin} />
+              </div>
+
+            )}
+
+          </div>
         </div>
-      </div>
+      </div >
     </BrowserRouter>
   );
 }
