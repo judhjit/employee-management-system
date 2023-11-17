@@ -1,96 +1,178 @@
 
 
 
+import React, { useState } from "react";
+import Divider from '@mui/material/Divider';
 
-import React, { useState } from 'react';
-import { Box, Button, Menu, MenuItem } from '@mui/material';
-import './Navbar.css';
+import { Button, Menu, MenuItem, IconButton } from "@mui/material";
+import { library } from "@fortawesome/fontawesome-svg-core";
+import {
+  faNewspaper,
+  faSignOutAlt,
+  faUserCircle,
+} from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { Navigate, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
+import NewsFeed from "./NewsFeed";
+import Popover from "@mui/material/Popover";
+import { AppBar, Toolbar, Typography } from "@mui/material";
+import { styled } from '@mui/system';
 
-import { library } from '@fortawesome/fontawesome-svg-core';
-import { faUser, faNewspaper } from '@fortawesome/free-solid-svg-icons';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { useNavigate } from 'react-router-dom';
+library.add(faNewspaper, faSignOutAlt, faUserCircle);
 
-library.add(faUser, faNewspaper);
-
-const Navbar = ({ showNewsFeed, setShowNewsFeed, isAdmin, nightLight, setNightLight }) => {
+const Navbar = ({
+  showNewsFeed,
+  setShowNewsFeed,
+  isAdmin,
+  isUser,
+  isNewsadmin,
+}) => {
   const navigate = useNavigate();
-  const [userMenuOpen, setUserMenuOpen] = useState(false);
-  const [anchorEl, setAnchorEl] = useState(null);
+  const [newspaperAnchorEl, setNewspaperAnchorEl] = useState(null);
+  const [profileAnchorEl, setProfileAnchorEl] = useState(null);
 
-  const handleUserIconClick = (event) => {
-    setAnchorEl(event.currentTarget);
-    setUserMenuOpen(true);
+  const handleOpenMenu = (event) => {
+    setProfileAnchorEl(event.currentTarget);
+  };
+  
+
+  const handleCloseMenu = () => {
+    setProfileAnchorEl(null);
   };
 
-  const handleUserMenuClose = () => {
-    setAnchorEl(null);
-    setUserMenuOpen(false);
+  const togglePopover = (event) => {
+    // setNewspaperAnchorEl(event.currentTarget);
+    setShowNewsFeed(!showNewsFeed)
   };
+
+  const closePopover = () => {
+    setNewspaperAnchorEl(null);
+  };
+
+  const handleLogout = () => {};
+  const CustomTextButton = styled(Button)(({ theme }) => ({
+    color: 'black', 
+    fontSize: '20px',
+    textTransform: 'none', 
+  fontWeight: 550,
+    '&:hover': {
+      color: '#0071BA',
+      backgroundColor: 'transparent', 
+      
+    },
+  }));
 
   return (
-    <Box
-      sx={{
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'space-between',
-        padding: '0.5vw',
-        backgroundColor: 'white',
-      }}
+    <div>
+    <AppBar
+      position="sticky"
+      style={{ backgroundColor: "white", boxShadow: "none", height:'50px',fontFamily:'poppins'}}
     >
-      <div
-        style={{
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'flex-end',
-          width: '100%',
-        }}
-      >
-        <div>
-          {isAdmin && (
-            <div style={{ display: 'flex', gap: '10px' }}>
-              <Button variant="contained" onClick={() => navigate("/requests")}>
-                Requests
-              </Button>
-              <Button variant="contained" onClick={() => navigate("/grantaccess")}>
-                Grant Access
-              </Button>
-              <Button variant="contained" onClick={() => navigate('/analytics')}>Analytics</Button>
+      <Toolbar>
+        
+      <div style={{ display: "flex", gap: "17px", margin: "10px" ,paddingLeft:'50px' }}>
+            {isAdmin && (
+              <div>
+                <CustomTextButton
+                  variant="text"
+                  onClick={() => navigate("/requests")}
+                 style={{fontFamily:'poppins'}}
+                >
+                 Requests
+                </CustomTextButton>
+                <CustomTextButton
+                  variant="text"
+                  onClick={() => navigate("/grantaccess")}
+                  style={{fontFamily:'poppins',paddingLeft:'32px'}}
+                >
+                  Grant Access
+                </CustomTextButton>
+                <CustomTextButton
+                  variant="text"
+                  onClick={() => navigate("/analytics")}
+                  style={{fontFamily:'poppins',paddingLeft:'32px'}}
+                >
+                  Analytics
+                </CustomTextButton>
+              </div>
+            )}
+          </div>
+          {isUser && !isAdmin && (
+            <div>
+              <CustomTextButton
+                variant="contained"
+                onClick={() => navigate("/analytics")}
+              >
+                Analytics
+              </CustomTextButton>
             </div>
           )}
+        <div style={{ marginLeft: "auto", display: "flex", gap: "10px" }}>
+        <IconButton onClick={togglePopover}>
+          <FontAwesomeIcon
+            icon={faNewspaper}
+            size="2x"
+            style={{ height: "1.5vw", width: "1.5vw" }}
+          />
+        </IconButton>
+        <IconButton onClick={handleOpenMenu}>
+          <FontAwesomeIcon
+            icon={faUserCircle}
+            size="2x"
+            style={{ height: "1.5vw", width: "1.5vw" }}
+          />
+        </IconButton>
         </div>
-        {/* {
-          nightLight ? (<Button onClick={()=>setNightLight(!nightLight)}>Light</Button>)
-            : (<Button onClick={()=>setNightLight(!nightLight)}>Night</Button>)
-        } */}
-        <FontAwesomeIcon
-          icon={faNewspaper}
-          size="2x"
-          style={{ paddingLeft: '2vw', height: '1.5vw', width: '1.5vw' }}
-          onClick={() => setShowNewsFeed(!showNewsFeed)}
-        />
-        <FontAwesomeIcon
-          icon={faUser}
-          size="2x"
-          style={{ padding: '2vw', height: '1.5vw', width: '1.5vw' }}
-          onClick={handleUserIconClick}
-        />
+
         <Menu
-          anchorEl={anchorEl}
-          open={userMenuOpen}
-          onClose={handleUserMenuClose}
-          anchorOrigin={{ vertical: 'bottom', horizontal: 'right' }}
-          transformOrigin={{ vertical: 'top', horizontal: 'right' }}
+          anchorEl={profileAnchorEl}
+          open={Boolean(profileAnchorEl)}
+          onClose={handleCloseMenu}
         >
-          <MenuItem onClick={handleUserMenuClose}>Profile</MenuItem>
-          <MenuItem onClick={handleUserMenuClose}>Logout</MenuItem>
+          <MenuItem component={Link} to="/profile">
+            <FontAwesomeIcon
+              icon={faUserCircle}
+              style={{ marginRight: "8px" }}
+            />
+            Profile
+          </MenuItem>
+          <MenuItem component={Link} to="/">
+            <FontAwesomeIcon
+              icon={faSignOutAlt}
+              style={{ marginRight: "8px" }}
+              
+            />
+            Logout
+          </MenuItem>
         </Menu>
-      </div>
-    </Box>
+
+        {/* <Popover
+            open={Boolean(newspaperAnchorEl)}
+            anchorEl={newspaperAnchorEl}
+            onClose={closePopover}
+            anchorOrigin={{
+              vertical: 'top',
+              horizontal: 'right', 
+            }}
+            transformOrigin={{
+              vertical: 'top',
+              horizontal: 'left', 
+            }}
+          >
+            <NewsFeed isUser={isUser} isNewsadmin={isNewsadmin} />
+          </Popover> */}
+      </Toolbar>
+    </AppBar>
+   
+       
+        <Divider />
+       
+    
+    </div>
   );
 };
 
 export default Navbar;
-
 
 

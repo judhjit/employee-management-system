@@ -1,12 +1,11 @@
 
 
 
-
-
 import React, { useState } from 'react';
 import { Button, IconButton, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Select } from '@mui/material';
 import DeleteIcon from '@mui/icons-material/Delete'; 
 import EditIcon from '@mui/icons-material/Edit'; 
+import './CurrentBookings.css'
 
 const CurrentBookings = () => {
   
@@ -47,25 +46,25 @@ const CurrentBookings = () => {
   return (
     <div className="table-container">
       <h2 className='booking'>Current Bookings</h2>
-      <TableContainer style={{width:'80vw'}}>
+      <TableContainer style={{width:'75vw',paddingLeft:'60px',height:'140px'}}>
         <Table>
-          <TableHead>
-            <TableRow>
+          <TableHead >
+            <TableRow style={{backgroundColor:'#0071BA'}} >
 
-              <TableCell>Slno</TableCell>
-              <TableCell>date</TableCell>
-              <TableCell>desk</TableCell>
-              <TableCell>cab</TableCell>
-              <TableCell>meal</TableCell>
-              <TableCell>Action</TableCell>
+              <TableCell style={{padding:2,color:'white',fontFamily:'poppins'}}>Slno</TableCell>
+              <TableCell  style={{padding:2,color:'white',fontFamily:'poppins'}}>date</TableCell>
+              <TableCell  style={{padding:3,color:'white',fontFamily:'poppins'}}>desk</TableCell>
+              <TableCell style={{padding:4,color:'white',fontFamily:'poppins'}}>cab</TableCell>
+              <TableCell style={{padding:4,color:'white',fontFamily:'poppins'}}>meal</TableCell>
+              <TableCell style={{padding:2,color:'white',fontFamily:'poppins'}}>Action</TableCell>
             </TableRow>
           </TableHead>
           <TableBody>
             {data.map((row, index) => (
-              <TableRow key={index}>
-                <TableCell>{row.Slno}</TableCell>
-                <TableCell>{row.date}</TableCell>
-                <TableCell>
+              <TableRow key={index}style={{padding:2}}>
+                <TableCell style={{padding:2}}>{row.Slno}</TableCell>
+                <TableCell style={{padding:2}}>{row.date}</TableCell>
+                <TableCell style={{padding:2}}>
                   {row.desk}
                   <IconButton
                     color="secondary"
@@ -74,11 +73,12 @@ const CurrentBookings = () => {
                     <DeleteIcon />
                   </IconButton>
                 </TableCell>
-                <TableCell>
+                <TableCell style={{padding:6}}>
                   {editIndex === index ? (
                     <Select
                       value={editedCab}
                       onChange={(e) => setEditedCab(e.target.value)}
+                      
                     >
                       <option value="9:00am-5:00pm">9:00am-5:00pm</option>
                       <option value="5:00am-2:00pm">5:00am-2:00pm</option>
@@ -88,7 +88,7 @@ const CurrentBookings = () => {
                     row.cab
                   )}
                 </TableCell>
-                <TableCell>
+                <TableCell style={{padding:5}}>
                   {editIndex === index ? (
                     <Select
                       value={editedMeal}
@@ -101,12 +101,13 @@ const CurrentBookings = () => {
                     row.meal
                   )}
                 </TableCell>
-                <TableCell>
+                <TableCell style={{padding:2}}>
                   {editIndex === index ? (
                     <Button
                       variant="contained"
                       color="primary"
                       onClick={() => handleSave(index)}
+                      
                     >
                       Save
                     </Button>

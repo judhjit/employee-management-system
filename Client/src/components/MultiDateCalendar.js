@@ -9,10 +9,10 @@ import './MultiDateCalendar.css';
 import { useNavigate } from "react-router-dom";
 import CurrentBookings from './CurrentBookings';
 
-const MultiDateCalendar = ({ selectedDates, setSelectedDates, user, setUser }) => {
-
+const MultiDateCalendar = ({ selectedDates, setSelectedDates, user, setUser,showNewsFeed }) => {
+console.log(showNewsFeed);
   const handleDateClick = (date) => {
-    if (date.getDay() === 0 || date.getDay() === 6) {
+    if (date.getDay() === 0 ) {
       return;
     }
 
@@ -40,24 +40,32 @@ const MultiDateCalendar = ({ selectedDates, setSelectedDates, user, setUser }) =
     <div
       style={{
         backgroundColor: 'white',
-        height: '741px',
-        width: '75vw',
-        textAlign: 'center',
-        margin: '0 auto' 
+        height: '664px',
+        width: '76.1vw',
+        
+        
       }}
     >
-      <div style={{ padding: '20px' }}>
-        <h
-          style={{
-            fontSize: '32px',
-            textAlign: 'center',
-            fontWeight: '500',
-            margin: '50px'
-          }}
-        >
+      <div style={{ flex: 0,height: '5%', backgroundColor: '#003A64' }}> 
+      <marquee behavior="scroll" direction="left" height="30px"style={{ color: 'white', fontSize:'12px'}}>
+             <p className='text-update'>As the world's leading derivatives marketplace, CME Group enables clients to trade futures, options, cash and OTC markets, optimize portfolios, and analyze data – empowering market participants worldwide to efficiently manage risk and capture opportunities. </p>
+        </marquee>
+      </div>
+      <div >
+        
+          <div style={{
+            fontSize: '29px',
+            fontFamily:'poppins',
+            fontWeight: 600,
+            marginLeft: '90px',
+            paddingTop:'20px',
+            color: '#0071BA'
+          }}>
           <span style={{ color: '#0071BA' }}>Plan </span>
           <span>Your Day:</span>
-        </h>
+          </div>
+          
+        
         <div className="calendar" >
           <Calendar
             onClickDay={handleDateClick}
@@ -73,10 +81,10 @@ const MultiDateCalendar = ({ selectedDates, setSelectedDates, user, setUser }) =
           <Button
             variant="contained"
             color="primary"
-            style={{ height: '2vw', width: '1.5vw', marginTop: '10px' }}
+            style={{ height: '2vw', width: '1.5vw', marginTop: '-60px' ,marginLeft:'790px'}}
             onClick={() => {
               console.log(user);
-              navigate('/deskbooking');
+              navigate('/bookings');
             }}
           >
             Book

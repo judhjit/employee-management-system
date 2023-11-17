@@ -1,250 +1,158 @@
-import React, { useState } from 'react';
-import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js';
-import { Doughnut } from 'react-chartjs-2';
+import React, { useState, useEffect, useRef } from 'react';
+import { Bar } from 'react-chartjs-2';
+import { Chart as ChartJS, BarElement, Tooltip, Legend, CategoryScale, LinearScale } from 'chart.js';
+import Box from '@mui/material/Box';
 
-ChartJS.register(ArcElement, Tooltip, Legend);
+ChartJS.register(BarElement, Tooltip, Legend, CategoryScale, LinearScale);
 
 function Analytics() {
-  const [selectedFilter, setSelectedFilter] = useState('monthly'); // FOR RANGE FILTER
-  const [selectedDate, setSelectedDate] = useState('2023-01-01'); // FOR DATE
+  const [selectedFilter, setSelectedFilter] = useState('monthly');
+  const [selectedDate, setSelectedDate] = useState('2023-01-01');
+  const [chartData, setChartData] = useState(null);
+  const chartRef = useRef(null);
 
-  const data = {
-    monthly: {
-      desk: {
-        labels: ['Booked', 'Available'],
-        datasets: [
-          {
-            data: [45, 55], 
-            backgroundColor: ['LightBlue','Teal' ],
-          },
-        ],
-      },
-      cab: {
-        labels: ['Booked', 'Available'],
-        datasets: [
-          {
-            data: [60, 40], 
-            backgroundColor: ['pink', 'Maroon'],
-          },
-        ],
-      },
-      meal: {
-        labels: ['Booked', 'Available'],
-        datasets: [
-          {
-            data: [25, 75], 
-            backgroundColor: ['LightGreen', 'green'],
-          },
-        ],
-      },
-    },
-    weekly: {
-      desk: {
-        labels: ['Booked', 'Available'],
-        datasets: [
-          {
-            data: [30, 70], 
-            backgroundColor: ['LightBlue','Teal' ],
-          },
-        ],
-      },
-      cab: {
-        labels: ['Booked', 'Available'],
-        datasets: [
-          {
-            data: [55, 45], 
-            backgroundColor: ['pink', 'Maroon'],
-          },
-        ],
-      },
-      meal: {
-        labels: ['Booked', 'Available'],
-        datasets: [
-          {
-            data: [20, 80], 
-            backgroundColor: ['LightGreen', 'green'],
-          },
-        ],
-      },
-    },
-    daily: {
-      desk: {
-        labels: ['Booked', 'Available'],
-        datasets: [
-          {
-            data: [15, 85], 
-            backgroundColor: ['LightBlue','Teal' ],
-          },
-        ],
-      },
-      cab: {
-        labels: ['Booked', 'Available'],
-        datasets: [
-          {
-            data: [40, 60], 
-            backgroundColor: ['pink', 'Maroon'],
-          },
-        ],
-      },
-      meal: {
-        labels: ['Booked', 'Available'],
-        datasets: [
-          {
-            data: [10, 90], 
-            backgroundColor: ['LightGreen', 'green'],
-          },
-        ],
-      },
-    },
-  };
+  const calculateDateRange = () => {
+    const currentDate = new Date();
+    currentDate.setHours(0, 0, 0, 0);
 
-  const getChartDataForDate = (date) => {
-    if (date === '2023-01-01') {
-      return {
-        desk: [45, 55], 
-        cab: [60, 40],  
-        meal: [25, 75], 
-      };
-    } else if (date === '2023-05-05') {
-      return {
-        desk: [35, 65], 
-        cab: [50, 90],  
-        meal: [30, 70], 
-      };
+    if (selectedFilter === 'monthly') {
+      const startDate = new Date(currentDate);
+      startDate.setMonth(currentDate.getMonth() - 1);
+      return { startDate, endDate: currentDate };
+    } else if (selectedFilter === 'weekly') {
+      const startDate = new Date(currentDate);
+      startDate.setDate(currentDate.getDate() - 7);
+      return { startDate, endDate: currentDate };
+    } else if (selectedDate) {
+      const selected = new Date(selectedDate);
+      selected.setHours(0, 0, 0, 0);
+      return { startDate: selected, endDate: selected };
     } else {
-      return {
-        desk: [50, 85], 
-        cab: [70, 90],  
-        meal: [65, 67], 
-      };
+      return { startDate: currentDate, endDate: currentDate };
     }
   };
 
-const selectedChartData = getChartDataForDate(selectedDate);
+  const dummyData = [
+    { category: 'desk', booked: 20 },
+    { category: 'cab', booked: 45 },
+    { category: 'meal', booked: 25 },
+  ];
+
+  useEffect(() => {
+    const { startDate, endDate } = calculateDateRange();
+
+    const chartLabels = dummyData.map((data) => data.category);
+    const chartData = dummyData.map((data) => data.booked);
+
+    setChartData({
+      labels: chartLabels,
+      datasets: [
+        {
+          label: 'Bookings',
+          data: chartData,
+          backgroundColor: ['#3498db', '#e74c3c', '#2ecc71'], 
+          borderColor: ['#2980b9', '#c0392b', '#27ae60'],
+          borderWidth: 5,
+          hoverBackgroundColor: ['#2980b9', '#c0392b', '#27ae60'],
+        },
+      ],
+    });
+  }, [selectedFilter, selectedDate]);
+
+  useEffect(() => {
+    if (chartData && chartRef.current) {
+      chartRef.current.data = chartData;
+      chartRef.current.update();
+    }
+  }, [chartData]);
 
   const options = {
     animation: {
-      duration: 1000,
-      easing: 'easeInOutCubic',
+      duration: 1000, 
+      easing: 'easeInOutQuart', 
+    },
+    scales: {
+      x: {
+        type: 'category', 
+        grid: {
+          display: false,
+        },
+      },
+      y: {
+        beginAtZero: true,
+        ticks: {
+          precision: 0,
+        },
+      },
+    },
+    plugins: {
+      legend: {
+        display: false,
+      },
     },
   };
-
-  const doughnutLabel = {
-    id: 'doughnutLabel',
-    afterDatasetDraw(chart, args, plugins) {
-      const { ctx, data } = chart;
-      const centerX = chart.getDatasetMeta(0).data[0].x;
-      const centerY = chart.getDatasetMeta(0).data[0].y;
-      ctx.save();
-      ctx.font = '30px sans-serif';
-      ctx.fillStyle = 'black';
-      ctx.textAlign = 'center';
-      ctx.textBaseLine = 'middle';
-      ctx.fillText(`${data.datasets[0].data[0]}%`, centerX, centerY);
-    },
-  };
-
-  const selectedData = data[selectedFilter];
 
   return (
-    <div>
-      <h3 style={{ fontSize: '40px', paddingLeft: '70px' }}>
-        Booking <span style={{ color: '#0066b2' }}>Insights</span>
-      </h3>
-      <div>
-        <div style={{ margin: '4px', padding: '20px 65px' }}>
-          <label>
-            Filter by:
-            <select
-              value={selectedFilter}
-              onChange={(e) => setSelectedFilter(e.target.value)}
-              style={{
-                padding: '6px',
-                fontSize: '13px',
-                backgroundColor: '#f5f5f5',
-                border: '1px solid #ccc',
-                borderRadius: '6px',
-                marginLeft: '8px',
-              }}
-            >
-              <option value="monthly">Monthly</option>
-              <option value="weekly">Weekly</option>
-              <option value="daily">Daily</option>
-            </select>
-          </label>
-          <label style={{ marginLeft: '20px' }}>
-            Select Date:
-            <input
-              type="date"
-              value={selectedDate}
-              onChange={(e) => setSelectedDate(e.target.value)}
-              style={{
-                padding: '6px',
-                fontSize: '13px',
-                backgroundColor: '#f5f5f5',
-                border: '1px solid #ccc',
-                borderRadius: '6px',
-                marginLeft: '8px',
-              }}
-            />
-          </label>
-        </div>
-        <div style={{ display: 'flex', justifyContent: 'space-between', width: '100%', paddingLeft: '190px' }}>
-          <div>
-            <Doughnut
-              key={`desk-${selectedFilter}`}
-              data={{
-                labels: ['Booked', 'Available'],
-                datasets: [
-                  {
-                    data: selectedChartData.desk,
-                    backgroundColor: ['lightblue', 'teal'],
-                  },
-                ],
-              }}
-              options={options}
-              plugins={[doughnutLabel]}
-            />
-            <h4 style={{ color: 'black' }}>Desk Bookings</h4>
+    <Box>
+      <div style={{ paddingLeft: '30px'}}>
+        <h3 style={{ fontSize: '25px', paddingLeft: '560px' }}>
+          Booking <span style={{ color: '#0066b2' }}>Insights</span>
+        </h3>
+        <div style={{border: '3px solid #004B81', 
+                    borderRadius: '10px',
+                     marginLeft:'165px',
+                     padding: '6px',
+                     width: '98%'}}>
+          <div style={{  padding: '20px 45px' }}>
+            <label>
+              <span style={{ fontSize: '18px' }}>Filter by:</span>
+              <select
+                value={selectedFilter}
+                onChange={(e) => setSelectedFilter(e.target.value)}
+                style={{
+                  padding: '6px',
+                  fontSize: '12px',
+                  backgroundColor: '#f5f5f5',
+                  padding: '10px',
+                  width: '150px',
+                  border: '1px solid #ccc',
+                  borderRadius: '6px',
+                  marginLeft: '8px',
+                }}
+              >
+                <option value="monthly">Monthly</option>
+                <option value="weekly">Weekly</option>
+              </select>
+            </label>
+            <label style={{ marginLeft: '50px' }}>
+              <span style={{ fontSize: '18px' }}>Select Date:</span>
+              <input
+                type="date"
+                value={selectedDate}
+                onChange={(e) => setSelectedDate(e.target.value)}
+                style={{
+                  padding: '6px',
+                  fontSize: '10px',
+                  backgroundColor: '#f5f5f5',
+                  padding: '10px',
+                  width: '150px',
+                  border: '1px solid #ccc',
+                  borderRadius: '6px',
+                  marginLeft: '8px',
+                }}
+              />
+            </label>
           </div>
-          <div>
-            <Doughnut
-              key={`cab-${selectedFilter}`}
-              data={{
-                labels: ['Booked', 'Available'],
-                datasets: [
-                  {
-                    data: selectedChartData.cab,
-                    backgroundColor: ['pink', 'Maroon'],
-                  },
-                ],
-              }}
-              options={options}
-              plugins={[doughnutLabel]}
-            />
-            <h4 style={{ color: 'black' }}>Cab Bookings</h4>
-          </div>
-          <div>
-            <Doughnut
-              key={`meal-${selectedFilter}`}
-              data={{
-                labels: ['Booked', 'Available'],
-                datasets: [
-                  {
-                    data: selectedChartData.meal,
-                    backgroundColor: ['LightGreen', 'green'],
-                  },
-                ],
-              }}
-              options={options}
-              plugins={[doughnutLabel]}
-            />
-            <h4 style={{ color: 'black' }}>Meal Bookings</h4>
+          <div style={{ display: 'flex', justifyContent: 'space-between', width: '100%', paddingLeft: '100px',height:'320px' }}>
+            {chartData && (
+              <Bar ref={chartRef} data={chartData} options={options} />
+            )}
           </div>
         </div>
       </div>
-    </div>
+    </Box>
   );
 }
 
 export default Analytics;
+

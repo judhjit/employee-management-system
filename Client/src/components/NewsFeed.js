@@ -344,10 +344,10 @@ const NewsFeed = ({ isNewsadmin }) => {
         <>
           <TextField
             label="New Post"
-            multiline
-            minRows={2}
+            // multiline
+            minRows={4}
             value={newPost}
-            InputLabelProps={{ style: { color: 'white' } }}
+            // InputLabelProps={{ style: { color: 'white' } }}
             onChange={(e) => setNewPost(e.target.value)}
             
             variant="outlined"

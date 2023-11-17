@@ -101,14 +101,20 @@ const ViewAllAdmin = () => {
       
         
   return (
-    <div> 
+    <div style={{
+      backgroundColor: "white",
+      height: "664px",
+      width: "75vw",
+      textAlign: "center",
+      margin: "0 auto",
+    }}> 
       
-      <h1 style={{margin:'auto', marginLeft:'38vw'}}>Manage requests:-</h1>
+      <h1 style={{margin:'auto', marginLeft:'1vw'}}>Manage requests:-</h1>
       
       <TableContainer component={Paper} style={{
-      width: "80vw",
+      width: "62vw",
       marginTop: "2vw",
-      marginLeft: "10vw",
+      marginLeft: "5vw",
       maxHeight: 520,
       justifyContent: "center",
       border: "1px solid #E9E9E9",
@@ -130,12 +136,7 @@ const ViewAllAdmin = () => {
                     fontSize: "14px",
                     fontFamily:'poppins'
                   }}>Name</TableCell>
-                   <TableCell style={{
-                    backgroundColor: "#004B81",
-                    color: "white",
-                    fontSize: "14px",
-                    fontFamily:'poppins'
-                  }}>Status</TableCell>
+                   
                    <TableCell style={{
                     backgroundColor: "#004B81",
                     color: "white",
@@ -150,7 +151,7 @@ const ViewAllAdmin = () => {
               <TableRow key={employee.empID}>
                     <TableCell style={{ color: "#79C6F1", fontWeight: "bold", fontFamily:'poppins' ,paddingTop:'6px'}}>{employee.empID}</TableCell>
                     <TableCell style={{ color: "#0071BA", fontWeight: "bold" , fontFamily:'poppins'}}>{employee.name}</TableCell>
-                    <TableCell style={{ fontFamily:'poppins'}}>{employee.status}</TableCell>
+                    
                     <TableCell style={{maginLeft:'2px'}}>
                      <Button
                       variant="outlined"
