@@ -24,16 +24,22 @@
     color: black !important;
   } */
   .react-calendar {
-    width: 500px;
+    width: 600px;
+height: 305px;
     max-width: 100%;
-    background: white;
-    border: 1px solid #a0a096;
-    font-family: Arial, Helvetica, sans-serif;
+    background: #FFF;
+    border: 2px solid #E9E9E9;
+    border-radius: 8px;
+    
     line-height: 1.125em;
-    padding-top: 20px;
+    padding-top: 10px;
+    text-align: center;
 }
 
 .calendar{
-    padding-top:30px;
-    padding-left:50px;
+    padding-top:5px;
+    padding-left:87px;
+  align-items: center;
+ 
+  
 }

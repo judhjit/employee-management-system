@@ -1,222 +1,180 @@
-import { Button, createTheme } from '@mui/material';
-import React, { useEffect, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
 
-import offPhoto from '../assets/OfficeLayout.jpeg'
-import './DeskBooking.css'
-import { green } from '@mui/material/colors';
+import * as React from "react";
+import { useState } from "react";
+import Tabs from "@mui/material/Tabs";
+import Box from "@mui/material/Box";
+import Button from "@mui/material/Button";
+import officeLayout from '../assets/OfficeLayout.jpeg'
+import { Tab, Typography } from "@mui/material";
+import DeskLayout from "./DeskLayout";
+import DeskLayoutAll from "./DeskLayoutAll";
 
-import api from '../api';
+function a11yProps(index) {
+  return {
+    id: `simple-tab-${index}`,
+    "aria-controls": `simple-tabpanel-${index}`,
 
-const DeskBooking = ({ selectedDates }) => {
-  const navigate = useNavigate();
-  const [active, setActive] = useState(null);
-  
-  const [table, bookTable] = useState([{ date: "", id: "", tableno: "" }])
-  
-  const [selectedSeats, setSelectedSeats] = useState([]);
-  const [seat,setSeat] = useState("");
-  
-  // const response = api.post('/user/getbookings', { isDeskRequired: true, isCabRequired : true, isFoodRequired : true});
-  
-  // console.log(response);
-
-  const tomorrow = new Date(new Date().getTime() + (24 * 60 * 60 * 1000));
-  const response = api.post('/user/getdesks', {dates: tomorrow});
-  console.log(response);
-  
-  const theme = createTheme({
-    palette: {
-      primary: {
-        main: '#0071BA',
-      },
-    },
-  });
-
-  const handleDeskView = (index) => {
-   
-    setActive(index);
-    // console.log(index);
-    const selectedDate = selectedDates[index].toDateString();
-
-    // Check if the date already exists in the table
-    if (!table.some((record) => record.date === selectedDate)) {
-      // If it doesn't exist, add it to the table
-      bookTable([...table, { date: selectedDate, id: index }]);
-    }
   };
+}
 
-  useEffect(() => {
-    console.log(table)
-  }, [table])
-
-  // const handleTableSelect = (e) => {
-  //   console.log(e.target.name)
-
-  // }
-
-
-
-  const handleTableSelect = (e) => {
-    setSeat(e.target.name)
-    e.target.style.backgroundColor='yellow'
-    console.log(seat)
-  };
-
-  // const handleTableSelect = (e) => {
-  //   if (selectedDates && selectedDates[active]) {
-  //   const selectedDate = selectedDates[active].toDateString();
-  //   const tableNo = e.target.name; // Get the table name
-  
-  
-  //   const dateIndex = table.findIndex((record) => record.date === selectedDate);
-  
-  //   if (dateIndex !== -1) {
-           
-  //     table[dateIndex].tableno = tableNo;
-  //   } else {
-  //     // If it doesn't exist, add it to the table
-  //     bookTable([...table, { date: selectedDate, id: active, tableno: tableNo }]);
-  //   }
-    
-  //   setSeat(tableNo); // Update the 'seat' state
-  //   e.target.style.backgroundColor = 'green';
-  //   console.log(table);
-  // };
-  
-
-  // const isSeatSelected = (event,name) =>{ 
-  //   if(selectedSeats.includes(name)){
-  //     event
-  //   }
-  // }
+function CustomTabPanel(props) {
+  const { children, value, index, ...other } = props;
 
   return (
-    <div style={{display:'flex' , flexDirection:'column'}}>
-      <div style={{ display: 'flex', flexDirection: 'row', justifyContent: 'space-between', width: '30vw', padding: '5%' }}>
-        {selectedDates.map((d, index) => (
-          <div key={index}>
-            <Button
-              variant="contained"
-              onClick={() => {
-                handleDeskView(index)
-               
-              }}
-              style={{paddingLeft:'10px'}}
-              color={index === active ? 'success' : 'primary'}
-            >
-              {d.toDateString()}
-            </Button>
-            {index === active }
-          </div>
-        ))}
-        <Button variant="outlined" onClick={() => navigate('/lunchandcabbook')}>next</Button>
-      </div>
-      <div style={{marginLeft:'10%'}}>
-        <img src={offPhoto} style={{ height: "500px", width: '900px', display: 'block', position: 'relative' }} />
-
-        <button style={{
-          position: 'relative', backgroundColor: 'red', top: '-25rem',
-          height: '100px',
-          width: '50px',
-          left: '4.1rem',
-        }}
-        name='Table1' onClick={handleTableSelect}>
-          Table1
-        </button>
-
-        <button style={{ position: 'relative', top: '-30rem', left: '13rem' }} name='U1' onClick={handleTableSelect}>
-          U1
-        </button>
-        <button style={{ position: 'relative', top: '-30rem', left: '22rem' }} name='U2' onClick={handleTableSelect}>
-          U2
-        </button>
-        <button style={{ position: 'relative', top: '-30rem', left: '30rem' }} name='U3' onClick={handleTableSelect}>
-          U3
-        </button>
-        <button style={{ position: 'relative', top: '-30.8rem', left: '34rem' }} name='R1' onClick={handleTableSelect}>
-          R1
-        </button>
-        <button style={{ position: 'relative', top: '-30.8rem', left: '37rem' }} name='R2' onClick={handleTableSelect}>
-          R2
-        </button>
-        <button style={{ position: 'relative', top: '-20.8rem', left: '5.9rem' }} name='C1' onClick={handleTableSelect}>
-          C1
-        </button>
-        <button style={{ position: 'relative', top: '-20.8rem', left: '9rem' }} name='C2' onClick={handleTableSelect}>
-          C2
-        </button>
-        <button style={{ position: 'relative', top: '-20.8rem', left: '14.899999999999999rem' }} name='C3' onClick={handleTableSelect}>
-          C3
-        </button>
-        <button style={{ position: 'relative', top: '-20.8rem', left: '17.6rem' }} name='C4' onClick={handleTableSelect}>
-          C4
-        </button>
-        <button style={{ position: 'relative', top: '-20.8rem', left: '22.9rem' }} name='C5' onClick={handleTableSelect}>
-          C5
-        </button>
-        <button style={{ position: 'relative', top: '-20.8rem', left: '26.9rem' }} name='C6' onClick={handleTableSelect}>
-          C6
-        </button>
-        
-      </div>
+    <div
+      role="tabpanel"
+      hidden={value !== index}
+      id={`simple-tabpanel-${index}`}
+      aria-labelledby={`simple-tab-${index}`}
+      {...other}
+    >
+      {value === index && (
+        <Box sx={{ p: 3 }}>
+          <Typography>{children}</Typography>
+        </Box>
+      )}
     </div>
   );
-};
+}
 
-export default DeskBooking;
+const DeskBooking = ({ selectedDates ,onNext}) => {
+  const [value, setValue] = React.useState(0);
+  const [active, setActive] = useState(0);
+  const [selectedSeats, setSelectedSeat] = useState(Array(selectedDates.length).fill(null));
 
 
-{/* <map name="officeMap">
-<area shape='rect' coords='381,390,500,479 ' alt='point' href='seat.htm'/>
-<area shape='rect' coords='380,317,499,408' alt='point' href='seat.htm'/>
-<area shape='rect' coords='526,323,612,376' alt='point' href='seat.htm'/>
-<area shape='rect' coords='504,434,602,493' alt='point' href='seat.htm'/>
-<area shape='rect' coords='401,197,499,256' alt='point' href='seat.htm'/>
-<area shape='rect' coords='621,216,667,244' alt='point' href='seat.htm'/>
-<area shape='rect' coords='10,105,116,339' alt='point' href='seat.htm' style={{backgroundColor:'blue'}}/>
-<area shape='rect' coords='10,105,116,339' alt='point' href='seat.htm' style={{backgroundColor:'blue'}}/>
+  const handleChange = (event, newValue) => {
+    setValue(newValue);
+    setSelectedSeat(Array(selectedDates.length).fill(null));
+  };
 
-</map>  */}
+  const handleActiveStatus = (index) => {
+    setActive(index);
+  };
+
+  return (
+    <Box sx={{ width: "70%", fontFamily: "poppins" }}>
+      <div style={{
+          position: "absolute",
+          backgroundColor: "#F6F6F6",
+          height: "80vh",
+          width: "71vw",
+          marginLeft: "42px",
+          marginTop: "-68px",
+          zIndex: 0}}>
 
       
-  
-  
+      <Box sx={{ paddingBottom: "30px", paddingLeft: "120px" }}>
+        <Tabs
+          value={value}
+          onChange={handleChange}
+          aria-label="basic tabs example"
+        >
+          <Tab label="Select Single Dates" {...a11yProps(0)} 
+          sx={{ "&:hover": { backgroundColor: "transparent" } }} />
+          <Tab label="Select Multiple Dates" {...a11yProps(1)} 
+          sx={{ "&:hover": { backgroundColor: "transparent" } }}/>
+        </Tabs>
+      </Box>
+      <CustomTabPanel value={value} index={0}>
 
-// const DeskBooking = () => {
-//   return (
-//     <div style={{ textAlign: 'center' }}>
-//       <h2 style={{ color: 'green' }}>GeeksforGeeks</h2>
-//       <img
-//         src={OfficeLayout}
-//         alt=""
-//         width="800"
-//         height='900'
-//         className="aligncenter size-medium wp-image-910965"
-//         useMap="#shapemap"
-//       />
+        <div style={{ display: 'flex' , marginLeft: "80px" ,marginTop:'9px' }}>
+          {selectedDates.map((d, index) => (
+            <div key={index}>
+              <Button
+                variant="contained"
+                onClick={() => handleActiveStatus(index)}
+                style={{
+                  
+                    marginBottom: "10px",
+                    marginLeft: "30px",
+                    display: "flex",
+                    flexDirection: "row",
+                    justifyContent: "center",
+                    alignItems: "center",
+                    padding: "11px 20px",
+                    borderRadius: "54px",
+                    border: "1px solid #D6D6D6",
+                    fontSize: "13px",
+                    fontFamily: "poppins",
+                    lineHeight: "15px",
+                    width: "170px",
+                    fontWeight: 500,
+                    color: index === active ? "#FFF" : "#000",
+                    backgroundColor:
+                      index === active ? "#0071BA" : "transparent",
+                    marginBottom: "30px",
+                }}
+                color={index === active ? 'primary' : 'grey'}
+              >
+                {d.toDateString()}
+              </Button>
 
-//       <map name="shapemap">
-//         <area
-//           shape="poly"
-//           coords="59, 31, 28, 83, 91, 83"
-          
-//           alt="Triangle"
-//         />
-//         <area
-//           shape="circle"
-//           coords="155, 56, 26"
-          
-//           alt="Circle"
-//         />
-//         <area
-//           shape="rect"
-//           coords="224, 30, 276, 82"
-          
-//           alt="Square"
-//         />
-//       </map>
-//     </div>
-//   );
-// };
+            </div>
+          ))}
+        </div>
+        <div style={{ display: "flex", flexDirection: "row", flexWrap: "wrap" }}>
+        {selectedDates.length > 0 && <DeskLayout active={active} selectedSeats={selectedSeats} setSelectedSeat={setSelectedSeat} />}
+        <Button
+              variant="contained"
+              style={{  width: "108px", marginTop: "342px" ,height:'35px',marginLeft:'10px'}}
+              onClick={onNext}
+            >
+              Next{" "}
+            </Button>
+            </div>
+      </CustomTabPanel>
+      <CustomTabPanel value={value} index={1}>
+        <div style={{ display: 'flex' , marginLeft: "80px" ,marginTop:'9px'  }}>
+          {selectedDates.map((d, index) => (
+            <div key={index} >
+              <Button
+                variant="contained"
+                onClick={() => handleActiveStatus(index)}
+                style={{
+                  
+                  marginBottom: "10px",
+                    marginLeft: "30px",
+                    display: "flex",
+                    flexDirection: "row",
+                    justifyContent: "center",
+                    alignItems: "center",
+                    padding: "11px 20px",
+                    borderRadius: "54px",
+                    border: "1px solid #D6D6D6",
+                    fontSize: "13px",
+                    fontFamily: "poppins",
+                    lineHeight: "15px",
+                    width: "170px",
+                    fontWeight: 500,
+                    // color: index === active ? "#FFF" : "#000",
+                    // backgroundColor:
+                    //   index === active ? "#0071BA" : "transparent",
+                    marginBottom: "30px",
+                }}
+                color='primary'
+>
+                {d.toDateString()}
+              </Button>
 
+            </div>
+          ))}
+      </div>
+      <div style={{ display: "flex", flexDirection: "row", flexWrap: "wrap" }}>
+      {selectedDates.length > 0 && <DeskLayoutAll selectedSeats={selectedSeats} setSelectedSeat={setSelectedSeat}/>}
+      <Button
+              variant="contained"
+              style={{  width: "108px", marginTop: "342px" ,height:'35px',marginLeft:'10px'}}
+              onClick={onNext}
+            >
+              Next{" "}
+            </Button>
+      </div>
+    </CustomTabPanel>
+   
+    </div>
+    </Box >
+  )
+}
+
+export default DeskBooking;

@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
-import { TextField, Button, Grid, Paper, Typography } from '@mui/material';
-import { useNavigate, Link } from 'react-router-dom';
-// import Login from './Login'
 
-import api from "../api";
+import { TextField, Button, Grid, Paper, Typography } from '@mui/material/';
+import { useNavigate, Link } from 'react-router-dom';
+import './Layout.css';
+
 
 const Signup = () => {
   const navigate = useNavigate();
@@ -42,16 +42,18 @@ const Signup = () => {
 
     // Perform validation
     switch (name) {
-      case 'firstName':
-      case 'lastName':
-      case 'userId':
-        if (!value.trim()) {
-          setErrors((prevErrors) => ({
-            ...prevErrors,
-            [name]: 'This field is required',
-          }));
-        }
-        break;
+
+        case 'firstName':
+        case 'lastName':
+        case 'userId':
+          if (!value.trim()) {
+            setErrors((prevErrors) => ({
+              ...prevErrors,
+              [name]: '',
+            }));
+          }
+          break;
+
 
       case 'email':
         const emailRegex = /^[^\s@]+@abcgroup\.com$/;
@@ -86,8 +88,18 @@ const Signup = () => {
     }
   };
 
-  const handleSubmit = async (e) => {
+
+  const handleSubmit = (e) => {
     e.preventDefault();
+    // Check if passwords match
+  if (formData.password !== formData.confirmPassword) {
+    setErrors((prevErrors) => ({
+      ...prevErrors,
+      confirmPassword: 'Passwords do not match',
+    }));
+    return; // Stop form submission
+  }
+
 
     // Perform final validation
     let isValid = true;
@@ -104,28 +116,28 @@ const Signup = () => {
     if (!isValid) {
       return;
     }
-    
-    try{
-      const response = await api.post('/signup', formData);
-      // console.log(response.data.message, response.data.userId, response.data.firstName);
-      // Navigate to login page on successful signup
-      navigate('/login');
-    } catch (error) {
-      console.error(error);
-    }
-    
+
+
+    // Simulate successful signup (no backend integration)
+    console.log('Signup successful:', formData);
+
+    // Navigate to login page on successful signup
+    navigate('/');
   };
 
   return (
-    <Grid container style={{justifyContent:'center'}}>
-      <Grid item xs={10} sm={8} md={6} lg={4}>
-        <Paper elevation={3} style={{ padding: '20px', marginTop: '20px' }}>
+    <div style={{justifyContent:'center'}}>
+      
+
           <Typography variant="h4" align="center" gutterBottom>
             Sign Up
           </Typography>
           <form onSubmit={handleSubmit}>
             <TextField
               label="First Name"
+
+              variant="outlined"
+
               name="firstName"
               value={formData.firstName}
               onChange={handleChange}
@@ -134,23 +146,41 @@ const Signup = () => {
               required
               error={!!errors.firstName}
               helperText={errors.firstName}
+
+              InputLabelProps={{
+                style: { color: '#07345f', fontSize:'11px'} 
+            
+              }}
+              style={{ marginTop:'10px',marginBottom: '10px' }} 
+
             />
 
             <TextField
               label="Last Name"
+
+              variant="outlined"
+
               name="lastName"
               value={formData.lastName}
               onChange={handleChange}
               onBlur={handleBlur}
               fullWidth
-              required
+
               error={!!errors.lastName}
               helperText={errors.lastName}
+              InputLabelProps={{
+                style: { color: '#07345f', fontSize:'11px'} 
+              }}
+              style={{ marginBottom: '10px' }} 
+
             />
 
             <TextField
               label="User ID"
               name="userId"
+
+              variant="outlined"
+
               value={formData.userId}
               onChange={handleChange}
               onBlur={handleBlur}
@@ -158,11 +188,20 @@ const Signup = () => {
               required
               error={!!errors.userId}
               helperText={errors.userId}
+
+              InputLabelProps={{
+                style: { color: '#07345f', fontSize:'11px'}
+              }}
+              style={{ marginBottom: '10px' }} 
+
             />
 
             <TextField
               label="Email"
               type="email"
+
+              variant="outlined"
+
               name="email"
               value={formData.email}
               onChange={handleChange}
@@ -171,11 +210,20 @@ const Signup = () => {
               required
               error={!!errors.email}
               helperText={errors.email}
+
+              InputLabelProps={{
+                style: { color: '#07345f', fontSize:'11px'} 
+              }}
+              style={{ marginBottom: '10px' }} 
+
             />
 
             <TextField
               label="Password"
               type="password"
+
+              variant="outlined"
+
               name="password"
               value={formData.password}
               onChange={handleChange}
@@ -184,11 +232,20 @@ const Signup = () => {
               required
               error={!!errors.password}
               helperText={errors.password}
+
+              InputLabelProps={{
+                style: { color: '#07345f', fontSize:'11px'} 
+              }}
+              style={{ marginBottom: '10px' }} 
+
             />
 
             <TextField
               label="Confirm Password"
               type="password"
+
+              variant="outlined"
+
               name="confirmPassword"
               value={formData.confirmPassword}
               onChange={handleChange}
@@ -197,22 +254,31 @@ const Signup = () => {
               required
               error={!!errors.confirmPassword}
               helperText={errors.confirmPassword}
+
+              InputLabelProps={{
+                style: { color: '#07345f', fontSize:'11px'} 
+              }}
+              style={{ marginBottom: '10px' }} 
+
             />
 
             <Button
               type="submit"
               variant="contained"
               color="primary"
-              style={{ marginTop: '20px' }}
+
+              style={{ marginTop: '10px' }}
+
             >
               Sign Up
             </Button>
           </form>
-          <p>Already have an Account?</p>
-          <Link to="/login">Login</Link>
-        </Paper>
-      </Grid>
-    </Grid>
+
+          <p>Already have an account?<Link to="/" style={{fontStyle:'italic'}}>Login</Link></p>
+         
+       
+    </div>
+
   );
 };
 

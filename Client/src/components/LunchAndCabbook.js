@@ -1,219 +1,240 @@
+import * as React from "react";
+import { useState } from "react";
+import PropTypes from "prop-types";
+import Tabs from "@mui/material/Tabs";
+import Tab from "@mui/material/Tab";
+import Typography from "@mui/material/Typography";
+import Box from "@mui/material/Box";
+import Card from "@mui/material/Card";
+import CardActions from "@mui/material/CardActions";
+import CardContent from "@mui/material/CardContent";
+import Button from "@mui/material/Button";
+import Paper from "@mui/material/Paper";
+import FormControl from "@mui/material/FormControl";
+import Select from "@mui/material/Select";
+import MenuItem from "@mui/material/MenuItem";
+import Radio from "@mui/material/Radio";
+import RadioGroup from "@mui/material/RadioGroup";
+import FormControlLabel from "@mui/material/FormControlLabel";
+import "./LunchAndCabbook.css";
+import { Divider } from "@mui/material";
+import ArrowBackIcon from "@mui/icons-material/ArrowBack";
+import LunchAndCabForm from "./LunchAndCabForm";
 
-// import {useState} from 'react';
-// import Grid from '@mui/material/Grid';
-// import Typography from '@mui/material/Typography';
-// import FormControl from '@mui/material/FormControl';
-// import Select from '@mui/material/Select';
-// import MenuItem from '@mui/material/MenuItem';
-// import Radio from '@mui/material/Radio';
-// import RadioGroup from '@mui/material/RadioGroup';
-// import FormControlLabel from '@mui/material/FormControlLabel';
-// const LunchAndCabbook = () => {
-//     const [selectedSlot, setSelectedSlot] = useState('Morning');
-//     const [selectedLunch, setSelectedLunch] = useState('Veg');
+function CustomTabPanel(props) {
+  const { children, value, index, ...other } = props;
   
-//     const handleSlotChange = (event) => {
-//       setSelectedSlot(event.target.value);
-//     };
-  
-//     const handleLunchChange = (event) => {
-//       setSelectedLunch(event.target.value);
-//     };
-//   return (
-//     <div className="container">
-//       <Grid container spacing={2}>
-//         <Grid item xs={6}>
-//           <div className="cab-booking">
-//             <Typography variant="h5">Cab Booking</Typography>
-//             <FormControl>
-//               <Select
-//                 value={selectedSlot}
-//                 onChange={handleSlotChange}
-//                 displayEmpty
-//                 className="select">
-//                 <MenuItem value="Morning">Morning</MenuItem>
-//                 <MenuItem value="Afternoon">Afternoon</MenuItem>
-//                 <MenuItem value="Evening">Evening</MenuItem>
-//               </Select>
-//             </FormControl>
-//           </div>
-//         </Grid>
-//         <Grid item xs={6}>
-//           <div className="lunch-booking">
-//             <Typography variant="h5">Lunch Booking</Typography>
-//             <RadioGroup
-//               aria-label="lunch-type"
-//               name="lunch-type"
-//               value={selectedLunch}
-//               onChange={handleLunchChange}
-//               row>
-//               <FormControlLabel
-//                 value="Veg"
-//                 control={<Radio />}
-//                 label="Veg"
-//               />
-//               <FormControlLabel
-//                 value="NonVeg"
-//                 control={<Radio />}
-//                 label="Non-Veg"
-//               />
-//             </RadioGroup>
-//           </div>
-//         </Grid>
-//       </Grid>
-//     </div>
-//   )
-// }
 
-// export default LunchAndCabbook
+  return (
+    <div
+      role="tabpanel"
+      hidden={value !== index}
+      id={`simple-tabpanel-${index}`}
+      aria-labelledby={`simple-tab-${index}`}
+      {...other}
+    >
+      {value === index && (
+        <Box sx={{ p: 3 }}>
+          <Typography>{children}</Typography>
+        </Box>
+      )}
+    </div>
+  );
+}
 
+CustomTabPanel.propTypes = {
+  children: PropTypes.node,
+  index: PropTypes.number.isRequired,
+  value: PropTypes.number.isRequired,
+};
 
-import { useState } from 'react';
-import Grid from '@mui/material/Grid';
-import Typography from '@mui/material/Typography';
-import FormControl from '@mui/material/FormControl';
-import Select from '@mui/material/Select';
-import MenuItem from '@mui/material/MenuItem';
-import Radio from '@mui/material/Radio';
-import RadioGroup from '@mui/material/RadioGroup';
-import FormControlLabel from '@mui/material/FormControlLabel';
-import lunchImg from '../assets/lunch 1.png';
-import './LunchAndCabbook.css';
-import cabMap from '../assets/cabbook.png';
-import { Button } from '@mui/material';
+function a11yProps(index) {
+  return {
+    id: `simple-tab-${index}`,
+    "aria-controls": `simple-tabpanel-${index}`,
+  };
+}
 
-const LunchAndCabbook = ({selectedDates}) => {
-  const [selectedSlot, setSelectedSlot] = useState('Morning');
-  const [selectedLunch, setSelectedLunch] = useState('Veg');
-  const [active, setActive] = useState([]);
+export default function LunchAndCabbook({
+  selectedDates,
+  onNext,
+  onSkip,
+  onBack,
+}) {
+  const [value, setValue] = React.useState(0);
+  const [selectedPreferences, setSelectedPreferences] = useState({});
+  const [selectedCab, setSelectedCab] = useState(Array(selectedDates.length).fill(null));
+  const [selectedMeal, setSelectedMeal] = useState(Array(selectedDates.length).fill(null));
+
+  const handleChange = (event, newValue) => {
+    setValue(newValue);
+  };
+
+  const [selectedSlot, setSelectedSlot] = useState("Morning");
+  const [selectedLunch, setSelectedLunch] = useState("Veg");
+  const [active, setActive] = useState(0);
   const [selectAllDates, setSelectAllDates] = useState(false);
 
   const handleSlotChange = (event) => {
     setSelectedSlot(event.target.value);
   };
 
-  const handleLunchChange = (event) => {
-    setSelectedLunch(event.target.value);
+  const handleActiveStatus = (index) => {
+    setActive(index);
   };
 
-  const handleBooking = (index) => {
-    const updatedActive = [...active];
-    if (updatedActive.includes(index)) {
-      updatedActive.splice(updatedActive.indexOf(index), 1);
-    } else {
-      updatedActive.push(index);
-    }
-    setActive(updatedActive);
+  const handleLunchChange = (event, dateIndex) => {
+    const updatedPreferences = { ...selectedPreferences };
+    updatedPreferences[dateIndex] = event.target.value;
+    setSelectedPreferences(updatedPreferences);
   };
-  
-  const handleSelectAllDates = () => {
-    setSelectAllDates(!selectAllDates);
-    if (!selectAllDates) {
-      const allIndices = selectedDates.map((_, index) => index);
-      setActive(allIndices);
-    } else {
-      setActive([]);
-    }
-  };
+
+ 
 
   return (
-    <div>
-      
-      <div style={{ display: 'flex', flexDirection: 'row', justifyContent: 'space-between', width: '30vw', padding: '5%' }}>
-        {selectedDates.map((d, index) => (
-          <div key={index} style={{paddingRight:'20px'}}>
+    <Box sx={{ width: "70%", fontFamily: "poppins" }}>
+      <div
+        style={{
+          position: "absolute",
+          backgroundColor: "#F6F6F6",
+          height: "80vh",
+          width: "71vw",
+          marginLeft: "42px",
+          marginTop: "-68px",
+          zIndex: 0,
+        }}
+      >
+        <Box sx={{ paddingBottom: "30px", paddingLeft: "120px" }}>
+          <Tabs
+            value={value}
+            onChange={handleChange}
+            aria-label="basic tabs example"
+          >
+            <Tab
+              label="Select Single Dates"
+              {...a11yProps(0)}
+              sx={{ "&:hover": { backgroundColor: "transparent" } }}
+            />
+            <Tab
+              label="Select Multpile Dates"
+              {...a11yProps(1)}
+              sx={{ "&:hover": { backgroundColor: "transparent" } }}
+            />
+          </Tabs>
+        </Box>
+        <CustomTabPanel value={value} index={0}>
+          <div style={{ display: "flex", marginLeft: "80px" }}>
+            {selectedDates.map((d, index) => (
+              <div key={index}>
+                <Button
+                  variant="contained"
+                  onClick={() => handleActiveStatus(index)}
+                  style={{
+                    paddingLeft: "100px",
+                    marginBottom: "10px",
+                    marginLeft: "30px",
+                    display: "flex",
+                    flexDirection: "row",
+                    justifyContent: "center",
+                    alignItems: "center",
+                    padding: "11px 20px",
+                    borderRadius: "54px",
+                    border: "1px solid #D6D6D6",
+                    fontSize: "13px",
+                    fontFamily: "poppins",
+                    lineHeight: "15px",
+                    width: "170px",
+                    fontWeight: 500,
+                    color: index === active ? "#FFF" : "#000",
+                    backgroundColor:
+                      index === active ? "#0071BA" : "transparent",
+                    marginBottom: "30px",
+                  }}
+                  color={index === active ? "primary" : "grey"}
+                >
+                  {d.toDateString()}
+                </Button>
+              </div>
+            ))}
+          </div>
+            {/* <div>
+              {
+                (selectedDates.length()!=0 && <LunchAndCabForm setActive={setActive} active={active}/>)
+              }
+            </div> */}
+          <Box style={{ display: "flex", flexDirection: "row", flexWrap: "wrap" }}>
+            <LunchAndCabForm setSelectedCab={setSelectedCab} setSelectedMeal={setSelectedMeal} selectedMeal={selectedMeal} selectedCab={selectedCab}/>
             <Button
               variant="contained"
-              onClick={() => handleBooking(index)}
-              color={active.includes(index) ? 'success' : 'primary'} // Change color based on active state
-              
+              style={{ marginTop: "70px", width: "150px", marginTop: "350px" }}
+              onClick={onNext}
             >
-              {d.toDateString()}
+              Submit{" "}
             </Button>
-          </div>
-        ))}
-        <FormControlLabel
-          control={
-            <Radio
-              color="primary"
-              checked={selectAllDates}
-              onChange={handleSelectAllDates}
-            />
-          }
-          label="Select All"
-        />
-      </div>
-      <div className="container">
-        <Grid container spacing={4}>
-          <Grid item xs={12} sm={6} md={6} stle={{paddingLeft:'10px'}}>
-            <div className="lunch-booking">
-              <Typography variant="h5" style={{textAlign:'left',paddingTop:'20px',fontSize:'30px'}}>
-                <span style={{ color: '#0071BA' }}>Book </span>
-                <span>Your Lunch!</span>
-              </Typography>
-              <div>
-                <h4 style={{textAlign:'left',paddingTop:'20px',fontSize:'20px'}}>Preference:</h4>
-              </div>
-              <div style={{paddingLeft:'140px'}}>
-              <RadioGroup
-                aria-label="lunch-type"
-                name="lunch-type"
-                value={selectedLunch}
-                onChange={handleLunchChange}
-                row
-                
+            <Button
+              style={{
+                marginLeft: "-51px",
+                width: "16px",
+                marginTop: "-200px",
+                position: "absolute",
+                border: 0,
+              }}
+              onClick={onBack}
+            >
+              <ArrowBackIcon />
+            </Button>
+            <Button
+              variant="contained"
+              style={{
+                width: "150px",
+                marginTop: "350px",
+                marginLeft: "640px",
+                position: "absolute",
+              }}
+              onClick={onSkip}
+            >
+              skip{" "}
+            </Button>
+          </Box>
+          {/* <Button
+          variant="contained"
+          style={{ marginLeft: "650px", marginTop: "70px", width: "200px" }}
+        >
+          Submit{" "}
+        </Button> */}
+        </CustomTabPanel>
+        <CustomTabPanel value={value} index={1}>
+          <div style={{ display: "flex", flexDirection: "column" }}>
+            <Box
+              sx={{ display: "flex", flexDirection: "row", flexWrap: "wrap" }}
+            >
+              <LunchAndCabForm setSelectedCab={setSelectedCab} setSelectedMeal={setSelectedMeal} selectedMeal={selectedMeal} selectedCab={selectedCab}/>
+              <Button
+              style={{
+                marginLeft: "-51px",
+                width: "16px",
+                marginTop: "-132px",
+                position: "absolute",
+                border: 0,
+              }}
+              onClick={onBack}
+            >
+              <ArrowBackIcon />
+            </Button>
+              <Button
+                variant="contained"
+                style={{
+                  marginTop: "70px",
+                  width: "200px",
+                  marginTop: "350px",
+                }}
               >
-                <FormControlLabel
-                  value="Veg"
-                  control={<Radio />}
-                  label="Veg"
-                />
-                <FormControlLabel
-                  value="NonVeg"
-                  control={<Radio />}
-                  label="Non-Veg"
-                />
-                <FormControlLabel
-                  value=""
-                  control={<Radio />}
-                  label="none"
-                />
-              </RadioGroup>
-              </div>
-            </div>
-          </Grid>
-          <Grid item xs={12} sm={6} md={6}>
-            <div className="cab-booking">
-            <Typography variant="h5" style={{textAlign:'left',paddingTop:'20px',fontSize:'30px'}}>
-                <span >Book Your</span>
-                <span style={{ color: '#0071BA' }}> Cab!</span>
-              </Typography>
-              <div>
-                <h4 style={{textAlign:'left',paddingTop:'20px',fontSize:'20px'}}>Book Your Slot:</h4>
-              </div>
-              <FormControl style={{ paddingLeft: '25px', paddingTop: '15px' }}>
-                <Select
-                  value={selectedSlot}
-                  onChange={handleSlotChange}
-                  displayEmpty
-                  className="select"
-                  style={{width:'12vw'}}
-                >
-                  <MenuItem value="9:00am-5:00pm" >9:00am-5:00pm</MenuItem>
-                  <MenuItem value="5:00am-2:00pm">5:00am-2:00pm</MenuItem>
-                  <MenuItem value="6:00am-3:00pm">6:00am-3:00pm</MenuItem>
-                  <MenuItem value="">none</MenuItem>
-                 
-                </Select>
-              </FormControl>
-            </div>
-          </Grid>
-        </Grid>
+                Submit{" "}
+              </Button>
+            </Box>
+          </div>
+        </CustomTabPanel>
       </div>
-      <Button variant='contained' style={{left:'1000px',top:'15px'}}>Submit</Button>
-      <img src={cabMap} className='cab-map'></img>
-    </div>
+    </Box>
   );
-};
-
-export default LunchAndCabbook;
+}
