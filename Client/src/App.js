@@ -135,19 +135,21 @@ import Layout from "./components/Layout";
 // import Timeline from "./components/Timeline";
 import ViewAllAdmin from "./components/admin/ViewAllAdmin";
 
+import Login from "./components/Login"
+import Signup from "./components/Signup"
+
 function App() {
   const [showNewsFeed, setShowNewsFeed] = useState(true);
   const [selectedDates, setSelectedDates] = useState([]);
-  const [isAdmin, setIsAdmin] = useState(true);
-  const [isUser, setisUser] = useState(false);
-  const [isNewsadmin, setNewsadmin] = useState(false);
+  // const [isAdmin, setIsAdmin] = useState(true);
+  // const [isNewsadmin, setNewsadmin] = useState(true);
   const [user, setUser] = useState({
-    empId: "",
-    empName: "",
-    selectedDate: [],
-    selectedSeat: [],
-    cabSlot: [],
-    meal: [],
+    email: '',
+    userId: '',
+    firstName: '',
+    lastName: '',
+    isAdmin: false,
+    isNewsAdmin: false
   });
   return (
     <BrowserRouter>

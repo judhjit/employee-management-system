@@ -205,9 +205,11 @@
 
 // SignUp.js
 import React, { useState } from 'react';
-import { TextField, Button, Grid, Paper, Typography } from '@material-ui/core';
+import { TextField, Button, Grid, Paper, Typography } from '@mui/material';
 import { useNavigate, Link } from 'react-router-dom';
 import './Layout.css';
+
+import api from "../api";
 
 const Signup = () => {
   const navigate = useNavigate();
@@ -290,7 +292,7 @@ const Signup = () => {
     }
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     // Check if passwords match
   if (formData.password !== formData.confirmPassword) {
@@ -316,12 +318,16 @@ const Signup = () => {
     if (!isValid) {
       return;
     }
-
-    // Simulate successful signup (no backend integration)
-    console.log('Signup successful:', formData);
-
-    // Navigate to login page on successful signup
-    navigate('/');
+    
+    try{
+      const response = await api.post('/signup', formData);
+      // console.log(response.data.message, response.data.userId, response.data.firstName);
+      // Navigate to login page on successful signup
+      navigate('/login');
+    } catch (error) {
+      console.error(error);
+    }
+    
   };
 
   return (

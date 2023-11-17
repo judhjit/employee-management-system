@@ -130,22 +130,27 @@ import { TextField, Button, Grid, Paper, Typography } from '@material-ui/core';
 import { useNavigate, Link} from 'react-router-dom';
 import './Layout.css'
 
-const Login = () => {
+import api from "../api";
+
+const Login = ({ user, setUser }) => {
   const navigate = useNavigate();
-  const [formData, setFormData] = useState({
+  const [credentials, setCredentials] = useState({
     email: '',
-    password: '',
+    password: ''
   });
+
 
   const [errors, setErrors] = useState({
     email: '',
     password: '',
   });
 
+  // const [user, setUser] = useState(null);
+
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setFormData((prevData) => ({
-      ...prevData,
+    setCredentials((prevCredentials) => ({
+      ...prevCredentials,
       [name]: value,
     }));
     setErrors((prevErrors) => ({
@@ -183,13 +188,13 @@ const Login = () => {
     }
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
     // Perform final validation
     let isValid = true;
-    Object.keys(formData).forEach((key) => {
-      if (!formData[key].trim()) {
+    Object.keys(credentials).forEach((key) => {
+      if (!credentials[key].trim()) {
         setErrors((prevErrors) => ({
           ...prevErrors,
           [key]: 'This field is required',
@@ -202,11 +207,37 @@ const Login = () => {
       return;
     }
 
-    console.log('Login successful:', formData);
+    try {
+      const response = await api.post('/login', credentials);
+      // const { accessToken } = response.data;
+      const {
+        accessToken,
+        userId,
+        firstName,
+        lastName,
+        email,
+        isAdmin,
+        isNewsAdmin,
+      } = response.data;
+  
+      setUser(() => ({
+        userId: userId,
+        firstName: firstName,
+        lastName: lastName,
+        email: email,
+        isAdmin: isAdmin,
+        isNewsAdmin: isNewsAdmin,
+      }));
+  
+      localStorage.setItem('token', accessToken);
+      console.log('Login successful:', userId, firstName);
+      // alert('Login successful');
+      navigate('/');
+    } catch (error) {
+      console.error(error);
+      // alert('Login failed');
+    }
 
-    // Show alert on successful login
-    // alert('Login successful');
-    navigate('/landingpage')
   };
 
   return (
@@ -221,9 +252,9 @@ const Login = () => {
               label="Email"
               type="email"
               name="email"
-              variant="outlined"
-              value={formData.email}
+              value={credentials.email}
               onChange={handleChange}
+              variant="outlined"
               onBlur={handleBlur}
               fullWidth
               required
@@ -240,7 +271,7 @@ const Login = () => {
               type="password"
               variant="outlined"
               name="password"
-              value={formData.password}
+              value={credentials.password}
               onChange={handleChange}
               onBlur={handleBlur}
               fullWidth

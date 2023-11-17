@@ -196,6 +196,18 @@ const MultiDateCalendar = ({ selectedDates, setSelectedDates, user, setUser }) =
   };
 
   const navigate = useNavigate();
+
+  if(!user || !user.userId || user.userId === ''){
+    // navigate("/login");
+    window.location.href = "/login";
+  }
+
+  // if(!user.isAdmin){
+  //   return (
+  //     <div>Unauthorized!</div>
+  //   )
+  // }
+
   return (
     
     <div style={{ height: '600px', width: '100vw', marginLeft:'60px'}}>
