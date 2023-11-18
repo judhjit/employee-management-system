@@ -105,43 +105,31 @@ import bg3 from '../assets/bgimg4.svg';
 import './Profile.css'
 
 
-const Profile = () => {
-
-   
-  const userData = {
-    firstName: 'John',
-    lastName: 'Doe',
-    employeeId: 'EMP123',
-    emailId: 'Johndoe@abcgroup.com',
-  };
+const Profile = ({ user }) => {
 
   const profileContainerStyle = {
     marginLeft: '50px',
     marginTop: '20px',
-    overflow:'hidden',
+    overflow: 'hidden',
     display: 'flex',
     flexDirection: 'row',
-    height:'80vh',
-    
+    height: '80vh',
   };
 
   const headerContainerStyle = {
     display: 'flex',
-    flexDirection:'column',
+    flexDirection: 'column',
     alignItems: 'center',
     marginBottom: '20px',
-   
-   
-   
   };
 
   const avatarStyle = {
     width: '75px',
     height: '75px',
-    alignItems:'center',
+    alignItems: 'center',
     backgroundColor: 'primary.main',
-    marginLeft:'195px',
-    marginTop:'20px',
+    marginLeft: '195px',
+    marginTop: '20px',
   };
 
   const headingStyle = {
@@ -155,8 +143,8 @@ const Profile = () => {
     display: 'flex',
     // alignItems:'center',
     flexDirection: 'column',
-    marginLeft:'110px',
-    
+    marginLeft: '110px',
+
   };
 
   const itemBoxStyle = {
@@ -164,7 +152,7 @@ const Profile = () => {
     padding: '12px',
     backgroundColor: '#FAF9F6',
     height: '25px',
-    width:'500px',
+    width: '500px',
     marginBottom: '20px',
     borderRadius: '8px',
     boxShadow: '0 0 10px rgba(0, 0, 0, 0.2)',
@@ -181,7 +169,7 @@ const Profile = () => {
     fontSize: '14px',
     display: 'inline',
   };
-  
+
 
   return (
     <div className="profile-container" style={profileContainerStyle}>
@@ -195,29 +183,27 @@ const Profile = () => {
           {userData.lastName.charAt(0).toUpperCase()}
         </Avatar> */}
         <img src={bg3} alt="Left Half" />
-        
+
       </div>
 
-      
-
       <div style={dataContainerStyle}>
-        
+
         <h style={headingStyle}>
           <span style={{ color: '#0071BA' }}>Personal  </span>
           <span>Information</span>
         </h>
         <Avatar alt="Profile Avatar" sx={avatarStyle}>
-          {userData.firstName.charAt(0).toUpperCase()}
-          {userData.lastName.charAt(0).toUpperCase()}
+          {user.firstName.charAt(0).toUpperCase()}
+          {user.lastName.charAt(0).toUpperCase()}
         </Avatar>
-        
+
         <Divider sx={{ margin: '20px 0' }} />
         <Box sx={itemBoxStyle}>
           <Typography variant="h6" sx={labelStyle}>
             First Name:
           </Typography>
           <Typography variant="body1" sx={valueStyle}>
-            {userData.firstName}
+            {user.firstName}
           </Typography>
         </Box>
 
@@ -226,16 +212,16 @@ const Profile = () => {
             Last Name:
           </Typography>
           <Typography variant="body1" sx={valueStyle}>
-            {userData.lastName}
+            {user.lastName}
           </Typography>
         </Box>
 
         <Box sx={itemBoxStyle}>
           <Typography variant="h6" sx={labelStyle}>
-            Employee ID:
+            User ID:
           </Typography>
           <Typography variant="body1" sx={valueStyle}>
-            {userData.employeeId}
+            {user.userId}
           </Typography>
         </Box>
 
@@ -244,15 +230,13 @@ const Profile = () => {
             Email Id:
           </Typography>
           <Typography variant="body1" sx={valueStyle}>
-            {userData.emailId}
+            {user.email}
           </Typography>
-
         </Box>
 
-
       </div>
+
     </div>
-    
   );
 };
 
