@@ -2,6 +2,7 @@ import axios from 'axios';
 
 const api = axios.create({
     baseURL: 'http://localhost:3001',
+    withCredentials: true,
 });
 
 // Add a request interceptor
@@ -36,20 +37,40 @@ api.interceptors.response.use(
 
             try {
                 const response = await axios.post('/refresh');
-                const { accessToken } = response.data;
-
+                const { accessToken, ttl } = response.data;
+                const date = new Date();
+                const ttlNum = Number(ttl) * 1000;
+                const expiry = date.getTime() + ttlNum;
+                let user = JSON.parse(localStorage.getItem('user'));
+                user.expiry = expiry;
+                console.log("Refresh request sent", user);
                 localStorage.setItem('token', accessToken);
+                localStorage.setItem('user', JSON.stringify(user));
 
                 // Retry the original request with the new token
                 originalRequest.headers.Authorization = `Bearer ${accessToken}`;
                 return axios(originalRequest);
             } catch (error) {
                 console.error(error);
+                localStorage.removeItem('token');
+                localStorage.removeItem('user');
                 console.log('Redirecting to login page');
-                window.location.href = '/login';
+                // window.location.href = '/login';
                 // window.location.href = '/';
             }
         }
+
+        if(error.response.status === 401 && !originalRequest._retry && error.response.data.message === 'Password is incorrect') {
+            console.log("Password is incorrect");
+            return Promise.reject(error);
+        }
+
+        if(error.response.status === 403) {
+            console.log("Forbidden! Reuse of token detected");
+            // window.location.href = '/';
+            return Promise.reject(error);
+        }
+
         return Promise.reject(error);
     }
 );
