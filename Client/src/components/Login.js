@@ -6,14 +6,15 @@ import './Layout.css'
 
 const Login = ({ showNewsFeed, setShowNewsFeed, isUser, setisUser, setUser }) => {
   const navigate = useNavigate();
-  if(isUser){
-    navigate('/landingpage')
-  }
+  // console.log("isUser", isUser);
+  // if(isUser){
+  //   navigate('/landingpage');
+  // }
   const [formData, setFormData] = useState({
     email: '',
     password: '',
   });
-  
+
   const [errors, setErrors] = useState({
     email: '',
     password: '',
@@ -90,17 +91,23 @@ const Login = ({ showNewsFeed, setShowNewsFeed, isUser, setisUser, setUser }) =>
         isAdmin,
         isNewsAdmin,
         email,
+        ttl,
       } = response.data;
 
-      setUser({
+      const date = new Date();
+      const ttlNum = Number(ttl)*1000;
+      const expiry = date.getTime() + ttlNum;
+      const user = {
         email,
         userId,
         firstName,
         lastName,
         isAdmin,
         isNewsAdmin,
-      });
-
+        expiry: expiry.toString(),
+      };
+      setUser(user);
+      localStorage.setItem('user', JSON.stringify(user));
       localStorage.setItem('token', accessToken);
       console.log(response.data.message, userId, firstName);
       setisUser(true);
@@ -108,18 +115,20 @@ const Login = ({ showNewsFeed, setShowNewsFeed, isUser, setisUser, setUser }) =>
       navigate('/landingpage')
     } catch (error) {
       // console.log(error.response);
-      if(error.response.status===404){
+      if (error.response.status === 404) {
         setErrors((prevErrors) => ({
           ...prevErrors,
           email: 'Invalid email address or password',
         }));
       }
-      if(error.response.status===401){
+      if (error.response.status === 401) {
         setErrors((prevErrors) => ({
           ...prevErrors,
           email: 'Invalid email address or password',
         }));
       }
+      localStorage.removeItem('token');
+      localStorage.removeItem('user');
       console.error(error);
     }
   };

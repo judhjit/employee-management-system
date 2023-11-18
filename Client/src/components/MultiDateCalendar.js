@@ -179,7 +179,7 @@ const MultiDateCalendar = ({ showNewsFeed, selectedDates, setSelectedDates, user
     // window.location.href = "/login";
   }
 
-  console.log(showNewsFeed);
+  // console.log(showNewsFeed);
   const handleDateClick = (date) => {
     if (date.getDay() === 0) {
       return;
@@ -205,8 +205,8 @@ const MultiDateCalendar = ({ showNewsFeed, selectedDates, setSelectedDates, user
 
 
   if (!user || !user.userId || user.userId === '') {
-    // navigate("/login");
-    window.location.href = "/login";
+    navigate("/login");
+    // window.location.href = "/login";
   }
 
   // if(!user.isAdmin){
