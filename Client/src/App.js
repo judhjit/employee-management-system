@@ -207,6 +207,7 @@ function App() {
         </div>
       </div >
     </BrowserRouter>
+    
   );
 }
 
