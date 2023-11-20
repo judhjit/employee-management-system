@@ -19,6 +19,8 @@ import Popover from "@mui/material/Popover";
 import { AppBar, Toolbar, Typography } from "@mui/material";
 import { styled } from '@mui/system';
 
+import api from "../api";
+
 library.add(faNewspaper, faSignOutAlt, faUserCircle);
 
 const Navbar = ({
@@ -54,9 +56,21 @@ const Navbar = ({
   const handleLogout = () => {
     localStorage.removeItem('token');
     localStorage.removeItem('user');
-    // window.location.href = "/";
-    navigate("/");
+    window.location.href = "/";
+    // navigate("/");
   };
+
+  const handleNewsAdminRequest = async () => {
+    let response;
+    try {
+      response = await api.post('/user/requestnewsadminaccess');
+      console.log(response.data);
+      // alert("News Admin Access Request Sent Successfully");
+    } catch (error) {
+      console.error('Error fetching data:', error);
+    }
+  }
+
   const CustomTextButton = styled(Button)(({ theme }) => ({
     color: 'black',
     fontSize: '20px',
@@ -107,10 +121,22 @@ const Navbar = ({
           {isUser && !isAdmin && (
             <div>
               <CustomTextButton
-                variant="contained"
-                onClick={() => navigate("/analytics")}
+                variant="text"
+                onClick={() => navigate("/useranalytics")}
+                style={{ fontFamily: 'poppins', paddingLeft: '32px' }}
               >
                 Analytics
+              </CustomTextButton>
+            </div>
+          )}
+          {isUser && !isAdmin && !isNewsadmin && (
+            <div>
+              <CustomTextButton
+                variant="text"
+                onClick={handleNewsAdminRequest}
+                style={{ fontFamily: 'poppins', paddingLeft: '32px' }}
+              >
+                Request News Admin Access
               </CustomTextButton>
             </div>
           )}
