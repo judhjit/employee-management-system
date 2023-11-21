@@ -60,6 +60,9 @@ const Requests = () => {
         console.log(response.data);
         setInitialData(response.data);
       } catch (error) {
+        if(error.response && error.response.status === 404) {
+          setInitialData([]);
+        }
         console.error('Error fetching data:', error);
       }
     };
