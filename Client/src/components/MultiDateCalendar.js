@@ -271,6 +271,7 @@ const MultiDateCalendar = ({ showNewsFeed, selectedDates, setSelectedDates, user
         </div>
       </div>
       {/* <CurrentBookings /> */}
+      <CurrentBookings />
     </div>
     
   );

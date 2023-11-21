@@ -125,7 +125,8 @@ const ViewAllAdmin = () => {
       height: "520px",
       width: "75vw",
       textAlign: "center",
-      margin: "auto auto",
+      // margin: "auto auto",
+      margin: "0 auto",
     }}>
 
       <h1>Manage News Admins</h1>
