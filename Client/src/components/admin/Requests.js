@@ -65,7 +65,7 @@ const Requests = () => {
     };
 
     fetchData();
-  }, [isDeskRequired, isCabRequired, isFoodRequired, userId,startDate,endDate]);
+  }, [isDeskRequired, isCabRequired, isFoodRequired, userId, startDate, endDate]);
 
   const handleDateRangeChange = (e) => {
     const selectedValue = e.target.value;
@@ -113,7 +113,7 @@ const Requests = () => {
 
   const handleServiceChange = (e) => {
     const selectedValue = e.target.value;
-    
+
     if (selectedValue === 'Car') {
       setIsDeskRequired(false);
       setIsCabRequired(true);
@@ -170,7 +170,7 @@ const Requests = () => {
                 label="Start Date"
                 value={startDate}
                 onChange={(newValue) => setStartDate(newValue)}
-
+                style={{ fontFamily: "poppins" }}
               />
             </DemoContainer>
           </LocalizationProvider>
@@ -178,7 +178,7 @@ const Requests = () => {
           <LocalizationProvider dateAdapter={AdapterDayjs}>
             <DemoContainer components={["DatePicker", "DatePicker"]}>
               <StyledDatePicker
-                label="end Date"
+                label="End Date"
                 value={endDate}
                 onChange={(newValue) => setEndDate(newValue)}
                 style={{ fontFamily: "poppins" }}
@@ -189,7 +189,7 @@ const Requests = () => {
 
         <input
           type="text"
-          placeholder="Employee Id"
+          placeholder="User ID"
           value={userId}
           onChange={(e) => setUserId(e.target.value)}
           style={{
@@ -207,6 +207,7 @@ const Requests = () => {
 
         <select
           label="service Type"
+          placeholder="Service Type"
           style={{
             width: "11vw",
             height: "54px",
@@ -218,11 +219,10 @@ const Requests = () => {
             marginTop: "0.6vw",
           }} onChange={(e) => handleServiceChange(e)}
         >
-          <option value="Car">Car</option>
+          <option value="all">All Services</option>
+          <option value="Car">Cab</option>
           <option value="Desk">Desk</option>
-
-          <option value="Lunch">Lunch</option>
-          <option value="all">All</option>
+          <option value="Lunch">Food</option>
         </select>
 
         <select
@@ -238,11 +238,10 @@ const Requests = () => {
             marginTop: "0.6vw",
           }} onChange={(e) => handleDateRangeChange(e)}
         >
+          <option value="all">All Upcoming</option>
           <option value="1w">1 week</option>
           <option value="1m">1 month</option>
-
           <option value="6m">6 months</option>
-          <option value="all">All</option>
         </select>
 
         <Fab
@@ -281,7 +280,7 @@ const Requests = () => {
                     fontSize: "14px",
                   }}
                 >
-                  Employee ID
+                  User ID
                 </TableCell>
                 <TableCell
                   style={{

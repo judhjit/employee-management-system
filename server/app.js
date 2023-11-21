@@ -38,6 +38,11 @@ const userRoutes = require('./routes/user-routes');
 
 const app = express();
 
+const server = require('http').createServer(app);
+const io = require('socket.io')(server, {
+    cors: corsOptions
+});
+
 // app.set('view engine', 'ejs');
 // app.set('views', path.join(__dirname, 'views'));
 
@@ -84,6 +89,18 @@ db.connect().then(() => {
 
 const port = process.env.DEV_PORT || process.env.PROD_PORT || 3000;
 
-app.listen(port, () => {
+server.listen(port, () => {
     logger.info(`Server listening on port ${port}`);
 });
+// app.listen(port, () => {
+//     logger.info(`Server listening on port ${port}`);
+// });
+
+io.on('connection', (socket) => {
+    logger.info('User connected', socket.id);
+    socket.on('disconnect', () => {
+        logger.info('Socket disconnected', socket.id);
+    });
+});
+
+module.exports = app;
