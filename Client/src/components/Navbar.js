@@ -99,7 +99,7 @@ const Navbar = ({
                   onClick={() => navigate("/requests")}
                   style={{ fontFamily: 'poppins' }}
                 >
-                  Requests
+                  Bookings
                 </CustomTextButton>
                 <CustomTextButton
                   variant="text"
@@ -113,12 +113,12 @@ const Navbar = ({
                   onClick={() => navigate("/analytics")}
                   style={{ fontFamily: 'poppins', paddingLeft: '32px' }}
                 >
-                  Analytics
+                  Admin Analytics
                 </CustomTextButton>
               </div>
             )}
           </div>
-          {isUser && !isAdmin && (
+          {isUser && (
             <div>
               <CustomTextButton
                 variant="text"
