@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+// import _debounce from "lodash.debounce";
 import {
   Button,
   Paper,
@@ -23,6 +24,7 @@ import { DemoContainer } from "@mui/x-date-pickers/internals/demo";
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import { DatePicker } from "@mui/x-date-pickers/DatePicker";
+
 import api from "../../api";
 
 const Requests = () => {
@@ -38,6 +40,8 @@ const Requests = () => {
   const [isDeskRequired, setIsDeskRequired] = useState(true);
   const [isCabRequired, setIsCabRequired] = useState(true);
   const [isFoodRequired, setIsFoodRequired] = useState(true);
+  const [userId, setUserId] = useState("");
+  const [selectedDateRange, setSelectedDateRange] = useState("all");
 
   useEffect(() => {
     const fetchData = async () => {
@@ -48,6 +52,9 @@ const Requests = () => {
             isDeskRequired: isDeskRequired,
             isCabRequired: isCabRequired,
             isFoodRequired: isFoodRequired,
+            userId: userId,
+            startDate: startDate?.format('YYYY-MM-DD'),
+            endDate: endDate?.format('YYYY-MM-DD'),
           }
         );
         console.log(response.data);
@@ -58,12 +65,41 @@ const Requests = () => {
     };
 
     fetchData();
-  }, [isDeskRequired, isCabRequired, isFoodRequired]);
+  }, [isDeskRequired, isCabRequired, isFoodRequired, userId,startDate,endDate]);
+
+  const handleDateRangeChange = (e) => {
+    const selectedValue = e.target.value;
+    setSelectedDateRange(selectedValue);
+    const currentDate = dayjs();
+    let newStartDate;
+    let newEndDate;
+    switch (selectedValue) {
+      case "1w":
+        newStartDate = currentDate;
+        newEndDate = currentDate.add(1, "week");
+        break;
+      case "1m":
+        newStartDate = currentDate;
+        newEndDate = currentDate.add(1, "month");
+        break;
+      case "6m":
+        newStartDate = currentDate;
+        newEndDate = currentDate.add(6, "month");
+        break;
+      default:
+        newStartDate = null; // Fetch all data
+        newEndDate = null;
+
+    }
+    setStartDate(newStartDate);
+    setEndDate(newEndDate);
+
+  }
 
 
   const StyledDatePicker = styled(DatePicker)({
     '& .MuiInputBase-root': {
-      height: '53px', // Adjust the height as needed
+      height: '53px',
     },
   });
 
@@ -77,7 +113,7 @@ const Requests = () => {
 
   const handleServiceChange = (e) => {
     const selectedValue = e.target.value;
-
+    
     if (selectedValue === 'Car') {
       setIsDeskRequired(false);
       setIsCabRequired(true);
@@ -153,7 +189,9 @@ const Requests = () => {
 
         <input
           type="text"
-          placeholder="User ID"
+          placeholder="Employee Id"
+          value={userId}
+          onChange={(e) => setUserId(e.target.value)}
           style={{
             width: "12vw",
             height: "51px",
@@ -198,7 +236,7 @@ const Requests = () => {
             borderRadius: "4px",
             border: "1px solid #C3C3C3",
             marginTop: "0.6vw",
-          }}
+          }} onChange={(e) => handleDateRangeChange(e)}
         >
           <option value="1w">1 week</option>
           <option value="1m">1 month</option>
@@ -298,4 +336,4 @@ const Requests = () => {
   );
 };
 
-export default Requests;
+export default Requests
