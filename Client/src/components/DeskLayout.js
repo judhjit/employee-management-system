@@ -25,7 +25,7 @@ const DeskLayout = ({ active, setSelectedSeat, selectedSeats }) => {
   return (
     <div >
       <Box sx={{ position: 'relative', marginLeft: '95px', marginTop: '-12px', width: '608px' }}>
-        <img src={officeLayout} style={{ width: '100%', height: 'auto' }} />
+        <img src={officeLayout} style={{ width: '100%', height: 'auto',marginTop:'0px' ,marginLeft:'-2px' }} />
         <div >
         <Table
           position={{ top: '22%', left: '5%', name: 'T1' }}

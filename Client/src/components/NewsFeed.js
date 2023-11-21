@@ -284,7 +284,7 @@ const NewsFeed = ({ isNewsadmin }) => {
   const [editedText, setEditedText] = useState('');
   const [editedTitle, setEditedTitle] = useState('');
 
-  const [showInputArea, setShowInputArea] = useState(false);
+  const [showInputArea, setShowInputArea] = useState(true);
   const [anchorEl, setAnchorEl] = useState(null);
 
   const handleCreatePost = () => {

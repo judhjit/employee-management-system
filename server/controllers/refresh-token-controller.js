@@ -113,7 +113,7 @@ async function handleRefreshToken(req, res) {
             });
 
             childLogger.info("Successfully set refresh token in cookies and returned the access token", { service: service, userId: decoded.userId });
-            res.status(200).json({ message: 'Access token refreshed successfully', accessToken, ttl: process.env.JWT_ACCESS_TOKEN_EXPIRATION });
+            res.json({ message: 'Access token refreshed successfully', accessToken, userId: foundUser.user_id, firstName: foundUser.first_name, lastName: foundUser.last_name, isAdmin: foundUser.isAdmin, isNewsAdmin: foundUser.isNewsAdmin });
         }
     );
 }

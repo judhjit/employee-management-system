@@ -195,7 +195,7 @@ async function login(req, res, next) {
         maxAge: Number(process.env.JWT_REFRESH_TOKEN_EXPIRATION),
     }); //set cookie with token
     childLogger.info("Successfully logged in user", { service: service, userId: existingUser.user_id });
-    return res.status(200).json({ message: "User logged in successfully", accessToken: accessToken, userId: existingUser.user_id, firstName: existingUser.first_name, lastName: existingUser.last_name, email: existingUser.email, isAdmin: existingUser.isAdmin, isNewsAdmin: existingUser.isNewsAdmin, ttl: process.env.JWT_ACCESS_TOKEN_EXPIRATION });
+    return res.status(200).json({ message: "User logged in successfully", accessToken: accessToken, userId: existingUser.user_id, firstName: existingUser.first_name, lastName: existingUser.last_name, email: existingUser.email, isAdmin: existingUser.isAdmin, isNewsAdmin: existingUser.isNewsAdmin });
 }
 
 

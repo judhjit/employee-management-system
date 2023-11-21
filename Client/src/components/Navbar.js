@@ -53,9 +53,7 @@ const Navbar = ({
 
   const handleLogout = () => {
     localStorage.removeItem('token');
-    localStorage.removeItem('user');
-    // window.location.href = "/";
-    navigate("/");
+    window.location.href = "/";
   };
   const CustomTextButton = styled(Button)(({ theme }) => ({
     color: 'black',

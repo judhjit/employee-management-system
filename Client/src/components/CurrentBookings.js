@@ -46,7 +46,7 @@ const CurrentBookings = () => {
   return (
     <div className="table-container">
       <h2 className='booking'>Current Bookings</h2>
-      <TableContainer style={{width:'75vw',paddingLeft:'60px',height:'140px'}}>
+      <TableContainer style={{width:'100%',paddingLeft:'60px',height:'140px'}}>
         <Table>
           <TableHead >
             <TableRow style={{backgroundColor:'#0071BA'}} >

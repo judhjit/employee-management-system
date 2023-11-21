@@ -253,29 +253,23 @@ async function bookAll(req, res, next) { //function to book a desk, cab and food
     } else {
         dates = req.body.dates;
     }
-    if (isDeskRequired && (!req.body.deskId || req.body.deskId === '' || req.body.deskId.length === 0)) {
+    if (isDeskRequired && !req.body.deskId) {
         childLogger.error("Desk id not provided", { service: service, userId: req.userId });
         return res.status(400).json({ message: 'Desk id not provided' });
     } else {
         deskId = req.body.deskId;
-        if(!Array.isArray(deskId)) deskId = [deskId];
-        if(dates.length !== deskId.length) return res.status(400).json({ message: 'Number of dates and number of desks do not match' });
     }
-    if (isCabRequired && (!req.body.workSlot || req.body.workSlot === '' || req.body.workSlot.length === 0)) {
+    if (isCabRequired && !req.body.workSlot) {
         childLogger.error("Work slot not provided", { service: service, userId: req.userId });
         return res.status(400).json({ message: 'Work slot not provided' });
     } else {
         workSlot = req.body.workSlot;
-        if(!Array.isArray(workSlot)) workSlot = [workSlot];
-        if(dates.length !== workSlot.length) return res.status(400).json({ message: 'Number of dates and number of work slots do not match' });
     }
-    if (isFoodRequired && (!req.body.preference || req.body.preference === '' || req.body.preference.length === 0)) {
+    if (isFoodRequired && !req.body.preference) {
         childLogger.error("Preference not provided", { service: service, userId: req.userId });
         return res.status(400).json({ message: 'Preference not provided' });
     } else {
         preference = req.body.preference;
-        if(!Array.isArray(preference)) preference = [preference];
-        if(dates.length !== preference.length) return res.status(400).json({ message: 'Number of dates and number of preferences do not match' });
     }
     if (!isDeskRequired && !isCabRequired && !isFoodRequired) {
         childLogger.error("Desk, cab and food not required", { service: service, userId: req.userId });
@@ -328,14 +322,11 @@ async function bookAll(req, res, next) { //function to book a desk, cab and food
             childLogger.error("User has already booked a desk for one or more of the dates", { service: service, userId: req.userId });
             return res.status(400).json({ message: 'User has already booked a desk for one or more of the dates' });
         }
-        //check if the desks are already booked for corresponding selected dates
+        //check if desk is already booked for any of the dates
         let bookings;
         try {
             childLogger.info("Getting desk bookings by desk id and dates", { service: service, userId: req.userId, request: { deskId: deskId, dates: dates } });
-            for (let i = 0; i < deskId.length; i++) {
-                bookings = await DeskBookings.getDeskBookingByDeskIdAndDates(deskId[i], dates[i]); //check if desk is already booked for any of the dates
-                if (bookings && bookings.length > 0) break;
-            }
+            bookings = await DeskBookings.getDeskBookingByDeskIdAndDates(deskId, dates); //check if desk is already booked for any of the dates
             childLogger.info("Successfully got desk bookings by desk id and dates", { service: service, userId: req.userId, request: { deskId: deskId, dates: dates } });
         } catch (error) {
             childLogger.error("Failed to get desk bookings by desk id and dates", { service: service, userId: req.userId, request: { deskId: deskId, dates: dates }, error: error });
@@ -396,47 +387,28 @@ async function bookAll(req, res, next) { //function to book a desk, cab and food
     try {
         if (isDeskRequired) {
             childLogger.info("Booking desk for user", { service: service, userId: req.userId, request: { deskId: deskId, dates: dates } });
-            // deskBooking = await DeskBookings.bookDesk(deskId, userId, dates);
-            for (let i = 0; i < deskId.length; i++) {
-                deskBooking = await DeskBookings.bookDesk(deskId[i], userId, dates[i]);
-                if (!deskBooking || deskBooking.length === 0) {
-                    childLogger.error("Desk booking failed", { service: service, userId: req.userId });
-                    return res.status(400).json({ message: 'Desk booking failed!' });
-                }
+            deskBooking = await DeskBookings.bookDesk(deskId, userId, dates);
+            if (!deskBooking || deskBooking.length === 0) {
+                childLogger.error("Desk booking failed", { service: service, userId: req.userId });
+                return res.status(400).json({ message: 'Desk booking failed!' });
             }
             childLogger.info("Successfully booked desk for user", { service: service, userId: req.userId, request: { deskId: deskId, dates: dates } });
         }
         if (isCabRequired) {
             childLogger.info("Booking cab for user", { service: service, userId: req.userId, request: { dates: dates, workSlot: workSlot } });
-            // cabBooking = await CabBookings.bookCab(userId, dates, workSlot);
-            // if (!cabBooking || cabBooking.length === 0) {
-            //     childLogger.error("Cab booking failed", { service: service, userId: req.userId });
-            //     return res.status(400).json({ message: 'Cab booking failed!' });
-            // }
-            for (let i = 0; i < dates.length; i++) {
-                if(workSlot[i] === 'None' || workSlot[i] === '') continue; //if workSlot is None, then do not book cab for that date
-                cabBooking = await CabBookings.bookCab(userId, dates[i], workSlot[i]);
-                if (!cabBooking || cabBooking.length === 0) {
-                    childLogger.error("Cab booking failed", { service: service, userId: req.userId });
-                    return res.status(400).json({ message: 'Cab booking failed!' });
-                }
+            cabBooking = await CabBookings.bookCab(userId, dates, workSlot);
+            if (!cabBooking || cabBooking.length === 0) {
+                childLogger.error("Cab booking failed", { service: service, userId: req.userId });
+                return res.status(400).json({ message: 'Cab booking failed!' });
             }
             childLogger.info("Successfully booked cab for user", { service: service, userId: req.userId, request: { dates: dates, workSlot: workSlot } });
         }
         if (isFoodRequired) {
             childLogger.info("Booking food for user", { service: service, userId: req.userId, request: { dates: dates, preference: preference } });
-            // foodBooking = await FoodBookings.bookFood(userId, dates, preference);
-            // if (!foodBooking || foodBooking.length === 0) {
-            //     childLogger.error("Food booking failed", { service: service, userId: req.userId });
-            //     return res.status(400).json({ message: 'Food booking failed!' });
-            // }
-            for (let i = 0; i < dates.length; i++) {
-                if(preference[i] === 'None' || preference[i] === '') continue; //if preference is None, then do not book food for that date
-                foodBooking = await FoodBookings.bookFood(userId, dates[i], preference[i]);
-                if (!foodBooking || foodBooking.length === 0) {
-                    childLogger.error("Food booking failed", { service: service, userId: req.userId });
-                    return res.status(400).json({ message: 'Food booking failed!' });
-                }
+            foodBooking = await FoodBookings.bookFood(userId, dates, preference);
+            if (!foodBooking || foodBooking.length === 0) {
+                childLogger.error("Food booking failed", { service: service, userId: req.userId });
+                return res.status(400).json({ message: 'Food booking failed!' });
             }
             childLogger.info("Successfully booked food for user", { service: service, userId: req.userId, request: { dates: dates, preference: preference } });
         }

@@ -92,7 +92,7 @@
 
 // export default App;
 
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import "./App.css";
 
 import MultiDateCalendar from "./components/MultiDateCalendar";
@@ -114,7 +114,6 @@ import Signup from "./components/Signup";
 import Layout from "./components/Layout";
 import Bookings from "./components/Bookings";
 import Profile from "./components/Profile";
-import api from "./api";
 
 function App() {
   const [showNewsFeed, setShowNewsFeed] = useState(false);
@@ -127,42 +126,8 @@ function App() {
     firstName: '',
     lastName: '',
     isAdmin: false,
-    isNewsAdmin: false,
-    expiry: '',
+    isNewsAdmin: true
   });
-
-  const refresh = async () => {
-    // const token = localStorage.getItem('token');
-    const user = JSON.parse(localStorage.getItem('user'));
-    try{
-      const response = await api.post('/refresh');
-      const now = new Date();
-      const { accessToken, ttl } = response.data;
-      const ttlNum = Number(ttl) * 1000;
-      const expiry = now.getTime() + ttlNum;
-      user.expiry = expiry;
-      localStorage.setItem('token', accessToken);
-      localStorage.setItem('user', JSON.stringify(user));
-      setUser(user);
-      setisUser(true);
-    } catch (err) {
-      console.log(err);
-    }
-  }
-
-  useEffect(() => {
-    const user = JSON.parse(localStorage.getItem('user'));
-    if (user && user.userId && user.userId !== '') {
-      const now = new Date();
-      const expiry = Number(user.expiry);
-      if (now.getTime() > expiry) {
-        refresh();
-      } else {
-        setUser(user);
-        setisUser(true);
-      }
-    }
-  }, []);
 
   return (
     <BrowserRouter>
@@ -191,7 +156,7 @@ function App() {
                   isUser={isUser}
                   setisUser={setisUser}
                   setUser={setUser}
-                />} />
+                  />} />
                 <Route path="/signup" element={<Signup />} />
               </Route>
               <Route path="/" element={<Layout />}>
@@ -221,7 +186,7 @@ function App() {
               <Route path="/analytics" element={<Analytics />} />
               <Route path="/viewAllAdmin" element={<ViewAllAdmin />} />
               <Route path="/bookings" element={<Bookings selectedDates={selectedDates} />} />
-              <Route path="/profile" element={<Profile user={user} />} />
+              <Route path="/profile" element={<Profile />} />
             </Routes>
 
             {showNewsFeed && (

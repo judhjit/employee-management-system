@@ -1,6 +1,6 @@
 
 
-import React, { useState,useEffect } from 'react';
+import React, { useState } from 'react';
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import Typography from "@mui/material/Typography";
@@ -13,43 +13,21 @@ import RadioGroup from "@mui/material/RadioGroup";
 import FormControlLabel from "@mui/material/FormControlLabel";
 import { Box, CardActions } from '@mui/material';
 
-const LunchAndCabForm = ({ active,setSelectedMeal,setSelectedCab ,selectedMeal,selectedCab}) => {
-    const[activeLunch,setActiveLunch]=useState(selectedMeal[active]);
-    console.log(selectedMeal);
+const LunchAndCabFormAll = ({ active,setSelectedMeal,setSelectedCab ,selectedMeal,selectedCab}) => {
+    const [selectedLunch, setSelectedLunch] = useState("   ");
+  const [selectedSlot, setSelectedSlot] = useState("");
 
-    const handleLunchChange=(event)=>{
-      console.log(event.target.value);
-      // setActiveLunch(event.target.value);
-      // console.log("activelunch",activeLunch);
-     
-    }
-    // console.log(activeLunch);
-    useEffect(() => {
-    
-    
-      setSelectedMeal((prevArray) => {
-        const newArray = [...prevArray];
-        newArray[active] = activeLunch;
-        
-        return newArray;
-        
-      });    
-      
-    }, [activeLunch]);
-   
-    
-  // const handleLunchChange = (event) => {
-  //   setSelectedLunch(event.target.value);
-  //   setSelectedMeal(selectedMeal.fill(event.target.value))
-  //   console.log(selectedMeal)
-  // };
+  const handleLunchChange = (event) => {
+    setSelectedLunch(event.target.value);
+    setSelectedMeal(selectedMeal.fill(event.target.value))
+    console.log(selectedMeal)
+  };
 
-  // const handleSlotChange = (event) => {
-  //   setSelectedSlot(event.target.value);
-  //   setSelectedCab(selectedCab.fill(event.target.value))
-  //   console.log(selectedCab)
-  // };
-
+  const handleSlotChange = (event) => {
+    setSelectedSlot(event.target.value);
+    setSelectedCab(selectedCab.fill(event.target.value))
+    console.log(selectedCab)
+  };
 
   
   return (
@@ -101,10 +79,10 @@ const LunchAndCabForm = ({ active,setSelectedMeal,setSelectedCab ,selectedMeal,s
               </div>
             </CardContent>
             <CardActions>
-            <RadioGroup
+              <RadioGroup
                 aria-label="lunch-type"
                 name="lunch-type"
-                value={selectedMeal}
+                value={selectedLunch}
                 onChange={handleLunchChange}
                 style={{
                   flexDirection: "column",
@@ -123,7 +101,6 @@ const LunchAndCabForm = ({ active,setSelectedMeal,setSelectedCab ,selectedMeal,s
                   control={<Radio />}
                   label="Veg"
                   style={{ fontFamily: "poppins" }}
-
                 />
                 <FormControlLabel
                   value="NonVeg"
@@ -189,8 +166,8 @@ const LunchAndCabForm = ({ active,setSelectedMeal,setSelectedCab ,selectedMeal,s
             <CardActions>
               <FormControl style={{ paddingLeft: "25px", paddingTop: "1px" }}>
                 <Select
-                  // value={selectedSlot}
-                  // onChange={handleSlotChange}
+                  value={selectedSlot}
+                  onChange={handleSlotChange}
                   displayEmpty
                   className="select"
                   style={{ width: "200px" }}
@@ -207,4 +184,4 @@ const LunchAndCabForm = ({ active,setSelectedMeal,setSelectedCab ,selectedMeal,s
   )
 }
 
-export default LunchAndCabForm;
+export default LunchAndCabFormAll;
