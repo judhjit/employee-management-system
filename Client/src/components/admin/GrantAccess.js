@@ -1,11 +1,12 @@
 
 
 
-import React, { useState } from 'react';
+import React, { useState, useEffect, useReducer } from 'react';
 import './GrantAccess.css';
 import DoneIcon from '@mui/icons-material/Done';
 import CheckCircleOutlineRoundedIcon from '@mui/icons-material/CheckCircleOutlineRounded';
 import CancelOutlinedIcon from '@mui/icons-material/CancelOutlined';
+import api from '../../api';
 
 import {
   Table,
@@ -21,114 +22,138 @@ import { useNavigate } from 'react-router-dom';
 
 
 const GrantAccess = () => {
-  const navigate=useNavigate();
-  const [requests, setRequests] = useState([
-        { empID: '1234', name: 'ajeet', status: 'Pending' },
-        { empID: '1235', name: 'sumit', status: 'Pending' },
-        { empID: '1236', name: 'amit', status: 'Pending' },
-        { empID: '1237', name: 'abc', status: 'Pending' },
-        { empID: '1238', name: 'abc', status: 'Pending' },
-        { empID: '1239', name: 'abc', status: 'Pending' },
-        { empID: '1242', name: 'abc', status: 'Pending' },
-      ]);
-    
+  const navigate = useNavigate();
+  const [requests, setRequests] = useState([]);
 
-      const handleAccept = (empID) => {
-            const updatedRequests = requests.map((request) =>
-              request.empID === empID ? { ...request, status: 'Accepted' } : request
-            );
-            setRequests(updatedRequests);
-          };
-        
-          const handleReject = (empID) => {
-            const updatedRequests = requests.map((request) =>
-              request.empID === empID ? { ...request, status: 'Rejected' } : request
-            );
-            setRequests(updatedRequests);
-          };
-        
+  useEffect(() => {
+    const fetchData = async () => {
+      let response;
+      try {
+        response = await api.get('/admin/allnewsadminaccessrequests');
+        console.log(response.data);
+        setRequests([...response.data]);
+      } catch (error) {
+        if (error.response.status === 404) {
+          console.log("No data found!");
+          setRequests([...requests]);
+        } else {
+          console.error('Error fetching data:', error);
+        }
+      }
+    };
+    fetchData();
+  }, []);
+
+
+
+  const handleAccept = async (userId) => {
+    let response;
+    try {
+      response = await api.patch('/admin/togglenewsadmin', {
+        userId: userId,
+        isNewsAdmin: true
+      });
+      setRequests([...requests.filter((request) => request.userId !== userId)]);
+    } catch (error) {
+      console.error('Error fetching data:', error);
+    }
+  };
+
+  const handleReject = async (userId) => {
+    let response;
+    try {
+      response = await api.patch('/admin/togglenewsadmin', {
+        userId: userId,
+        isNewsAdmin: false
+      });
+      setRequests([...requests.filter((request) => request.userId !== userId)]);
+    } catch (error) {
+      console.error('Error fetching data:', error);
+    }
+  };
+  
   return (
-    <div  style={{
+    <div style={{
       backgroundColor: "white",
-      height: "600px",
+      height: "520px",
       width: "75vw",
       textAlign: "center",
-      margin: "9 auto",
-    }} > 
-      
-      <h1 style={{marginTop: "3.5vw"}}>Grant News Access:-</h1>
-      <Button style={{ fontSize: '0.8vw',marginLeft:'55vw', marginTop: "-4vw"}} onClick={ ()=>navigate('/viewAllAdmin')}>View all news Admins</Button>
+      margin: "auto auto",
+    }} >
+
+      <h1>Grant News Admin Access</h1>
+      <Button style={{ fontSize: '0.8vw', marginLeft: '55vw', marginTop: "-4vw" }} onClick={() => navigate('/viewAllAdmin')}>View all news Admins</Button>
       <TableContainer component={Paper} style={{
-      width: "68vw",
-      marginTop: "-2vw",
-      marginLeft: "4vw",
-      maxHeight: 520,
-      justifyContent: "center",
-      border: "1px solid #E9E9E9",
-      borderRadius: "10px",
-     
-    }}>
-             <Table stickyHeader>
-               <TableHead>
-                 <TableRow>
-                   <TableCell style={{
-                    backgroundColor: "#004B81",
-                    color: "white",
-                    fontSize: "14px",
-                    fontFamily:'poppins'
-                  }}>Employee ID</TableCell>
-                   <TableCell style={{
-                    backgroundColor: "#004B81",
-                    color: "white",
-                    fontSize: "14px",
-                    fontFamily:'poppins'
-                  }}>Name</TableCell>
-                   <TableCell style={{
-                    backgroundColor: "#004B81",
-                    color: "white",
-                    fontSize: "14px",
-                    fontFamily:'poppins'
-                  }}>Status</TableCell>
-                   <TableCell style={{
-                    backgroundColor: "#004B81",
-                    color: "white",
-                    fontSize: "14px",
-                    fontFamily:'poppins',
-                    marginLeft:'20px'
-                  }}>Actions</TableCell>
-                 </TableRow>
-               </TableHead>
-               <TableBody style={{ backgroundColor: "	#F5F5F5" }} >
-                 {requests.map((request) => (
-              <TableRow key={request.empID}>
-                    <TableCell style={{ color: "#79C6F1", fontWeight: "bold", fontFamily:'poppins' ,paddingTop:'6px'}}>{request.empID}</TableCell>
-                    <TableCell style={{ color: "#0071BA", fontWeight: "bold" , fontFamily:'poppins'}}>{request.name}</TableCell>
-                    <TableCell style={{ fontFamily:'poppins'}}>{request.status}</TableCell>
-                    <TableCell style={{maginLeft:'2px'}}>
-                      {request.status === 'Pending' && (
-                        <>
-                          <Button
-                              style={{  color:'green'}}
-                            
-                           
-                            onClick={() => handleAccept(request.empID)}
-                          >
-                            <CheckCircleOutlineRoundedIcon/>
-                          </Button>
-                          <Button 
-                            style={{color:'red'}}
-                            onClick={() => handleReject(request.empID)}
-                          >
-                           <CancelOutlinedIcon/>
-                          </Button>
-                        </>
-                      )}
-                    </TableCell>
-                  </TableRow>
-                ))}
-              </TableBody>
-            </Table>
-          </TableContainer></div>
+        width: "68vw",
+        marginTop: "-2vw",
+        // marginTop: "13vw",
+        marginLeft: "4vw",
+        maxHeight: 480,
+        justifyContent: "center",
+        border: "1px solid #E9E9E9",
+        borderRadius: "10px",
+      }}>
+        <Table stickyHeader>
+          <TableHead>
+            <TableRow>
+              <TableCell style={{
+                backgroundColor: "#004B81",
+                color: "white",
+                fontSize: "14px",
+                fontFamily: 'poppins'
+              }}>Employee ID</TableCell>
+              <TableCell style={{
+                backgroundColor: "#004B81",
+                color: "white",
+                fontSize: "14px",
+                fontFamily: 'poppins'
+              }}>Name</TableCell>
+              {/* <TableCell style={{
+                backgroundColor: "#004B81",
+                color: "white",
+                fontSize: "14px",
+                fontFamily: 'poppins'
+              }}>Status</TableCell> */}
+              <TableCell style={{
+                backgroundColor: "#004B81",
+                color: "white",
+                fontSize: "14px",
+                fontFamily: 'poppins',
+                // marginLeft: '20px'
+              }}>Actions</TableCell>
+            </TableRow>
+          </TableHead>
+          <TableBody style={{ backgroundColor: "	#F5F5F5" }} >
+            {requests.map((request) => (
+              <TableRow key={request.userId}>
+                <TableCell style={{ color: "#79C6F1", fontWeight: "bold", fontFamily: 'poppins', paddingTop: '6px' }}>{request.userId}</TableCell>
+                <TableCell style={{ color: "#0071BA", fontWeight: "bold", fontFamily: 'poppins' }}>{request.name}</TableCell>
+                {/* <TableCell style={{ fontFamily: 'poppins' }}>{request.status}</TableCell> */}
+                <TableCell style={{ maginLeft: '2px' }}>
+                  {/* {request.status === 'Pending' && ( */}
+                  <>
+                    <Button
+                      style={{ color: 'green' }}
+
+
+                      onClick={() => handleAccept(request.userId)}
+                    >
+                      <CheckCircleOutlineRoundedIcon />
+                    </Button>
+                    <Button
+                      style={{ color: 'red' }}
+                      onClick={() => handleReject(request.userId)}
+                    >
+                      <CancelOutlinedIcon />
+                    </Button>
+                  </>
+                  {/* )} */}
+                </TableCell>
+              </TableRow>
+            ))}
+          </TableBody>
+        </Table>
+      </TableContainer></div>
   )
 }
 

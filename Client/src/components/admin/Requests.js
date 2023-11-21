@@ -28,7 +28,7 @@ import { DatePicker } from "@mui/x-date-pickers/DatePicker";
 import api from "../../api";
 
 const Requests = () => {
-  const [initialData, setInitialData] = useState([]);
+    const [initialData, setInitialData] = useState([]);
 
   // const [filterService, setFilterService] = useState('Service Type');
 
@@ -110,7 +110,7 @@ const Requests = () => {
     XLSX.utils.book_append_sheet(wb, ws, 'initial data');
     XLSX.writeFile(wb, 'aditi.xlsx');
   };
-
+    
   const handleServiceChange = (e) => {
     const selectedValue = e.target.value;
     
@@ -164,7 +164,7 @@ const Requests = () => {
             fontFamily: "poppins",
           }}
         >
-          <LocalizationProvider dateAdapter={AdapterDayjs} style={{ fontFamily: "poppins", height: '51px' }}>
+                    <LocalizationProvider dateAdapter={AdapterDayjs} style={{ fontFamily: "poppins", height: '51px' }}>
             <DemoContainer components={["DatePicker", "DatePicker"]} >
               <StyledDatePicker
                 label="Start Date"
@@ -217,13 +217,13 @@ const Requests = () => {
             border: "1px solid #C3C3C3",
             marginTop: "0.6vw",
           }} onChange={(e) => handleServiceChange(e)}
-        >
+                  >
           <option value="Car">Car</option>
           <option value="Desk">Desk</option>
 
           <option value="Lunch">Lunch</option>
           <option value="all">All</option>
-        </select>
+                  </select>
 
         <select
           placeholder="Choose date"
@@ -336,4 +336,4 @@ const Requests = () => {
   );
 };
 
-export default Requests
+export default Requests;

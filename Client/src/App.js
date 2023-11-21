@@ -114,6 +114,8 @@ import Signup from "./components/Signup";
 import Layout from "./components/Layout";
 import Bookings from "./components/Bookings";
 import Profile from "./components/Profile";
+import UserAnalytics from "./components/UserAnalytics";
+import api from "./api";
 
 function App() {
   const [showNewsFeed, setShowNewsFeed] = useState(false);
@@ -184,6 +186,7 @@ function App() {
               <Route path="/grantaccess" element={<GrantAccess />} />
               <Route path="/requests" element={<Requests />} />
               <Route path="/analytics" element={<Analytics />} />
+              <Route path="/useranalytics" element={<UserAnalytics />} />
               <Route path="/viewAllAdmin" element={<ViewAllAdmin />} />
               <Route path="/bookings" element={<Bookings selectedDates={selectedDates} />} />
               <Route path="/profile" element={<Profile />} />
