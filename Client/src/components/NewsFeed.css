@@ -36,7 +36,7 @@
  */
 
  
-.newsfeed {
+/* .newsfeed {
    
     top: 0;
      
@@ -56,7 +56,27 @@
   
   .news-feed.visible {
     right: 0;
+  } */
+
+  /* .newsfeed {
+    top: 0;
+    width: 900px;
+    background-color: black;
+    padding: 10px;
+    border-radius: 5px;
+    transition: right 0.3s;
+    font-family: 'Poppins', sans-serif;
   }
+  
+  .news-feed h2 {
+    font-size: 18px;
+    margin-bottom: 12px;
+  }
+  
+  .news-feed.visible {
+    right: 0;
+  } */
+  
   
 
 

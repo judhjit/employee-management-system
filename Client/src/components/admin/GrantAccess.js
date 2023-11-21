@@ -78,7 +78,7 @@ const GrantAccess = () => {
       height: "520px",
       width: "75vw",
       textAlign: "center",
-      margin: "auto auto",
+      margin: "0 auto",
     }} >
 
       <h1>Grant News Admin Access</h1>
