@@ -63,13 +63,8 @@ function Analytics() {
     }
   };
 
-  useEffect(() => {
-    const { startDate, endDate } = calculateDateRange();
-
-    fetchData();
-
+  const updateChartData = () => {
     const chartLabels = ['Desk', 'Cab', 'Food'];
-    // console.log(bookingData);
     let chartData = [0, 0, 0];
     if (bookingData) {
       chartData = [bookingData.deskBookingsCount, bookingData.cabBookingsCount, bookingData.foodBookingsCount];
@@ -94,8 +89,17 @@ function Analytics() {
         },
       ],
     });
+  };
 
+  useEffect(() => {
+    fetchData();
   }, [selectedFilter, selectedDate]);
+
+  useEffect(() => {
+    if (bookingData) {
+      updateChartData();
+    }
+  }, [bookingData]);
 
   useEffect(() => {
     if (chartData && chartRef.current) {
