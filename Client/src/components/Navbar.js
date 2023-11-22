@@ -142,6 +142,12 @@ const Navbar = ({
             </div>
           )}
           <div style={{ marginLeft: "auto", display: "flex", gap: "10px" }}>
+            <IconButton component={Link} to="/landingpage">
+              <FontAwesomeIcon
+                icon={faHome}
+                style={{ height: "1.5vw", width: "1.5vw" }}
+              />
+            </IconButton>
             <IconButton onClick={togglePopover}>
               <FontAwesomeIcon
                 icon={faNewspaper}
@@ -169,13 +175,6 @@ const Navbar = ({
                 style={{ marginRight: "8px" }}
               />
               Profile
-            </MenuItem>
-            <MenuItem component={Link} to="/landingpage">
-              <FontAwesomeIcon
-                icon={faHome}
-                style={{ marginRight: "8px" }}
-              />
-              Home
             </MenuItem>
             <MenuItem onClick={handleLogout} >
               <FontAwesomeIcon

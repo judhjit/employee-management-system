@@ -37,11 +37,15 @@ function CustomTabPanel(props) {
   );
 }
 
-const DeskBooking = ({ selectedDates ,onNext}) => {
+const DeskBooking = ({ selectedDates, onNext, isUser}) => {
   const [value, setValue] = React.useState(0);
   const [active, setActive] = useState(0);
   const [selectedSeats, setSelectedSeat] = useState(Array(selectedDates.length).fill(null));
 
+  if (!isUser) {
+    window.location.href = "/";
+    return null;
+  }
 
   const handleChange = (event, newValue) => {
     setValue(newValue);

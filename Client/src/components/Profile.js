@@ -105,7 +105,13 @@ import bg3 from '../assets/bgimg4.svg';
 import './Profile.css'
 
 
-const Profile = ({ user }) => {
+const Profile = ({ user, isUser }) => {
+
+  if (!isUser) {
+    window.location.href = "/";
+    // navigate('/login');
+    return null;
+  }
 
   const profileContainerStyle = {
     // marginLeft: '50px',

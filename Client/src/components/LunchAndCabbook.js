@@ -23,7 +23,7 @@ import LunchAndCabForm from "./LunchAndCabForm";
 
 function CustomTabPanel(props) {
   const { children, value, index, ...other } = props;
-  
+
 
   return (
     <div
@@ -60,12 +60,13 @@ export default function LunchAndCabbook({
   onNext,
   onSkip,
   onBack,
+  isUser
 }) {
   const [value, setValue] = React.useState(0);
   const [selectedPreferences, setSelectedPreferences] = useState({});
   const [selectedCab, setSelectedCab] = useState(Array(selectedDates.length).fill(null));
   const [selectedMeal, setSelectedMeal] = useState(Array(selectedDates.length).fill(null));
-
+  
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
@@ -82,14 +83,18 @@ export default function LunchAndCabbook({
   const handleActiveStatus = (index) => {
     setActive(index);
   };
-
+  
   const handleLunchChange = (event, dateIndex) => {
     const updatedPreferences = { ...selectedPreferences };
     updatedPreferences[dateIndex] = event.target.value;
     setSelectedPreferences(updatedPreferences);
   };
+  
 
- 
+  if (!isUser) {
+    window.location.href = "/";
+    return null;
+  }
 
   return (
     <Box sx={{ width: "70%", fontFamily: "poppins" }}>
@@ -157,13 +162,13 @@ export default function LunchAndCabbook({
               </div>
             ))}
           </div>
-            {/* <div>
+          {/* <div>
               {
                 (selectedDates.length()!=0 && <LunchAndCabForm setActive={setActive} active={active}/>)
               }
             </div> */}
           <Box style={{ display: "flex", flexDirection: "row", flexWrap: "wrap" }}>
-            <LunchAndCabForm setSelectedCab={setSelectedCab} setSelectedMeal={setSelectedMeal} selectedMeal={selectedMeal} selectedCab={selectedCab}/>
+            <LunchAndCabForm setSelectedCab={setSelectedCab} setSelectedMeal={setSelectedMeal} selectedMeal={selectedMeal} selectedCab={selectedCab} />
             <Button
               variant="contained"
               style={{ marginTop: "70px", width: "150px", marginTop: "350px" }}
@@ -208,19 +213,19 @@ export default function LunchAndCabbook({
             <Box
               sx={{ display: "flex", flexDirection: "row", flexWrap: "wrap" }}
             >
-              <LunchAndCabForm setSelectedCab={setSelectedCab} setSelectedMeal={setSelectedMeal} selectedMeal={selectedMeal} selectedCab={selectedCab}/>
+              <LunchAndCabForm setSelectedCab={setSelectedCab} setSelectedMeal={setSelectedMeal} selectedMeal={selectedMeal} selectedCab={selectedCab} />
               <Button
-              style={{
-                marginLeft: "-51px",
-                width: "16px",
-                marginTop: "-132px",
-                position: "absolute",
-                border: 0,
-              }}
-              onClick={onBack}
-            >
-              <ArrowBackIcon />
-            </Button>
+                style={{
+                  marginLeft: "-51px",
+                  width: "16px",
+                  marginTop: "-132px",
+                  position: "absolute",
+                  border: 0,
+                }}
+                onClick={onBack}
+              >
+                <ArrowBackIcon />
+              </Button>
               <Button
                 variant="contained"
                 style={{
