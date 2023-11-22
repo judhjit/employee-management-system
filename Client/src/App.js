@@ -122,6 +122,7 @@ function App() {
                 user={user}
                 setUser={setUser}
                 isUser={isUser}
+                socket={socket}
               />} />
               <Route path="/deskbooking" element={<DeskBooking selectedDates={selectedDates} />} />
               {/* <Route path="/cabbooking" element={<CabBooking/>}/> */}
