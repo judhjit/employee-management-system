@@ -124,7 +124,7 @@ function App() {
                 isUser={isUser}
                 socket={socket}
               />} />
-              <Route path="/deskbooking" element={<DeskBooking selectedDates={selectedDates} />} />
+              <Route path="/deskbooking" element={<DeskBooking selectedDates={selectedDates} isUser={isUser} />} />
               {/* <Route path="/cabbooking" element={<CabBooking/>}/> */}
 
               <Route path="/lunchandcabbook" element={<LunchAndCabbook selectedDates={selectedDates} />} />
@@ -133,8 +133,8 @@ function App() {
               <Route path="/analytics" element={<Analytics />} />
               <Route path="/useranalytics" element={<UserAnalytics />} />
               <Route path="/viewAllAdmin" element={<ViewAllAdmin />} />
-              <Route path="/bookings" element={<Bookings selectedDates={selectedDates} />} />
-              <Route path="/profile" element={<Profile user={user} />} />
+              <Route path="/bookings" element={<Bookings selectedDates={selectedDates} isUser={isUser} />} />
+              <Route path="/profile" element={<Profile user={user} isUser={isUser} />} />
               {/* <Route path="/currentbookings" element={<CurrentBookings />} /> */}
             </Routes>
 

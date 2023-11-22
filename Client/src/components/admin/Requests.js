@@ -29,12 +29,6 @@ import api from "../../api";
 
 const Requests = () => {
   const [initialData, setInitialData] = useState([]);
-
-  // const [filterService, setFilterService] = useState('Service Type');
-
-  // const handleServiceFilterChange = (event) => {
-  //           setFilterService(event.target.value);
-  //       };
   const [startDate, setStartDate] = React.useState();
   const [endDate, setEndDate] = React.useState();
   const [isDeskRequired, setIsDeskRequired] = useState(true);
@@ -111,7 +105,7 @@ const Requests = () => {
     const ws = XLSX.utils.json_to_sheet(initialData);
     const wb = XLSX.utils.book_new();
     XLSX.utils.book_append_sheet(wb, ws, 'initial data');
-    XLSX.writeFile(wb, 'aditi.xlsx');
+    XLSX.writeFile(wb, 'bookings.xlsx');
   };
 
   const handleServiceChange = (e) => {
@@ -303,6 +297,15 @@ const Requests = () => {
                 >
                   Services
                 </TableCell>{" "}
+                <TableCell
+                  style={{
+                    backgroundColor: "#004B81",
+                    color: "white",
+                    fontSize: "14px",
+                  }}
+                >
+                  Preference
+                </TableCell>{" "}
               </TableRow>
             </TableHead>
             <TableBody style={{ backgroundColor: "	#F5F5F5" }}>
@@ -313,6 +316,7 @@ const Requests = () => {
                   </TableCell>
                   <TableCell>{item.dateBooked}</TableCell>
                   <TableCell>{item.type}</TableCell>
+                  <TableCell>{item.selected}</TableCell>
                 </TableRow>
               ))}
             </TableBody>
