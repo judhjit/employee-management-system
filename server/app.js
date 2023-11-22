@@ -92,15 +92,17 @@ const port = process.env.DEV_PORT || process.env.PROD_PORT || 3000;
 server.listen(port, () => {
     logger.info(`Server listening on port ${port}`);
 });
-// app.listen(port, () => {
-//     logger.info(`Server listening on port ${port}`);
-// });
 
 io.on('connection', (socket) => {
-    logger.info('User connected', socket.id);
+    logger.info(`User connected with socket id ${socket.id}`);
     socket.on('disconnect', () => {
-        logger.info('Socket disconnected', socket.id);
+        logger.info(`User disconnected with socket id ${socket.id}`);
+    });
+    socket.on('newsfeed:modified', (userId) => {
+        logger.info(`Newsfeed modified by user ${userId.userId}`);
+        socket.broadcast.emit('newsfeed:refresh');
     });
 });
+
 
 module.exports = app;

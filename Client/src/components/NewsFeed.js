@@ -21,7 +21,7 @@ import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import Fab from "@mui/material/Fab";
 import api from "../api";
 
-const NewsFeed = ({ isNewsadmin, isAdmin }) => {
+const NewsFeed = ({ userId, isNewsadmin, isAdmin, socket }) => {
   const [posts, setPosts] = useState([]);
   const [newPostTitle, setNewPostTitle] = useState("");
   const [newPostDescription, setNewPostDescription] = useState("");
@@ -52,6 +52,10 @@ const NewsFeed = ({ isNewsadmin, isAdmin }) => {
     fetchData();
   }, []);
 
+  socket.on("newsfeed:refresh", () => {
+    fetchData();
+  });
+
   // Function to handle creating a new post
   const handleCreatePost = async (newPostTitle, newPostDescription) => {
 
@@ -66,6 +70,7 @@ const NewsFeed = ({ isNewsadmin, isAdmin }) => {
         title: newPostTitle,
         body: newPostDescription,
       });
+      socket.emit("newsfeed:modified", {userId: userId});
       fetchData();
     } catch (error) {
       console.error('Error posting data:', error);
@@ -82,6 +87,7 @@ const NewsFeed = ({ isNewsadmin, isAdmin }) => {
       response = await api.post('/newsadmin/deletenews', {
         newsId: newsId,
       });
+      socket.emit("newsfeed:modified", {userId: userId});
       fetchData();
     } catch (error) {
       console.error('Error deleting data:', error);
@@ -116,6 +122,7 @@ const NewsFeed = ({ isNewsadmin, isAdmin }) => {
         title: title,
         body: text,
       });
+      socket.emit("newsfeed:modified", {userId: userId});
       fetchData();
     } catch (error) {
       console.error('Error editing data:', error);
