@@ -10,6 +10,7 @@ import {
   faNewspaper,
   faSignOutAlt,
   faUserCircle,
+  faHome,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Navigate, useNavigate } from "react-router-dom";
@@ -168,6 +169,13 @@ const Navbar = ({
                 style={{ marginRight: "8px" }}
               />
               Profile
+            </MenuItem>
+            <MenuItem component={Link} to="/landingpage">
+              <FontAwesomeIcon
+                icon={faHome}
+                style={{ marginRight: "8px" }}
+              />
+              Home
             </MenuItem>
             <MenuItem onClick={handleLogout} >
               <FontAwesomeIcon

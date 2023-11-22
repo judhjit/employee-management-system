@@ -108,8 +108,10 @@ import './Profile.css'
 const Profile = ({ user }) => {
 
   const profileContainerStyle = {
-    marginLeft: '50px',
-    marginTop: '20px',
+    // marginLeft: '50px',
+    padding:'24px',
+    marginTop: '40px',
+    margin:'0 auto',
     overflow: 'hidden',
     display: 'flex',
     flexDirection: 'row',
@@ -135,8 +137,9 @@ const Profile = ({ user }) => {
   const headingStyle = {
     fontSize: '30px',
     textAlign: 'left',
-    fontWeight: '500',
+    fontWeight: '900',
     marginLeft: '90px',
+    marginTop:'40px',
   };
 
   const dataContainerStyle = {
@@ -189,7 +192,7 @@ const Profile = ({ user }) => {
       <div style={dataContainerStyle}>
 
         <h style={headingStyle}>
-          <span style={{ color: '#0071BA' }}>Personal  </span>
+          <span>Personal  </span>
           <span>Information</span>
         </h>
         <Avatar alt="Profile Avatar" sx={avatarStyle}>
