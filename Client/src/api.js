@@ -36,7 +36,7 @@ api.interceptors.response.use(
             originalRequest._retry = true;
 
             try {
-                const response = await axios.post('/refresh');
+                const response = await api.post('/refresh');
                 const { accessToken, ttl } = response.data;
                 const date = new Date();
                 const ttlNum = Number(ttl) * 1000;
@@ -56,7 +56,7 @@ api.interceptors.response.use(
                 localStorage.removeItem('user');
                 console.log('Redirecting to login page');
                 // window.location.href = '/login';
-                // window.location.href = '/';
+                window.location.href = '/';
             }
         }
 
