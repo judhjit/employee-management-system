@@ -7,9 +7,9 @@ import './Layout.css'
 const Login = ({ showNewsFeed, setShowNewsFeed, isUser, setisUser, setUser }) => {
   const navigate = useNavigate();
   // console.log("isUser", isUser);
-  // if(isUser){
-  //   navigate('/landingpage');
-  // }
+  if(isUser){
+    navigate('/landingpage');
+  }
   const [formData, setFormData] = useState({
     email: '',
     password: '',

@@ -142,7 +142,7 @@ function App() {
                   height: "664px"
                 }}
               >
-                <NewsFeed style={{ height: "100%" }} isNewsadmin={user.isNewsAdmin} isAdmin={user.isAdmin} />
+                <NewsFeed style={{ height: "100%" }} isNewsadmin={user.isNewsAdmin} isAdmin={user.isAdmin}/>
               </div>
 
             )}

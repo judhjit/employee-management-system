@@ -14,32 +14,28 @@ const CurrentBookings = () => {
   let dates = [];
 
   const [data, setData] = useState(initialData);
-  const [editIndex, setEditIndex] = useState(null);
-  const [editedCab, setEditedCab] = useState('9:00am-5:00pm');
-  const [editedMeal, setEditedMeal] = useState('Veg');
+
+  const fetchData = async () => {
+    let response;
+    try {
+      response = await api.post('/user/getbookings', {
+        isDeskRequired: true,
+        isCabRequired: true,
+        isFoodRequired: true,
+      });
+      console.log(response.data);
+      setData([...response.data]);
+    } catch (error) {
+      if (error.response.status === 404) {
+        console.log("No data found!");
+        setData([]);
+      } else {
+        console.error('Error fetching data:', error);
+      }
+    }
+  };
 
   useEffect(() => {
-    const fetchData = async () => {
-      let response;
-      try {
-        response = await api.post('/user/getbookings', {
-          isDeskRequired: true,
-          isCabRequired: true,
-          isFoodRequired: true,
-          // startDate: new Date(),
-          // endDate: new Date(),
-        });
-        console.log(response.data);
-        setData([...response.data]);
-      } catch (error) {
-        if (error.response.status === 404) {
-          console.log("No data found!");
-          setData([...data]);
-        } else {
-          console.error('Error fetching data:', error);
-        }
-      }
-    };
     fetchData();
   }, []);
 
@@ -57,6 +53,7 @@ const CurrentBookings = () => {
         modifyFood: false,
         workSlot: newValue,
       });
+      fetchData();
     } catch (error) {
       console.error(error);
     }
@@ -74,30 +71,11 @@ const CurrentBookings = () => {
         modifyFood: true,
         preference: newValue,
       });
+      fetchData();
     } catch (error) {
       console.error(error);
     }
   };
-
-  // const handleReject = async (userId) => {
-  //   let response;
-  //   try {
-  //     response = await api.patch('/admin/togglenewsadmin', {
-  //       userId: userId,
-  //       isNewsAdmin: false
-  //     });
-  //     setRequests([...requests.filter((request) => request.userId !== userId)]);
-  //   } catch (error) {
-  //     console.error('Error fetching data:', error);
-  //   }
-  // };
-
-
-
-
-
-
-
 
   const handleCancel = async (dates, type) => {
     let response;
@@ -112,6 +90,7 @@ const CurrentBookings = () => {
           cancelCab: true,
           cancelFood: true,
         });
+        fetchData();
         // setData([...data.filter((booking) => booking.dateBooked !== dates[0])]);
       } catch (error) {
         console.error(error);
@@ -125,6 +104,7 @@ const CurrentBookings = () => {
           cancelCab: true,
           cancelFood: false,
         });
+        fetchData();
         // setData([...data.filter((booking) => booking.dateBooked !== dates[0])]);
       } catch (error) {
         console.error(error);
@@ -138,6 +118,7 @@ const CurrentBookings = () => {
           cancelCab: false,
           cancelFood: true,
         });
+        fetchData();
         // setData([...data.filter((booking) => booking.dateBooked !== dates[0])]);
       } catch (error) {
         console.error(error);

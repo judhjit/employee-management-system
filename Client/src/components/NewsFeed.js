@@ -30,26 +30,25 @@ const NewsFeed = ({ isNewsadmin, isAdmin }) => {
   const [editedTitle, setEditedTitle] = useState("");
   const [showInputArea, setShowInputArea] = useState(false);
   const [expandedPostId, setExpandedPostId] = useState(null);
-  // const [anchorEl, setAnchorEl] = useState(null);
   const [anchorElMap, setAnchorElMap] = useState({});
 
+  const fetchData = async () => {
+    let response;
+    try {
+      response = await api.get('/user/news');
+      console.log(response.data);
+      setPosts([...response.data]);
+    } catch (error) {
+      if (error.response.status === 404) {
+        console.log("No posts found!");
+        setPosts([]);
+      } else {
+        console.error('Error fetching data:', error);
+      }
+    }
+  };
 
   useEffect(() => {
-    const fetchData = async () => {
-      let response;
-      try {
-        response = await api.get('/user/news');
-        console.log(response.data);
-        setPosts([...response.data]);
-      } catch (error) {
-        if (error.response.status === 404) {
-          console.log("No posts found!");
-          setPosts([...posts]);
-        } else {
-          console.error('Error fetching data:', error);
-        }
-      }
-    };
     fetchData();
   }, []);
 
@@ -67,19 +66,11 @@ const NewsFeed = ({ isNewsadmin, isAdmin }) => {
         title: newPostTitle,
         body: newPostDescription,
       });
-      // setPosts([...posts.filter((request) => request.newsId !== newsId)]);
+      fetchData();
     } catch (error) {
       console.error('Error posting data:', error);
     }
 
-    // const newPostObj = {
-    //   id: Date.now(),
-    //   title: newPostTitle,
-    //   description: newPostDescription,
-    //   date: new Date().toLocaleDateString(),
-    // };
-
-    // setPosts([...posts, newPostObj]);
     setNewPostTitle("");
     setNewPostDescription("");
   };
@@ -91,33 +82,15 @@ const NewsFeed = ({ isNewsadmin, isAdmin }) => {
       response = await api.post('/newsadmin/deletenews', {
         newsId: newsId,
       });
-      // setPosts([...posts.filter((post) => post.newsId !== newsId)]);
+      fetchData();
     } catch (error) {
       console.error('Error deleting data:', error);
     }
-
-    // const newPostObj = {
-    //   id: Date.now(),
-    //   title: newPostTitle,
-    //   description: newPostDescription,
-    //   date: new Date().toLocaleDateString(),
-    // };
-
-    // setPosts([...posts, newPostObj]);
-    // setNewPostTitle("");
-    // setNewPostDescription("");
-    // setAnchorEl(null);
     setAnchorElMap((prevAnchorElMap) => ({
       ...prevAnchorElMap,
       [newsId]: null,
     }));
   };
-
-  // handle deleting a post
-  // const handleDeletePost = (postId) => {
-  //   setPosts(posts.filter((post) => post.id !== postId));
-  //   setAnchorEl(null);
-  // };
 
   // handle editing a post
   const handleEditButton = (postId, title, text) => {
@@ -128,7 +101,6 @@ const NewsFeed = ({ isNewsadmin, isAdmin }) => {
       ...prevAnchorElMap,
       [postId]: true,
     }));
-    // setAnchorEl(null);
   };
 
   // handle editing a post
@@ -144,44 +116,19 @@ const NewsFeed = ({ isNewsadmin, isAdmin }) => {
         title: title,
         body: text,
       });
-      // setPosts([...posts.filter((post) => post.newsId !== newsId)]);
+      fetchData();
     } catch (error) {
       console.error('Error editing data:', error);
     }
 
-    // const newPostObj = {
-    //   id: Date.now(),
-    //   title: newPostTitle,
-    //   description: newPostDescription,
-    //   date: new Date().toLocaleDateString(),
-    // };
-
-    // setPosts([...posts, newPostObj]);
-    // setNewPostTitle("");
-    // setNewPostDescription("");
     setEditingPostId(null);
     setEditedTitle("");
     setEditedText("");
-    // setAnchorEl(null);
     setAnchorElMap((prevAnchorElMap) => ({
       ...prevAnchorElMap,
       [newsId]: null,
     }));
   };
-
-  //save changes after editing a post
-  // const handleSavePost = (postId) => {
-  //   setPosts(
-  //     posts.map((post) =>
-  //       post.id === postId
-  //         ? { ...post, title: editedTitle, description: editedText }
-  //         : post
-  //     )
-  //   );
-  //   setEditingPostId(null);
-  //   setEditedTitle("");
-  //   setEditedText("");
-  // };
 
   const toggleInputArea = () => {
     setShowInputArea(!showInputArea);
