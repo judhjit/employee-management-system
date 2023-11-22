@@ -23,13 +23,7 @@ import Profile from "./components/Profile";
 import UserAnalytics from "./components/UserAnalytics";
 import api from "./api";
 
-import io from "socket.io-client";
-
-
 function App() {
-  const socket = io("http://localhost:3001", {
-    transports: ["websocket", "polling"]
-  });
   const [showNewsFeed, setShowNewsFeed] = useState(false);
   const [selectedDates, setSelectedDates] = useState([]);
   const [nightLight, setNightLight] = useState(false);
@@ -148,7 +142,7 @@ function App() {
                   height: "664px"
                 }}
               >
-                <NewsFeed style={{ height: "100%" }} isNewsadmin={user.isNewsAdmin} isAdmin={user.isAdmin} socket={socket}/>
+                <NewsFeed style={{ height: "100%" }} isNewsadmin={user.isNewsAdmin} isAdmin={user.isAdmin}/>
               </div>
 
             )}
