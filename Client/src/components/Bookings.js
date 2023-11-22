@@ -325,41 +325,46 @@ import DeskBooking from "./DeskBooking";
 import LunchAndCabbook from "./LunchAndCabbook";
 
 const useStyles = styled((theme) => ({
-    root: {
-      
-      display: "flex",
-      flexDirection: "row",
-      marginLeft: "auto",
-      // Align to the right side
-      paddingRight: theme.spacing(6), // Add right padding for better spacing
-    },
-    button: {
-      marginRight: theme.spacing(1),
-    },
-    instructions: {
-      marginTop: theme.spacing(1),
-      marginBottom: theme.spacing(1),
-    },
-    stepLabel: {
-      marginTop: theme.spacing(1),
-      textAlign: "right", // Align text to the right
-    },
-    stepIcon: {
-      width: theme.spacing(4), // Adjust the size as needed
-      height: theme.spacing(4), // Adjust the size as needed
-    },
-  }));
-  
+  root: {
+
+    display: "flex",
+    flexDirection: "row",
+    marginLeft: "auto",
+    // Align to the right side
+    paddingRight: theme.spacing(6), // Add right padding for better spacing
+  },
+  button: {
+    marginRight: theme.spacing(1),
+  },
+  instructions: {
+    marginTop: theme.spacing(1),
+    marginBottom: theme.spacing(1),
+  },
+  stepLabel: {
+    marginTop: theme.spacing(1),
+    textAlign: "right", // Align text to the right
+  },
+  stepIcon: {
+    width: theme.spacing(4), // Adjust the size as needed
+    height: theme.spacing(4), // Adjust the size as needed
+  },
+}));
+
 
 function getSteps() {
   return ["Desk Booking", "Lunch And Cab Booking", "Create an ad"];
 }
 
-const Bookings = ({ selectedDates }) => {
+const Bookings = ({ selectedDates, isUser }) => {
   const classes = useStyles();
   const [activeStep, setActiveStep] = React.useState(0);
   const [skipped, setSkipped] = React.useState(new Set());
   const steps = getSteps();
+
+  if (!isUser) {
+    window.location.href = "/";
+    return null;
+  }
 
   const isStepOptional = (step) => {
     return step === 1;
@@ -415,8 +420,8 @@ const Bookings = ({ selectedDates }) => {
   }
 
   return (
-    <div className={classes.root} style={{ width: '1100px'}}>
-      <Stepper activeStep={activeStep} alternativeLabel style={{marginLeft:'780px',zIndex:'1',position:'relative',marginTop:'64px'}}>
+    <div className={classes.root} style={{ width: '1100px' }}>
+      <Stepper activeStep={activeStep} alternativeLabel style={{ marginLeft: '780px', zIndex: '1', position: 'relative', marginTop: '64px' }}>
         {steps.map((label, index) => (
           <Step key={label} >
             <StepLabel className={classes.stepLabel} >
