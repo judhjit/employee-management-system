@@ -221,11 +221,13 @@ const MultiDateCalendar = ({ showNewsFeed, selectedDates, setSelectedDates, user
         backgroundColor: 'white',
         height: '664px',
         width: '76.1vw',
+       
+        
 
 
       }}
     >
-      <div style={{ flex: 0, height: '5%', backgroundColor: '#003A64' }}>
+      <div style={{ flex: 0, height: '5%', width:'100vw', backgroundColor: '#003A64' }}>
         <marquee behavior="scroll" direction="left" height="30px" style={{ color: 'white', fontSize: '12px' }}>
           <p className='text-update'>As the world's leading derivatives marketplace, CME Group enables clients to trade futures, options, cash and OTC markets, optimize portfolios, and analyze data – empowering market participants worldwide to efficiently manage risk and capture opportunities. </p>
         </marquee>
@@ -260,7 +262,7 @@ const MultiDateCalendar = ({ showNewsFeed, selectedDates, setSelectedDates, user
           <Button
             variant="contained"
             color="primary"
-            style={{ height: '2vw', width: '1.5vw', marginTop: '-60px', marginLeft: '790px' }}
+            style={{ height: '2vw', width: '1.5vw', marginTop: '-60px', marginLeft: '650px' }}
             onClick={() => {
               console.log(user);
               navigate('/bookings');
@@ -271,7 +273,10 @@ const MultiDateCalendar = ({ showNewsFeed, selectedDates, setSelectedDates, user
         </div>
       </div>
       {/* <CurrentBookings /> */}
+      <div style={{backgroundColor:'#F0F8FF', width:'100vw'}}>
       <CurrentBookings />
+      </div>
+      
     </div>
     
   );
