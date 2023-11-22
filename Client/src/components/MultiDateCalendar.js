@@ -162,24 +162,57 @@
 
 
 
-import React, { useState } from 'react';
+
+
+
+import React, { useState, useEffect } from 'react';
 import Calendar from 'react-calendar';
-import { Box, Button} from '@mui/material';
+import { Box, Button } from '@mui/material';
 import 'react-calendar/dist/Calendar.css';
 import './MultiDateCalendar.css';
-import { useNavigate } from "react-router-dom";
+import { useNavigate } from 'react-router-dom';
 import CurrentBookings from './CurrentBookings';
+import api from '../api';
 
-const MultiDateCalendar = ({ showNewsFeed, selectedDates, setSelectedDates, user, setUser, isUser }) => {
+const MultiDateCalendar = ({ showNewsFeed, selectedDates, setSelectedDates, user, setUser, isUser, socket }) => {
   const navigate = useNavigate();
-  
-  if(!isUser || !user.userId || user.userId === ''){
-    navigate("/");
-    // navigate("/login");
-    // window.location.href = "/login";
-  }
+  const [newsTitles, setNewsTitles] = useState([]);
 
-  // console.log(showNewsFeed);
+  useEffect(() => {
+    const fetchNewsTitles = async () => {
+      try {
+        const response = await api.get('/user/news');
+        setNewsTitles(response.data.map((post) => post.title));
+      } catch (error) {
+        console.error('Error fetching news data:', error);
+      }
+    };
+
+    const handleNewsUpdate = ({ title }) => {
+      setNewsTitles((prevTitles) => [...prevTitles, title]);
+    };
+
+    const handleNewsDeletion = ({ newsId }) => {
+      setNewsTitles((prevTitles) => prevTitles.filter((post) => post.newsId !== newsId));
+    };
+
+    fetchNewsTitles();
+
+    if (showNewsFeed) {
+      socket.on('newsfeed:refresh', fetchNewsTitles);
+      socket.on('news:updated', handleNewsUpdate);
+      socket.on('news:deleted', handleNewsDeletion);
+    }
+
+    return () => {
+      if (showNewsFeed) {
+        socket.off('newsfeed:refresh', fetchNewsTitles);
+        socket.off('news:updated', handleNewsUpdate);
+        socket.off('news:deleted', handleNewsDeletion);
+      }
+    };
+  }, [showNewsFeed, socket]);
+
   const handleDateClick = (date) => {
     if (date.getDay() === 0) {
       return;
@@ -201,59 +234,36 @@ const MultiDateCalendar = ({ showNewsFeed, selectedDates, setSelectedDates, user
 
 
     setUser((prevUser) => ({ ...prevUser, selectedDate: newSelectedDates }));
+    
   };
 
 
   if (!user || !user.userId || user.userId === '') {
-    navigate("/login");
-    // window.location.href = "/login";
+    navigate('/login');
   }
 
-  // if(!user.isAdmin){
-  //   return (
-  //     <div>Unauthorized!</div>
-  //   )
-  // }
 
   return (
-    <div
-      style={{
-        backgroundColor: 'white',
-        height: '664px',
-        width: '76.1vw',
-       
-        
-
-
-      }}
-    >
-      <div style={{ flex: 0, height: '5%', width:'100vw', backgroundColor: '#003A64' }}>
-        <marquee behavior="scroll" direction="left" height="30px" style={{ color: 'white', fontSize: '12px' }}>
-          <p className='text-update'>As the world's leading derivatives marketplace, CME Group enables clients to trade futures, options, cash and OTC markets, optimize portfolios, and analyze data – empowering market participants worldwide to efficiently manage risk and capture opportunities. </p>
+    <div style={{ backgroundColor: 'white', height: '664px', width: '76.1vw' }}>
+      <div style={{ flex: 0, height: '5%', width: '100vw', backgroundColor: '#003A64' }}>
+        <marquee behavior="scroll" direction="left" height="30px" vspace="4" style={{ color: 'yellow', fontSize: '16px' }}>
+          {newsTitles.map((title, index) => (
+            <span key={index}>{title}{index < newsTitles.length - 1 && '  |  '}</span>
+          ))}
         </marquee>
       </div>
-      <div >
-
-        <div style={{
-          fontSize: '29px',
-          fontFamily: 'poppins',
-          fontWeight: 600,
-          marginLeft: '90px',
-          paddingTop: '20px',
-          color: '#0071BA'
-        }}>
+      <div>
+        <div style={{ fontSize: '29px', fontFamily: 'poppins', fontWeight: 600, marginLeft: '90px', paddingTop: '20px', color: '#0071BA' }}>
           <span style={{ color: '#0071BA' }}>Plan </span>
           <span>Your Day:</span>
         </div>
-
-
-        <div className="calendar" >
+        <div className="calendar">
           <Calendar
             onClickDay={handleDateClick}
             tileDisabled={({ date }) => date.getDay() === 0}
             tileClassName={({ date }) =>
               selectedDates.find(
-                selectedDate => selectedDate.toDateString() === date.toDateString()
+                (selectedDate) => selectedDate.toDateString() === date.toDateString()
               )
                 ? 'selected'
                 : ''
@@ -272,16 +282,13 @@ const MultiDateCalendar = ({ showNewsFeed, selectedDates, setSelectedDates, user
           </Button>
         </div>
       </div>
-      {/* <CurrentBookings /> */}
-      <div style={{backgroundColor:'#F0F8FF', width:'100vw'}}>
-      <CurrentBookings />
+      <div style={{ backgroundColor: '#F0F8FF', width: '100vw' }}>
+        <CurrentBookings />
       </div>
-      
+
     </div>
-    
+
   );
 };
 
 export default MultiDateCalendar;
-
-
