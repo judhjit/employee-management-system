@@ -11,61 +11,52 @@ import RadioGroup from "@mui/material/RadioGroup";
 import FormControlLabel from "@mui/material/FormControlLabel";
 import { Box, CardActions } from '@mui/material';
 
-const LunchAndCabForm = ({ active,setSelectedMeal,setSelectedCab ,selectedMeal,selectedCab,bookings,setBookings}) => {
-    const[activeLunch,setActiveLunch]=useState(selectedMeal[active]);
-    const [preferences, setPreferences] = useState(Array(selectedMeal.length).fill(''));
-    const [selectedSlot, setSelectedSlot] = useState('');
-    console.log(selectedCab);
-    console.log(selectedMeal);
+const LunchAndCabFormAll = ({ setSelectedMeal,setSelectedCab ,selectedMeal,selectedCab,bookings,setBookings,selectedDates}) => {
+    const [selectedLunch, setSelectedLunch] = useState("   ");
+  const [selectedSlot, setSelectedSlot] = useState("");
 
-    
-   
-    const handleLunchChange = (event) => {
-      const value = event.target.value;
-      setActiveLunch(value);
-  
-      setPreferences((prevPreferences) => {
-        const newPreferences = [...prevPreferences];
-        newPreferences[active] = value;
-        return newPreferences;
-      });
-    };
-  
-    const handleSlotChange = (event) => {
-      const value = event.target.value;
-      setSelectedSlot(value);
-  
-      setSelectedCab((prevSlots) => {
-        const newSlots = [...prevSlots];
-        newSlots[active] = value;
-        return newSlots;
-      });
-    };
-  
-    useEffect(() => {
-      setSelectedMeal((prevArray) => {
-        const newArray = [...prevArray];
-        newArray[active] = activeLunch;
-        return newArray;
-      });
-    }, [activeLunch, active, setSelectedMeal]);
-  
-    useEffect(() => {
-      // Check if all preferences and slots are selected
-      if (preferences.every(preference => preference !== '') && selectedCab.every(slot => slot !== '')) {
-        // Update the bookings state
-        setBookings((prevBookings) => {
-          const newBookings = { ...prevBookings };
-          newBookings.preference = [...preferences];
-          newBookings.workSlot = [...selectedCab];
-          return newBookings;
-        });
-      }
-    }, [preferences, selectedCab, setBookings]);
-   
-    
-  
+  const handleLunchChange = (event) => {
+    setSelectedLunch(event.target.value);
+    setSelectedMeal(selectedMeal.fill(event.target.value))
+    // setBookings((prevBookings) => ({
+    //     ...prevBookings,
+    //     preference: selectedMeal,
+    //   }));
+    console.log(selectedMeal)
+  };
 
+  const handleSlotChange = (event) => {
+    setSelectedSlot(event.target.value);
+    setSelectedCab(selectedCab.fill(event.target.value))
+    // setBookings((prevBookings) => ({
+    //     ...prevBookings,
+    //     workSlot: Array(selectedDates.length).fill(selectedSlot),
+    //   }));
+    console.log(selectedCab)
+  };
+
+  useEffect(() => {
+    // // Check if all preferences are selected
+    // if (selectedCab.every(slot => slot !== '') && selectedLunch !== '') {
+    //   console.log("Updating bookings with:", selectedCab, selectedLunch);
+    //   // Update the bookings state
+    //   setBookings((prevBookings) => {
+    //     const newBookings = { ...prevBookings };
+    //     newBookings.workSlot = [...selectedCab];
+    //     newBookings.preference = selectedLunch;
+    //     return newBookings;
+    //   });
+    // }
+    setBookings((prevBookings) => ({
+        ...prevBookings,
+        workSlot: Array(selectedDates.length).fill(selectedSlot),
+      }));
+      setBookings((prevBookings) => ({
+        ...prevBookings,
+        preference: selectedMeal,
+      }));
+
+  }, [selectedSlot, selectedLunch]);
   
   return (
     <div style={{ display: "flex", flexDirection: "row", flexWrap: "wrap" }}>
@@ -116,11 +107,11 @@ const LunchAndCabForm = ({ active,setSelectedMeal,setSelectedCab ,selectedMeal,s
               </div>
             </CardContent>
             <CardActions>
-            <RadioGroup
+              <RadioGroup
                 aria-label="lunch-type"
                 name="lunch-type"
-                value={activeLunch}
-            onChange={handleLunchChange}
+                value={selectedLunch}
+                onChange={handleLunchChange}
                 style={{
                   flexDirection: "column",
                   paddingLeft: "10px",
@@ -138,7 +129,6 @@ const LunchAndCabForm = ({ active,setSelectedMeal,setSelectedCab ,selectedMeal,s
                   control={<Radio />}
                   label="Veg"
                   style={{ fontFamily: "poppins" }}
-
                 />
                 <FormControlLabel
                   value="Non-Veg"
@@ -222,4 +212,4 @@ const LunchAndCabForm = ({ active,setSelectedMeal,setSelectedCab ,selectedMeal,s
   )
 }
 
-export default LunchAndCabForm;
+export default LunchAndCabFormAll;

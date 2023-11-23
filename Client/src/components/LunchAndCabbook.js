@@ -1,5 +1,5 @@
 import * as React from "react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import PropTypes from "prop-types";
 import Tabs from "@mui/material/Tabs";
 import Tab from "@mui/material/Tab";
@@ -20,6 +20,8 @@ import "./LunchAndCabbook.css";
 import { Divider } from "@mui/material";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import LunchAndCabForm from "./LunchAndCabForm";
+import LunchAndCabFormAll from "./LunchAndCabFormAll";
+
 
 function CustomTabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -60,20 +62,42 @@ export default function LunchAndCabbook({
   onNext,
   onSkip,
   onBack,
-  isUser
+  bookings, setBookings
 }) {
   const [value, setValue] = React.useState(0);
   const [selectedPreferences, setSelectedPreferences] = useState({});
   const [selectedCab, setSelectedCab] = useState(Array(selectedDates.length).fill(null));
   const [selectedMeal, setSelectedMeal] = useState(Array(selectedDates.length).fill(null));
-  
+
+  console.log("bookingslunchandcab", bookings);
+
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
 
+  useEffect(() => {
+    const containsNonNullMeal = selectedMeal.some(element => element !== null);
+    if (containsNonNullMeal) {
+      setBookings((prevBookings) => ({
+        ...prevBookings,
+        isFoodRequired: true
+      }));
+
+    }
+
+    const containsNonNullCab = selectedCab.some(element => element !== null);
+    if (containsNonNullCab) {
+      setBookings((prevBookings) => ({
+        ...prevBookings,
+        isCabRequired: true
+      }));
+
+    }
+  }, [selectedMeal, selectedCab])
+
   const [selectedSlot, setSelectedSlot] = useState("Morning");
-  const [selectedLunch, setSelectedLunch] = useState("Veg");
-  const [active, setActive] = useState(0);
+  const [selectedLunch, setSelectedLunch] = useState("none");
+  const [active, setActive] = useState(-1);
   const [selectAllDates, setSelectAllDates] = useState(false);
 
   const handleSlotChange = (event) => {
@@ -83,18 +107,14 @@ export default function LunchAndCabbook({
   const handleActiveStatus = (index) => {
     setActive(index);
   };
-  
+
   const handleLunchChange = (event, dateIndex) => {
     const updatedPreferences = { ...selectedPreferences };
     updatedPreferences[dateIndex] = event.target.value;
     setSelectedPreferences(updatedPreferences);
   };
-  
+  const currentDate = new Date();
 
-  if (!isUser) {
-    window.location.href = "/";
-    return null;
-  }
 
   return (
     <Box sx={{ width: "70%", fontFamily: "poppins" }}>
@@ -133,6 +153,8 @@ export default function LunchAndCabbook({
               <div key={index}>
                 <Button
                   variant="contained"
+                  disabled={new Date(d) - currentDate < 14 * 24 * 60 * 60 * 1000}
+
                   onClick={() => handleActiveStatus(index)}
                   style={{
                     paddingLeft: "100px",
@@ -168,11 +190,12 @@ export default function LunchAndCabbook({
               }
             </div> */}
           <Box style={{ display: "flex", flexDirection: "row", flexWrap: "wrap" }}>
-            <LunchAndCabForm setSelectedCab={setSelectedCab} setSelectedMeal={setSelectedMeal} selectedMeal={selectedMeal} selectedCab={selectedCab} />
+            <LunchAndCabForm active={active} setSelectedCab={setSelectedCab} setSelectedMeal={setSelectedMeal} selectedMeal={selectedMeal} selectedCab={selectedCab} bookings={bookings} setBookings={setBookings} />
             <Button
               variant="contained"
               style={{ marginTop: "70px", width: "150px", marginTop: "350px" }}
               onClick={onNext}
+
             >
               Submit{" "}
             </Button>
@@ -213,7 +236,7 @@ export default function LunchAndCabbook({
             <Box
               sx={{ display: "flex", flexDirection: "row", flexWrap: "wrap" }}
             >
-              <LunchAndCabForm setSelectedCab={setSelectedCab} setSelectedMeal={setSelectedMeal} selectedMeal={selectedMeal} selectedCab={selectedCab} />
+              <LunchAndCabFormAll setSelectedCab={setSelectedCab} setSelectedMeal={setSelectedMeal} selectedMeal={selectedMeal} selectedCab={selectedCab} bookings={bookings} setBookings={setBookings} active={active} selectedDates={selectedDates}/>
               <Button
                 style={{
                   marginLeft: "-51px",
@@ -232,7 +255,7 @@ export default function LunchAndCabbook({
                   marginTop: "70px",
                   width: "200px",
                   marginTop: "350px",
-                }}
+                }}onClick={onNext}
               >
                 Submit{" "}
               </Button>

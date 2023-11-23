@@ -3,7 +3,7 @@
 import { Tooltip } from '@mui/material';
 import React from 'react'
 
-const Table = ({ position, activeTable, setActiveTable, bookedTable}) => {
+const Table = ({ position, activeTable, setActiveTable, bookedTable,shouldUpdateSelectedSeat}) => {
     
     // console.log(activeTable)
     const isTableBooked = bookedTable.some(item => item.seat === position.name);
@@ -38,6 +38,7 @@ const Table = ({ position, activeTable, setActiveTable, bookedTable}) => {
             }} onClick={() => {
                 if (!bookedTable.some(item => item.seat === position.name)) {
                     setActiveTable(position.name);
+                    shouldUpdateSelectedSeat.current = true;
                 }              
             }}
             disabled={bookedTable.some(item => item.seat === position.name)}

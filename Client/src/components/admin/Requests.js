@@ -17,7 +17,8 @@ import {
 } from "@mui/material";
 import * as XLSX from "xlsx";
 import "./Requests.css";
-import SearchIcon from "@mui/icons-material/Search";
+// import SearchIcon from "@mui/icons-material/Search";
+import FileDownloadIcon from "@mui/icons-material/FileDownload";
 import Fab from "@mui/material/Fab";
 import dayjs from "dayjs";
 import { DemoContainer } from "@mui/x-date-pickers/internals/demo";
@@ -40,29 +41,33 @@ const Requests = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await api.post(
-          '/admin/getallbookings',
-          {
-            isDeskRequired: isDeskRequired,
-            isCabRequired: isCabRequired,
-            isFoodRequired: isFoodRequired,
-            userId: userId,
-            startDate: startDate?.format('YYYY-MM-DD'),
-            endDate: endDate?.format('YYYY-MM-DD'),
-          }
-        );
+        const response = await api.post("/admin/getallbookings", {
+          isDeskRequired: isDeskRequired,
+          isCabRequired: isCabRequired,
+          isFoodRequired: isFoodRequired,
+          userId: userId,
+          startDate: startDate?.format("YYYY-MM-DD"),
+          endDate: endDate?.format("YYYY-MM-DD"),
+        });
         console.log(response.data);
         setInitialData(response.data);
       } catch (error) {
-        if(error.response && error.response.status === 404) {
+        if (error.response && error.response.status === 404) {
           setInitialData([]);
         }
-        console.error('Error fetching data:', error);
+        console.error("Error fetching data:", error);
       }
     };
 
     fetchData();
-  }, [isDeskRequired, isCabRequired, isFoodRequired, userId, startDate, endDate]);
+  }, [
+    isDeskRequired,
+    isCabRequired,
+    isFoodRequired,
+    userId,
+    startDate,
+    endDate,
+  ]);
 
   const handleDateRangeChange = (e) => {
     const selectedValue = e.target.value;
@@ -86,49 +91,45 @@ const Requests = () => {
       default:
         newStartDate = null; // Fetch all data
         newEndDate = null;
-
     }
     setStartDate(newStartDate);
     setEndDate(newEndDate);
-
-  }
-
+  };
 
   const StyledDatePicker = styled(DatePicker)({
-    '& .MuiInputBase-root': {
-      height: '53px',
+    "& .MuiInputBase-root": {
+      height: "53px",
     },
   });
-
 
   const exportToExcel = () => {
     const ws = XLSX.utils.json_to_sheet(initialData);
     const wb = XLSX.utils.book_new();
-    XLSX.utils.book_append_sheet(wb, ws, 'initial data');
-    XLSX.writeFile(wb, 'bookings.xlsx');
+    XLSX.utils.book_append_sheet(wb, ws, "initial data");
+    XLSX.writeFile(wb, "bookings.xlsx");
   };
 
   const handleServiceChange = (e) => {
     const selectedValue = e.target.value;
 
-    if (selectedValue === 'Car') {
+    if (selectedValue === "Car") {
       setIsDeskRequired(false);
       setIsCabRequired(true);
       setIsFoodRequired(false);
-    } else if (selectedValue === 'Desk') {
+    } else if (selectedValue === "Desk") {
       setIsDeskRequired(true);
       setIsCabRequired(false);
       setIsFoodRequired(false);
-    } else if (selectedValue === 'Lunch') {
+    } else if (selectedValue === "Lunch") {
       setIsDeskRequired(false);
       setIsCabRequired(false);
       setIsFoodRequired(true);
-    } else if (selectedValue === 'all') {
+    } else if (selectedValue === "all") {
       setIsDeskRequired(true);
       setIsCabRequired(true);
       setIsFoodRequired(true);
     }
-  }
+  };
 
   return (
     <div
@@ -161,8 +162,11 @@ const Requests = () => {
             fontFamily: "poppins",
           }}
         >
-          <LocalizationProvider dateAdapter={AdapterDayjs} style={{ fontFamily: "poppins", height: '51px' }}>
-            <DemoContainer components={["DatePicker", "DatePicker"]} >
+          <LocalizationProvider
+            dateAdapter={AdapterDayjs}
+            style={{ fontFamily: "poppins", height: "51px" }}
+          >
+            <DemoContainer components={["DatePicker", "DatePicker"]}>
               <StyledDatePicker
                 label="Start Date"
                 value={startDate}
@@ -214,7 +218,8 @@ const Requests = () => {
             borderRadius: "4px",
             border: "1px solid #C3C3C3",
             marginTop: "0.6vw",
-          }} onChange={(e) => handleServiceChange(e)}
+          }}
+          onChange={(e) => handleServiceChange(e)}
         >
           <option value="all">All Services</option>
           <option value="Car">Cab</option>
@@ -233,7 +238,8 @@ const Requests = () => {
             borderRadius: "4px",
             border: "1px solid #C3C3C3",
             marginTop: "0.6vw",
-          }} onChange={(e) => handleDateRangeChange(e)}
+          }}
+          onChange={(e) => handleDateRangeChange(e)}
         >
           <option value="all">All Upcoming</option>
           <option value="1w">1 week</option>
@@ -247,9 +253,11 @@ const Requests = () => {
             marginLeft: "20px",
             backgroundColor: "#79C6F1",
             color: "white",
+            cursor: "pointer", 
           }}
+          onClick={exportToExcel} 
         >
-          <SearchIcon />
+          <FileDownloadIcon />
         </Fab>
       </div>
 
@@ -322,8 +330,8 @@ const Requests = () => {
             </TableBody>
           </Table>
         </TableContainer>
-        <div style={{ paddingLeft: '5vw' }}>
-          <Button
+        <div style={{ paddingLeft: "5vw" }}>
+          {/* <Button
 
             onClick={exportToExcel}
             style={{
@@ -335,11 +343,11 @@ const Requests = () => {
             }}
           >
             Export To Excel
-          </Button>
+          </Button> */}
         </div>
       </div>
     </div>
   );
 };
 
-export default Requests
+export default Requests;

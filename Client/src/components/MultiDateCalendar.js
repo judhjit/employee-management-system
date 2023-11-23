@@ -7,7 +7,7 @@ import { useNavigate } from 'react-router-dom';
 import CurrentBookings from './CurrentBookings';
 import api from '../api';
 
-const MultiDateCalendar = ({ showNewsFeed, selectedDates, setSelectedDates, user, setUser, isUser, socket }) => {
+const MultiDateCalendar = ({ showNewsFeed, selectedDates, setSelectedDates, user, setUser, isUser, bookings, setBookings, socket }) => {
   const navigate = useNavigate();
   const [newsTitles, setNewsTitles] = useState([]);
 
@@ -26,27 +26,9 @@ const MultiDateCalendar = ({ showNewsFeed, selectedDates, setSelectedDates, user
   };
 
   useEffect(() => {
-
-    // const handleNewsUpdate = ({ title }) => {
-    //   setNewsTitles((prevTitles) => [...prevTitles, title]);
-    // };
-
-    // const handleNewsDeletion = ({ newsId }) => {
-    //   setNewsTitles((prevTitles) => prevTitles.filter((post) => post.newsId !== newsId));
-    // };
-
     fetchNewsTitles();
-
     socket.on('newsfeed:refresh', fetchNewsTitles);
-
   }, []);
-
-
-  if (!isUser || !user.userId || user.userId === '') {
-    // navigate("/");
-    window.location.href = "/";
-    return null;
-  }
 
   // console.log(showNewsFeed);
   const handleDateClick = (date) => {
@@ -72,6 +54,24 @@ const MultiDateCalendar = ({ showNewsFeed, selectedDates, setSelectedDates, user
     setUser((prevUser) => ({ ...prevUser, selectedDate: newSelectedDates }));
 
   };
+
+
+  const handleBookButtonClick = () => {
+    
+    setBookings((prevBookings) => ({
+      ...prevBookings,
+      dates: [
+        ...prevBookings.dates,
+        ...selectedDates.map((selectedDate) => selectedDate.toISOString().slice(0, 10)),
+      ],
+    }));
+    
+    console.log(bookings);
+    // Navigate to the /bookings page
+    navigate('/bookings');
+  };
+
+
 
 
   if (!user || !user.userId || user.userId === '') {
@@ -111,10 +111,7 @@ const MultiDateCalendar = ({ showNewsFeed, selectedDates, setSelectedDates, user
             variant="contained"
             color="primary"
             style={{ height: '2vw', width: '1.5vw', marginTop: '-60px', marginLeft: '650px' }}
-            onClick={() => {
-              console.log(user);
-              navigate('/bookings');
-            }}
+            onClick={handleBookButtonClick}
           >
             Book
           </Button>
