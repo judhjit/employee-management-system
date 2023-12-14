@@ -55,30 +55,33 @@ const MultiDateCalendar = ({ showNewsFeed, selectedDates, setSelectedDates, user
 
   };
 
-
   const handleBookButtonClick = () => {
-    
     setBookings((prevBookings) => ({
       ...prevBookings,
       dates: [
         ...prevBookings.dates,
-        ...selectedDates.map((selectedDate) => selectedDate.toISOString().slice(0, 10)),
+        ...selectedDates.map((selectedDate) => {
+          const year = selectedDate.getFullYear();
+          const month = String(selectedDate.getMonth() + 1).padStart(2, '0');
+          const day = String(selectedDate.getDate()).padStart(2, '0');
+          return `${year}/${month}/${day}`;
+        }),
       ],
     }));
-    
+  
     console.log(bookings);
     // Navigate to the /bookings page
     navigate('/bookings');
   };
+  
+  
 
 
-
-
-  if (!user || !user.userId || user.userId === '') {
-    // navigate("/");
-    window.location.href = "/";
-    return null;
-  }
+  // if (!user || !user.userId || user.userId === '') {
+  //   // navigate("/");
+  //   window.location.href = "/";
+  //   return null;
+  // }
 
 
   return (
@@ -127,3 +130,5 @@ const MultiDateCalendar = ({ showNewsFeed, selectedDates, setSelectedDates, user
 };
 
 export default MultiDateCalendar;
+
+

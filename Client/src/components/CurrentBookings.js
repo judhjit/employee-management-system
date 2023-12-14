@@ -155,12 +155,12 @@ const CurrentBookings = (showNewsFeed) => {
         style={{
           width: "97vw", 
           padding: "0 10px", 
-          height: "480px",
+          height: "190px",
           marginTop:"3vh",
         }}
       >
         <Table stickyHeader>
-          <TableHead>
+          <TableHead >
             <TableRow
               // style={{
               //   backgroundColor: "#0071BA",
@@ -228,6 +228,7 @@ const CurrentBookings = (showNewsFeed) => {
                   backgroundColor: "#0071BA",
                   fontFamily: "poppins",
                   fontSize: "20px",
+                 
                 }}
               >
                 Modify

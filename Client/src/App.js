@@ -319,7 +319,10 @@ function App() {
                   width: "370px",
                   backgroundColor: "#004B81",
                   overflowY: "auto",
-                  height: "664px"
+                  height: "700px",
+                  zIndex:2,
+                  position:"relative"
+
                 }}
               >
                 <NewsFeed style={{ height: "100%" }} userId={user.userId} isNewsadmin={user.isNewsAdmin} isAdmin={user.isAdmin} socket={socket} />

@@ -147,7 +147,7 @@ const NewsFeed = ({ userId, isNewsadmin, isAdmin, socket }) => {
   };
 
   return (
-    <Container style={{ height: "calc(100vh - 20px)", overflowY: "auto" }}>
+    <Container style={{ height: "calc(100vh - 20px)", overflowY: "auto" ,zIndex:1,position:'relative'}}>
       <div
         style={{
           display: "flex",
