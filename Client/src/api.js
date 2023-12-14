@@ -68,7 +68,7 @@ api.interceptors.response.use(
         
         if(error.response.status === 401 && !originalRequest._retry && error.response.data.message === 'You are not logged in') {
             console.log("User is not logged in");
-            window.location.href = '/';
+            // window.location.href = '/';
             return Promise.reject(error);
         }
 

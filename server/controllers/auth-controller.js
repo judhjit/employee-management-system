@@ -32,10 +32,10 @@ async function signup(req, res, next) {
         return res.status(400).json({ message: "Email must be more than 13 characters" });
     }
     //verify that email belongs to abcgroup domain
-    if (!email.endsWith("@abcgroup.com")) {
-        childLogger.error("Email must belong to abcgroup domain", { service: service });
-        return res.status(400).json({ message: "Email must belong to abcgroup domain" });
-    }
+    // if (!email.endsWith("@abcgroup.com")) {
+    //     childLogger.error("Email must belong to abcgroup domain", { service: service });
+    //     return res.status(400).json({ message: "Email must belong to abcgroup domain" });
+    // }
     if (!password || password === "") {
         childLogger.error("Password not provided", { service: service });
         return res.status(400).json({ message: "Password not provided" });

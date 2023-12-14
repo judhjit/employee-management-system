@@ -17,7 +17,13 @@ async function handleRefreshToken(req, res) {
         return res.status(401).json({ message: 'You are not logged in' });
     }
     const refreshToken = cookies.jwt;
-    res.clearCookie('jwt', { httpOnly: true, sameSite: 'None', secure: true });
+    res.clearCookie('jwt', {
+        withCredentials: true,
+        httpOnly: true,
+        secure: true,
+        sameSite: 'None',
+        maxAge: Number(process.env.JWT_REFRESH_TOKEN_EXPIRATION),
+    });
     let foundUser;
     try {
         childLogger.info("Finding user with refresh token", { service: service });
@@ -78,7 +84,7 @@ async function handleRefreshToken(req, res) {
                 }
             }
 
-            if (err || foundUser.user_id !== decoded.userId){
+            if (err || foundUser.user_id !== decoded.userId) {
                 childLogger.error("Forbidden", { service: service, error: err, userId: decoded.userId });
                 return res.status(403).json({ message: 'Forbidden' });
             }
