@@ -21,7 +21,7 @@
 //   const handleCreatePost = () => {
 //     if (newPost.trim() === '') {
 //       alert("Empty post is not accepted!!!");
-//       return;
+//       return; 
 //     }
 
 //     const newPostObj = {
@@ -51,13 +51,14 @@
 //     setEditingPostId(null);
 //     setEditedText('');
 //   };
-
+  
 //   return (
 //     <Container  >
 //       <Typography variant="h5" component="h2" gutterBottom style={{color:'white', marginTop:'2vw',fontWeight:'bolder',fontFamily: 'Poppins',fontSize:'1.3vw'}}>
 //         News Feed
 //       </Typography>
-
+      
+      
 //       {/* to Conditionally render the "Post" input and button based on newsfeedadmin */}
 //       {isNewsadmin && (
 //         <>
@@ -111,8 +112,9 @@
 //                   <DeleteIcon />
 //                 </IconButton>
 
-//                 </div>
 
+//                 </div>
+                
 //               </div>
 //             )}
 //           </Paper>
@@ -123,6 +125,8 @@
 // };
 
 // export default NewsFeed;
+
+
 
 // import React, { useState } from 'react';
 // import './NewsFeed.css';
@@ -151,7 +155,7 @@
 //   const handleCreatePost = () => {
 //     if (newPost.trim() === '') {
 //       alert("Empty post is not accepted!!!");
-//       return;
+//       return; 
 //     }
 
 //     const newPostObj = {
@@ -184,6 +188,7 @@
 //     setEditedText('');
 //     setAnchorEl(null); // Close the menu after saving
 //   };
+  
 
 //   const handleMenuOpen = (event) => {
 //     setAnchorEl(event.currentTarget);
@@ -192,7 +197,7 @@
 //   const handleMenuClose = () => {
 //     setAnchorEl(null);
 //   };
-
+  
 //   return (
 //     <Container>
 //       <Typography variant="h5" component="h2" gutterBottom style={{ color: 'white', marginTop: '2vw', fontWeight: 'bolder', fontFamily: 'Poppins', fontSize: '1.3vw' }}>
@@ -217,6 +222,7 @@
 //           <Divider style={{ marginTop: '10px', backgroundColor: 'rgba(199, 199, 199, 0.30)', marginTop: '2vw' }} />
 //         </>
 //       )}
+      
 
 //       <div>
 //         {posts.map((post) => (
@@ -248,9 +254,10 @@
 
 // export default NewsFeed;
 
-//3rd attempt
 
-import React, { useState } from "react";
+
+//3rd attempt
+import React, { useState } from 'react';
 import {
   Container,
   Typography,
@@ -271,17 +278,18 @@ import MoreVertIcon from "@mui/icons-material/MoreVert";
 import AddIcon from "@mui/icons-material/Add";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import Fab from "@mui/material/Fab";
+import api from "../api";
 
-const NewsFeed = ({ isNewsadmin }) => {
+const NewsFeed = ({ userId, isNewsadmin, isAdmin, socket }) => {
   const [posts, setPosts] = useState([]);
   const [newPostTitle, setNewPostTitle] = useState("");
   const [newPostDescription, setNewPostDescription] = useState("");
   const [editingPostId, setEditingPostId] = useState(null);
-  const [editedText, setEditedText] = useState("");
-  const [editedTitle, setEditedTitle] = useState("");
-  const [showInputArea, setShowInputArea] = useState(false);
-  const [expandedPostId, setExpandedPostId] = useState(null);
-  const [anchorElMap, setAnchorElMap] = useState({});
+  const [editedText, setEditedText] = useState('');
+  const [editedTitle, setEditedTitle] = useState('');
+
+  const [showInputArea, setShowInputArea] = useState(true);
+  const [anchorEl, setAnchorEl] = useState(null);
 
   const handleCreatePost = () => {
     if (newPostTitle.trim() === "") {
@@ -289,34 +297,33 @@ const NewsFeed = ({ isNewsadmin }) => {
       return;
     }
 
-    const newPostObj = {
-      id: Date.now(),
-      title: newPostTitle,
-      description: newPostDescription,
-      date: new Date().toLocaleDateString(),
-    };
+    let response;
+    try {
+      response = await api.post('/newsadmin/news', {
+        title: newPostTitle,
+        body: newPostDescription,
+      });
+      socket.emit("newsfeed:modified", {userId: userId});
+      fetchData();
+    } catch (error) {
+      console.error('Error posting data:', error);
+    }
 
-    setPosts([...posts, newPostObj]);
     setNewPostTitle("");
     setNewPostDescription("");
   };
 
+
   const handleDeletePost = (postId) => {
     setPosts(posts.filter((post) => post.id !== postId));
-    setAnchorElMap((prevAnchorElMap) => ({
-      ...prevAnchorElMap,
-      [postId]: null,
-    }));
+    setAnchorEl(null); // Close the menu after deleting
   };
 
   const handleEditPost = (postId, title, text) => {
     setEditingPostId(postId);
     setEditedTitle(title);
     setEditedText(text);
-    setAnchorElMap((prevAnchorElMap) => ({
-      ...prevAnchorElMap,
-      [postId]: true,
-    }));
+    setAnchorEl(null); // Close the menu after selecting Edit
   };
 
   const handleSavePost = (postId) => {
@@ -332,7 +339,7 @@ const NewsFeed = ({ isNewsadmin }) => {
     setEditedText("");
     setAnchorElMap((prevAnchorElMap) => ({
       ...prevAnchorElMap,
-      [postId]: null,
+      [newsId]: null,
     }));
   };
 
@@ -340,12 +347,13 @@ const NewsFeed = ({ isNewsadmin }) => {
     setShowInputArea(!showInputArea);
   };
 
+  // handling expanding/collapsing individual posts
   const handleExpand = (postId) => {
     setExpandedPostId(postId === expandedPostId ? null : postId);
   };
 
   return (
-    <Container style={{ height: "calc(100vh - 20px)", overflowY: "auto" }}>
+    <Container style={{ height: "calc(100vh - 20px)", overflowY: "auto" ,zIndex:1,position:'relative'}}>
       <div
         style={{
           display: "flex",
@@ -368,7 +376,8 @@ const NewsFeed = ({ isNewsadmin }) => {
         >
           News Feed
         </Typography>
-        <Fab
+        {/* Button to toggle new post input area */}
+        {(isNewsadmin || isAdmin) && (<Fab
           color="primary"
           aria-label="add"
           onClick={toggleInputArea}
@@ -380,14 +389,17 @@ const NewsFeed = ({ isNewsadmin }) => {
           }}
         >
           <AddIcon />
-        </Fab>
+        </Fab>)}
       </div>
 
-      {isNewsadmin && showInputArea && (
+      {/* New Post Input Area */}
+      {(isNewsadmin || isAdmin) && showInputArea && (
         <>
+          {/* Title input */}
           <TextField
             label="Title"
             placeholder="Enter title here..."
+            name="title"
             value={newPostTitle}
             onChange={(e) => setNewPostTitle(e.target.value)}
             variant="outlined"
@@ -399,8 +411,10 @@ const NewsFeed = ({ isNewsadmin }) => {
             }}
           />
           <Divider style={{ margin: "10px" }} />
+          {/* Description input */}
           <TextField
             label="Description"
+            name="description"
             InputLabelProps={{ shrink: !!newPostDescription }}
             placeholder={!newPostDescription ? "Enter description here..." : ""}
             value={newPostDescription}
@@ -417,9 +431,10 @@ const NewsFeed = ({ isNewsadmin }) => {
               style: { height: "100%" },
             }}
           />
+          {/* Button to create a new post */}
           <Button
             variant="contained"
-            onClick={handleCreatePost}
+            onClick={() => handleCreatePost(newPostTitle, newPostDescription)}
             style={{
               marginTop: "19px",
               backgroundColor: "white",
@@ -438,13 +453,15 @@ const NewsFeed = ({ isNewsadmin }) => {
         </>
       )}
 
+      {/* Existing Posts */}
       <div>
         {posts.map((post) => (
           <Paper
-            key={post.id}
-            style={{marginTop: "2.1vw", marginBottom: "10px", wordWrap: "break-word" }}
+            key={post.newsId}
+            style={{ marginBottom: "10px", wordWrap: "break-word" }}
           >
-            {editingPostId === post.id ? (
+            {/* Editing Mode */}
+            {editingPostId === post.newsId ? (
               <div
                 style={{
                   width: "100%",
@@ -452,18 +469,18 @@ const NewsFeed = ({ isNewsadmin }) => {
                   borderRadius: "4px",
                   padding: "10px",
                   wordWrap: "break-word",
-                  
                 }}
               >
+                {/* Title and Description input for editing */}
                 <TextField
                   fullWidth
                   label="Edit Title"
                   value={editedTitle}
                   onChange={(e) => setEditedTitle(e.target.value)}
                   variant="outlined"
-                  style={{ marginBottom: "10px"}}
+                  style={{ marginBottom: "10px" }}
                   InputProps={{
-                    backgroundColor:'red',
+                    backgroundColor: 'red',
                   }}
                 />
                 <TextField
@@ -483,9 +500,11 @@ const NewsFeed = ({ isNewsadmin }) => {
                     style: { height: "100%" },
                   }}
                 />
-                <Button onClick={() => handleSavePost(post.id)}>Save</Button>
+                {/* Save Button */}
+                <Button onClick={() => handleEditPost(post.newsId, editedTitle, editedText)}>Save</Button>
               </div>
             ) : (
+              /* Non-Editing Mode */
               <div
                 style={{
                   borderRadius: "4px",
@@ -497,32 +516,20 @@ const NewsFeed = ({ isNewsadmin }) => {
                   position: "relative",
                 }}
               >
-
-                <Typography
-                  variant="body2"
-                  style={{
-                    fontSize: "0.8vw",
-                    color: "black",
-                    marginLeft: "auto",
-                    fontStyle: "italic",
-                    marginBottom: "5px",
-                  }}
-                >
-                  {post.date}
-                </Typography>
-
+                {/* Display Title, Date, and Menu */}
                 <div
                   style={{
-                    padding: "10px",
                     display: "flex",
+                    // flexDirection: "column",
                     alignItems: "center",
+                    padding: "10px",
                   }}
                 >
-                  {/* Post Title */}
                   <Typography
-                    variant="h6"
                     style={{
                       fontSize: "1.2vw",
+                      // paddingLeft: "1vw",
+                      // paddingTop: "0.6vw",
                       fontWeight: "bold",
                       marginRight: "auto",
                       color: "black",
@@ -530,49 +537,65 @@ const NewsFeed = ({ isNewsadmin }) => {
                   >
                     {post.title}
                   </Typography>
-
+                  {/* <div>
+                    <p
+                      style={{
+                        fontSize: "0.8vw",
+                        paddingLeft: "1vw",
+                        color: "black",
+                      }}
+                    >
+                      Date Posted: {new Date(post.dateOfPosting).toLocaleDateString('en-GB').slice(0, 10).split("/").reverse().join("-")}
+                    </p>
+                  </div> */}
                   {/* 3-dot menu for Edit and Delete options */}
-                  <IconButton
-                    aria-controls={`menu-${post.id}`}
-                    aria-haspopup="true"
-                    onClick={(e) => setAnchorElMap({ ...anchorElMap, [post.id]: e.currentTarget })}
-                  >
-                    <MoreVertIcon />
-                  </IconButton>
+                  {(isNewsadmin || isAdmin) && (
+                    <div div style={{ marginLeft: "auto" }}>
+                      <IconButton
+                        aria-controls={`menu-${post.newsId}`}
+                        aria-haspopup="true"
+                        onClick={(e) => setAnchorElMap({ ...anchorElMap, [post.newsId]: e.currentTarget })}
+                      >
+                        <MoreVertIcon />
+                      </IconButton>
+                      <Menu
+                        id={`menu-${post.newsId}`}
+                        anchorEl={anchorElMap[post.newsId]}
+                        keepMounted
+                        open={Boolean(anchorElMap[post.newsId])}
+                        onClose={() => setAnchorElMap((prevAnchorElMap) => ({ ...prevAnchorElMap, [post.newsId]: null }))}
+                      >
+                        {/* Edit option */}
+                        <MenuItem
+                          onClick={() =>
+                            // handleEditPost(post.newsId, post.title, post.body)
+                            handleEditButton(post.newsId, post.title, post.body)
+                            // console.log("Edit")
+                          }
+                        >
+                          <ListItemIcon>
+                            <EditIcon fontSize="small" />
+                          </ListItemIcon>
+                          <ListItemText primary="Edit" />
+                        </MenuItem>
+                        {/* Delete option */}
+                        <MenuItem
+                          onClick={() =>
+                            handleDeletePost(post.newsId)
+                            // console.log("Delete")
+                          }>
+                          <ListItemIcon>
+                            <DeleteIcon fontSize="small" />
+                          </ListItemIcon>
+                          <ListItemText primary="Delete" />
+                        </MenuItem>
+                      </Menu>
+                    </div>
+                  )}
                 </div>
-
-                {/* 3-dot menu options */}
-                <Menu
-                  id={`menu-${post.id}`}
-                  anchorEl={anchorElMap[post.id]}
-                  keepMounted
-                  open={Boolean(anchorElMap[post.id])}
-                  onClose={() => setAnchorElMap((prevAnchorElMap) => ({ ...prevAnchorElMap, [post.id]: null }))}
-                  
-                >
-                  {/* Edit option */}
-                  <MenuItem
-                    onClick={() =>
-                      handleEditPost(post.id, post.title, post.description)
-                    }
-                  >
-                    <ListItemIcon>
-                      <EditIcon fontSize="small" />
-                    </ListItemIcon>
-                    <ListItemText primary="Edit" />
-                  </MenuItem>
-                  {/* Delete option */}
-                  <MenuItem onClick={() => handleDeletePost(post.id)}>
-                    <ListItemIcon>
-                      <DeleteIcon fontSize="small" />
-                    </ListItemIcon>
-                    <ListItemText primary="Delete" />
-                  </MenuItem>
-                </Menu>
-
                 {/* Description with collapse/expand feature */}
                 <Collapse
-                  in={expandedPostId === post.id}
+                  in={expandedPostId === post.newsId}
                   timeout="auto"
                   unmountOnExit
                 >
@@ -580,15 +603,40 @@ const NewsFeed = ({ isNewsadmin }) => {
                     <Typography
                       variant="body2"
                       style={{
-                        fontSize: "0.9vw",
+                        fontSize: "1vw",
+                        paddingLeft: "0.2vw",
                         color: "black",
+                        marginRight: "auto",
                       }}
                     >
-                      {post.description}
+                      {post.body}
+                    </Typography>
+                  </div>
+                  <div style={{ textAlign: "right", paddingRight: "1vw" }}>
+                    <Typography
+                      variant="body2"
+                      style={{
+                        fontSize: "0.9vw",
+                        // paddingLeft: "1vw",
+                        color: "grey",
+                      }}
+                    >
+                      Posted by {post.userId}
+                    </Typography>
+                  </div>
+                  <div style={{ textAlign: "right", paddingRight: "1vw" }}>
+                    <Typography
+                      variant="body2"
+                      style={{
+                        fontSize: "0.9vw",
+                        // paddingLeft: "1vw",
+                        color: "grey",
+                      }}
+                    >
+                      Posted on {new Date(post.dateOfPosting).toLocaleDateString('en-GB').slice(0, 10).split("/").reverse().join("-")}
                     </Typography>
                   </div>
                 </Collapse>
-
                 {/* Show More/Show Less Button */}
                 <div
                   style={{
@@ -598,21 +646,24 @@ const NewsFeed = ({ isNewsadmin }) => {
                     cursor: "pointer",
                     color: "#0071BA",
                   }}
-                  onClick={() => handleExpand(post.id)}
+                  onClick={() => handleExpand(post.newsId)}
                 >
                   <Typography variant="body2">
-                    {expandedPostId === post.id ? "Show Less" : "Show More"}
+                    {expandedPostId === post.newsId ? "Show Less" : "Show More"}
                   </Typography>
-                  <ExpandMoreIcon />
+                  {expandedPostId !== post.newsId ? (
+                    <ExpandMoreIcon />
+                  ) : (
+                    <ExpandMoreIcon style={{ transform: "rotate(180deg)" }} />
+                  )}
                 </div>
               </div>
             )}
           </Paper>
         ))}
       </div>
-    </Container>
+    </Container >
   );
 };
 
 export default NewsFeed;
-

@@ -114,7 +114,10 @@ import Signup from "./components/Signup";
 import Layout from "./components/Layout";
 import Bookings from "./components/Bookings";
 import Profile from "./components/Profile";
+<<<<<<< HEAD
 import UserAnalytics from "./components/UserAnalytics";
+=======
+>>>>>>> parent of a771817 (request integration done)
 import api from "./api";
 
 function App() {

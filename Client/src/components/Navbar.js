@@ -56,8 +56,13 @@ const Navbar = ({
   const handleLogout = () => {
     localStorage.removeItem('token');
     localStorage.removeItem('user');
+<<<<<<< HEAD
     window.location.href = "/";
     // navigate("/");
+=======
+    // window.location.href = "/";
+    navigate("/");
+>>>>>>> parent of a771817 (request integration done)
   };
 
   const handleNewsAdminRequest = async () => {
