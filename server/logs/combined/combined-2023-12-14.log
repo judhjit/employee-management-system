@@ -681,3 +681,6785 @@
   message: 'Successfully returned all news feed posts',
   timestamp: '2023-12-14T11:33:28.451Z'
 }
+{
+  message: 'User connected with socket id goW3jhcjMZOVZNUDAAAP',
+  level: 'info',
+  timestamp: '2023-12-14T11:37:11.342Z'
+}
+{
+  module: 'verify-jwt-token',
+  service: 'verifyJWT',
+  userId: 'E10101',
+  level: 'info',
+  message: 'Access token verified',
+  timestamp: '2023-12-14T11:37:13.091Z'
+}
+{
+  module: 'check-auth',
+  service: 'checkAuthStatus',
+  userId: 'E10101',
+  level: 'info',
+  message: 'User authenticated',
+  timestamp: '2023-12-14T11:37:13.091Z'
+}
+{
+  module: 'news-controller',
+  service: 'getNewsFeedPosts',
+  userId: 'E10101',
+  level: 'info',
+  message: 'Getting all news feed posts',
+  timestamp: '2023-12-14T11:37:13.092Z'
+}
+{
+  message: 'User connected with socket id Eciu3y5jq6R9836cAAAR',
+  level: 'info',
+  timestamp: '2023-12-14T11:37:13.095Z'
+}
+{
+  message: 'User connected with socket id plYPpbQI59qhxuOaAAAT',
+  level: 'info',
+  timestamp: '2023-12-14T11:37:13.937Z'
+}
+{
+  message: 'User connected with socket id E0na4xKZKw38qzz1AAAV',
+  level: 'info',
+  timestamp: '2023-12-14T11:37:14.861Z'
+}
+{
+  message: 'User connected with socket id wqrW42prqJHcJWeRAAAX',
+  level: 'info',
+  timestamp: '2023-12-14T11:37:15.572Z'
+}
+{
+  message: 'User connected with socket id 4VUnuIsxyRzxiz7LAAAZ',
+  level: 'info',
+  timestamp: '2023-12-14T11:37:16.697Z'
+}
+{
+  message: 'User connected with socket id mKCz4t9dMYDCyQjIAAAb',
+  level: 'info',
+  timestamp: '2023-12-14T11:37:17.465Z'
+}
+{
+  message: 'User connected with socket id pukjvwvnUeti0sn4AAAd',
+  level: 'info',
+  timestamp: '2023-12-14T11:37:18.501Z'
+}
+{
+  message: 'User connected with socket id F24_-DXP3PHwZVsPAAAf',
+  level: 'info',
+  timestamp: '2023-12-14T11:37:19.191Z'
+}
+{
+  message: 'User connected with socket id 3LiWMxVkDpoWAOE9AAAh',
+  level: 'info',
+  timestamp: '2023-12-14T11:37:19.867Z'
+}
+{
+  message: 'User connected with socket id Pf9t_wo28httc1dHAAAj',
+  level: 'info',
+  timestamp: '2023-12-14T11:37:20.718Z'
+}
+{
+  message: 'User connected with socket id qa9Zggzg5RVOWz0BAAAl',
+  level: 'info',
+  timestamp: '2023-12-14T11:37:21.423Z'
+}
+{
+  module: 'news',
+  service: 'formatNews',
+  level: 'info',
+  message: 'Successfully formatted news',
+  timestamp: '2023-12-14T11:37:25.470Z'
+}
+{
+  module: 'news',
+  service: 'formatNews',
+  level: 'info',
+  message: 'Successfully formatted news',
+  timestamp: '2023-12-14T11:37:25.471Z'
+}
+{
+  module: 'news',
+  service: 'formatNews',
+  level: 'info',
+  message: 'Successfully formatted all news',
+  timestamp: '2023-12-14T11:37:25.471Z'
+}
+{
+  module: 'news',
+  service: 'formatNews',
+  level: 'info',
+  message: 'Successfully returned all news',
+  timestamp: '2023-12-14T11:37:25.471Z'
+}
+{
+  module: 'news-controller',
+  service: 'getNewsFeedPosts',
+  userId: 'E10101',
+  level: 'info',
+  message: 'Successfully got all news feed posts',
+  timestamp: '2023-12-14T11:37:25.471Z'
+}
+{
+  module: 'news-controller',
+  service: 'getNewsFeedPosts',
+  userId: 'E10101',
+  level: 'info',
+  message: 'Successfully returned all news feed posts',
+  timestamp: '2023-12-14T11:37:25.472Z'
+}
+{
+  module: 'verify-jwt-token',
+  service: 'verifyJWT',
+  userId: 'E10101',
+  level: 'info',
+  message: 'Access token verified',
+  timestamp: '2023-12-14T11:37:25.478Z'
+}
+{
+  module: 'check-auth',
+  service: 'checkAuthStatus',
+  userId: 'E10101',
+  level: 'info',
+  message: 'User authenticated',
+  timestamp: '2023-12-14T11:37:25.479Z'
+}
+{
+  module: 'news-controller',
+  service: 'getNewsFeedPosts',
+  userId: 'E10101',
+  level: 'info',
+  message: 'Getting all news feed posts',
+  timestamp: '2023-12-14T11:37:25.479Z'
+}
+{
+  module: 'news',
+  service: 'formatNews',
+  level: 'info',
+  message: 'Successfully formatted news',
+  timestamp: '2023-12-14T11:37:25.571Z'
+}
+{
+  module: 'news',
+  service: 'formatNews',
+  level: 'info',
+  message: 'Successfully formatted news',
+  timestamp: '2023-12-14T11:37:25.571Z'
+}
+{
+  module: 'news',
+  service: 'formatNews',
+  level: 'info',
+  message: 'Successfully formatted all news',
+  timestamp: '2023-12-14T11:37:25.572Z'
+}
+{
+  module: 'news',
+  service: 'formatNews',
+  level: 'info',
+  message: 'Successfully returned all news',
+  timestamp: '2023-12-14T11:37:25.572Z'
+}
+{
+  module: 'news-controller',
+  service: 'getNewsFeedPosts',
+  userId: 'E10101',
+  level: 'info',
+  message: 'Successfully got all news feed posts',
+  timestamp: '2023-12-14T11:37:25.572Z'
+}
+{
+  module: 'news-controller',
+  service: 'getNewsFeedPosts',
+  userId: 'E10101',
+  level: 'info',
+  message: 'Successfully returned all news feed posts',
+  timestamp: '2023-12-14T11:37:25.572Z'
+}
+{
+  module: 'verify-jwt-token',
+  service: 'verifyJWT',
+  userId: 'E10101',
+  level: 'info',
+  message: 'Access token verified',
+  timestamp: '2023-12-14T11:37:25.577Z'
+}
+{
+  module: 'check-auth',
+  service: 'checkAuthStatus',
+  userId: 'E10101',
+  level: 'info',
+  message: 'User authenticated',
+  timestamp: '2023-12-14T11:37:25.578Z'
+}
+{
+  module: 'news-controller',
+  service: 'getNewsFeedPosts',
+  userId: 'E10101',
+  level: 'info',
+  message: 'Getting all news feed posts',
+  timestamp: '2023-12-14T11:37:25.578Z'
+}
+{
+  module: 'news',
+  service: 'formatNews',
+  level: 'info',
+  message: 'Successfully formatted news',
+  timestamp: '2023-12-14T11:37:25.669Z'
+}
+{
+  module: 'news',
+  service: 'formatNews',
+  level: 'info',
+  message: 'Successfully formatted news',
+  timestamp: '2023-12-14T11:37:25.670Z'
+}
+{
+  module: 'news',
+  service: 'formatNews',
+  level: 'info',
+  message: 'Successfully formatted all news',
+  timestamp: '2023-12-14T11:37:25.671Z'
+}
+{
+  module: 'news',
+  service: 'formatNews',
+  level: 'info',
+  message: 'Successfully returned all news',
+  timestamp: '2023-12-14T11:37:25.671Z'
+}
+{
+  module: 'news-controller',
+  service: 'getNewsFeedPosts',
+  userId: 'E10101',
+  level: 'info',
+  message: 'Successfully got all news feed posts',
+  timestamp: '2023-12-14T11:37:25.671Z'
+}
+{
+  module: 'news-controller',
+  service: 'getNewsFeedPosts',
+  userId: 'E10101',
+  level: 'info',
+  message: 'Successfully returned all news feed posts',
+  timestamp: '2023-12-14T11:37:25.671Z'
+}
+{
+  module: 'verify-jwt-token',
+  service: 'verifyJWT',
+  userId: 'E10101',
+  level: 'info',
+  message: 'Access token verified',
+  timestamp: '2023-12-14T11:37:25.678Z'
+}
+{
+  module: 'check-auth',
+  service: 'checkAuthStatus',
+  userId: 'E10101',
+  level: 'info',
+  message: 'User authenticated',
+  timestamp: '2023-12-14T11:37:25.678Z'
+}
+{
+  module: 'news-controller',
+  service: 'getNewsFeedPosts',
+  userId: 'E10101',
+  level: 'info',
+  message: 'Getting all news feed posts',
+  timestamp: '2023-12-14T11:37:25.679Z'
+}
+{
+  module: 'news',
+  service: 'formatNews',
+  level: 'info',
+  message: 'Successfully formatted news',
+  timestamp: '2023-12-14T11:37:25.770Z'
+}
+{
+  module: 'news',
+  service: 'formatNews',
+  level: 'info',
+  message: 'Successfully formatted news',
+  timestamp: '2023-12-14T11:37:25.771Z'
+}
+{
+  module: 'news',
+  service: 'formatNews',
+  level: 'info',
+  message: 'Successfully formatted all news',
+  timestamp: '2023-12-14T11:37:25.771Z'
+}
+{
+  module: 'news',
+  service: 'formatNews',
+  level: 'info',
+  message: 'Successfully returned all news',
+  timestamp: '2023-12-14T11:37:25.771Z'
+}
+{
+  module: 'news-controller',
+  service: 'getNewsFeedPosts',
+  userId: 'E10101',
+  level: 'info',
+  message: 'Successfully got all news feed posts',
+  timestamp: '2023-12-14T11:37:25.771Z'
+}
+{
+  module: 'news-controller',
+  service: 'getNewsFeedPosts',
+  userId: 'E10101',
+  level: 'info',
+  message: 'Successfully returned all news feed posts',
+  timestamp: '2023-12-14T11:37:25.771Z'
+}
+{
+  module: 'verify-jwt-token',
+  service: 'verifyJWT',
+  userId: 'E10101',
+  level: 'info',
+  message: 'Access token verified',
+  timestamp: '2023-12-14T11:37:25.776Z'
+}
+{
+  module: 'check-auth',
+  service: 'checkAuthStatus',
+  userId: 'E10101',
+  level: 'info',
+  message: 'User authenticated',
+  timestamp: '2023-12-14T11:37:25.777Z'
+}
+{
+  module: 'news-controller',
+  service: 'getNewsFeedPosts',
+  userId: 'E10101',
+  level: 'info',
+  message: 'Getting all news feed posts',
+  timestamp: '2023-12-14T11:37:25.777Z'
+}
+{
+  module: 'news',
+  service: 'formatNews',
+  level: 'info',
+  message: 'Successfully formatted news',
+  timestamp: '2023-12-14T11:37:25.869Z'
+}
+{
+  module: 'news',
+  service: 'formatNews',
+  level: 'info',
+  message: 'Successfully formatted news',
+  timestamp: '2023-12-14T11:37:25.870Z'
+}
+{
+  module: 'news',
+  service: 'formatNews',
+  level: 'info',
+  message: 'Successfully formatted all news',
+  timestamp: '2023-12-14T11:37:25.870Z'
+}
+{
+  module: 'news',
+  service: 'formatNews',
+  level: 'info',
+  message: 'Successfully returned all news',
+  timestamp: '2023-12-14T11:37:25.870Z'
+}
+{
+  module: 'news-controller',
+  service: 'getNewsFeedPosts',
+  userId: 'E10101',
+  level: 'info',
+  message: 'Successfully got all news feed posts',
+  timestamp: '2023-12-14T11:37:25.871Z'
+}
+{
+  module: 'news-controller',
+  service: 'getNewsFeedPosts',
+  userId: 'E10101',
+  level: 'info',
+  message: 'Successfully returned all news feed posts',
+  timestamp: '2023-12-14T11:37:25.871Z'
+}
+{
+  module: 'verify-jwt-token',
+  service: 'verifyJWT',
+  userId: 'E10101',
+  level: 'info',
+  message: 'Access token verified',
+  timestamp: '2023-12-14T11:37:25.876Z'
+}
+{
+  module: 'check-auth',
+  service: 'checkAuthStatus',
+  userId: 'E10101',
+  level: 'info',
+  message: 'User authenticated',
+  timestamp: '2023-12-14T11:37:25.877Z'
+}
+{
+  module: 'news-controller',
+  service: 'getNewsFeedPosts',
+  userId: 'E10101',
+  level: 'info',
+  message: 'Getting all news feed posts',
+  timestamp: '2023-12-14T11:37:25.877Z'
+}
+{
+  module: 'news',
+  service: 'formatNews',
+  level: 'info',
+  message: 'Successfully formatted news',
+  timestamp: '2023-12-14T11:37:25.980Z'
+}
+{
+  module: 'news',
+  service: 'formatNews',
+  level: 'info',
+  message: 'Successfully formatted news',
+  timestamp: '2023-12-14T11:37:25.980Z'
+}
+{
+  module: 'news',
+  service: 'formatNews',
+  level: 'info',
+  message: 'Successfully formatted all news',
+  timestamp: '2023-12-14T11:37:25.981Z'
+}
+{
+  module: 'news',
+  service: 'formatNews',
+  level: 'info',
+  message: 'Successfully returned all news',
+  timestamp: '2023-12-14T11:37:25.981Z'
+}
+{
+  module: 'news-controller',
+  service: 'getNewsFeedPosts',
+  userId: 'E10101',
+  level: 'info',
+  message: 'Successfully got all news feed posts',
+  timestamp: '2023-12-14T11:37:25.981Z'
+}
+{
+  module: 'news-controller',
+  service: 'getNewsFeedPosts',
+  userId: 'E10101',
+  level: 'info',
+  message: 'Successfully returned all news feed posts',
+  timestamp: '2023-12-14T11:37:25.981Z'
+}
+{
+  message: 'User disconnected with socket id plYPpbQI59qhxuOaAAAT',
+  level: 'info',
+  timestamp: '2023-12-14T11:39:08.229Z'
+}
+{
+  message: 'User disconnected with socket id E0na4xKZKw38qzz1AAAV',
+  level: 'info',
+  timestamp: '2023-12-14T11:39:08.231Z'
+}
+{
+  message: 'User disconnected with socket id 60jIK0iluXWacYxeAAAD',
+  level: 'info',
+  timestamp: '2023-12-14T11:39:08.231Z'
+}
+{
+  message: 'User disconnected with socket id 4VUnuIsxyRzxiz7LAAAZ',
+  level: 'info',
+  timestamp: '2023-12-14T11:39:08.231Z'
+}
+{
+  message: 'User disconnected with socket id UdC54bbLwD_FE9iKAAAJ',
+  level: 'info',
+  timestamp: '2023-12-14T11:39:08.231Z'
+}
+{
+  message: 'User disconnected with socket id F24_-DXP3PHwZVsPAAAf',
+  level: 'info',
+  timestamp: '2023-12-14T11:39:08.232Z'
+}
+{
+  message: 'User disconnected with socket id mKCz4t9dMYDCyQjIAAAb',
+  level: 'info',
+  timestamp: '2023-12-14T11:39:08.232Z'
+}
+{
+  message: 'User disconnected with socket id S_YMh2_VwZJYM_iEAAAF',
+  level: 'info',
+  timestamp: '2023-12-14T11:39:08.232Z'
+}
+{
+  message: 'User disconnected with socket id qa9Zggzg5RVOWz0BAAAl',
+  level: 'info',
+  timestamp: '2023-12-14T11:39:08.233Z'
+}
+{
+  message: 'User disconnected with socket id Eciu3y5jq6R9836cAAAR',
+  level: 'info',
+  timestamp: '2023-12-14T11:39:08.238Z'
+}
+{
+  message: 'User disconnected with socket id 0cHUbOKrjguNwxYFAAAL',
+  level: 'info',
+  timestamp: '2023-12-14T11:39:08.238Z'
+}
+{
+  message: 'User disconnected with socket id Pf9t_wo28httc1dHAAAj',
+  level: 'info',
+  timestamp: '2023-12-14T11:39:08.239Z'
+}
+{
+  message: 'User disconnected with socket id goW3jhcjMZOVZNUDAAAP',
+  level: 'info',
+  timestamp: '2023-12-14T11:39:08.239Z'
+}
+{
+  message: 'User disconnected with socket id pukjvwvnUeti0sn4AAAd',
+  level: 'info',
+  timestamp: '2023-12-14T11:39:08.239Z'
+}
+{
+  message: 'User disconnected with socket id wqrW42prqJHcJWeRAAAX',
+  level: 'info',
+  timestamp: '2023-12-14T11:39:08.240Z'
+}
+{
+  message: 'User disconnected with socket id T6QHSpGIbDxeOoAWAAAN',
+  level: 'info',
+  timestamp: '2023-12-14T11:39:08.240Z'
+}
+{
+  message: 'User disconnected with socket id 3LiWMxVkDpoWAOE9AAAh',
+  level: 'info',
+  timestamp: '2023-12-14T11:39:08.240Z'
+}
+{
+  message: 'User disconnected with socket id XBL_-nETdAqIvYfyAAAH',
+  level: 'info',
+  timestamp: '2023-12-14T11:39:08.240Z'
+}
+{
+  message: 'User connected with socket id OkSlcqLJQRuNKwaUAAAn',
+  level: 'info',
+  timestamp: '2023-12-14T11:39:09.487Z'
+}
+{
+  module: 'verify-jwt-token',
+  service: 'verifyJWT',
+  userId: 'E10101',
+  level: 'info',
+  message: 'Access token verified',
+  timestamp: '2023-12-14T11:39:09.517Z'
+}
+{
+  module: 'check-auth',
+  service: 'checkAuthStatus',
+  userId: 'E10101',
+  level: 'info',
+  message: 'User authenticated',
+  timestamp: '2023-12-14T11:39:09.518Z'
+}
+{
+  module: 'user-all-booking-controller',
+  service: 'getAllFutureBookingsForUser',
+  userId: 'E10101',
+  level: 'info',
+  message: 'Getting all future desk bookings for user',
+  timestamp: '2023-12-14T11:39:09.518Z'
+}
+{
+  module: 'verify-jwt-token',
+  service: 'verifyJWT',
+  userId: 'E10101',
+  level: 'info',
+  message: 'Access token verified',
+  timestamp: '2023-12-14T11:39:09.524Z'
+}
+{
+  module: 'check-auth',
+  service: 'checkAuthStatus',
+  userId: 'E10101',
+  level: 'info',
+  message: 'User authenticated',
+  timestamp: '2023-12-14T11:39:09.524Z'
+}
+{
+  module: 'news-controller',
+  service: 'getNewsFeedPosts',
+  userId: 'E10101',
+  level: 'info',
+  message: 'Getting all news feed posts',
+  timestamp: '2023-12-14T11:39:09.524Z'
+}
+{
+  message: 'User connected with socket id gQSEJByqC7Vt7BlFAAAp',
+  level: 'info',
+  timestamp: '2023-12-14T11:39:09.616Z'
+}
+{
+  message: 'User connected with socket id Y5QufInKGiY23R4YAAAr',
+  level: 'info',
+  timestamp: '2023-12-14T11:39:19.223Z'
+}
+{
+  message: 'User connected with socket id Cej9Xd5aEiw5WbYmAAAt',
+  level: 'info',
+  timestamp: '2023-12-14T11:39:20.591Z'
+}
+{
+  message: 'User connected with socket id QpdlICPjbu3rqBCGAAAv',
+  level: 'info',
+  timestamp: '2023-12-14T11:39:21.358Z'
+}
+{
+  module: 'desk-booking',
+  service: 'getFutureDeskBookingsForUser',
+  userId: 'E10101',
+  level: 'info',
+  message: 'Successfully got all future desk bookings for a user',
+  timestamp: '2023-12-14T11:39:21.589Z'
+}
+{
+  module: 'desk-booking',
+  service: 'formatDeskBoookings',
+  level: 'info',
+  message: 'Successfully formatted desk bookings',
+  timestamp: '2023-12-14T11:39:21.590Z'
+}
+{
+  module: 'desk-booking',
+  service: 'formatDeskBoookings',
+  userId: 'E10101',
+  level: 'info',
+  message: 'Successfully formatted all future desk bookings for a user',
+  timestamp: '2023-12-14T11:39:21.590Z'
+}
+{
+  module: 'desk-booking',
+  service: 'formatDeskBoookings',
+  userId: 'E10101',
+  level: 'info',
+  message: 'Successfully returned all future desk bookings for a user',
+  timestamp: '2023-12-14T11:39:21.592Z'
+}
+{
+  module: 'user-all-booking-controller',
+  service: 'getAllFutureBookingsForUser',
+  userId: 'E10101',
+  level: 'info',
+  message: 'Successfully got all future desk bookings for user',
+  timestamp: '2023-12-14T11:39:21.592Z'
+}
+{
+  module: 'user-all-booking-controller',
+  service: 'getAllFutureBookingsForUser',
+  userId: 'E10101',
+  level: 'info',
+  message: 'Getting all future cab bookings for user',
+  timestamp: '2023-12-14T11:39:21.593Z'
+}
+{
+  module: 'cab-booking',
+  service: 'getFutureCabBookingsForUser',
+  userId: 'E10101',
+  level: 'info',
+  message: 'Successfully got future cab bookings for user',
+  timestamp: '2023-12-14T11:39:21.691Z'
+}
+{
+  module: 'cab-booking',
+  service: 'formatCabBookings',
+  level: 'info',
+  message: 'Successfully formatted cab bookings',
+  timestamp: '2023-12-14T11:39:21.692Z'
+}
+{
+  module: 'cab-booking',
+  service: 'formatCabBookings',
+  userId: 'E10101',
+  level: 'info',
+  message: 'Successfully formatted future cab bookings for user',
+  timestamp: '2023-12-14T11:39:21.692Z'
+}
+{
+  module: 'cab-booking',
+  service: 'formatCabBookings',
+  userId: 'E10101',
+  level: 'info',
+  message: 'Successfully returned future cab bookings for user',
+  timestamp: '2023-12-14T11:39:21.692Z'
+}
+{
+  module: 'user-all-booking-controller',
+  service: 'getAllFutureBookingsForUser',
+  userId: 'E10101',
+  level: 'info',
+  message: 'Successfully got all future cab bookings for user',
+  timestamp: '2023-12-14T11:39:21.693Z'
+}
+{
+  module: 'user-all-booking-controller',
+  service: 'getAllFutureBookingsForUser',
+  userId: 'E10101',
+  level: 'info',
+  message: 'Getting all future food bookings for user',
+  timestamp: '2023-12-14T11:39:21.693Z'
+}
+{
+  module: 'food-booking',
+  service: 'getFutureFoodBookingsForUser',
+  userId: 'E10101',
+  level: 'info',
+  message: 'Successfully got all future food bookings for a user',
+  timestamp: '2023-12-14T11:39:21.794Z'
+}
+{
+  module: 'food-booking',
+  service: 'formatFoodBookings',
+  level: 'info',
+  message: 'Successfully formatted food bookings',
+  timestamp: '2023-12-14T11:39:21.795Z'
+}
+{
+  module: 'food-booking',
+  service: 'formatFoodBookings',
+  userId: 'E10101',
+  level: 'info',
+  message: 'Successfully formatted all future food bookings for a user',
+  timestamp: '2023-12-14T11:39:21.795Z'
+}
+{
+  module: 'food-booking',
+  service: 'formatFoodBookings',
+  userId: 'E10101',
+  level: 'info',
+  message: 'Successfully returned all future food bookings for a user',
+  timestamp: '2023-12-14T11:39:21.795Z'
+}
+{
+  module: 'user-all-booking-controller',
+  service: 'getAllFutureBookingsForUser',
+  userId: 'E10101',
+  level: 'info',
+  message: 'Successfully got all future food bookings for user',
+  timestamp: '2023-12-14T11:39:21.796Z'
+}
+{
+  module: 'user-all-booking-controller',
+  userId: 'E10101',
+  service: 'getAllFutureBookingsForUser',
+  level: 'info',
+  message: 'Sorting all future bookings by dateBooked',
+  timestamp: '2023-12-14T11:39:21.796Z'
+}
+{
+  module: 'user-all-booking-controller',
+  service: 'getAllFutureBookingsForUser',
+  userId: 'E10101',
+  level: 'info',
+  message: 'Successfully returned all future bookings for user',
+  timestamp: '2023-12-14T11:39:21.796Z'
+}
+{
+  module: 'news',
+  service: 'formatNews',
+  level: 'info',
+  message: 'Successfully formatted news',
+  timestamp: '2023-12-14T11:39:21.955Z'
+}
+{
+  module: 'news',
+  service: 'formatNews',
+  level: 'info',
+  message: 'Successfully formatted news',
+  timestamp: '2023-12-14T11:39:21.955Z'
+}
+{
+  module: 'news',
+  service: 'formatNews',
+  level: 'info',
+  message: 'Successfully formatted all news',
+  timestamp: '2023-12-14T11:39:21.955Z'
+}
+{
+  module: 'news',
+  service: 'formatNews',
+  level: 'info',
+  message: 'Successfully returned all news',
+  timestamp: '2023-12-14T11:39:21.955Z'
+}
+{
+  module: 'news-controller',
+  service: 'getNewsFeedPosts',
+  userId: 'E10101',
+  level: 'info',
+  message: 'Successfully got all news feed posts',
+  timestamp: '2023-12-14T11:39:21.955Z'
+}
+{
+  module: 'news-controller',
+  service: 'getNewsFeedPosts',
+  userId: 'E10101',
+  level: 'info',
+  message: 'Successfully returned all news feed posts',
+  timestamp: '2023-12-14T11:39:21.956Z'
+}
+{
+  module: 'verify-jwt-token',
+  service: 'verifyJWT',
+  userId: 'E10101',
+  level: 'info',
+  message: 'Access token verified',
+  timestamp: '2023-12-14T11:39:21.960Z'
+}
+{
+  module: 'check-auth',
+  service: 'checkAuthStatus',
+  userId: 'E10101',
+  level: 'info',
+  message: 'User authenticated',
+  timestamp: '2023-12-14T11:39:21.960Z'
+}
+{
+  module: 'news-controller',
+  service: 'getNewsFeedPosts',
+  userId: 'E10101',
+  level: 'info',
+  message: 'Getting all news feed posts',
+  timestamp: '2023-12-14T11:39:21.960Z'
+}
+{
+  message: 'User connected with socket id stLqRTQZNIjJtujFAAAx',
+  level: 'info',
+  timestamp: '2023-12-14T11:39:21.973Z'
+}
+{
+  module: 'news',
+  service: 'formatNews',
+  level: 'info',
+  message: 'Successfully formatted news',
+  timestamp: '2023-12-14T11:39:22.101Z'
+}
+{
+  module: 'news',
+  service: 'formatNews',
+  level: 'info',
+  message: 'Successfully formatted news',
+  timestamp: '2023-12-14T11:39:22.101Z'
+}
+{
+  module: 'news',
+  service: 'formatNews',
+  level: 'info',
+  message: 'Successfully formatted all news',
+  timestamp: '2023-12-14T11:39:22.101Z'
+}
+{
+  module: 'news',
+  service: 'formatNews',
+  level: 'info',
+  message: 'Successfully returned all news',
+  timestamp: '2023-12-14T11:39:22.101Z'
+}
+{
+  module: 'news-controller',
+  service: 'getNewsFeedPosts',
+  userId: 'E10101',
+  level: 'info',
+  message: 'Successfully got all news feed posts',
+  timestamp: '2023-12-14T11:39:22.102Z'
+}
+{
+  module: 'news-controller',
+  service: 'getNewsFeedPosts',
+  userId: 'E10101',
+  level: 'info',
+  message: 'Successfully returned all news feed posts',
+  timestamp: '2023-12-14T11:39:22.102Z'
+}
+{
+  module: 'verify-jwt-token',
+  service: 'verifyJWT',
+  userId: 'E10101',
+  level: 'info',
+  message: 'Access token verified',
+  timestamp: '2023-12-14T11:39:22.106Z'
+}
+{
+  module: 'check-auth',
+  service: 'checkAuthStatus',
+  userId: 'E10101',
+  level: 'info',
+  message: 'User authenticated',
+  timestamp: '2023-12-14T11:39:22.107Z'
+}
+{
+  module: 'news-controller',
+  service: 'getNewsFeedPosts',
+  userId: 'E10101',
+  level: 'info',
+  message: 'Getting all news feed posts',
+  timestamp: '2023-12-14T11:39:22.107Z'
+}
+{
+  module: 'news',
+  service: 'formatNews',
+  level: 'info',
+  message: 'Successfully formatted news',
+  timestamp: '2023-12-14T11:39:22.203Z'
+}
+{
+  module: 'news',
+  service: 'formatNews',
+  level: 'info',
+  message: 'Successfully formatted news',
+  timestamp: '2023-12-14T11:39:22.204Z'
+}
+{
+  module: 'news',
+  service: 'formatNews',
+  level: 'info',
+  message: 'Successfully formatted all news',
+  timestamp: '2023-12-14T11:39:22.204Z'
+}
+{
+  module: 'news',
+  service: 'formatNews',
+  level: 'info',
+  message: 'Successfully returned all news',
+  timestamp: '2023-12-14T11:39:22.204Z'
+}
+{
+  module: 'news-controller',
+  service: 'getNewsFeedPosts',
+  userId: 'E10101',
+  level: 'info',
+  message: 'Successfully got all news feed posts',
+  timestamp: '2023-12-14T11:39:22.204Z'
+}
+{
+  module: 'news-controller',
+  service: 'getNewsFeedPosts',
+  userId: 'E10101',
+  level: 'info',
+  message: 'Successfully returned all news feed posts',
+  timestamp: '2023-12-14T11:39:22.205Z'
+}
+{
+  message: 'User connected with socket id _FButwvdrD8DWuP9AAAz',
+  level: 'info',
+  timestamp: '2023-12-14T11:39:25.132Z'
+}
+{
+  module: 'verify-jwt-token',
+  service: 'verifyJWT',
+  userId: 'E10101',
+  level: 'info',
+  message: 'Access token verified',
+  timestamp: '2023-12-14T11:39:34.394Z'
+}
+{
+  module: 'check-auth',
+  service: 'checkAuthStatus',
+  userId: 'E10101',
+  level: 'info',
+  message: 'User authenticated',
+  timestamp: '2023-12-14T11:39:34.395Z'
+}
+{
+  module: 'news-controller',
+  service: 'getNewsFeedPosts',
+  userId: 'E10101',
+  level: 'info',
+  message: 'Getting all news feed posts',
+  timestamp: '2023-12-14T11:39:34.395Z'
+}
+{
+  message: 'User connected with socket id V9n5LIGGgaxDyHnMAAA1',
+  level: 'info',
+  timestamp: '2023-12-14T11:39:34.398Z'
+}
+{
+  message: 'User connected with socket id ddYi2ad-Hu2xo5AHAAA3',
+  level: 'info',
+  timestamp: '2023-12-14T11:39:36.409Z'
+}
+{
+  message: 'User connected with socket id h6iWWmYkx6UnTPbgAAA5',
+  level: 'info',
+  timestamp: '2023-12-14T11:39:37.299Z'
+}
+{
+  message: 'User connected with socket id aHgGhbwG5snLFTnOAAA7',
+  level: 'info',
+  timestamp: '2023-12-14T11:39:38.023Z'
+}
+{
+  message: 'User connected with socket id --iE93qnGIFE7mC4AAA9',
+  level: 'info',
+  timestamp: '2023-12-14T11:39:38.781Z'
+}
+{
+  message: 'User connected with socket id wWpooaP2on7hnhydAAA_',
+  level: 'info',
+  timestamp: '2023-12-14T11:39:39.801Z'
+}
+{
+  module: 'news',
+  service: 'formatNews',
+  level: 'info',
+  message: 'Successfully formatted news',
+  timestamp: '2023-12-14T11:39:46.390Z'
+}
+{
+  module: 'news',
+  service: 'formatNews',
+  level: 'info',
+  message: 'Successfully formatted news',
+  timestamp: '2023-12-14T11:39:46.391Z'
+}
+{
+  module: 'news',
+  service: 'formatNews',
+  level: 'info',
+  message: 'Successfully formatted all news',
+  timestamp: '2023-12-14T11:39:46.391Z'
+}
+{
+  module: 'news',
+  service: 'formatNews',
+  level: 'info',
+  message: 'Successfully returned all news',
+  timestamp: '2023-12-14T11:39:46.391Z'
+}
+{
+  module: 'news-controller',
+  service: 'getNewsFeedPosts',
+  userId: 'E10101',
+  level: 'info',
+  message: 'Successfully got all news feed posts',
+  timestamp: '2023-12-14T11:39:46.392Z'
+}
+{
+  module: 'news-controller',
+  service: 'getNewsFeedPosts',
+  userId: 'E10101',
+  level: 'info',
+  message: 'Successfully returned all news feed posts',
+  timestamp: '2023-12-14T11:39:46.392Z'
+}
+{
+  module: 'verify-jwt-token',
+  service: 'verifyJWT',
+  userId: 'E10101',
+  level: 'info',
+  message: 'Access token verified',
+  timestamp: '2023-12-14T11:39:46.399Z'
+}
+{
+  module: 'check-auth',
+  service: 'checkAuthStatus',
+  userId: 'E10101',
+  level: 'info',
+  message: 'User authenticated',
+  timestamp: '2023-12-14T11:39:46.399Z'
+}
+{
+  module: 'news-controller',
+  service: 'getNewsFeedPosts',
+  userId: 'E10101',
+  level: 'info',
+  message: 'Getting all news feed posts',
+  timestamp: '2023-12-14T11:39:46.400Z'
+}
+{
+  module: 'news',
+  service: 'formatNews',
+  level: 'info',
+  message: 'Successfully formatted news',
+  timestamp: '2023-12-14T11:39:46.490Z'
+}
+{
+  module: 'news',
+  service: 'formatNews',
+  level: 'info',
+  message: 'Successfully formatted news',
+  timestamp: '2023-12-14T11:39:46.490Z'
+}
+{
+  module: 'news',
+  service: 'formatNews',
+  level: 'info',
+  message: 'Successfully formatted all news',
+  timestamp: '2023-12-14T11:39:46.490Z'
+}
+{
+  module: 'news',
+  service: 'formatNews',
+  level: 'info',
+  message: 'Successfully returned all news',
+  timestamp: '2023-12-14T11:39:46.490Z'
+}
+{
+  module: 'news-controller',
+  service: 'getNewsFeedPosts',
+  userId: 'E10101',
+  level: 'info',
+  message: 'Successfully got all news feed posts',
+  timestamp: '2023-12-14T11:39:46.490Z'
+}
+{
+  module: 'news-controller',
+  service: 'getNewsFeedPosts',
+  userId: 'E10101',
+  level: 'info',
+  message: 'Successfully returned all news feed posts',
+  timestamp: '2023-12-14T11:39:46.491Z'
+}
+{
+  module: 'verify-jwt-token',
+  service: 'verifyJWT',
+  userId: 'E10101',
+  level: 'info',
+  message: 'Access token verified',
+  timestamp: '2023-12-14T11:39:46.497Z'
+}
+{
+  module: 'check-auth',
+  service: 'checkAuthStatus',
+  userId: 'E10101',
+  level: 'info',
+  message: 'User authenticated',
+  timestamp: '2023-12-14T11:39:46.497Z'
+}
+{
+  module: 'news-controller',
+  service: 'getNewsFeedPosts',
+  userId: 'E10101',
+  level: 'info',
+  message: 'Getting all news feed posts',
+  timestamp: '2023-12-14T11:39:46.498Z'
+}
+{
+  module: 'news',
+  service: 'formatNews',
+  level: 'info',
+  message: 'Successfully formatted news',
+  timestamp: '2023-12-14T11:39:46.585Z'
+}
+{
+  module: 'news',
+  service: 'formatNews',
+  level: 'info',
+  message: 'Successfully formatted news',
+  timestamp: '2023-12-14T11:39:46.585Z'
+}
+{
+  module: 'news',
+  service: 'formatNews',
+  level: 'info',
+  message: 'Successfully formatted all news',
+  timestamp: '2023-12-14T11:39:46.585Z'
+}
+{
+  module: 'news',
+  service: 'formatNews',
+  level: 'info',
+  message: 'Successfully returned all news',
+  timestamp: '2023-12-14T11:39:46.586Z'
+}
+{
+  module: 'news-controller',
+  service: 'getNewsFeedPosts',
+  userId: 'E10101',
+  level: 'info',
+  message: 'Successfully got all news feed posts',
+  timestamp: '2023-12-14T11:39:46.586Z'
+}
+{
+  module: 'news-controller',
+  service: 'getNewsFeedPosts',
+  userId: 'E10101',
+  level: 'info',
+  message: 'Successfully returned all news feed posts',
+  timestamp: '2023-12-14T11:39:46.586Z'
+}
+{
+  module: 'verify-jwt-token',
+  service: 'verifyJWT',
+  userId: 'E10101',
+  level: 'info',
+  message: 'Access token verified',
+  timestamp: '2023-12-14T11:40:19.649Z'
+}
+{
+  module: 'check-auth',
+  service: 'checkAuthStatus',
+  userId: 'E10101',
+  level: 'info',
+  message: 'User authenticated',
+  timestamp: '2023-12-14T11:40:19.649Z'
+}
+{
+  module: 'news-controller',
+  service: 'getNewsFeedPosts',
+  userId: 'E10101',
+  level: 'info',
+  message: 'Getting all news feed posts',
+  timestamp: '2023-12-14T11:40:19.649Z'
+}
+{
+  message: 'User connected with socket id 9_w9gSV338HdlN1rAABB',
+  level: 'info',
+  timestamp: '2023-12-14T11:40:19.654Z'
+}
+{
+  module: 'news',
+  service: 'formatNews',
+  level: 'info',
+  message: 'Successfully formatted news',
+  timestamp: '2023-12-14T11:40:31.541Z'
+}
+{
+  module: 'news',
+  service: 'formatNews',
+  level: 'info',
+  message: 'Successfully formatted news',
+  timestamp: '2023-12-14T11:40:31.542Z'
+}
+{
+  module: 'news',
+  service: 'formatNews',
+  level: 'info',
+  message: 'Successfully formatted all news',
+  timestamp: '2023-12-14T11:40:31.542Z'
+}
+{
+  module: 'news',
+  service: 'formatNews',
+  level: 'info',
+  message: 'Successfully returned all news',
+  timestamp: '2023-12-14T11:40:31.542Z'
+}
+{
+  module: 'news-controller',
+  service: 'getNewsFeedPosts',
+  userId: 'E10101',
+  level: 'info',
+  message: 'Successfully got all news feed posts',
+  timestamp: '2023-12-14T11:40:31.542Z'
+}
+{
+  module: 'news-controller',
+  service: 'getNewsFeedPosts',
+  userId: 'E10101',
+  level: 'info',
+  message: 'Successfully returned all news feed posts',
+  timestamp: '2023-12-14T11:40:31.542Z'
+}
+{
+  message: 'User disconnected with socket id V9n5LIGGgaxDyHnMAAA1',
+  level: 'info',
+  timestamp: '2023-12-14T11:40:57.644Z'
+}
+{
+  message: 'User disconnected with socket id --iE93qnGIFE7mC4AAA9',
+  level: 'info',
+  timestamp: '2023-12-14T11:40:57.647Z'
+}
+{
+  message: 'User disconnected with socket id wWpooaP2on7hnhydAAA_',
+  level: 'info',
+  timestamp: '2023-12-14T11:40:57.648Z'
+}
+{
+  message: 'User disconnected with socket id 9_w9gSV338HdlN1rAABB',
+  level: 'info',
+  timestamp: '2023-12-14T11:40:57.648Z'
+}
+{
+  message: 'User disconnected with socket id Y5QufInKGiY23R4YAAAr',
+  level: 'info',
+  timestamp: '2023-12-14T11:40:57.649Z'
+}
+{
+  message: 'User disconnected with socket id h6iWWmYkx6UnTPbgAAA5',
+  level: 'info',
+  timestamp: '2023-12-14T11:40:57.649Z'
+}
+{
+  message: 'User disconnected with socket id gQSEJByqC7Vt7BlFAAAp',
+  level: 'info',
+  timestamp: '2023-12-14T11:40:57.650Z'
+}
+{
+  message: 'User disconnected with socket id OkSlcqLJQRuNKwaUAAAn',
+  level: 'info',
+  timestamp: '2023-12-14T11:40:57.650Z'
+}
+{
+  message: 'User disconnected with socket id ddYi2ad-Hu2xo5AHAAA3',
+  level: 'info',
+  timestamp: '2023-12-14T11:40:57.651Z'
+}
+{
+  message: 'User disconnected with socket id aHgGhbwG5snLFTnOAAA7',
+  level: 'info',
+  timestamp: '2023-12-14T11:40:57.653Z'
+}
+{
+  message: 'User disconnected with socket id Cej9Xd5aEiw5WbYmAAAt',
+  level: 'info',
+  timestamp: '2023-12-14T11:40:57.653Z'
+}
+{
+  message: 'User disconnected with socket id stLqRTQZNIjJtujFAAAx',
+  level: 'info',
+  timestamp: '2023-12-14T11:40:57.653Z'
+}
+{
+  message: 'User disconnected with socket id _FButwvdrD8DWuP9AAAz',
+  level: 'info',
+  timestamp: '2023-12-14T11:40:57.654Z'
+}
+{
+  message: 'User disconnected with socket id QpdlICPjbu3rqBCGAAAv',
+  level: 'info',
+  timestamp: '2023-12-14T11:40:57.654Z'
+}
+{
+  message: 'User connected with socket id 1uVjM4IwV_5I-nCBAABD',
+  level: 'info',
+  timestamp: '2023-12-14T11:40:58.839Z'
+}
+{
+  module: 'verify-jwt-token',
+  service: 'verifyJWT',
+  userId: 'E10101',
+  level: 'info',
+  message: 'Access token verified',
+  timestamp: '2023-12-14T11:40:58.900Z'
+}
+{
+  module: 'check-auth',
+  service: 'checkAuthStatus',
+  userId: 'E10101',
+  level: 'info',
+  message: 'User authenticated',
+  timestamp: '2023-12-14T11:40:58.900Z'
+}
+{
+  module: 'user-all-booking-controller',
+  service: 'getAllFutureBookingsForUser',
+  userId: 'E10101',
+  level: 'info',
+  message: 'Getting all future desk bookings for user',
+  timestamp: '2023-12-14T11:40:58.901Z'
+}
+{
+  module: 'verify-jwt-token',
+  service: 'verifyJWT',
+  userId: 'E10101',
+  level: 'info',
+  message: 'Access token verified',
+  timestamp: '2023-12-14T11:40:58.903Z'
+}
+{
+  module: 'check-auth',
+  service: 'checkAuthStatus',
+  userId: 'E10101',
+  level: 'info',
+  message: 'User authenticated',
+  timestamp: '2023-12-14T11:40:58.903Z'
+}
+{
+  module: 'news-controller',
+  service: 'getNewsFeedPosts',
+  userId: 'E10101',
+  level: 'info',
+  message: 'Getting all news feed posts',
+  timestamp: '2023-12-14T11:40:58.903Z'
+}
+{
+  message: 'User connected with socket id RbwP2mnx4bYbv0t8AABF',
+  level: 'info',
+  timestamp: '2023-12-14T11:40:58.916Z'
+}
+{
+  message: 'User connected with socket id yl58CqD5muaQNbsiAABH',
+  level: 'info',
+  timestamp: '2023-12-14T11:41:03.056Z'
+}
+{
+  module: 'desk-booking',
+  service: 'getFutureDeskBookingsForUser',
+  userId: 'E10101',
+  level: 'info',
+  message: 'Successfully got all future desk bookings for a user',
+  timestamp: '2023-12-14T11:41:10.794Z'
+}
+{
+  module: 'desk-booking',
+  service: 'formatDeskBoookings',
+  level: 'info',
+  message: 'Successfully formatted desk bookings',
+  timestamp: '2023-12-14T11:41:10.795Z'
+}
+{
+  module: 'desk-booking',
+  service: 'formatDeskBoookings',
+  userId: 'E10101',
+  level: 'info',
+  message: 'Successfully formatted all future desk bookings for a user',
+  timestamp: '2023-12-14T11:41:10.795Z'
+}
+{
+  module: 'desk-booking',
+  service: 'formatDeskBoookings',
+  userId: 'E10101',
+  level: 'info',
+  message: 'Successfully returned all future desk bookings for a user',
+  timestamp: '2023-12-14T11:41:10.795Z'
+}
+{
+  module: 'user-all-booking-controller',
+  service: 'getAllFutureBookingsForUser',
+  userId: 'E10101',
+  level: 'info',
+  message: 'Successfully got all future desk bookings for user',
+  timestamp: '2023-12-14T11:41:10.796Z'
+}
+{
+  module: 'user-all-booking-controller',
+  service: 'getAllFutureBookingsForUser',
+  userId: 'E10101',
+  level: 'info',
+  message: 'Getting all future cab bookings for user',
+  timestamp: '2023-12-14T11:41:10.796Z'
+}
+{
+  module: 'cab-booking',
+  service: 'getFutureCabBookingsForUser',
+  userId: 'E10101',
+  level: 'info',
+  message: 'Successfully got future cab bookings for user',
+  timestamp: '2023-12-14T11:41:10.880Z'
+}
+{
+  module: 'cab-booking',
+  service: 'formatCabBookings',
+  level: 'info',
+  message: 'Successfully formatted cab bookings',
+  timestamp: '2023-12-14T11:41:10.881Z'
+}
+{
+  module: 'cab-booking',
+  service: 'formatCabBookings',
+  userId: 'E10101',
+  level: 'info',
+  message: 'Successfully formatted future cab bookings for user',
+  timestamp: '2023-12-14T11:41:10.881Z'
+}
+{
+  module: 'cab-booking',
+  service: 'formatCabBookings',
+  userId: 'E10101',
+  level: 'info',
+  message: 'Successfully returned future cab bookings for user',
+  timestamp: '2023-12-14T11:41:10.881Z'
+}
+{
+  module: 'user-all-booking-controller',
+  service: 'getAllFutureBookingsForUser',
+  userId: 'E10101',
+  level: 'info',
+  message: 'Successfully got all future cab bookings for user',
+  timestamp: '2023-12-14T11:41:10.881Z'
+}
+{
+  module: 'user-all-booking-controller',
+  service: 'getAllFutureBookingsForUser',
+  userId: 'E10101',
+  level: 'info',
+  message: 'Getting all future food bookings for user',
+  timestamp: '2023-12-14T11:41:10.881Z'
+}
+{
+  module: 'food-booking',
+  service: 'getFutureFoodBookingsForUser',
+  userId: 'E10101',
+  level: 'info',
+  message: 'Successfully got all future food bookings for a user',
+  timestamp: '2023-12-14T11:41:10.965Z'
+}
+{
+  module: 'food-booking',
+  service: 'formatFoodBookings',
+  level: 'info',
+  message: 'Successfully formatted food bookings',
+  timestamp: '2023-12-14T11:41:10.966Z'
+}
+{
+  module: 'food-booking',
+  service: 'formatFoodBookings',
+  userId: 'E10101',
+  level: 'info',
+  message: 'Successfully formatted all future food bookings for a user',
+  timestamp: '2023-12-14T11:41:10.966Z'
+}
+{
+  module: 'food-booking',
+  service: 'formatFoodBookings',
+  userId: 'E10101',
+  level: 'info',
+  message: 'Successfully returned all future food bookings for a user',
+  timestamp: '2023-12-14T11:41:10.966Z'
+}
+{
+  module: 'user-all-booking-controller',
+  service: 'getAllFutureBookingsForUser',
+  userId: 'E10101',
+  level: 'info',
+  message: 'Successfully got all future food bookings for user',
+  timestamp: '2023-12-14T11:41:10.966Z'
+}
+{
+  module: 'user-all-booking-controller',
+  userId: 'E10101',
+  service: 'getAllFutureBookingsForUser',
+  level: 'info',
+  message: 'Sorting all future bookings by dateBooked',
+  timestamp: '2023-12-14T11:41:10.967Z'
+}
+{
+  module: 'user-all-booking-controller',
+  service: 'getAllFutureBookingsForUser',
+  userId: 'E10101',
+  level: 'info',
+  message: 'Successfully returned all future bookings for user',
+  timestamp: '2023-12-14T11:41:10.967Z'
+}
+{
+  module: 'news',
+  service: 'formatNews',
+  level: 'info',
+  message: 'Successfully formatted news',
+  timestamp: '2023-12-14T11:41:11.043Z'
+}
+{
+  module: 'news',
+  service: 'formatNews',
+  level: 'info',
+  message: 'Successfully formatted news',
+  timestamp: '2023-12-14T11:41:11.043Z'
+}
+{
+  module: 'news',
+  service: 'formatNews',
+  level: 'info',
+  message: 'Successfully formatted all news',
+  timestamp: '2023-12-14T11:41:11.044Z'
+}
+{
+  module: 'news',
+  service: 'formatNews',
+  level: 'info',
+  message: 'Successfully returned all news',
+  timestamp: '2023-12-14T11:41:11.044Z'
+}
+{
+  module: 'news-controller',
+  service: 'getNewsFeedPosts',
+  userId: 'E10101',
+  level: 'info',
+  message: 'Successfully got all news feed posts',
+  timestamp: '2023-12-14T11:41:11.044Z'
+}
+{
+  module: 'news-controller',
+  service: 'getNewsFeedPosts',
+  userId: 'E10101',
+  level: 'info',
+  message: 'Successfully returned all news feed posts',
+  timestamp: '2023-12-14T11:41:11.044Z'
+}
+{
+  module: 'verify-jwt-token',
+  service: 'verifyJWT',
+  userId: 'E10101',
+  level: 'info',
+  message: 'Access token verified',
+  timestamp: '2023-12-14T11:41:11.047Z'
+}
+{
+  module: 'check-auth',
+  service: 'checkAuthStatus',
+  userId: 'E10101',
+  level: 'info',
+  message: 'User authenticated',
+  timestamp: '2023-12-14T11:41:11.047Z'
+}
+{
+  module: 'news-controller',
+  service: 'getNewsFeedPosts',
+  userId: 'E10101',
+  level: 'info',
+  message: 'Getting all news feed posts',
+  timestamp: '2023-12-14T11:41:11.047Z'
+}
+{
+  module: 'news',
+  service: 'formatNews',
+  level: 'info',
+  message: 'Successfully formatted news',
+  timestamp: '2023-12-14T11:41:11.129Z'
+}
+{
+  module: 'news',
+  service: 'formatNews',
+  level: 'info',
+  message: 'Successfully formatted news',
+  timestamp: '2023-12-14T11:41:11.129Z'
+}
+{
+  module: 'news',
+  service: 'formatNews',
+  level: 'info',
+  message: 'Successfully formatted all news',
+  timestamp: '2023-12-14T11:41:11.129Z'
+}
+{
+  module: 'news',
+  service: 'formatNews',
+  level: 'info',
+  message: 'Successfully returned all news',
+  timestamp: '2023-12-14T11:41:11.129Z'
+}
+{
+  module: 'news-controller',
+  service: 'getNewsFeedPosts',
+  userId: 'E10101',
+  level: 'info',
+  message: 'Successfully got all news feed posts',
+  timestamp: '2023-12-14T11:41:11.129Z'
+}
+{
+  module: 'news-controller',
+  service: 'getNewsFeedPosts',
+  userId: 'E10101',
+  level: 'info',
+  message: 'Successfully returned all news feed posts',
+  timestamp: '2023-12-14T11:41:11.130Z'
+}
+{
+  message: 'User connected with socket id 5JQkHKKUUOCPknuHAABJ',
+  level: 'info',
+  timestamp: '2023-12-14T11:41:11.147Z'
+}
+{
+  message: 'User connected with socket id qYIHZCupstiYKFR9AABL',
+  level: 'info',
+  timestamp: '2023-12-14T11:41:20.989Z'
+}
+{
+  module: 'verify-jwt-token',
+  service: 'verifyJWT',
+  userId: 'E10101',
+  level: 'info',
+  message: 'Access token verified',
+  timestamp: '2023-12-14T11:41:40.272Z'
+}
+{
+  module: 'check-auth',
+  service: 'checkAuthStatus',
+  userId: 'E10101',
+  level: 'info',
+  message: 'User authenticated',
+  timestamp: '2023-12-14T11:41:40.272Z'
+}
+{
+  module: 'news-controller',
+  service: 'getNewsFeedPosts',
+  userId: 'E10101',
+  level: 'info',
+  message: 'Getting all news feed posts',
+  timestamp: '2023-12-14T11:41:40.272Z'
+}
+{
+  message: 'User connected with socket id KJLJuF3swKOKDxLeAABN',
+  level: 'info',
+  timestamp: '2023-12-14T11:41:40.278Z'
+}
+{
+  message: 'User connected with socket id iCtFWLl-8e1ordTlAABP',
+  level: 'info',
+  timestamp: '2023-12-14T11:41:41.355Z'
+}
+{
+  message: 'User connected with socket id wo6i2YQ9KGB8_JuSAABR',
+  level: 'info',
+  timestamp: '2023-12-14T11:41:42.007Z'
+}
+{
+  module: 'verify-jwt-token',
+  service: 'verifyJWT',
+  userId: 'E10101',
+  level: 'info',
+  message: 'Access token verified',
+  timestamp: '2023-12-14T11:41:44.442Z'
+}
+{
+  module: 'check-auth',
+  service: 'checkAuthStatus',
+  userId: 'E10101',
+  level: 'info',
+  message: 'User authenticated',
+  timestamp: '2023-12-14T11:41:44.442Z'
+}
+{
+  module: 'admin-all-booking-controller',
+  userId: 'E10101',
+  service: 'getAllFutureBookings',
+  level: 'info',
+  message: 'Getting all future desk bookings',
+  timestamp: '2023-12-14T11:41:44.443Z'
+}
+{
+  module: 'verify-jwt-token',
+  service: 'verifyJWT',
+  userId: 'E10101',
+  level: 'info',
+  message: 'Access token verified',
+  timestamp: '2023-12-14T11:41:46.190Z'
+}
+{
+  module: 'check-auth',
+  service: 'checkAuthStatus',
+  userId: 'E10101',
+  level: 'info',
+  message: 'User authenticated',
+  timestamp: '2023-12-14T11:41:46.190Z'
+}
+{
+  module: 'admin-news-admin-request-controller',
+  service: 'getNewsAdminAccessRequests',
+  userId: 'E10101',
+  level: 'info',
+  message: 'Getting all news admin access requests',
+  timestamp: '2023-12-14T11:41:46.191Z'
+}
+{
+  module: 'verify-jwt-token',
+  service: 'verifyJWT',
+  userId: 'E10101',
+  level: 'info',
+  message: 'Access token verified',
+  timestamp: '2023-12-14T11:41:47.219Z'
+}
+{
+  module: 'check-auth',
+  service: 'checkAuthStatus',
+  userId: 'E10101',
+  level: 'info',
+  message: 'User authenticated',
+  timestamp: '2023-12-14T11:41:47.220Z'
+}
+{
+  module: 'admin-all-booking-controller',
+  userId: 'E10101',
+  service: 'getCountOfAllFutureBookings',
+  request: {
+    startDate: '2023-11-30T18:30:00.000Z',
+    endDate: '2023-12-30T18:30:00.000Z',
+    isDeskRequired: true,
+    isCabRequired: true,
+    isFoodRequired: true
+  },
+  level: 'info',
+  message: 'Forwarding request to get count of all bookings between dates',
+  timestamp: '2023-12-14T11:41:47.220Z'
+}
+{
+  module: 'admin-all-booking-controller',
+  userId: 'E10101',
+  service: 'getCountOfAllBookingsBetweenDates',
+  request: {
+    startDate: '2023-11-30T18:30:00.000Z',
+    endDate: '2023-12-30T18:30:00.000Z'
+  },
+  level: 'info',
+  message: 'Formatting start date and end date',
+  timestamp: '2023-12-14T11:41:47.221Z'
+}
+{
+  module: 'admin-all-booking-controller',
+  userId: 'E10101',
+  service: 'getCountOfAllBookingsBetweenDates',
+  level: 'info',
+  message: 'Getting count of all desk bookings between dates',
+  timestamp: '2023-12-14T11:41:47.221Z'
+}
+{
+  module: 'verify-jwt-token',
+  service: 'verifyJWT',
+  userId: 'E10101',
+  level: 'info',
+  message: 'Access token verified',
+  timestamp: '2023-12-14T11:41:48.175Z'
+}
+{
+  module: 'check-auth',
+  service: 'checkAuthStatus',
+  userId: 'E10101',
+  level: 'info',
+  message: 'User authenticated',
+  timestamp: '2023-12-14T11:41:48.175Z'
+}
+{
+  module: 'user-all-booking-controller',
+  service: 'getCountOfAllFutureBookingsForUser',
+  userId: 'E10101',
+  request: {
+    startDate: '2023-11-30T18:30:00.000Z',
+    endDate: '2023-12-30T18:30:00.000Z'
+  },
+  level: 'info',
+  message: 'Forwarding request to getCountOfAllBookingsForUserBetweenDates controller',
+  timestamp: '2023-12-14T11:41:48.175Z'
+}
+{
+  module: 'user-all-booking-controller',
+  userId: 'E10101',
+  service: 'getCountOfAllBookingsForUserBetweenDates',
+  request: {
+    startDate: '2023-11-30T18:30:00.000Z',
+    endDate: '2023-12-30T18:30:00.000Z'
+  },
+  level: 'info',
+  message: 'Formatting start date and end date',
+  timestamp: '2023-12-14T11:41:48.176Z'
+}
+{
+  module: 'user-all-booking-controller',
+  service: 'getCountOfAllBookingsForUserBetweenDates',
+  userId: 'E10101',
+  request: { startDate: '2023-12-01', endDate: '2023-12-31' },
+  level: 'info',
+  message: 'Getting count of all desk bookings for user between two dates',
+  timestamp: '2023-12-14T11:41:48.176Z'
+}
+{
+  module: 'news',
+  service: 'formatNews',
+  level: 'info',
+  message: 'Successfully formatted news',
+  timestamp: '2023-12-14T11:41:52.220Z'
+}
+{
+  module: 'news',
+  service: 'formatNews',
+  level: 'info',
+  message: 'Successfully formatted news',
+  timestamp: '2023-12-14T11:41:52.220Z'
+}
+{
+  module: 'news',
+  service: 'formatNews',
+  level: 'info',
+  message: 'Successfully formatted all news',
+  timestamp: '2023-12-14T11:41:52.221Z'
+}
+{
+  module: 'news',
+  service: 'formatNews',
+  level: 'info',
+  message: 'Successfully returned all news',
+  timestamp: '2023-12-14T11:41:52.221Z'
+}
+{
+  module: 'news-controller',
+  service: 'getNewsFeedPosts',
+  userId: 'E10101',
+  level: 'info',
+  message: 'Successfully got all news feed posts',
+  timestamp: '2023-12-14T11:41:52.221Z'
+}
+{
+  module: 'news-controller',
+  service: 'getNewsFeedPosts',
+  userId: 'E10101',
+  level: 'info',
+  message: 'Successfully returned all news feed posts',
+  timestamp: '2023-12-14T11:41:52.221Z'
+}
+{
+  module: 'verify-jwt-token',
+  service: 'verifyJWT',
+  userId: 'E10101',
+  level: 'info',
+  message: 'Access token verified',
+  timestamp: '2023-12-14T11:41:52.227Z'
+}
+{
+  module: 'check-auth',
+  service: 'checkAuthStatus',
+  userId: 'E10101',
+  level: 'info',
+  message: 'User authenticated',
+  timestamp: '2023-12-14T11:41:52.228Z'
+}
+{
+  module: 'news-controller',
+  service: 'getNewsFeedPosts',
+  userId: 'E10101',
+  level: 'info',
+  message: 'Getting all news feed posts',
+  timestamp: '2023-12-14T11:41:52.228Z'
+}
+{
+  module: 'news',
+  service: 'formatNews',
+  level: 'info',
+  message: 'Successfully formatted news',
+  timestamp: '2023-12-14T11:41:52.322Z'
+}
+{
+  module: 'news',
+  service: 'formatNews',
+  level: 'info',
+  message: 'Successfully formatted news',
+  timestamp: '2023-12-14T11:41:52.322Z'
+}
+{
+  module: 'news',
+  service: 'formatNews',
+  level: 'info',
+  message: 'Successfully formatted all news',
+  timestamp: '2023-12-14T11:41:52.322Z'
+}
+{
+  module: 'news',
+  service: 'formatNews',
+  level: 'info',
+  message: 'Successfully returned all news',
+  timestamp: '2023-12-14T11:41:52.323Z'
+}
+{
+  module: 'news-controller',
+  service: 'getNewsFeedPosts',
+  userId: 'E10101',
+  level: 'info',
+  message: 'Successfully got all news feed posts',
+  timestamp: '2023-12-14T11:41:52.323Z'
+}
+{
+  module: 'news-controller',
+  service: 'getNewsFeedPosts',
+  userId: 'E10101',
+  level: 'info',
+  message: 'Successfully returned all news feed posts',
+  timestamp: '2023-12-14T11:41:52.323Z'
+}
+{
+  module: 'desk-booking',
+  service: 'getCountOfDeskBookingsForUserBetweenDates',
+  level: 'info',
+  message: 'Successfully got all future desk bookings',
+  timestamp: '2023-12-14T11:41:52.333Z'
+}
+{
+  module: 'desk-booking',
+  service: 'formatDeskBoookings',
+  level: 'info',
+  message: 'Successfully formatted desk bookings',
+  timestamp: '2023-12-14T11:41:52.335Z'
+}
+{
+  module: 'desk-booking',
+  service: 'formatDeskBoookings',
+  level: 'info',
+  message: 'Successfully formatted all future desk bookings',
+  timestamp: '2023-12-14T11:41:52.335Z'
+}
+{
+  module: 'desk-booking',
+  service: 'formatDeskBoookings',
+  level: 'info',
+  message: 'Successfully returned all future desk bookings',
+  timestamp: '2023-12-14T11:41:52.335Z'
+}
+{
+  module: 'admin-all-booking-controller',
+  userId: 'E10101',
+  service: 'getCountOfAllBookingsBetweenDates',
+  level: 'info',
+  message: 'Successfully got all future desk bookings',
+  timestamp: '2023-12-14T11:41:52.335Z'
+}
+{
+  module: 'admin-all-booking-controller',
+  userId: 'E10101',
+  service: 'getCountOfAllBookingsBetweenDates',
+  level: 'info',
+  message: 'Getting all future cab bookings',
+  timestamp: '2023-12-14T11:41:52.336Z'
+}
+{
+  module: 'cab-booking',
+  service: 'getAllFutureCabBookings',
+  level: 'info',
+  message: 'Successfully got all future cab bookings',
+  timestamp: '2023-12-14T11:41:52.433Z'
+}
+{
+  module: 'cab-booking',
+  service: 'formatCabBookings',
+  level: 'info',
+  message: 'Successfully formatted cab bookings',
+  timestamp: '2023-12-14T11:41:52.436Z'
+}
+{
+  module: 'cab-booking',
+  service: 'formatCabBookings',
+  level: 'info',
+  message: 'Successfully formatted all future cab bookings',
+  timestamp: '2023-12-14T11:41:52.436Z'
+}
+{
+  module: 'cab-booking',
+  service: 'formatCabBookings',
+  level: 'info',
+  message: 'Successfully returned all future cab bookings',
+  timestamp: '2023-12-14T11:41:52.436Z'
+}
+{
+  module: 'admin-all-booking-controller',
+  userId: 'E10101',
+  service: 'getCountOfAllBookingsBetweenDates',
+  level: 'info',
+  message: 'Successfully got all future cab bookings',
+  timestamp: '2023-12-14T11:41:52.437Z'
+}
+{
+  module: 'admin-all-booking-controller',
+  userId: 'E10101',
+  service: 'getCountOfAllBookingsBetweenDates',
+  level: 'info',
+  message: 'Getting all future food bookings',
+  timestamp: '2023-12-14T11:41:52.437Z'
+}
+{
+  module: 'food-booking',
+  service: 'getAllFutureFoodBookings',
+  level: 'info',
+  message: 'Successfully got all future food bookings',
+  timestamp: '2023-12-14T11:41:52.631Z'
+}
+{
+  module: 'food-booking',
+  service: 'formatFoodBookings',
+  level: 'info',
+  message: 'Successfully formatted food bookings',
+  timestamp: '2023-12-14T11:41:52.634Z'
+}
+{
+  module: 'food-booking',
+  service: 'formatFoodBookings',
+  level: 'info',
+  message: 'Successfully formatted all future food bookings',
+  timestamp: '2023-12-14T11:41:52.634Z'
+}
+{
+  module: 'food-booking',
+  service: 'formatFoodBookings',
+  level: 'info',
+  message: 'Successfully returned all future food bookings',
+  timestamp: '2023-12-14T11:41:52.634Z'
+}
+{
+  module: 'admin-all-booking-controller',
+  userId: 'E10101',
+  service: 'getCountOfAllBookingsBetweenDates',
+  level: 'info',
+  message: 'Successfully got all future food bookings',
+  timestamp: '2023-12-14T11:41:52.634Z'
+}
+{
+  module: 'admin-all-booking-controller',
+  userId: 'E10101',
+  service: 'getCountOfAllBookingsBetweenDates',
+  level: 'info',
+  message: 'Sorting all future bookings by dateBooked',
+  timestamp: '2023-12-14T11:41:52.634Z'
+}
+{
+  module: 'admin-all-booking-controller',
+  userId: 'E10101',
+  service: 'getCountOfAllBookingsBetweenDates',
+  level: 'info',
+  message: 'Successfully returned all future bookings',
+  timestamp: '2023-12-14T11:41:52.636Z'
+}
+{
+  module: 'desk-booking',
+  service: 'formatDeskBoookings',
+  request: { startDate: '2023-12-01', endDate: '2023-12-31' },
+  level: 'info',
+  message: 'Successfully got count of all desk bookings between two dates',
+  timestamp: '2023-12-14T11:42:03.181Z'
+}
+{
+  module: 'desk-booking',
+  service: 'formatDeskBoookings',
+  request: { startDate: '2023-12-01', endDate: '2023-12-31' },
+  level: 'info',
+  message: 'Successfully returned count of all desk bookings between two dates',
+  timestamp: '2023-12-14T11:42:03.182Z'
+}
+{
+  module: 'admin-all-booking-controller',
+  userId: 'E10101',
+  service: 'getCountOfAllBookingsBetweenDates',
+  level: 'info',
+  message: 'Successfully got count of all desk bookings between dates',
+  timestamp: '2023-12-14T11:42:03.182Z'
+}
+{
+  module: 'admin-all-booking-controller',
+  userId: 'E10101',
+  service: 'getCountOfAllBookingsBetweenDates',
+  level: 'info',
+  message: 'Getting count of all cab bookings between dates',
+  timestamp: '2023-12-14T11:42:03.183Z'
+}
+{
+  module: 'news-admin-request',
+  service: 'getAllNewsAdminRequests',
+  level: 'info',
+  message: 'Successfully got all news admin requests',
+  timestamp: '2023-12-14T11:42:03.244Z'
+}
+{
+  module: 'news-admin-request',
+  service: 'formatNewsAdminRequest',
+  level: 'info',
+  message: 'Successfully formatted news admin request',
+  timestamp: '2023-12-14T11:42:03.245Z'
+}
+{
+  module: 'news-admin-request',
+  service: 'formatNewsAdminRequest',
+  level: 'info',
+  message: 'Successfully formatted all news admin requests',
+  timestamp: '2023-12-14T11:42:03.246Z'
+}
+{
+  module: 'news-admin-request',
+  service: 'formatNewsAdminRequest',
+  level: 'info',
+  message: 'Successfully returned all news admin requests',
+  timestamp: '2023-12-14T11:42:03.246Z'
+}
+{
+  module: 'admin-news-admin-request-controller',
+  service: 'getNewsAdminAccessRequests',
+  userId: 'E10101',
+  level: 'info',
+  message: 'Successfully got all news admin access requests',
+  timestamp: '2023-12-14T11:42:03.246Z'
+}
+{
+  module: 'admin-news-admin-request-controller',
+  service: 'getNewsAdminAccessRequests',
+  userId: 'E10101',
+  level: 'info',
+  message: 'Successfully returned all news admin access requests',
+  timestamp: '2023-12-14T11:42:03.246Z'
+}
+{
+  module: 'cab-booking',
+  service: 'getCountOfCabBookingsBetweenDates',
+  request: { startDate: '2023-12-01', endDate: '2023-12-31' },
+  level: 'info',
+  message: 'Successfully got count of cab bookings between dates',
+  timestamp: '2023-12-14T11:42:03.265Z'
+}
+{
+  module: 'cab-booking',
+  service: 'getCountOfCabBookingsBetweenDates',
+  request: { startDate: '2023-12-01', endDate: '2023-12-31' },
+  level: 'info',
+  message: 'Successfully returned count of cab bookings between dates',
+  timestamp: '2023-12-14T11:42:03.265Z'
+}
+{
+  module: 'admin-all-booking-controller',
+  userId: 'E10101',
+  service: 'getCountOfAllBookingsBetweenDates',
+  level: 'info',
+  message: 'Successfully got count of all cab bookings between dates',
+  timestamp: '2023-12-14T11:42:03.265Z'
+}
+{
+  module: 'admin-all-booking-controller',
+  userId: 'E10101',
+  service: 'getCountOfAllBookingsBetweenDates',
+  level: 'info',
+  message: 'Getting count of all food bookings between dates',
+  timestamp: '2023-12-14T11:42:03.265Z'
+}
+{
+  module: 'food-booking',
+  service: 'getCountOfFoodBookingsBetweenDates',
+  request: { startDate: '2023-12-01', endDate: '2023-12-31' },
+  level: 'info',
+  message: 'Successfully got count of all food bookings between two dates',
+  timestamp: '2023-12-14T11:42:03.347Z'
+}
+{
+  module: 'food-booking',
+  service: 'getCountOfFoodBookingsBetweenDates',
+  request: { startDate: '2023-12-01', endDate: '2023-12-31' },
+  level: 'info',
+  message: 'Successfully returned count of all food bookings between two dates',
+  timestamp: '2023-12-14T11:42:03.347Z'
+}
+{
+  module: 'admin-all-booking-controller',
+  userId: 'E10101',
+  service: 'getCountOfAllBookingsBetweenDates',
+  level: 'info',
+  message: 'Successfully got count of all food bookings between dates',
+  timestamp: '2023-12-14T11:42:03.347Z'
+}
+{
+  module: 'admin-all-booking-controller',
+  userId: 'E10101',
+  service: 'getCountOfAllBookingsBetweenDates',
+  level: 'info',
+  message: 'Successfully returned count of all bookings between dates',
+  timestamp: '2023-12-14T11:42:03.347Z'
+}
+{
+  module: 'verify-jwt-token',
+  service: 'verifyJWT',
+  userId: 'E10101',
+  level: 'info',
+  message: 'Access token verified',
+  timestamp: '2023-12-14T11:42:03.505Z'
+}
+{
+  module: 'check-auth',
+  service: 'checkAuthStatus',
+  userId: 'E10101',
+  level: 'info',
+  message: 'User authenticated',
+  timestamp: '2023-12-14T11:42:03.505Z'
+}
+{
+  module: 'user-all-booking-controller',
+  service: 'getAllFutureBookingsForUser',
+  userId: 'E10101',
+  level: 'info',
+  message: 'Getting all future desk bookings for user',
+  timestamp: '2023-12-14T11:42:03.505Z'
+}
+{
+  module: 'verify-jwt-token',
+  service: 'verifyJWT',
+  userId: 'E10101',
+  level: 'info',
+  message: 'Access token verified',
+  timestamp: '2023-12-14T11:42:03.508Z'
+}
+{
+  module: 'check-auth',
+  service: 'checkAuthStatus',
+  userId: 'E10101',
+  level: 'info',
+  message: 'User authenticated',
+  timestamp: '2023-12-14T11:42:03.508Z'
+}
+{
+  module: 'news-controller',
+  service: 'getNewsFeedPosts',
+  userId: 'E10101',
+  level: 'info',
+  message: 'Getting all news feed posts',
+  timestamp: '2023-12-14T11:42:03.508Z'
+}
+{
+  module: 'desk-booking',
+  service: 'getFutureDeskBookingsForUser',
+  userId: 'E10101',
+  level: 'info',
+  message: 'Successfully got all future desk bookings for a user',
+  timestamp: '2023-12-14T11:42:03.588Z'
+}
+{
+  module: 'desk-booking',
+  service: 'formatDeskBoookings',
+  level: 'info',
+  message: 'Successfully formatted desk bookings',
+  timestamp: '2023-12-14T11:42:03.589Z'
+}
+{
+  module: 'desk-booking',
+  service: 'formatDeskBoookings',
+  userId: 'E10101',
+  level: 'info',
+  message: 'Successfully formatted all future desk bookings for a user',
+  timestamp: '2023-12-14T11:42:03.589Z'
+}
+{
+  module: 'desk-booking',
+  service: 'formatDeskBoookings',
+  userId: 'E10101',
+  level: 'info',
+  message: 'Successfully returned all future desk bookings for a user',
+  timestamp: '2023-12-14T11:42:03.589Z'
+}
+{
+  module: 'user-all-booking-controller',
+  service: 'getAllFutureBookingsForUser',
+  userId: 'E10101',
+  level: 'info',
+  message: 'Successfully got all future desk bookings for user',
+  timestamp: '2023-12-14T11:42:03.589Z'
+}
+{
+  module: 'user-all-booking-controller',
+  service: 'getAllFutureBookingsForUser',
+  userId: 'E10101',
+  level: 'info',
+  message: 'Getting all future cab bookings for user',
+  timestamp: '2023-12-14T11:42:03.589Z'
+}
+{
+  module: 'news',
+  service: 'formatNews',
+  level: 'info',
+  message: 'Successfully formatted news',
+  timestamp: '2023-12-14T11:42:03.594Z'
+}
+{
+  module: 'news',
+  service: 'formatNews',
+  level: 'info',
+  message: 'Successfully formatted news',
+  timestamp: '2023-12-14T11:42:03.595Z'
+}
+{
+  module: 'news',
+  service: 'formatNews',
+  level: 'info',
+  message: 'Successfully formatted all news',
+  timestamp: '2023-12-14T11:42:03.595Z'
+}
+{
+  module: 'news',
+  service: 'formatNews',
+  level: 'info',
+  message: 'Successfully returned all news',
+  timestamp: '2023-12-14T11:42:03.595Z'
+}
+{
+  module: 'news-controller',
+  service: 'getNewsFeedPosts',
+  userId: 'E10101',
+  level: 'info',
+  message: 'Successfully got all news feed posts',
+  timestamp: '2023-12-14T11:42:03.595Z'
+}
+{
+  module: 'news-controller',
+  service: 'getNewsFeedPosts',
+  userId: 'E10101',
+  level: 'info',
+  message: 'Successfully returned all news feed posts',
+  timestamp: '2023-12-14T11:42:03.595Z'
+}
+{
+  module: 'cab-booking',
+  service: 'getFutureCabBookingsForUser',
+  userId: 'E10101',
+  level: 'info',
+  message: 'Successfully got future cab bookings for user',
+  timestamp: '2023-12-14T11:42:03.671Z'
+}
+{
+  module: 'cab-booking',
+  service: 'formatCabBookings',
+  level: 'info',
+  message: 'Successfully formatted cab bookings',
+  timestamp: '2023-12-14T11:42:03.672Z'
+}
+{
+  module: 'cab-booking',
+  service: 'formatCabBookings',
+  userId: 'E10101',
+  level: 'info',
+  message: 'Successfully formatted future cab bookings for user',
+  timestamp: '2023-12-14T11:42:03.672Z'
+}
+{
+  module: 'cab-booking',
+  service: 'formatCabBookings',
+  userId: 'E10101',
+  level: 'info',
+  message: 'Successfully returned future cab bookings for user',
+  timestamp: '2023-12-14T11:42:03.672Z'
+}
+{
+  module: 'user-all-booking-controller',
+  service: 'getAllFutureBookingsForUser',
+  userId: 'E10101',
+  level: 'info',
+  message: 'Successfully got all future cab bookings for user',
+  timestamp: '2023-12-14T11:42:03.672Z'
+}
+{
+  module: 'user-all-booking-controller',
+  service: 'getAllFutureBookingsForUser',
+  userId: 'E10101',
+  level: 'info',
+  message: 'Getting all future food bookings for user',
+  timestamp: '2023-12-14T11:42:03.672Z'
+}
+{
+  module: 'food-booking',
+  service: 'getFutureFoodBookingsForUser',
+  userId: 'E10101',
+  level: 'info',
+  message: 'Successfully got all future food bookings for a user',
+  timestamp: '2023-12-14T11:42:03.756Z'
+}
+{
+  module: 'food-booking',
+  service: 'formatFoodBookings',
+  level: 'info',
+  message: 'Successfully formatted food bookings',
+  timestamp: '2023-12-14T11:42:03.757Z'
+}
+{
+  module: 'food-booking',
+  service: 'formatFoodBookings',
+  userId: 'E10101',
+  level: 'info',
+  message: 'Successfully formatted all future food bookings for a user',
+  timestamp: '2023-12-14T11:42:03.757Z'
+}
+{
+  module: 'food-booking',
+  service: 'formatFoodBookings',
+  userId: 'E10101',
+  level: 'info',
+  message: 'Successfully returned all future food bookings for a user',
+  timestamp: '2023-12-14T11:42:03.757Z'
+}
+{
+  module: 'user-all-booking-controller',
+  service: 'getAllFutureBookingsForUser',
+  userId: 'E10101',
+  level: 'info',
+  message: 'Successfully got all future food bookings for user',
+  timestamp: '2023-12-14T11:42:03.757Z'
+}
+{
+  module: 'user-all-booking-controller',
+  userId: 'E10101',
+  service: 'getAllFutureBookingsForUser',
+  level: 'info',
+  message: 'Sorting all future bookings by dateBooked',
+  timestamp: '2023-12-14T11:42:03.757Z'
+}
+{
+  module: 'user-all-booking-controller',
+  service: 'getAllFutureBookingsForUser',
+  userId: 'E10101',
+  level: 'info',
+  message: 'Successfully returned all future bookings for user',
+  timestamp: '2023-12-14T11:42:03.758Z'
+}
+{
+  message: 'User connected with socket id vvp3s0a7UjN07cUWAABT',
+  level: 'info',
+  timestamp: '2023-12-14T11:42:10.938Z'
+}
+{
+  message: 'User connected with socket id vnbWcLRJCw8L9RkRAABV',
+  level: 'info',
+  timestamp: '2023-12-14T11:42:11.866Z'
+}
+{
+  message: 'User connected with socket id SXZcFvNNESh48UtEAABX',
+  level: 'info',
+  timestamp: '2023-12-14T11:42:14.032Z'
+}
+{
+  module: 'desk-booking',
+  service: 'formatDeskBoookings',
+  userId: 'E10101',
+  request: { startDate: '2023-12-01', endDate: '2023-12-31' },
+  level: 'info',
+  message: 'Successfully got count of all desk bookings for a user between two dates',
+  timestamp: '2023-12-14T11:42:14.440Z'
+}
+{
+  module: 'desk-booking',
+  service: 'formatDeskBoookings',
+  userId: 'E10101',
+  request: { startDate: '2023-12-01', endDate: '2023-12-31' },
+  level: 'info',
+  message: 'Successfully returned count of all desk bookings for a user between two dates',
+  timestamp: '2023-12-14T11:42:14.440Z'
+}
+{
+  module: 'user-all-booking-controller',
+  service: 'getAllFutureBookingsForUser',
+  userId: 'E10101',
+  request: { startDate: '2023-12-01', endDate: '2023-12-31' },
+  level: 'info',
+  message: 'Successfully got count of all desk bookings for user between two dates',
+  timestamp: '2023-12-14T11:42:14.441Z'
+}
+{
+  module: 'user-all-booking-controller',
+  service: 'getAllFutureBookingsForUser',
+  userId: 'E10101',
+  request: { startDate: '2023-12-01', endDate: '2023-12-31' },
+  level: 'info',
+  message: 'Getting count of all cab bookings for user between two dates',
+  timestamp: '2023-12-14T11:42:14.441Z'
+}
+{
+  module: 'cab-booking',
+  service: 'getCountOfCabBookingsForUserBetweenDates',
+  userId: 'E10101',
+  request: { startDate: '2023-12-01', endDate: '2023-12-31' },
+  level: 'info',
+  message: 'Successfully got count of cab bookings for user between dates',
+  timestamp: '2023-12-14T11:42:14.521Z'
+}
+{
+  module: 'cab-booking',
+  service: 'getCountOfCabBookingsForUserBetweenDates',
+  userId: 'E10101',
+  request: { startDate: '2023-12-01', endDate: '2023-12-31' },
+  level: 'info',
+  message: 'Successfully returned count of cab bookings for user between dates',
+  timestamp: '2023-12-14T11:42:14.522Z'
+}
+{
+  module: 'user-all-booking-controller',
+  service: 'getAllFutureBookingsForUser',
+  userId: 'E10101',
+  request: { startDate: '2023-12-01', endDate: '2023-12-31' },
+  level: 'info',
+  message: 'Successfully got count of all cab bookings for user between two dates',
+  timestamp: '2023-12-14T11:42:14.522Z'
+}
+{
+  module: 'user-all-booking-controller',
+  service: 'getAllFutureBookingsForUser',
+  userId: 'E10101',
+  request: { startDate: '2023-12-01', endDate: '2023-12-31' },
+  level: 'info',
+  message: 'Getting count of all food bookings for user between two dates',
+  timestamp: '2023-12-14T11:42:14.522Z'
+}
+{
+  module: 'food-booking',
+  service: 'getCountOfFoodBookingsForUserBetweenDates',
+  userId: 'E10101',
+  request: { startDate: '2023-12-01', endDate: '2023-12-31' },
+  level: 'info',
+  message: 'Successfully got count of all food bookings for a user between two dates',
+  timestamp: '2023-12-14T11:42:14.603Z'
+}
+{
+  module: 'food-booking',
+  service: 'getCountOfFoodBookingsForUserBetweenDates',
+  userId: 'E10101',
+  request: { startDate: '2023-12-01', endDate: '2023-12-31' },
+  level: 'info',
+  message: 'Successfully returned count of all food bookings for a user between two dates',
+  timestamp: '2023-12-14T11:42:14.604Z'
+}
+{
+  module: 'user-all-booking-controller',
+  service: 'getAllFutureBookingsForUser',
+  userId: 'E10101',
+  request: { startDate: '2023-12-01', endDate: '2023-12-31' },
+  level: 'info',
+  message: 'Successfully got count of all food bookings for user between two dates',
+  timestamp: '2023-12-14T11:42:14.604Z'
+}
+{
+  module: 'user-all-booking-controller',
+  service: 'getAllFutureBookingsForUser',
+  userId: 'E10101',
+  request: { startDate: '2023-12-01', endDate: '2023-12-31' },
+  level: 'info',
+  message: 'Successfully returned count of all bookings for user between two dates',
+  timestamp: '2023-12-14T11:42:14.605Z'
+}
+{
+  module: 'verify-jwt-token',
+  service: 'verifyJWT',
+  userId: 'E10101',
+  level: 'info',
+  message: 'Access token verified',
+  timestamp: '2023-12-14T11:42:15.224Z'
+}
+{
+  module: 'check-auth',
+  service: 'checkAuthStatus',
+  userId: 'E10101',
+  level: 'info',
+  message: 'User authenticated',
+  timestamp: '2023-12-14T11:42:15.224Z'
+}
+{
+  module: 'user-desk-controller',
+  service: 'getDesksAvailabilityByDatesObj',
+  userId: 'E10101',
+  request: { dates: [ '2024-01-09', '2024-01-10', '2024-01-11' ] },
+  level: 'info',
+  message: 'Getting availability of all desks for multiple dates',
+  timestamp: '2023-12-14T11:42:15.225Z'
+}
+{
+  module: 'user-desk-controller',
+  service: 'getDesksAvailabilityByDatesObj',
+  userId: 'E10101',
+  request: { date: '2024-01-09' },
+  level: 'info',
+  message: 'Getting availability of all desks for a particular date',
+  timestamp: '2023-12-14T11:42:15.226Z'
+}
+{
+  module: 'desk-booking',
+  service: 'getDeskLayout',
+  level: 'info',
+  message: 'Successfully returned desk layout',
+  timestamp: '2023-12-14T11:42:15.227Z'
+}
+{
+  module: 'desk-booking',
+  service: 'getDeskLayout',
+  level: 'info',
+  message: 'Successfully got desk layout',
+  timestamp: '2023-12-14T11:42:15.228Z'
+}
+{
+  message: 'User connected with socket id qO5nGO2u_hDpKEeWAABa',
+  level: 'info',
+  timestamp: '2023-12-14T11:42:15.246Z'
+}
+{
+  message: 'User connected with socket id jtSE9ktTic0jqu-bAABb',
+  level: 'info',
+  timestamp: '2023-12-14T11:42:15.252Z'
+}
+{
+  module: 'desk-booking',
+  service: 'getDeskBookingsByDate',
+  request: { date: '2024-01-09' },
+  level: 'info',
+  message: 'Successfully got all desk bookings for a particular date',
+  timestamp: '2023-12-14T11:42:15.309Z'
+}
+{
+  module: 'desk-booking',
+  service: 'formatDeskBoookings',
+  level: 'info',
+  message: 'Successfully formatted desk bookings',
+  timestamp: '2023-12-14T11:42:15.309Z'
+}
+{
+  module: 'desk-booking',
+  service: 'formatDeskBoookings',
+  request: { date: '2024-01-09' },
+  level: 'info',
+  message: 'Successfully formatted all desk bookings for a particular date',
+  timestamp: '2023-12-14T11:42:15.310Z'
+}
+{
+  module: 'desk-booking',
+  service: 'formatDeskBoookings',
+  request: { date: '2024-01-09' },
+  level: 'info',
+  message: 'Successfully returned all desk bookings for a particular date',
+  timestamp: '2023-12-14T11:42:15.310Z'
+}
+{
+  module: 'desk-booking',
+  service: 'formatDeskBoookings',
+  request: { date: '2024-01-09' },
+  level: 'info',
+  message: 'Successfully got desk bookings for a particular date',
+  timestamp: '2023-12-14T11:42:15.310Z'
+}
+{
+  module: 'desk-booking',
+  service: 'formatDeskBoookings',
+  request: { date: '2024-01-09' },
+  level: 'info',
+  message: 'Successfully returned availability of all desks for a particular date',
+  timestamp: '2023-12-14T11:42:15.310Z'
+}
+{
+  module: 'user-desk-controller',
+  service: 'getDesksAvailabilityByDatesObj',
+  userId: 'E10101',
+  request: { date: '2024-01-09' },
+  level: 'info',
+  message: 'Successfully got availability of all desks for a particular date',
+  timestamp: '2023-12-14T11:42:15.310Z'
+}
+{
+  module: 'user-desk-controller',
+  service: 'getDesksAvailabilityByDatesObj',
+  userId: 'E10101',
+  request: { date: '2024-01-10' },
+  level: 'info',
+  message: 'Getting availability of all desks for a particular date',
+  timestamp: '2023-12-14T11:42:15.310Z'
+}
+{
+  module: 'desk-booking',
+  service: 'getDeskLayout',
+  level: 'info',
+  message: 'Successfully returned desk layout',
+  timestamp: '2023-12-14T11:42:15.311Z'
+}
+{
+  module: 'desk-booking',
+  service: 'getDeskLayout',
+  level: 'info',
+  message: 'Successfully got desk layout',
+  timestamp: '2023-12-14T11:42:15.311Z'
+}
+{
+  module: 'desk-booking',
+  service: 'getDeskBookingsByDate',
+  request: { date: '2024-01-10' },
+  level: 'info',
+  message: 'Successfully got all desk bookings for a particular date',
+  timestamp: '2023-12-14T11:42:15.391Z'
+}
+{
+  module: 'desk-booking',
+  service: 'formatDeskBoookings',
+  level: 'info',
+  message: 'Successfully formatted desk bookings',
+  timestamp: '2023-12-14T11:42:15.392Z'
+}
+{
+  module: 'desk-booking',
+  service: 'formatDeskBoookings',
+  request: { date: '2024-01-10' },
+  level: 'info',
+  message: 'Successfully formatted all desk bookings for a particular date',
+  timestamp: '2023-12-14T11:42:15.392Z'
+}
+{
+  module: 'desk-booking',
+  service: 'formatDeskBoookings',
+  request: { date: '2024-01-10' },
+  level: 'info',
+  message: 'Successfully returned all desk bookings for a particular date',
+  timestamp: '2023-12-14T11:42:15.393Z'
+}
+{
+  module: 'desk-booking',
+  service: 'formatDeskBoookings',
+  request: { date: '2024-01-10' },
+  level: 'info',
+  message: 'Successfully got desk bookings for a particular date',
+  timestamp: '2023-12-14T11:42:15.393Z'
+}
+{
+  module: 'desk-booking',
+  service: 'formatDeskBoookings',
+  request: { date: '2024-01-10' },
+  level: 'info',
+  message: 'Successfully returned availability of all desks for a particular date',
+  timestamp: '2023-12-14T11:42:15.394Z'
+}
+{
+  module: 'user-desk-controller',
+  service: 'getDesksAvailabilityByDatesObj',
+  userId: 'E10101',
+  request: { date: '2024-01-10' },
+  level: 'info',
+  message: 'Successfully got availability of all desks for a particular date',
+  timestamp: '2023-12-14T11:42:15.394Z'
+}
+{
+  module: 'user-desk-controller',
+  service: 'getDesksAvailabilityByDatesObj',
+  userId: 'E10101',
+  request: { date: '2024-01-11' },
+  level: 'info',
+  message: 'Getting availability of all desks for a particular date',
+  timestamp: '2023-12-14T11:42:15.395Z'
+}
+{
+  module: 'desk-booking',
+  service: 'getDeskLayout',
+  level: 'info',
+  message: 'Successfully returned desk layout',
+  timestamp: '2023-12-14T11:42:15.396Z'
+}
+{
+  module: 'desk-booking',
+  service: 'getDeskLayout',
+  level: 'info',
+  message: 'Successfully got desk layout',
+  timestamp: '2023-12-14T11:42:15.396Z'
+}
+{
+  module: 'desk-booking',
+  service: 'getDeskBookingsByDate',
+  request: { date: '2024-01-11' },
+  level: 'info',
+  message: 'Successfully got all desk bookings for a particular date',
+  timestamp: '2023-12-14T11:42:15.477Z'
+}
+{
+  module: 'desk-booking',
+  service: 'formatDeskBoookings',
+  level: 'info',
+  message: 'Successfully formatted desk bookings',
+  timestamp: '2023-12-14T11:42:15.477Z'
+}
+{
+  module: 'desk-booking',
+  service: 'formatDeskBoookings',
+  request: { date: '2024-01-11' },
+  level: 'info',
+  message: 'Successfully formatted all desk bookings for a particular date',
+  timestamp: '2023-12-14T11:42:15.478Z'
+}
+{
+  module: 'desk-booking',
+  service: 'formatDeskBoookings',
+  request: { date: '2024-01-11' },
+  level: 'info',
+  message: 'Successfully returned all desk bookings for a particular date',
+  timestamp: '2023-12-14T11:42:15.478Z'
+}
+{
+  module: 'desk-booking',
+  service: 'formatDeskBoookings',
+  request: { date: '2024-01-11' },
+  level: 'info',
+  message: 'Successfully got desk bookings for a particular date',
+  timestamp: '2023-12-14T11:42:15.479Z'
+}
+{
+  module: 'desk-booking',
+  service: 'formatDeskBoookings',
+  request: { date: '2024-01-11' },
+  level: 'info',
+  message: 'Successfully returned availability of all desks for a particular date',
+  timestamp: '2023-12-14T11:42:15.479Z'
+}
+{
+  module: 'user-desk-controller',
+  service: 'getDesksAvailabilityByDatesObj',
+  userId: 'E10101',
+  request: { date: '2024-01-11' },
+  level: 'info',
+  message: 'Successfully got availability of all desks for a particular date',
+  timestamp: '2023-12-14T11:42:15.480Z'
+}
+{
+  module: 'user-desk-controller',
+  service: 'getDesksAvailabilityByDatesObj',
+  userId: 'E10101',
+  level: 'info',
+  message: 'Getting desk layout',
+  timestamp: '2023-12-14T11:42:15.480Z'
+}
+{
+  module: 'desk-booking',
+  service: 'getDeskLayout',
+  level: 'info',
+  message: 'Successfully returned desk layout',
+  timestamp: '2023-12-14T11:42:15.481Z'
+}
+{
+  module: 'user-desk-controller',
+  service: 'getDesksAvailabilityByDatesObj',
+  userId: 'E10101',
+  level: 'info',
+  message: 'Successfully got desk layout',
+  timestamp: '2023-12-14T11:42:15.481Z'
+}
+{
+  module: 'user-desk-controller',
+  service: 'getDesksAvailabilityByDatesObj',
+  userId: 'E10101',
+  request: { dates: [ '2024-01-09', '2024-01-10', '2024-01-11' ] },
+  level: 'info',
+  message: 'Successfully returned availability of all desks for multiple dates',
+  timestamp: '2023-12-14T11:42:15.483Z'
+}
+{
+  message: 'User connected with socket id O61xiQJen1-jNFT1AABe',
+  level: 'info',
+  timestamp: '2023-12-14T11:42:32.426Z'
+}
+{
+  message: 'User connected with socket id 5d6cHtyIOv1iOVYDAABf',
+  level: 'info',
+  timestamp: '2023-12-14T11:42:32.434Z'
+}
+{
+  message: 'User connected with socket id lIenRqJ7dBMNgyfmAABh',
+  level: 'info',
+  timestamp: '2023-12-14T11:42:36.428Z'
+}
+{
+  message: 'User connected with socket id mW_taamukcWeynMFAABj',
+  level: 'info',
+  timestamp: '2023-12-14T11:42:41.722Z'
+}
+{
+  message: 'User connected with socket id qoBIjcAOmq0eMh7rAABl',
+  level: 'info',
+  timestamp: '2023-12-14T11:42:47.510Z'
+}
+{
+  message: 'User connected with socket id O3vu7ookLkVqgvReAABn',
+  level: 'info',
+  timestamp: '2023-12-14T11:42:48.864Z'
+}
+{
+  message: 'User connected with socket id XHkGhew8vFlxvjDWAABp',
+  level: 'info',
+  timestamp: '2023-12-14T11:42:50.087Z'
+}
+{
+  message: 'User connected with socket id pRUo_QFS2oLaH-RrAABr',
+  level: 'info',
+  timestamp: '2023-12-14T11:42:51.260Z'
+}
+{
+  message: 'User connected with socket id uOZQfMBc_JNrPuHpAABt',
+  level: 'info',
+  timestamp: '2023-12-14T11:42:53.290Z'
+}
+{
+  message: 'User connected with socket id R15MCPt4uOqPE99JAABv',
+  level: 'info',
+  timestamp: '2023-12-14T11:42:54.654Z'
+}
+{
+  message: 'User connected with socket id BBE4Gl07h-CXVbcgAABx',
+  level: 'info',
+  timestamp: '2023-12-14T11:42:55.932Z'
+}
+{
+  message: 'User connected with socket id tmKhhWOKXWByywbdAABz',
+  level: 'info',
+  timestamp: '2023-12-14T11:42:58.129Z'
+}
+{
+  message: 'User connected with socket id Jg_Ml5LcRQ6oJ5i0AAB1',
+  level: 'info',
+  timestamp: '2023-12-14T11:42:59.268Z'
+}
+{
+  message: 'User connected with socket id _NxhkC_qIMFkz4BqAAB3',
+  level: 'info',
+  timestamp: '2023-12-14T11:43:00.589Z'
+}
+{
+  message: 'User connected with socket id v6HeHcbtkLPObzi1AAB5',
+  level: 'info',
+  timestamp: '2023-12-14T11:43:00.631Z'
+}
+{
+  message: 'User connected with socket id uaBH53kViwfUVpkhAAB7',
+  level: 'info',
+  timestamp: '2023-12-14T11:43:02.952Z'
+}
+{
+  message: 'User connected with socket id ym_Q21tnM4kjhj9kAAB9',
+  level: 'info',
+  timestamp: '2023-12-14T11:43:06.482Z'
+}
+{
+  module: 'verify-jwt-token',
+  service: 'verifyJWT',
+  userId: 'E10101',
+  level: 'info',
+  message: 'Access token verified',
+  timestamp: '2023-12-14T11:43:10.459Z'
+}
+{
+  module: 'check-auth',
+  service: 'checkAuthStatus',
+  userId: 'E10101',
+  level: 'info',
+  message: 'User authenticated',
+  timestamp: '2023-12-14T11:43:10.460Z'
+}
+{
+  module: 'user-all-booking-controller',
+  userId: 'E10101',
+  service: 'bookAll',
+  request: {
+    dates: [ '2024-01-09', '2024-01-10', '2024-01-11' ],
+    isDeskRequired: true,
+    isCabRequired: true,
+    isFoodRequired: true
+  },
+  level: 'info',
+  message: 'Formatting dates and checking buffer',
+  timestamp: '2023-12-14T11:43:10.462Z'
+}
+{
+  module: 'user-all-booking-controller',
+  service: 'bookAll',
+  userId: 'E10101',
+  request: { dates: [ '2024-01-09', '2024-01-10', '2024-01-11' ] },
+  level: 'info',
+  message: 'Getting desk bookings for user for dates',
+  timestamp: '2023-12-14T11:43:10.463Z'
+}
+{
+  module: 'desk-booking',
+  service: 'getDeskBookingsForUserForDates',
+  userId: 'E10101',
+  request: { dates: [ '2024-01-09', '2024-01-10', '2024-01-11' ] },
+  level: 'info',
+  message: 'Successfully got all desk bookings for a user for multiple dates',
+  timestamp: '2023-12-14T11:43:22.640Z'
+}
+{
+  module: 'desk-booking',
+  service: 'formatDeskBoookings',
+  level: 'info',
+  message: 'Successfully formatted desk bookings',
+  timestamp: '2023-12-14T11:43:22.640Z'
+}
+{
+  module: 'desk-booking',
+  service: 'formatDeskBoookings',
+  userId: 'E10101',
+  request: { dates: [ '2024-01-09', '2024-01-10', '2024-01-11' ] },
+  level: 'info',
+  message: 'Successfully formatted all desk bookings for a user for multiple dates',
+  timestamp: '2023-12-14T11:43:22.641Z'
+}
+{
+  module: 'desk-booking',
+  service: 'formatDeskBoookings',
+  userId: 'E10101',
+  request: { dates: [ '2024-01-09', '2024-01-10', '2024-01-11' ] },
+  level: 'info',
+  message: 'Successfully returned all desk bookings for a user for multiple dates',
+  timestamp: '2023-12-14T11:43:22.641Z'
+}
+{
+  module: 'user-all-booking-controller',
+  service: 'bookAll',
+  userId: 'E10101',
+  request: { dates: [ '2024-01-09', '2024-01-10', '2024-01-11' ] },
+  level: 'info',
+  message: 'Successfully got desk bookings for user for dates',
+  timestamp: '2023-12-14T11:43:22.641Z'
+}
+{
+  module: 'user-all-booking-controller',
+  service: 'bookAll',
+  userId: 'E10101',
+  level: 'error',
+  message: 'User has already booked a desk for one or more of the dates',
+  timestamp: '2023-12-14T11:43:22.641Z'
+}
+{
+  module: 'verify-jwt-token',
+  service: 'verifyJWT',
+  userId: 'E10101',
+  level: 'info',
+  message: 'Access token verified',
+  timestamp: '2023-12-14T11:44:07.904Z'
+}
+{
+  module: 'check-auth',
+  service: 'checkAuthStatus',
+  userId: 'E10101',
+  level: 'info',
+  message: 'User authenticated',
+  timestamp: '2023-12-14T11:44:07.904Z'
+}
+{
+  module: 'user-all-booking-controller',
+  service: 'getAllFutureBookingsForUser',
+  userId: 'E10101',
+  level: 'info',
+  message: 'Getting all future desk bookings for user',
+  timestamp: '2023-12-14T11:44:07.904Z'
+}
+{
+  module: 'verify-jwt-token',
+  service: 'verifyJWT',
+  userId: 'E10101',
+  level: 'info',
+  message: 'Access token verified',
+  timestamp: '2023-12-14T11:44:07.908Z'
+}
+{
+  module: 'check-auth',
+  service: 'checkAuthStatus',
+  userId: 'E10101',
+  level: 'info',
+  message: 'User authenticated',
+  timestamp: '2023-12-14T11:44:07.908Z'
+}
+{
+  module: 'news-controller',
+  service: 'getNewsFeedPosts',
+  userId: 'E10101',
+  level: 'info',
+  message: 'Getting all news feed posts',
+  timestamp: '2023-12-14T11:44:07.908Z'
+}
+{
+  message: 'User disconnected with socket id wo6i2YQ9KGB8_JuSAABR',
+  level: 'info',
+  timestamp: '2023-12-14T11:44:10.219Z'
+}
+{
+  message: 'User disconnected with socket id RbwP2mnx4bYbv0t8AABF',
+  level: 'info',
+  timestamp: '2023-12-14T11:44:10.220Z'
+}
+{
+  message: 'User disconnected with socket id iCtFWLl-8e1ordTlAABP',
+  level: 'info',
+  timestamp: '2023-12-14T11:44:10.224Z'
+}
+{
+  message: 'User disconnected with socket id R15MCPt4uOqPE99JAABv',
+  level: 'info',
+  timestamp: '2023-12-14T11:44:10.225Z'
+}
+{
+  message: 'User disconnected with socket id tmKhhWOKXWByywbdAABz',
+  level: 'info',
+  timestamp: '2023-12-14T11:44:10.225Z'
+}
+{
+  message: 'User disconnected with socket id vnbWcLRJCw8L9RkRAABV',
+  level: 'info',
+  timestamp: '2023-12-14T11:44:10.225Z'
+}
+{
+  message: 'User disconnected with socket id qO5nGO2u_hDpKEeWAABa',
+  level: 'info',
+  timestamp: '2023-12-14T11:44:10.225Z'
+}
+{
+  message: 'User disconnected with socket id v6HeHcbtkLPObzi1AAB5',
+  level: 'info',
+  timestamp: '2023-12-14T11:44:10.225Z'
+}
+{
+  message: 'User disconnected with socket id qoBIjcAOmq0eMh7rAABl',
+  level: 'info',
+  timestamp: '2023-12-14T11:44:10.225Z'
+}
+{
+  message: 'User disconnected with socket id vvp3s0a7UjN07cUWAABT',
+  level: 'info',
+  timestamp: '2023-12-14T11:44:10.226Z'
+}
+{
+  message: 'User disconnected with socket id jtSE9ktTic0jqu-bAABb',
+  level: 'info',
+  timestamp: '2023-12-14T11:44:10.226Z'
+}
+{
+  message: 'User disconnected with socket id uaBH53kViwfUVpkhAAB7',
+  level: 'info',
+  timestamp: '2023-12-14T11:44:10.226Z'
+}
+{
+  message: 'User disconnected with socket id O61xiQJen1-jNFT1AABe',
+  level: 'info',
+  timestamp: '2023-12-14T11:44:10.226Z'
+}
+{
+  message: 'User disconnected with socket id SXZcFvNNESh48UtEAABX',
+  level: 'info',
+  timestamp: '2023-12-14T11:44:10.226Z'
+}
+{
+  message: 'User disconnected with socket id BBE4Gl07h-CXVbcgAABx',
+  level: 'info',
+  timestamp: '2023-12-14T11:44:10.226Z'
+}
+{
+  message: 'User disconnected with socket id XHkGhew8vFlxvjDWAABp',
+  level: 'info',
+  timestamp: '2023-12-14T11:44:10.226Z'
+}
+{
+  message: 'User disconnected with socket id qYIHZCupstiYKFR9AABL',
+  level: 'info',
+  timestamp: '2023-12-14T11:44:10.226Z'
+}
+{
+  message: 'User disconnected with socket id mW_taamukcWeynMFAABj',
+  level: 'info',
+  timestamp: '2023-12-14T11:44:10.226Z'
+}
+{
+  message: 'User disconnected with socket id O3vu7ookLkVqgvReAABn',
+  level: 'info',
+  timestamp: '2023-12-14T11:44:10.230Z'
+}
+{
+  message: 'User disconnected with socket id ym_Q21tnM4kjhj9kAAB9',
+  level: 'info',
+  timestamp: '2023-12-14T11:44:10.230Z'
+}
+{
+  message: 'User disconnected with socket id _NxhkC_qIMFkz4BqAAB3',
+  level: 'info',
+  timestamp: '2023-12-14T11:44:10.231Z'
+}
+{
+  message: 'User disconnected with socket id 1uVjM4IwV_5I-nCBAABD',
+  level: 'info',
+  timestamp: '2023-12-14T11:44:10.231Z'
+}
+{
+  message: 'User disconnected with socket id lIenRqJ7dBMNgyfmAABh',
+  level: 'info',
+  timestamp: '2023-12-14T11:44:10.232Z'
+}
+{
+  message: 'User disconnected with socket id uOZQfMBc_JNrPuHpAABt',
+  level: 'info',
+  timestamp: '2023-12-14T11:44:10.232Z'
+}
+{
+  message: 'User disconnected with socket id Jg_Ml5LcRQ6oJ5i0AAB1',
+  level: 'info',
+  timestamp: '2023-12-14T11:44:10.232Z'
+}
+{
+  message: 'User disconnected with socket id yl58CqD5muaQNbsiAABH',
+  level: 'info',
+  timestamp: '2023-12-14T11:44:10.233Z'
+}
+{
+  message: 'User disconnected with socket id 5d6cHtyIOv1iOVYDAABf',
+  level: 'info',
+  timestamp: '2023-12-14T11:44:10.233Z'
+}
+{
+  message: 'User disconnected with socket id KJLJuF3swKOKDxLeAABN',
+  level: 'info',
+  timestamp: '2023-12-14T11:44:10.234Z'
+}
+{
+  message: 'User disconnected with socket id pRUo_QFS2oLaH-RrAABr',
+  level: 'info',
+  timestamp: '2023-12-14T11:44:10.234Z'
+}
+{
+  message: 'User disconnected with socket id 5JQkHKKUUOCPknuHAABJ',
+  level: 'info',
+  timestamp: '2023-12-14T11:44:10.235Z'
+}
+{
+  message: 'User connected with socket id I23UgQfyj3_LarTqAAB_',
+  level: 'info',
+  timestamp: '2023-12-14T11:44:10.690Z'
+}
+{
+  module: 'verify-jwt-token',
+  service: 'verifyJWT',
+  userId: 'E10101',
+  level: 'info',
+  message: 'Access token verified',
+  timestamp: '2023-12-14T11:44:10.750Z'
+}
+{
+  module: 'check-auth',
+  service: 'checkAuthStatus',
+  userId: 'E10101',
+  level: 'info',
+  message: 'User authenticated',
+  timestamp: '2023-12-14T11:44:10.750Z'
+}
+{
+  module: 'user-all-booking-controller',
+  service: 'getAllFutureBookingsForUser',
+  userId: 'E10101',
+  level: 'info',
+  message: 'Getting all future desk bookings for user',
+  timestamp: '2023-12-14T11:44:10.751Z'
+}
+{
+  module: 'verify-jwt-token',
+  service: 'verifyJWT',
+  userId: 'E10101',
+  level: 'info',
+  message: 'Access token verified',
+  timestamp: '2023-12-14T11:44:10.753Z'
+}
+{
+  module: 'check-auth',
+  service: 'checkAuthStatus',
+  userId: 'E10101',
+  level: 'info',
+  message: 'User authenticated',
+  timestamp: '2023-12-14T11:44:10.754Z'
+}
+{
+  module: 'news-controller',
+  service: 'getNewsFeedPosts',
+  userId: 'E10101',
+  level: 'info',
+  message: 'Getting all news feed posts',
+  timestamp: '2023-12-14T11:44:10.754Z'
+}
+{
+  message: 'User connected with socket id zm6stiVxGi451YYgAACB',
+  level: 'info',
+  timestamp: '2023-12-14T11:44:10.768Z'
+}
+{
+  message: 'User connected with socket id vnOpQngojA1z83MWAACD',
+  level: 'info',
+  timestamp: '2023-12-14T11:44:16.239Z'
+}
+{
+  message: 'User connected with socket id h_EuntzFFYmetEkXAACF',
+  level: 'info',
+  timestamp: '2023-12-14T11:44:17.858Z'
+}
+{
+  message: 'User connected with socket id zEwEyBziXHabpo0sAACH',
+  level: 'info',
+  timestamp: '2023-12-14T11:44:18.722Z'
+}
+{
+  module: 'news',
+  service: 'formatNews',
+  level: 'info',
+  message: 'Successfully formatted news',
+  timestamp: '2023-12-14T11:44:19.806Z'
+}
+{
+  module: 'news',
+  service: 'formatNews',
+  level: 'info',
+  message: 'Successfully formatted news',
+  timestamp: '2023-12-14T11:44:19.807Z'
+}
+{
+  module: 'news',
+  service: 'formatNews',
+  level: 'info',
+  message: 'Successfully formatted all news',
+  timestamp: '2023-12-14T11:44:19.807Z'
+}
+{
+  module: 'news',
+  service: 'formatNews',
+  level: 'info',
+  message: 'Successfully returned all news',
+  timestamp: '2023-12-14T11:44:19.807Z'
+}
+{
+  module: 'news-controller',
+  service: 'getNewsFeedPosts',
+  userId: 'E10101',
+  level: 'info',
+  message: 'Successfully got all news feed posts',
+  timestamp: '2023-12-14T11:44:19.807Z'
+}
+{
+  module: 'news-controller',
+  service: 'getNewsFeedPosts',
+  userId: 'E10101',
+  level: 'info',
+  message: 'Successfully returned all news feed posts',
+  timestamp: '2023-12-14T11:44:19.807Z'
+}
+{
+  module: 'desk-booking',
+  service: 'getFutureDeskBookingsForUser',
+  userId: 'E10101',
+  level: 'info',
+  message: 'Successfully got all future desk bookings for a user',
+  timestamp: '2023-12-14T11:44:19.829Z'
+}
+{
+  module: 'desk-booking',
+  service: 'formatDeskBoookings',
+  level: 'info',
+  message: 'Successfully formatted desk bookings',
+  timestamp: '2023-12-14T11:44:19.830Z'
+}
+{
+  module: 'desk-booking',
+  service: 'formatDeskBoookings',
+  userId: 'E10101',
+  level: 'info',
+  message: 'Successfully formatted all future desk bookings for a user',
+  timestamp: '2023-12-14T11:44:19.830Z'
+}
+{
+  module: 'desk-booking',
+  service: 'formatDeskBoookings',
+  userId: 'E10101',
+  level: 'info',
+  message: 'Successfully returned all future desk bookings for a user',
+  timestamp: '2023-12-14T11:44:19.830Z'
+}
+{
+  module: 'user-all-booking-controller',
+  service: 'getAllFutureBookingsForUser',
+  userId: 'E10101',
+  level: 'info',
+  message: 'Successfully got all future desk bookings for user',
+  timestamp: '2023-12-14T11:44:19.830Z'
+}
+{
+  module: 'user-all-booking-controller',
+  service: 'getAllFutureBookingsForUser',
+  userId: 'E10101',
+  level: 'info',
+  message: 'Getting all future cab bookings for user',
+  timestamp: '2023-12-14T11:44:19.831Z'
+}
+{
+  module: 'cab-booking',
+  service: 'getFutureCabBookingsForUser',
+  userId: 'E10101',
+  level: 'info',
+  message: 'Successfully got future cab bookings for user',
+  timestamp: '2023-12-14T11:44:19.921Z'
+}
+{
+  module: 'cab-booking',
+  service: 'formatCabBookings',
+  level: 'info',
+  message: 'Successfully formatted cab bookings',
+  timestamp: '2023-12-14T11:44:19.921Z'
+}
+{
+  module: 'cab-booking',
+  service: 'formatCabBookings',
+  userId: 'E10101',
+  level: 'info',
+  message: 'Successfully formatted future cab bookings for user',
+  timestamp: '2023-12-14T11:44:19.921Z'
+}
+{
+  module: 'cab-booking',
+  service: 'formatCabBookings',
+  userId: 'E10101',
+  level: 'info',
+  message: 'Successfully returned future cab bookings for user',
+  timestamp: '2023-12-14T11:44:19.921Z'
+}
+{
+  module: 'user-all-booking-controller',
+  service: 'getAllFutureBookingsForUser',
+  userId: 'E10101',
+  level: 'info',
+  message: 'Successfully got all future cab bookings for user',
+  timestamp: '2023-12-14T11:44:19.922Z'
+}
+{
+  module: 'user-all-booking-controller',
+  service: 'getAllFutureBookingsForUser',
+  userId: 'E10101',
+  level: 'info',
+  message: 'Getting all future food bookings for user',
+  timestamp: '2023-12-14T11:44:19.922Z'
+}
+{
+  module: 'verify-jwt-token',
+  service: 'verifyJWT',
+  userId: 'E10101',
+  level: 'info',
+  message: 'Access token verified',
+  timestamp: '2023-12-14T11:44:19.986Z'
+}
+{
+  module: 'check-auth',
+  service: 'checkAuthStatus',
+  userId: 'E10101',
+  level: 'info',
+  message: 'User authenticated',
+  timestamp: '2023-12-14T11:44:19.987Z'
+}
+{
+  module: 'user-desk-controller',
+  service: 'getDesksAvailabilityByDatesObj',
+  userId: 'E10101',
+  request: { dates: [ '2024-01-16', '2024-01-17', '2024-01-18' ] },
+  level: 'info',
+  message: 'Getting availability of all desks for multiple dates',
+  timestamp: '2023-12-14T11:44:19.987Z'
+}
+{
+  module: 'user-desk-controller',
+  service: 'getDesksAvailabilityByDatesObj',
+  userId: 'E10101',
+  request: { date: '2024-01-16' },
+  level: 'info',
+  message: 'Getting availability of all desks for a particular date',
+  timestamp: '2023-12-14T11:44:19.987Z'
+}
+{
+  module: 'desk-booking',
+  service: 'getDeskLayout',
+  level: 'info',
+  message: 'Successfully returned desk layout',
+  timestamp: '2023-12-14T11:44:19.988Z'
+}
+{
+  module: 'desk-booking',
+  service: 'getDeskLayout',
+  level: 'info',
+  message: 'Successfully got desk layout',
+  timestamp: '2023-12-14T11:44:19.988Z'
+}
+{
+  message: 'User connected with socket id jHkKvV3VkHP1B0GqAACL',
+  level: 'info',
+  timestamp: '2023-12-14T11:44:20.009Z'
+}
+{
+  module: 'food-booking',
+  service: 'getFutureFoodBookingsForUser',
+  userId: 'E10101',
+  level: 'info',
+  message: 'Successfully got all future food bookings for a user',
+  timestamp: '2023-12-14T11:44:20.010Z'
+}
+{
+  module: 'food-booking',
+  service: 'formatFoodBookings',
+  level: 'info',
+  message: 'Successfully formatted food bookings',
+  timestamp: '2023-12-14T11:44:20.011Z'
+}
+{
+  module: 'food-booking',
+  service: 'formatFoodBookings',
+  userId: 'E10101',
+  level: 'info',
+  message: 'Successfully formatted all future food bookings for a user',
+  timestamp: '2023-12-14T11:44:20.011Z'
+}
+{
+  module: 'food-booking',
+  service: 'formatFoodBookings',
+  userId: 'E10101',
+  level: 'info',
+  message: 'Successfully returned all future food bookings for a user',
+  timestamp: '2023-12-14T11:44:20.011Z'
+}
+{
+  module: 'user-all-booking-controller',
+  service: 'getAllFutureBookingsForUser',
+  userId: 'E10101',
+  level: 'info',
+  message: 'Successfully got all future food bookings for user',
+  timestamp: '2023-12-14T11:44:20.011Z'
+}
+{
+  module: 'user-all-booking-controller',
+  userId: 'E10101',
+  service: 'getAllFutureBookingsForUser',
+  level: 'info',
+  message: 'Sorting all future bookings by dateBooked',
+  timestamp: '2023-12-14T11:44:20.011Z'
+}
+{
+  module: 'user-all-booking-controller',
+  service: 'getAllFutureBookingsForUser',
+  userId: 'E10101',
+  level: 'info',
+  message: 'Successfully returned all future bookings for user',
+  timestamp: '2023-12-14T11:44:20.011Z'
+}
+{
+  message: 'User connected with socket id LJtQhMm1MO6_i4_qAACM',
+  level: 'info',
+  timestamp: '2023-12-14T11:44:20.016Z'
+}
+{
+  message: 'User connected with socket id 9ELHFrjQ1SEsIM0mAACN',
+  level: 'info',
+  timestamp: '2023-12-14T11:44:20.018Z'
+}
+{
+  module: 'desk-booking',
+  service: 'getDeskBookingsByDate',
+  request: { date: '2024-01-16' },
+  level: 'info',
+  message: 'Successfully got all desk bookings for a particular date',
+  timestamp: '2023-12-14T11:44:20.070Z'
+}
+{
+  module: 'desk-booking',
+  service: 'formatDeskBoookings',
+  level: 'info',
+  message: 'Successfully formatted desk bookings',
+  timestamp: '2023-12-14T11:44:20.070Z'
+}
+{
+  module: 'desk-booking',
+  service: 'formatDeskBoookings',
+  request: { date: '2024-01-16' },
+  level: 'info',
+  message: 'Successfully formatted all desk bookings for a particular date',
+  timestamp: '2023-12-14T11:44:20.070Z'
+}
+{
+  module: 'desk-booking',
+  service: 'formatDeskBoookings',
+  request: { date: '2024-01-16' },
+  level: 'info',
+  message: 'Successfully returned all desk bookings for a particular date',
+  timestamp: '2023-12-14T11:44:20.070Z'
+}
+{
+  module: 'desk-booking',
+  service: 'formatDeskBoookings',
+  request: { date: '2024-01-16' },
+  level: 'info',
+  message: 'Successfully got desk bookings for a particular date',
+  timestamp: '2023-12-14T11:44:20.070Z'
+}
+{
+  module: 'desk-booking',
+  service: 'formatDeskBoookings',
+  request: { date: '2024-01-16' },
+  level: 'info',
+  message: 'Successfully returned availability of all desks for a particular date',
+  timestamp: '2023-12-14T11:44:20.071Z'
+}
+{
+  module: 'user-desk-controller',
+  service: 'getDesksAvailabilityByDatesObj',
+  userId: 'E10101',
+  request: { date: '2024-01-16' },
+  level: 'info',
+  message: 'Successfully got availability of all desks for a particular date',
+  timestamp: '2023-12-14T11:44:20.071Z'
+}
+{
+  module: 'user-desk-controller',
+  service: 'getDesksAvailabilityByDatesObj',
+  userId: 'E10101',
+  request: { date: '2024-01-17' },
+  level: 'info',
+  message: 'Getting availability of all desks for a particular date',
+  timestamp: '2023-12-14T11:44:20.071Z'
+}
+{
+  module: 'desk-booking',
+  service: 'getDeskLayout',
+  level: 'info',
+  message: 'Successfully returned desk layout',
+  timestamp: '2023-12-14T11:44:20.071Z'
+}
+{
+  module: 'desk-booking',
+  service: 'getDeskLayout',
+  level: 'info',
+  message: 'Successfully got desk layout',
+  timestamp: '2023-12-14T11:44:20.071Z'
+}
+{
+  module: 'desk-booking',
+  service: 'getDeskBookingsByDate',
+  request: { date: '2024-01-17' },
+  level: 'info',
+  message: 'Successfully got all desk bookings for a particular date',
+  timestamp: '2023-12-14T11:44:20.153Z'
+}
+{
+  module: 'desk-booking',
+  service: 'formatDeskBoookings',
+  level: 'info',
+  message: 'Successfully formatted desk bookings',
+  timestamp: '2023-12-14T11:44:20.153Z'
+}
+{
+  module: 'desk-booking',
+  service: 'formatDeskBoookings',
+  request: { date: '2024-01-17' },
+  level: 'info',
+  message: 'Successfully formatted all desk bookings for a particular date',
+  timestamp: '2023-12-14T11:44:20.154Z'
+}
+{
+  module: 'desk-booking',
+  service: 'formatDeskBoookings',
+  request: { date: '2024-01-17' },
+  level: 'info',
+  message: 'Successfully returned all desk bookings for a particular date',
+  timestamp: '2023-12-14T11:44:20.154Z'
+}
+{
+  module: 'desk-booking',
+  service: 'formatDeskBoookings',
+  request: { date: '2024-01-17' },
+  level: 'info',
+  message: 'Successfully got desk bookings for a particular date',
+  timestamp: '2023-12-14T11:44:20.154Z'
+}
+{
+  module: 'desk-booking',
+  service: 'formatDeskBoookings',
+  request: { date: '2024-01-17' },
+  level: 'info',
+  message: 'Successfully returned availability of all desks for a particular date',
+  timestamp: '2023-12-14T11:44:20.155Z'
+}
+{
+  module: 'user-desk-controller',
+  service: 'getDesksAvailabilityByDatesObj',
+  userId: 'E10101',
+  request: { date: '2024-01-17' },
+  level: 'info',
+  message: 'Successfully got availability of all desks for a particular date',
+  timestamp: '2023-12-14T11:44:20.155Z'
+}
+{
+  module: 'user-desk-controller',
+  service: 'getDesksAvailabilityByDatesObj',
+  userId: 'E10101',
+  request: { date: '2024-01-18' },
+  level: 'info',
+  message: 'Getting availability of all desks for a particular date',
+  timestamp: '2023-12-14T11:44:20.155Z'
+}
+{
+  module: 'desk-booking',
+  service: 'getDeskLayout',
+  level: 'info',
+  message: 'Successfully returned desk layout',
+  timestamp: '2023-12-14T11:44:20.156Z'
+}
+{
+  module: 'desk-booking',
+  service: 'getDeskLayout',
+  level: 'info',
+  message: 'Successfully got desk layout',
+  timestamp: '2023-12-14T11:44:20.156Z'
+}
+{
+  module: 'desk-booking',
+  service: 'getDeskBookingsByDate',
+  request: { date: '2024-01-18' },
+  level: 'info',
+  message: 'Successfully got all desk bookings for a particular date',
+  timestamp: '2023-12-14T11:44:20.237Z'
+}
+{
+  module: 'desk-booking',
+  service: 'formatDeskBoookings',
+  level: 'info',
+  message: 'Successfully formatted desk bookings',
+  timestamp: '2023-12-14T11:44:20.238Z'
+}
+{
+  module: 'desk-booking',
+  service: 'formatDeskBoookings',
+  request: { date: '2024-01-18' },
+  level: 'info',
+  message: 'Successfully formatted all desk bookings for a particular date',
+  timestamp: '2023-12-14T11:44:20.238Z'
+}
+{
+  module: 'desk-booking',
+  service: 'formatDeskBoookings',
+  request: { date: '2024-01-18' },
+  level: 'info',
+  message: 'Successfully returned all desk bookings for a particular date',
+  timestamp: '2023-12-14T11:44:20.238Z'
+}
+{
+  module: 'desk-booking',
+  service: 'formatDeskBoookings',
+  request: { date: '2024-01-18' },
+  level: 'info',
+  message: 'Successfully got desk bookings for a particular date',
+  timestamp: '2023-12-14T11:44:20.238Z'
+}
+{
+  module: 'desk-booking',
+  service: 'formatDeskBoookings',
+  request: { date: '2024-01-18' },
+  level: 'info',
+  message: 'Successfully returned availability of all desks for a particular date',
+  timestamp: '2023-12-14T11:44:20.239Z'
+}
+{
+  module: 'user-desk-controller',
+  service: 'getDesksAvailabilityByDatesObj',
+  userId: 'E10101',
+  request: { date: '2024-01-18' },
+  level: 'info',
+  message: 'Successfully got availability of all desks for a particular date',
+  timestamp: '2023-12-14T11:44:20.239Z'
+}
+{
+  module: 'user-desk-controller',
+  service: 'getDesksAvailabilityByDatesObj',
+  userId: 'E10101',
+  level: 'info',
+  message: 'Getting desk layout',
+  timestamp: '2023-12-14T11:44:20.239Z'
+}
+{
+  module: 'desk-booking',
+  service: 'getDeskLayout',
+  level: 'info',
+  message: 'Successfully returned desk layout',
+  timestamp: '2023-12-14T11:44:20.239Z'
+}
+{
+  module: 'user-desk-controller',
+  service: 'getDesksAvailabilityByDatesObj',
+  userId: 'E10101',
+  level: 'info',
+  message: 'Successfully got desk layout',
+  timestamp: '2023-12-14T11:44:20.239Z'
+}
+{
+  module: 'user-desk-controller',
+  service: 'getDesksAvailabilityByDatesObj',
+  userId: 'E10101',
+  request: { dates: [ '2024-01-16', '2024-01-17', '2024-01-18' ] },
+  level: 'info',
+  message: 'Successfully returned availability of all desks for multiple dates',
+  timestamp: '2023-12-14T11:44:20.240Z'
+}
+{
+  message: 'User connected with socket id bEidvkrFoMjULJ8XAACQ',
+  level: 'info',
+  timestamp: '2023-12-14T11:44:27.217Z'
+}
+{
+  message: 'User connected with socket id 4Wo7-HfJvEk9t7XHAACR',
+  level: 'info',
+  timestamp: '2023-12-14T11:44:27.225Z'
+}
+{
+  message: 'User connected with socket id RbxkM2iQg4mqxB7CAACT',
+  level: 'info',
+  timestamp: '2023-12-14T11:44:29.940Z'
+}
+{
+  module: 'news',
+  service: 'formatNews',
+  level: 'info',
+  message: 'Successfully formatted news',
+  timestamp: '2023-12-14T11:44:30.832Z'
+}
+{
+  module: 'news',
+  service: 'formatNews',
+  level: 'info',
+  message: 'Successfully formatted news',
+  timestamp: '2023-12-14T11:44:30.833Z'
+}
+{
+  module: 'news',
+  service: 'formatNews',
+  level: 'info',
+  message: 'Successfully formatted all news',
+  timestamp: '2023-12-14T11:44:30.833Z'
+}
+{
+  module: 'news',
+  service: 'formatNews',
+  level: 'info',
+  message: 'Successfully returned all news',
+  timestamp: '2023-12-14T11:44:30.833Z'
+}
+{
+  module: 'news-controller',
+  service: 'getNewsFeedPosts',
+  userId: 'E10101',
+  level: 'info',
+  message: 'Successfully got all news feed posts',
+  timestamp: '2023-12-14T11:44:30.834Z'
+}
+{
+  module: 'news-controller',
+  service: 'getNewsFeedPosts',
+  userId: 'E10101',
+  level: 'info',
+  message: 'Successfully returned all news feed posts',
+  timestamp: '2023-12-14T11:44:30.834Z'
+}
+{
+  module: 'desk-booking',
+  service: 'getDeskLayout',
+  userId: 'E10101',
+  level: 'info',
+  message: 'Successfully got all future desk bookings for a user',
+  timestamp: '2023-12-14T11:44:31.026Z'
+}
+{
+  module: 'desk-booking',
+  service: 'formatDeskBoookings',
+  level: 'info',
+  message: 'Successfully formatted desk bookings',
+  timestamp: '2023-12-14T11:44:31.027Z'
+}
+{
+  module: 'desk-booking',
+  service: 'formatDeskBoookings',
+  userId: 'E10101',
+  level: 'info',
+  message: 'Successfully formatted all future desk bookings for a user',
+  timestamp: '2023-12-14T11:44:31.027Z'
+}
+{
+  module: 'desk-booking',
+  service: 'formatDeskBoookings',
+  userId: 'E10101',
+  level: 'info',
+  message: 'Successfully returned all future desk bookings for a user',
+  timestamp: '2023-12-14T11:44:31.027Z'
+}
+{
+  module: 'user-all-booking-controller',
+  service: 'getAllFutureBookingsForUser',
+  userId: 'E10101',
+  level: 'info',
+  message: 'Successfully got all future desk bookings for user',
+  timestamp: '2023-12-14T11:44:31.027Z'
+}
+{
+  module: 'user-all-booking-controller',
+  service: 'getAllFutureBookingsForUser',
+  userId: 'E10101',
+  level: 'info',
+  message: 'Getting all future cab bookings for user',
+  timestamp: '2023-12-14T11:44:31.027Z'
+}
+{
+  module: 'cab-booking',
+  service: 'getFutureCabBookingsForUser',
+  userId: 'E10101',
+  level: 'info',
+  message: 'Successfully got future cab bookings for user',
+  timestamp: '2023-12-14T11:44:31.111Z'
+}
+{
+  module: 'cab-booking',
+  service: 'formatCabBookings',
+  level: 'info',
+  message: 'Successfully formatted cab bookings',
+  timestamp: '2023-12-14T11:44:31.111Z'
+}
+{
+  module: 'cab-booking',
+  service: 'formatCabBookings',
+  userId: 'E10101',
+  level: 'info',
+  message: 'Successfully formatted future cab bookings for user',
+  timestamp: '2023-12-14T11:44:31.111Z'
+}
+{
+  module: 'cab-booking',
+  service: 'formatCabBookings',
+  userId: 'E10101',
+  level: 'info',
+  message: 'Successfully returned future cab bookings for user',
+  timestamp: '2023-12-14T11:44:31.112Z'
+}
+{
+  module: 'user-all-booking-controller',
+  service: 'getAllFutureBookingsForUser',
+  userId: 'E10101',
+  level: 'info',
+  message: 'Successfully got all future cab bookings for user',
+  timestamp: '2023-12-14T11:44:31.112Z'
+}
+{
+  module: 'user-all-booking-controller',
+  service: 'getAllFutureBookingsForUser',
+  userId: 'E10101',
+  level: 'info',
+  message: 'Getting all future food bookings for user',
+  timestamp: '2023-12-14T11:44:31.112Z'
+}
+{
+  module: 'food-booking',
+  service: 'getFutureFoodBookingsForUser',
+  userId: 'E10101',
+  level: 'info',
+  message: 'Successfully got all future food bookings for a user',
+  timestamp: '2023-12-14T11:44:31.194Z'
+}
+{
+  module: 'food-booking',
+  service: 'formatFoodBookings',
+  level: 'info',
+  message: 'Successfully formatted food bookings',
+  timestamp: '2023-12-14T11:44:31.195Z'
+}
+{
+  module: 'food-booking',
+  service: 'formatFoodBookings',
+  userId: 'E10101',
+  level: 'info',
+  message: 'Successfully formatted all future food bookings for a user',
+  timestamp: '2023-12-14T11:44:31.195Z'
+}
+{
+  module: 'food-booking',
+  service: 'formatFoodBookings',
+  userId: 'E10101',
+  level: 'info',
+  message: 'Successfully returned all future food bookings for a user',
+  timestamp: '2023-12-14T11:44:31.196Z'
+}
+{
+  module: 'user-all-booking-controller',
+  service: 'getAllFutureBookingsForUser',
+  userId: 'E10101',
+  level: 'info',
+  message: 'Successfully got all future food bookings for user',
+  timestamp: '2023-12-14T11:44:31.196Z'
+}
+{
+  module: 'user-all-booking-controller',
+  userId: 'E10101',
+  service: 'getAllFutureBookingsForUser',
+  level: 'info',
+  message: 'Sorting all future bookings by dateBooked',
+  timestamp: '2023-12-14T11:44:31.196Z'
+}
+{
+  module: 'user-all-booking-controller',
+  service: 'getAllFutureBookingsForUser',
+  userId: 'E10101',
+  level: 'info',
+  message: 'Successfully returned all future bookings for user',
+  timestamp: '2023-12-14T11:44:31.196Z'
+}
+{
+  message: 'User connected with socket id 9ND7zoqT0uAOo7keAACV',
+  level: 'info',
+  timestamp: '2023-12-14T11:44:32.296Z'
+}
+{
+  message: 'User connected with socket id LZuZEgSmKz8tB4o2AACX',
+  level: 'info',
+  timestamp: '2023-12-14T11:44:38.990Z'
+}
+{
+  message: 'User connected with socket id qFGfS3lieaOnDRUNAACZ',
+  level: 'info',
+  timestamp: '2023-12-14T11:44:40.287Z'
+}
+{
+  message: 'User connected with socket id M_gM7vSVBeBVjgCRAACb',
+  level: 'info',
+  timestamp: '2023-12-14T11:44:42.432Z'
+}
+{
+  message: 'User connected with socket id DgBqhuFXUws9e2zUAACd',
+  level: 'info',
+  timestamp: '2023-12-14T11:44:43.508Z'
+}
+{
+  message: 'User connected with socket id 6gyEnivHj-44yXfjAACf',
+  level: 'info',
+  timestamp: '2023-12-14T11:44:44.648Z'
+}
+{
+  message: 'User connected with socket id TUWCtoji9I861d0LAACh',
+  level: 'info',
+  timestamp: '2023-12-14T11:44:47.039Z'
+}
+{
+  message: 'User connected with socket id gqx_HGB883cpFdZZAACj',
+  level: 'info',
+  timestamp: '2023-12-14T11:44:47.923Z'
+}
+{
+  message: 'User connected with socket id CyCYsyQ1A8MOTeREAACl',
+  level: 'info',
+  timestamp: '2023-12-14T11:44:49.151Z'
+}
+{
+  message: 'User connected with socket id coC4WpqTgVulF8JJAACn',
+  level: 'info',
+  timestamp: '2023-12-14T11:44:49.188Z'
+}
+{
+  message: 'User connected with socket id SUqjr5g3Ua2O0dKbAACp',
+  level: 'info',
+  timestamp: '2023-12-14T11:44:51.299Z'
+}
+{
+  message: 'User connected with socket id 90Ij8yTGDElQbnoGAACr',
+  level: 'info',
+  timestamp: '2023-12-14T11:44:53.698Z'
+}
+{
+  module: 'verify-jwt-token',
+  service: 'verifyJWT',
+  userId: 'E10101',
+  level: 'info',
+  message: 'Access token verified',
+  timestamp: '2023-12-14T11:45:06.967Z'
+}
+{
+  module: 'check-auth',
+  service: 'checkAuthStatus',
+  userId: 'E10101',
+  level: 'info',
+  message: 'User authenticated',
+  timestamp: '2023-12-14T11:45:06.967Z'
+}
+{
+  module: 'user-all-booking-controller',
+  userId: 'E10101',
+  service: 'bookAll',
+  request: {
+    dates: [ '2024-01-16', '2024-01-17', '2024-01-18' ],
+    isDeskRequired: true,
+    isCabRequired: true,
+    isFoodRequired: true
+  },
+  level: 'info',
+  message: 'Formatting dates and checking buffer',
+  timestamp: '2023-12-14T11:45:06.968Z'
+}
+{
+  module: 'user-all-booking-controller',
+  service: 'bookAll',
+  userId: 'E10101',
+  request: { dates: [ '2024-01-16', '2024-01-17', '2024-01-18' ] },
+  level: 'info',
+  message: 'Getting desk bookings for user for dates',
+  timestamp: '2023-12-14T11:45:06.969Z'
+}
+{
+  module: 'desk-booking',
+  service: 'getDeskBookingsForUserForDates',
+  userId: 'E10101',
+  request: { dates: [ '2024-01-16', '2024-01-17', '2024-01-18' ] },
+  level: 'info',
+  message: 'Successfully got all desk bookings for a user for multiple dates',
+  timestamp: '2023-12-14T11:45:19.171Z'
+}
+{
+  module: 'desk-booking',
+  service: 'formatDeskBoookings',
+  level: 'error',
+  message: 'Desk bookings is undefined',
+  timestamp: '2023-12-14T11:45:19.172Z'
+}
+{
+  module: 'desk-booking',
+  service: 'formatDeskBoookings',
+  userId: 'E10101',
+  request: { dates: [ '2024-01-16', '2024-01-17', '2024-01-18' ] },
+  level: 'info',
+  message: 'Successfully formatted all desk bookings for a user for multiple dates',
+  timestamp: '2023-12-14T11:45:19.172Z'
+}
+{
+  module: 'desk-booking',
+  service: 'formatDeskBoookings',
+  userId: 'E10101',
+  request: { dates: [ '2024-01-16', '2024-01-17', '2024-01-18' ] },
+  level: 'info',
+  message: 'Successfully returned all desk bookings for a user for multiple dates',
+  timestamp: '2023-12-14T11:45:19.172Z'
+}
+{
+  module: 'user-all-booking-controller',
+  service: 'bookAll',
+  userId: 'E10101',
+  request: { dates: [ '2024-01-16', '2024-01-17', '2024-01-18' ] },
+  level: 'info',
+  message: 'Successfully got desk bookings for user for dates',
+  timestamp: '2023-12-14T11:45:19.172Z'
+}
+{
+  module: 'user-all-booking-controller',
+  service: 'bookAll',
+  userId: 'E10101',
+  request: {
+    deskId: [ 'A2', 'A3', 'B1' ],
+    dates: [ '2024-01-16', '2024-01-17', '2024-01-18' ]
+  },
+  level: 'info',
+  message: 'Getting desk bookings by desk id and dates',
+  timestamp: '2023-12-14T11:45:19.173Z'
+}
+{
+  module: 'desk-booking',
+  service: 'getDeskBookingByDeskIdAndDates',
+  request: { deskId: 'A2', dates: [ '2024-01-16' ] },
+  level: 'info',
+  message: 'Successfully got all desk bookings for a desk id for the dates',
+  timestamp: '2023-12-14T11:45:19.270Z'
+}
+{
+  module: 'desk-booking',
+  service: 'getDeskBookingByDeskIdAndDates',
+  request: { deskId: 'A2', dates: [ '2024-01-16' ] },
+  level: 'info',
+  message: 'Successfully returned all desk bookings for a desk id for the dates',
+  timestamp: '2023-12-14T11:45:19.271Z'
+}
+{
+  module: 'desk-booking',
+  service: 'getDeskBookingByDeskIdAndDates',
+  request: { deskId: 'A3', dates: [ '2024-01-17' ] },
+  level: 'info',
+  message: 'Successfully got all desk bookings for a desk id for the dates',
+  timestamp: '2023-12-14T11:45:19.367Z'
+}
+{
+  module: 'desk-booking',
+  service: 'getDeskBookingByDeskIdAndDates',
+  request: { deskId: 'A3', dates: [ '2024-01-17' ] },
+  level: 'info',
+  message: 'Successfully returned all desk bookings for a desk id for the dates',
+  timestamp: '2023-12-14T11:45:19.368Z'
+}
+{
+  module: 'desk-booking',
+  service: 'getDeskBookingByDeskIdAndDates',
+  request: { deskId: 'B1', dates: [ '2024-01-18' ] },
+  level: 'info',
+  message: 'Successfully got all desk bookings for a desk id for the dates',
+  timestamp: '2023-12-14T11:45:19.465Z'
+}
+{
+  module: 'desk-booking',
+  service: 'getDeskBookingByDeskIdAndDates',
+  request: { deskId: 'B1', dates: [ '2024-01-18' ] },
+  level: 'info',
+  message: 'Successfully returned all desk bookings for a desk id for the dates',
+  timestamp: '2023-12-14T11:45:19.465Z'
+}
+{
+  module: 'user-all-booking-controller',
+  service: 'bookAll',
+  userId: 'E10101',
+  request: {
+    deskId: [ 'A2', 'A3', 'B1' ],
+    dates: [ '2024-01-16', '2024-01-17', '2024-01-18' ]
+  },
+  level: 'info',
+  message: 'Successfully got desk bookings by desk id and dates',
+  timestamp: '2023-12-14T11:45:19.466Z'
+}
+{
+  module: 'user-all-booking-controller',
+  service: 'bookAll',
+  userId: 'E10101',
+  request: { dates: [ '2024-01-16', '2024-01-17', '2024-01-18' ] },
+  level: 'info',
+  message: 'Getting cab bookings for user for dates',
+  timestamp: '2023-12-14T11:45:19.466Z'
+}
+{
+  module: 'cab-booking',
+  service: 'getCabBookingsForUserForDates',
+  userId: 'E10101',
+  request: { dates: [ '2024-01-16', '2024-01-17', '2024-01-18' ] },
+  level: 'info',
+  message: 'Successfully got cab bookings for user for dates',
+  timestamp: '2023-12-14T11:45:19.759Z'
+}
+{
+  module: 'cab-booking',
+  service: 'formatCabBookings',
+  level: 'error',
+  message: 'Cab bookings not found',
+  timestamp: '2023-12-14T11:45:19.759Z'
+}
+{
+  module: 'cab-booking',
+  service: 'formatCabBookings',
+  userId: 'E10101',
+  request: { dates: [ '2024-01-16', '2024-01-17', '2024-01-18' ] },
+  level: 'info',
+  message: 'Successfully formatted cab bookings for user for dates',
+  timestamp: '2023-12-14T11:45:19.759Z'
+}
+{
+  module: 'cab-booking',
+  service: 'formatCabBookings',
+  userId: 'E10101',
+  request: { dates: [ '2024-01-16', '2024-01-17', '2024-01-18' ] },
+  level: 'info',
+  message: 'Successfully returned cab bookings for user for dates',
+  timestamp: '2023-12-14T11:45:19.759Z'
+}
+{
+  module: 'user-all-booking-controller',
+  service: 'bookAll',
+  userId: 'E10101',
+  request: { dates: [ '2024-01-16', '2024-01-17', '2024-01-18' ] },
+  level: 'info',
+  message: 'Successfully got cab bookings for user for dates',
+  timestamp: '2023-12-14T11:45:19.760Z'
+}
+{
+  module: 'user-all-booking-controller',
+  service: 'bookAll',
+  userId: 'E10101',
+  request: { dates: [ '2024-01-16', '2024-01-17', '2024-01-18' ] },
+  level: 'info',
+  message: 'Getting food bookings for user for dates',
+  timestamp: '2023-12-14T11:45:19.760Z'
+}
+{
+  module: 'food-booking',
+  service: 'getFoodBookingsForUserForDates',
+  userId: 'E10101',
+  request: { dates: [ '2024-01-16', '2024-01-17', '2024-01-18' ] },
+  level: 'info',
+  message: 'Successfully got all food bookings for a user for multiple dates',
+  timestamp: '2023-12-14T11:45:20.052Z'
+}
+{
+  module: 'food-booking',
+  service: 'formatFoodBookings',
+  level: 'error',
+  message: 'foodBookings is undefined',
+  timestamp: '2023-12-14T11:45:20.053Z'
+}
+{
+  module: 'food-booking',
+  service: 'formatFoodBookings',
+  userId: 'E10101',
+  request: { dates: [ '2024-01-16', '2024-01-17', '2024-01-18' ] },
+  level: 'info',
+  message: 'Successfully formatted all food bookings for a user for multiple dates',
+  timestamp: '2023-12-14T11:45:20.053Z'
+}
+{
+  module: 'food-booking',
+  service: 'formatFoodBookings',
+  userId: 'E10101',
+  request: { dates: [ '2024-01-16', '2024-01-17', '2024-01-18' ] },
+  level: 'info',
+  message: 'Successfully returned all food bookings for a user for multiple dates',
+  timestamp: '2023-12-14T11:45:20.053Z'
+}
+{
+  module: 'user-all-booking-controller',
+  service: 'bookAll',
+  userId: 'E10101',
+  request: { dates: [ '2024-01-16', '2024-01-17', '2024-01-18' ] },
+  level: 'info',
+  message: 'Successfully got food bookings for user for dates',
+  timestamp: '2023-12-14T11:45:20.053Z'
+}
+{
+  module: 'user-all-booking-controller',
+  service: 'bookAll',
+  userId: 'E10101',
+  request: {
+    deskId: [ 'A2', 'A3', 'B1' ],
+    dates: [ '2024-01-16', '2024-01-17', '2024-01-18' ]
+  },
+  level: 'info',
+  message: 'Booking desk for user',
+  timestamp: '2023-12-14T11:45:20.053Z'
+}
+{
+  module: 'desk-booking',
+  service: 'bookDesk',
+  userId: 'E10101',
+  request: { deskId: 'A2', dates: [ '2024-01-16' ] },
+  level: 'info',
+  message: 'Successfully booked a desk',
+  timestamp: '2023-12-14T11:45:21.158Z'
+}
+{
+  module: 'desk-booking',
+  service: 'bookDesk',
+  bookingId: '59a0cd2b-38e4-4c68-b47d-49b7678889b6',
+  level: 'info',
+  message: 'Successfully returned booking id',
+  timestamp: '2023-12-14T11:45:21.159Z'
+}
+{
+  module: 'desk-booking',
+  service: 'bookDesk',
+  userId: 'E10101',
+  request: { deskId: 'A3', dates: [ '2024-01-17' ] },
+  level: 'info',
+  message: 'Successfully booked a desk',
+  timestamp: '2023-12-14T11:45:21.256Z'
+}
+{
+  module: 'desk-booking',
+  service: 'bookDesk',
+  bookingId: 'cb374bb2-6886-4910-99da-f0f964e8a935',
+  level: 'info',
+  message: 'Successfully returned booking id',
+  timestamp: '2023-12-14T11:45:21.256Z'
+}
+{
+  module: 'desk-booking',
+  service: 'bookDesk',
+  userId: 'E10101',
+  request: { deskId: 'B1', dates: [ '2024-01-18' ] },
+  level: 'info',
+  message: 'Successfully booked a desk',
+  timestamp: '2023-12-14T11:45:21.355Z'
+}
+{
+  module: 'desk-booking',
+  service: 'bookDesk',
+  bookingId: '43421c7c-b2ad-40af-9bb2-4c646fd6f2e6',
+  level: 'info',
+  message: 'Successfully returned booking id',
+  timestamp: '2023-12-14T11:45:21.355Z'
+}
+{
+  module: 'user-all-booking-controller',
+  service: 'bookAll',
+  userId: 'E10101',
+  request: {
+    deskId: [ 'A2', 'A3', 'B1' ],
+    dates: [ '2024-01-16', '2024-01-17', '2024-01-18' ]
+  },
+  level: 'info',
+  message: 'Successfully booked desk for user',
+  timestamp: '2023-12-14T11:45:21.355Z'
+}
+{
+  module: 'user-all-booking-controller',
+  service: 'bookAll',
+  userId: 'E10101',
+  request: {
+    dates: [ '2024-01-16', '2024-01-17', '2024-01-18' ],
+    workSlot: [ '6:00AM-3:00PM', '9:00AM-5:00PM', '6:00AM-3:00PM' ]
+  },
+  level: 'info',
+  message: 'Booking cab for user',
+  timestamp: '2023-12-14T11:45:21.356Z'
+}
+{
+  module: 'cab-booking',
+  service: 'bookCab',
+  userId: 'E10101',
+  request: { dates: [ '2024-01-16' ], workSlot: '6:00AM-3:00PM' },
+  level: 'info',
+  message: 'Successfully booked cab',
+  timestamp: '2023-12-14T11:45:22.344Z'
+}
+{
+  module: 'cab-booking',
+  service: 'bookCab',
+  userId: 'E10101',
+  request: { dates: [ '2024-01-16' ], workSlot: '6:00AM-3:00PM' },
+  bookingId: 'b6764d7e-0f00-44d7-8e8a-f5f34b934790',
+  level: 'info',
+  message: 'Successfully returned booking id',
+  timestamp: '2023-12-14T11:45:22.345Z'
+}
+{
+  module: 'cab-booking',
+  service: 'bookCab',
+  userId: 'E10101',
+  request: { dates: [ '2024-01-17' ], workSlot: '9:00AM-5:00PM' },
+  level: 'info',
+  message: 'Successfully booked cab',
+  timestamp: '2023-12-14T11:45:22.443Z'
+}
+{
+  module: 'cab-booking',
+  service: 'bookCab',
+  userId: 'E10101',
+  request: { dates: [ '2024-01-17' ], workSlot: '9:00AM-5:00PM' },
+  bookingId: '08224be8-e3f2-4e50-847b-f950737ba0f3',
+  level: 'info',
+  message: 'Successfully returned booking id',
+  timestamp: '2023-12-14T11:45:22.443Z'
+}
+{
+  module: 'cab-booking',
+  service: 'bookCab',
+  userId: 'E10101',
+  request: { dates: [ '2024-01-18' ], workSlot: '6:00AM-3:00PM' },
+  level: 'info',
+  message: 'Successfully booked cab',
+  timestamp: '2023-12-14T11:45:22.541Z'
+}
+{
+  module: 'cab-booking',
+  service: 'bookCab',
+  userId: 'E10101',
+  request: { dates: [ '2024-01-18' ], workSlot: '6:00AM-3:00PM' },
+  bookingId: '00e9de2e-d6e9-48d5-8cb7-b13c1099ad9d',
+  level: 'info',
+  message: 'Successfully returned booking id',
+  timestamp: '2023-12-14T11:45:22.542Z'
+}
+{
+  module: 'user-all-booking-controller',
+  service: 'bookAll',
+  userId: 'E10101',
+  request: {
+    dates: [ '2024-01-16', '2024-01-17', '2024-01-18' ],
+    workSlot: [ '6:00AM-3:00PM', '9:00AM-5:00PM', '6:00AM-3:00PM' ]
+  },
+  level: 'info',
+  message: 'Successfully booked cab for user',
+  timestamp: '2023-12-14T11:45:22.543Z'
+}
+{
+  module: 'user-all-booking-controller',
+  service: 'bookAll',
+  userId: 'E10101',
+  request: {
+    dates: [ '2024-01-16', '2024-01-17', '2024-01-18' ],
+    preference: [ 'Veg', 'Non-Veg', 'Veg' ]
+  },
+  level: 'info',
+  message: 'Booking food for user',
+  timestamp: '2023-12-14T11:45:22.543Z'
+}
+{
+  module: 'food-booking',
+  service: 'bookFood',
+  userId: 'E10101',
+  request: { dates: [ '2024-01-16' ], preference: 'Veg' },
+  level: 'info',
+  message: 'Successfully booked food for multiple dates',
+  timestamp: '2023-12-14T11:45:22.642Z'
+}
+{
+  module: 'food-booking',
+  service: 'bookFood',
+  userId: 'E10101',
+  request: { dates: [ '2024-01-16' ], preference: 'Veg' },
+  bookingId: 'bdaefc16-5410-4a14-a7a8-9c7af78c7e3b',
+  level: 'info',
+  message: 'Successfully returned booking id',
+  timestamp: '2023-12-14T11:45:22.642Z'
+}
+{
+  module: 'food-booking',
+  service: 'bookFood',
+  userId: 'E10101',
+  request: { dates: [ '2024-01-17' ], preference: 'Non-Veg' },
+  level: 'info',
+  message: 'Successfully booked food for multiple dates',
+  timestamp: '2023-12-14T11:45:22.741Z'
+}
+{
+  module: 'food-booking',
+  service: 'bookFood',
+  userId: 'E10101',
+  request: { dates: [ '2024-01-17' ], preference: 'Non-Veg' },
+  bookingId: '3a35dfe3-d58d-4d83-ad1c-761d4c6d42fb',
+  level: 'info',
+  message: 'Successfully returned booking id',
+  timestamp: '2023-12-14T11:45:22.742Z'
+}
+{
+  module: 'food-booking',
+  service: 'bookFood',
+  userId: 'E10101',
+  request: { dates: [ '2024-01-18' ], preference: 'Veg' },
+  level: 'info',
+  message: 'Successfully booked food for multiple dates',
+  timestamp: '2023-12-14T11:45:22.840Z'
+}
+{
+  module: 'food-booking',
+  service: 'bookFood',
+  userId: 'E10101',
+  request: { dates: [ '2024-01-18' ], preference: 'Veg' },
+  bookingId: 'a5770195-0f79-4a9c-a8e6-3f21896f3d28',
+  level: 'info',
+  message: 'Successfully returned booking id',
+  timestamp: '2023-12-14T11:45:22.840Z'
+}
+{
+  module: 'user-all-booking-controller',
+  service: 'bookAll',
+  userId: 'E10101',
+  request: {
+    dates: [ '2024-01-16', '2024-01-17', '2024-01-18' ],
+    preference: [ 'Veg', 'Non-Veg', 'Veg' ]
+  },
+  level: 'info',
+  message: 'Successfully booked food for user',
+  timestamp: '2023-12-14T11:45:22.840Z'
+}
+{
+  module: 'user-all-booking-controller',
+  service: 'bookAll',
+  userId: 'E10101',
+  request: { dates: [ '2024-01-16', '2024-01-17', '2024-01-18' ] },
+  level: 'info',
+  message: 'Booking successfull',
+  timestamp: '2023-12-14T11:45:22.841Z'
+}
+{
+  module: 'verify-jwt-token',
+  service: 'verifyJWT',
+  userId: 'E10101',
+  level: 'info',
+  message: 'Access token verified',
+  timestamp: '2023-12-14T11:45:55.089Z'
+}
+{
+  module: 'check-auth',
+  service: 'checkAuthStatus',
+  userId: 'E10101',
+  level: 'info',
+  message: 'User authenticated',
+  timestamp: '2023-12-14T11:45:55.089Z'
+}
+{
+  module: 'user-all-booking-controller',
+  service: 'getAllFutureBookingsForUser',
+  userId: 'E10101',
+  level: 'info',
+  message: 'Getting all future desk bookings for user',
+  timestamp: '2023-12-14T11:45:55.089Z'
+}
+{
+  module: 'verify-jwt-token',
+  service: 'verifyJWT',
+  userId: 'E10101',
+  level: 'info',
+  message: 'Access token verified',
+  timestamp: '2023-12-14T11:45:55.092Z'
+}
+{
+  module: 'check-auth',
+  service: 'checkAuthStatus',
+  userId: 'E10101',
+  level: 'info',
+  message: 'User authenticated',
+  timestamp: '2023-12-14T11:45:55.092Z'
+}
+{
+  module: 'news-controller',
+  service: 'getNewsFeedPosts',
+  userId: 'E10101',
+  level: 'info',
+  message: 'Getting all news feed posts',
+  timestamp: '2023-12-14T11:45:55.092Z'
+}
+{
+  message: 'User disconnected with socket id I23UgQfyj3_LarTqAAB_',
+  level: 'info',
+  timestamp: '2023-12-14T11:45:57.441Z'
+}
+{
+  message: 'User disconnected with socket id 6gyEnivHj-44yXfjAACf',
+  level: 'info',
+  timestamp: '2023-12-14T11:45:57.443Z'
+}
+{
+  message: 'User disconnected with socket id DgBqhuFXUws9e2zUAACd',
+  level: 'info',
+  timestamp: '2023-12-14T11:45:57.443Z'
+}
+{
+  message: 'User disconnected with socket id h_EuntzFFYmetEkXAACF',
+  level: 'info',
+  timestamp: '2023-12-14T11:45:57.444Z'
+}
+{
+  message: 'User disconnected with socket id SUqjr5g3Ua2O0dKbAACp',
+  level: 'info',
+  timestamp: '2023-12-14T11:45:57.444Z'
+}
+{
+  message: 'User disconnected with socket id vnOpQngojA1z83MWAACD',
+  level: 'info',
+  timestamp: '2023-12-14T11:45:57.444Z'
+}
+{
+  message: 'User disconnected with socket id RbxkM2iQg4mqxB7CAACT',
+  level: 'info',
+  timestamp: '2023-12-14T11:45:57.444Z'
+}
+{
+  message: 'User disconnected with socket id M_gM7vSVBeBVjgCRAACb',
+  level: 'info',
+  timestamp: '2023-12-14T11:45:57.444Z'
+}
+{
+  message: 'User disconnected with socket id 4Wo7-HfJvEk9t7XHAACR',
+  level: 'info',
+  timestamp: '2023-12-14T11:45:57.448Z'
+}
+{
+  message: 'User disconnected with socket id jHkKvV3VkHP1B0GqAACL',
+  level: 'info',
+  timestamp: '2023-12-14T11:45:57.449Z'
+}
+{
+  message: 'User disconnected with socket id zEwEyBziXHabpo0sAACH',
+  level: 'info',
+  timestamp: '2023-12-14T11:45:57.449Z'
+}
+{
+  message: 'User disconnected with socket id LJtQhMm1MO6_i4_qAACM',
+  level: 'info',
+  timestamp: '2023-12-14T11:45:57.449Z'
+}
+{
+  message: 'User disconnected with socket id gqx_HGB883cpFdZZAACj',
+  level: 'info',
+  timestamp: '2023-12-14T11:45:57.449Z'
+}
+{
+  message: 'User disconnected with socket id 90Ij8yTGDElQbnoGAACr',
+  level: 'info',
+  timestamp: '2023-12-14T11:45:57.449Z'
+}
+{
+  message: 'User disconnected with socket id coC4WpqTgVulF8JJAACn',
+  level: 'info',
+  timestamp: '2023-12-14T11:45:57.449Z'
+}
+{
+  message: 'User disconnected with socket id LZuZEgSmKz8tB4o2AACX',
+  level: 'info',
+  timestamp: '2023-12-14T11:45:57.450Z'
+}
+{
+  message: 'User disconnected with socket id CyCYsyQ1A8MOTeREAACl',
+  level: 'info',
+  timestamp: '2023-12-14T11:45:57.450Z'
+}
+{
+  message: 'User disconnected with socket id TUWCtoji9I861d0LAACh',
+  level: 'info',
+  timestamp: '2023-12-14T11:45:57.450Z'
+}
+{
+  message: 'User disconnected with socket id 9ELHFrjQ1SEsIM0mAACN',
+  level: 'info',
+  timestamp: '2023-12-14T11:45:57.450Z'
+}
+{
+  message: 'User disconnected with socket id 9ND7zoqT0uAOo7keAACV',
+  level: 'info',
+  timestamp: '2023-12-14T11:45:57.450Z'
+}
+{
+  message: 'User disconnected with socket id zm6stiVxGi451YYgAACB',
+  level: 'info',
+  timestamp: '2023-12-14T11:45:57.450Z'
+}
+{
+  message: 'User disconnected with socket id bEidvkrFoMjULJ8XAACQ',
+  level: 'info',
+  timestamp: '2023-12-14T11:45:57.450Z'
+}
+{
+  message: 'User disconnected with socket id qFGfS3lieaOnDRUNAACZ',
+  level: 'info',
+  timestamp: '2023-12-14T11:45:57.450Z'
+}
+{
+  message: 'User connected with socket id iLsCKlzg3OX91LdHAACt',
+  level: 'info',
+  timestamp: '2023-12-14T11:45:57.626Z'
+}
+{
+  module: 'verify-jwt-token',
+  service: 'verifyJWT',
+  userId: 'E10101',
+  level: 'info',
+  message: 'Access token verified',
+  timestamp: '2023-12-14T11:45:57.684Z'
+}
+{
+  module: 'check-auth',
+  service: 'checkAuthStatus',
+  userId: 'E10101',
+  level: 'info',
+  message: 'User authenticated',
+  timestamp: '2023-12-14T11:45:57.684Z'
+}
+{
+  module: 'user-all-booking-controller',
+  service: 'getAllFutureBookingsForUser',
+  userId: 'E10101',
+  level: 'info',
+  message: 'Getting all future desk bookings for user',
+  timestamp: '2023-12-14T11:45:57.684Z'
+}
+{
+  module: 'verify-jwt-token',
+  service: 'verifyJWT',
+  userId: 'E10101',
+  level: 'info',
+  message: 'Access token verified',
+  timestamp: '2023-12-14T11:45:57.686Z'
+}
+{
+  module: 'check-auth',
+  service: 'checkAuthStatus',
+  userId: 'E10101',
+  level: 'info',
+  message: 'User authenticated',
+  timestamp: '2023-12-14T11:45:57.686Z'
+}
+{
+  module: 'news-controller',
+  service: 'getNewsFeedPosts',
+  userId: 'E10101',
+  level: 'info',
+  message: 'Getting all news feed posts',
+  timestamp: '2023-12-14T11:45:57.686Z'
+}
+{
+  message: 'User connected with socket id -wEUIlAtEbOrTtCKAACv',
+  level: 'info',
+  timestamp: '2023-12-14T11:45:57.698Z'
+}
+{
+  message: 'User connected with socket id jmHNE8RbKQxLu4xiAACx',
+  level: 'info',
+  timestamp: '2023-12-14T11:46:01.660Z'
+}
+{
+  message: 'User connected with socket id oaPpZTlXE_6ZvQCuAACz',
+  level: 'info',
+  timestamp: '2023-12-14T11:46:03.609Z'
+}
+{
+  module: 'news',
+  service: 'formatNews',
+  level: 'info',
+  message: 'Successfully formatted news',
+  timestamp: '2023-12-14T11:46:07.044Z'
+}
+{
+  module: 'news',
+  service: 'formatNews',
+  level: 'info',
+  message: 'Successfully formatted news',
+  timestamp: '2023-12-14T11:46:07.044Z'
+}
+{
+  module: 'news',
+  service: 'formatNews',
+  level: 'info',
+  message: 'Successfully formatted all news',
+  timestamp: '2023-12-14T11:46:07.045Z'
+}
+{
+  module: 'news',
+  service: 'formatNews',
+  level: 'info',
+  message: 'Successfully returned all news',
+  timestamp: '2023-12-14T11:46:07.045Z'
+}
+{
+  module: 'news-controller',
+  service: 'getNewsFeedPosts',
+  userId: 'E10101',
+  level: 'info',
+  message: 'Successfully got all news feed posts',
+  timestamp: '2023-12-14T11:46:07.045Z'
+}
+{
+  module: 'news-controller',
+  service: 'getNewsFeedPosts',
+  userId: 'E10101',
+  level: 'info',
+  message: 'Successfully returned all news feed posts',
+  timestamp: '2023-12-14T11:46:07.045Z'
+}
+{
+  module: 'desk-booking',
+  service: 'getFutureDeskBookingsForUser',
+  userId: 'E10101',
+  level: 'info',
+  message: 'Successfully got all future desk bookings for a user',
+  timestamp: '2023-12-14T11:46:07.258Z'
+}
+{
+  module: 'desk-booking',
+  service: 'formatDeskBoookings',
+  level: 'info',
+  message: 'Successfully formatted desk bookings',
+  timestamp: '2023-12-14T11:46:07.258Z'
+}
+{
+  module: 'desk-booking',
+  service: 'formatDeskBoookings',
+  userId: 'E10101',
+  level: 'info',
+  message: 'Successfully formatted all future desk bookings for a user',
+  timestamp: '2023-12-14T11:46:07.259Z'
+}
+{
+  module: 'desk-booking',
+  service: 'formatDeskBoookings',
+  userId: 'E10101',
+  level: 'info',
+  message: 'Successfully returned all future desk bookings for a user',
+  timestamp: '2023-12-14T11:46:07.259Z'
+}
+{
+  module: 'user-all-booking-controller',
+  service: 'getAllFutureBookingsForUser',
+  userId: 'E10101',
+  level: 'info',
+  message: 'Successfully got all future desk bookings for user',
+  timestamp: '2023-12-14T11:46:07.259Z'
+}
+{
+  module: 'user-all-booking-controller',
+  service: 'getAllFutureBookingsForUser',
+  userId: 'E10101',
+  level: 'info',
+  message: 'Getting all future cab bookings for user',
+  timestamp: '2023-12-14T11:46:07.259Z'
+}
+{
+  module: 'cab-booking',
+  service: 'getFutureCabBookingsForUser',
+  userId: 'E10101',
+  level: 'info',
+  message: 'Successfully got future cab bookings for user',
+  timestamp: '2023-12-14T11:46:07.358Z'
+}
+{
+  module: 'cab-booking',
+  service: 'formatCabBookings',
+  level: 'info',
+  message: 'Successfully formatted cab bookings',
+  timestamp: '2023-12-14T11:46:07.359Z'
+}
+{
+  module: 'cab-booking',
+  service: 'formatCabBookings',
+  userId: 'E10101',
+  level: 'info',
+  message: 'Successfully formatted future cab bookings for user',
+  timestamp: '2023-12-14T11:46:07.359Z'
+}
+{
+  module: 'cab-booking',
+  service: 'formatCabBookings',
+  userId: 'E10101',
+  level: 'info',
+  message: 'Successfully returned future cab bookings for user',
+  timestamp: '2023-12-14T11:46:07.359Z'
+}
+{
+  module: 'user-all-booking-controller',
+  service: 'getAllFutureBookingsForUser',
+  userId: 'E10101',
+  level: 'info',
+  message: 'Successfully got all future cab bookings for user',
+  timestamp: '2023-12-14T11:46:07.359Z'
+}
+{
+  module: 'user-all-booking-controller',
+  service: 'getAllFutureBookingsForUser',
+  userId: 'E10101',
+  level: 'info',
+  message: 'Getting all future food bookings for user',
+  timestamp: '2023-12-14T11:46:07.359Z'
+}
+{
+  module: 'food-booking',
+  service: 'getFutureFoodBookingsForUser',
+  userId: 'E10101',
+  level: 'info',
+  message: 'Successfully got all future food bookings for a user',
+  timestamp: '2023-12-14T11:46:07.456Z'
+}
+{
+  module: 'food-booking',
+  service: 'formatFoodBookings',
+  level: 'info',
+  message: 'Successfully formatted food bookings',
+  timestamp: '2023-12-14T11:46:07.457Z'
+}
+{
+  module: 'food-booking',
+  service: 'formatFoodBookings',
+  userId: 'E10101',
+  level: 'info',
+  message: 'Successfully formatted all future food bookings for a user',
+  timestamp: '2023-12-14T11:46:07.457Z'
+}
+{
+  module: 'food-booking',
+  service: 'formatFoodBookings',
+  userId: 'E10101',
+  level: 'info',
+  message: 'Successfully returned all future food bookings for a user',
+  timestamp: '2023-12-14T11:46:07.457Z'
+}
+{
+  module: 'user-all-booking-controller',
+  service: 'getAllFutureBookingsForUser',
+  userId: 'E10101',
+  level: 'info',
+  message: 'Successfully got all future food bookings for user',
+  timestamp: '2023-12-14T11:46:07.457Z'
+}
+{
+  module: 'user-all-booking-controller',
+  userId: 'E10101',
+  service: 'getAllFutureBookingsForUser',
+  level: 'info',
+  message: 'Sorting all future bookings by dateBooked',
+  timestamp: '2023-12-14T11:46:07.458Z'
+}
+{
+  module: 'user-all-booking-controller',
+  service: 'getAllFutureBookingsForUser',
+  userId: 'E10101',
+  level: 'info',
+  message: 'Successfully returned all future bookings for user',
+  timestamp: '2023-12-14T11:46:07.458Z'
+}
+{
+  module: 'desk-booking',
+  service: 'formatDeskBoookings',
+  userId: 'E10101',
+  level: 'info',
+  message: 'Successfully got all future desk bookings for a user',
+  timestamp: '2023-12-14T11:46:18.049Z'
+}
+{
+  module: 'desk-booking',
+  service: 'formatDeskBoookings',
+  level: 'info',
+  message: 'Successfully formatted desk bookings',
+  timestamp: '2023-12-14T11:46:18.050Z'
+}
+{
+  module: 'desk-booking',
+  service: 'formatDeskBoookings',
+  userId: 'E10101',
+  level: 'info',
+  message: 'Successfully formatted all future desk bookings for a user',
+  timestamp: '2023-12-14T11:46:18.050Z'
+}
+{
+  module: 'desk-booking',
+  service: 'formatDeskBoookings',
+  userId: 'E10101',
+  level: 'info',
+  message: 'Successfully returned all future desk bookings for a user',
+  timestamp: '2023-12-14T11:46:18.050Z'
+}
+{
+  module: 'user-all-booking-controller',
+  service: 'getAllFutureBookingsForUser',
+  userId: 'E10101',
+  level: 'info',
+  message: 'Successfully got all future desk bookings for user',
+  timestamp: '2023-12-14T11:46:18.050Z'
+}
+{
+  module: 'user-all-booking-controller',
+  service: 'getAllFutureBookingsForUser',
+  userId: 'E10101',
+  level: 'info',
+  message: 'Getting all future cab bookings for user',
+  timestamp: '2023-12-14T11:46:18.051Z'
+}
+{
+  module: 'news',
+  service: 'formatNews',
+  level: 'info',
+  message: 'Successfully formatted news',
+  timestamp: '2023-12-14T11:46:18.084Z'
+}
+{
+  module: 'news',
+  service: 'formatNews',
+  level: 'info',
+  message: 'Successfully formatted news',
+  timestamp: '2023-12-14T11:46:18.085Z'
+}
+{
+  module: 'news',
+  service: 'formatNews',
+  level: 'info',
+  message: 'Successfully formatted all news',
+  timestamp: '2023-12-14T11:46:18.085Z'
+}
+{
+  module: 'news',
+  service: 'formatNews',
+  level: 'info',
+  message: 'Successfully returned all news',
+  timestamp: '2023-12-14T11:46:18.085Z'
+}
+{
+  module: 'news-controller',
+  service: 'getNewsFeedPosts',
+  userId: 'E10101',
+  level: 'info',
+  message: 'Successfully got all news feed posts',
+  timestamp: '2023-12-14T11:46:18.085Z'
+}
+{
+  module: 'news-controller',
+  service: 'getNewsFeedPosts',
+  userId: 'E10101',
+  level: 'info',
+  message: 'Successfully returned all news feed posts',
+  timestamp: '2023-12-14T11:46:18.085Z'
+}
+{
+  module: 'verify-jwt-token',
+  service: 'verifyJWT',
+  userId: 'E10101',
+  level: 'info',
+  message: 'Access token verified',
+  timestamp: '2023-12-14T11:46:18.093Z'
+}
+{
+  module: 'check-auth',
+  service: 'checkAuthStatus',
+  userId: 'E10101',
+  level: 'info',
+  message: 'User authenticated',
+  timestamp: '2023-12-14T11:46:18.093Z'
+}
+{
+  module: 'news-controller',
+  service: 'getNewsFeedPosts',
+  userId: 'E10101',
+  level: 'info',
+  message: 'Getting all news feed posts',
+  timestamp: '2023-12-14T11:46:18.094Z'
+}
+{
+  module: 'cab-booking',
+  service: 'getFutureCabBookingsForUser',
+  userId: 'E10101',
+  level: 'info',
+  message: 'Successfully got future cab bookings for user',
+  timestamp: '2023-12-14T11:46:18.132Z'
+}
+{
+  module: 'cab-booking',
+  service: 'formatCabBookings',
+  level: 'info',
+  message: 'Successfully formatted cab bookings',
+  timestamp: '2023-12-14T11:46:18.134Z'
+}
+{
+  module: 'cab-booking',
+  service: 'formatCabBookings',
+  userId: 'E10101',
+  level: 'info',
+  message: 'Successfully formatted future cab bookings for user',
+  timestamp: '2023-12-14T11:46:18.134Z'
+}
+{
+  module: 'cab-booking',
+  service: 'formatCabBookings',
+  userId: 'E10101',
+  level: 'info',
+  message: 'Successfully returned future cab bookings for user',
+  timestamp: '2023-12-14T11:46:18.134Z'
+}
+{
+  module: 'user-all-booking-controller',
+  service: 'getAllFutureBookingsForUser',
+  userId: 'E10101',
+  level: 'info',
+  message: 'Successfully got all future cab bookings for user',
+  timestamp: '2023-12-14T11:46:18.134Z'
+}
+{
+  module: 'user-all-booking-controller',
+  service: 'getAllFutureBookingsForUser',
+  userId: 'E10101',
+  level: 'info',
+  message: 'Getting all future food bookings for user',
+  timestamp: '2023-12-14T11:46:18.135Z'
+}
+{
+  module: 'news',
+  service: 'formatNews',
+  level: 'info',
+  message: 'Successfully formatted news',
+  timestamp: '2023-12-14T11:46:18.184Z'
+}
+{
+  module: 'news',
+  service: 'formatNews',
+  level: 'info',
+  message: 'Successfully formatted news',
+  timestamp: '2023-12-14T11:46:18.184Z'
+}
+{
+  module: 'news',
+  service: 'formatNews',
+  level: 'info',
+  message: 'Successfully formatted all news',
+  timestamp: '2023-12-14T11:46:18.184Z'
+}
+{
+  module: 'news',
+  service: 'formatNews',
+  level: 'info',
+  message: 'Successfully returned all news',
+  timestamp: '2023-12-14T11:46:18.184Z'
+}
+{
+  module: 'news-controller',
+  service: 'getNewsFeedPosts',
+  userId: 'E10101',
+  level: 'info',
+  message: 'Successfully got all news feed posts',
+  timestamp: '2023-12-14T11:46:18.185Z'
+}
+{
+  module: 'news-controller',
+  service: 'getNewsFeedPosts',
+  userId: 'E10101',
+  level: 'info',
+  message: 'Successfully returned all news feed posts',
+  timestamp: '2023-12-14T11:46:18.185Z'
+}
+{
+  module: 'food-booking',
+  service: 'getFutureFoodBookingsForUser',
+  userId: 'E10101',
+  level: 'info',
+  message: 'Successfully got all future food bookings for a user',
+  timestamp: '2023-12-14T11:46:18.217Z'
+}
+{
+  module: 'food-booking',
+  service: 'formatFoodBookings',
+  level: 'info',
+  message: 'Successfully formatted food bookings',
+  timestamp: '2023-12-14T11:46:18.218Z'
+}
+{
+  module: 'food-booking',
+  service: 'formatFoodBookings',
+  userId: 'E10101',
+  level: 'info',
+  message: 'Successfully formatted all future food bookings for a user',
+  timestamp: '2023-12-14T11:46:18.219Z'
+}
+{
+  module: 'food-booking',
+  service: 'formatFoodBookings',
+  userId: 'E10101',
+  level: 'info',
+  message: 'Successfully returned all future food bookings for a user',
+  timestamp: '2023-12-14T11:46:18.219Z'
+}
+{
+  module: 'user-all-booking-controller',
+  service: 'getAllFutureBookingsForUser',
+  userId: 'E10101',
+  level: 'info',
+  message: 'Successfully got all future food bookings for user',
+  timestamp: '2023-12-14T11:46:18.220Z'
+}
+{
+  module: 'user-all-booking-controller',
+  userId: 'E10101',
+  service: 'getAllFutureBookingsForUser',
+  level: 'info',
+  message: 'Sorting all future bookings by dateBooked',
+  timestamp: '2023-12-14T11:46:18.221Z'
+}
+{
+  module: 'user-all-booking-controller',
+  service: 'getAllFutureBookingsForUser',
+  userId: 'E10101',
+  level: 'info',
+  message: 'Successfully returned all future bookings for user',
+  timestamp: '2023-12-14T11:46:18.221Z'
+}
+{
+  message: 'User connected with socket id I407Y67M0XsvmMgFAAC1',
+  level: 'info',
+  timestamp: '2023-12-14T11:46:18.471Z'
+}
+{
+  module: 'verify-jwt-token',
+  service: 'verifyJWT',
+  userId: 'E10101',
+  level: 'info',
+  message: 'Access token verified',
+  timestamp: '2023-12-14T11:47:01.672Z'
+}
+{
+  module: 'check-auth',
+  service: 'checkAuthStatus',
+  userId: 'E10101',
+  level: 'info',
+  message: 'User authenticated',
+  timestamp: '2023-12-14T11:47:01.673Z'
+}
+{
+  module: 'user-all-booking-controller',
+  userId: 'E10101',
+  service: 'cancelAll',
+  request: {
+    dates: [ '2024-01-17' ],
+    cancelDesk: true,
+    cancelCab: true,
+    cancelFood: true
+  },
+  level: 'info',
+  message: 'Formatting dates and checking buffer',
+  timestamp: '2023-12-14T11:47:01.673Z'
+}
+{
+  module: 'user-all-booking-controller',
+  service: 'cancelAll',
+  userId: 'E10101',
+  request: { dates: [ '2024-01-17' ] },
+  level: 'info',
+  message: 'Getting desk bookings for user for dates',
+  timestamp: '2023-12-14T11:47:01.673Z'
+}
+{
+  module: 'verify-jwt-token',
+  service: 'verifyJWT',
+  userId: 'E10101',
+  level: 'info',
+  message: 'Access token verified',
+  timestamp: '2023-12-14T11:47:06.441Z'
+}
+{
+  module: 'check-auth',
+  service: 'checkAuthStatus',
+  userId: 'E10101',
+  level: 'info',
+  message: 'User authenticated',
+  timestamp: '2023-12-14T11:47:06.442Z'
+}
+{
+  module: 'user-all-booking-controller',
+  userId: 'E10101',
+  service: 'cancelAll',
+  request: {
+    dates: [ '2024-01-17' ],
+    cancelDesk: true,
+    cancelCab: true,
+    cancelFood: true
+  },
+  level: 'info',
+  message: 'Formatting dates and checking buffer',
+  timestamp: '2023-12-14T11:47:06.442Z'
+}
+{
+  module: 'user-all-booking-controller',
+  service: 'cancelAll',
+  userId: 'E10101',
+  request: { dates: [ '2024-01-17' ] },
+  level: 'info',
+  message: 'Getting desk bookings for user for dates',
+  timestamp: '2023-12-14T11:47:06.442Z'
+}
+{
+  module: 'desk-booking',
+  service: 'getDeskBookingsForUserForDates',
+  userId: 'E10101',
+  request: { dates: [ '2024-01-17' ] },
+  level: 'info',
+  message: 'Successfully got all desk bookings for a user for multiple dates',
+  timestamp: '2023-12-14T11:47:13.685Z'
+}
+{
+  module: 'desk-booking',
+  service: 'formatDeskBoookings',
+  level: 'info',
+  message: 'Successfully formatted desk bookings',
+  timestamp: '2023-12-14T11:47:13.686Z'
+}
+{
+  module: 'desk-booking',
+  service: 'formatDeskBoookings',
+  userId: 'E10101',
+  request: { dates: [ '2024-01-17' ] },
+  level: 'info',
+  message: 'Successfully formatted all desk bookings for a user for multiple dates',
+  timestamp: '2023-12-14T11:47:13.686Z'
+}
+{
+  module: 'desk-booking',
+  service: 'formatDeskBoookings',
+  userId: 'E10101',
+  request: { dates: [ '2024-01-17' ] },
+  level: 'info',
+  message: 'Successfully returned all desk bookings for a user for multiple dates',
+  timestamp: '2023-12-14T11:47:13.688Z'
+}
+{
+  module: 'user-all-booking-controller',
+  service: 'cancelAll',
+  userId: 'E10101',
+  request: { dates: [ '2024-01-17' ] },
+  level: 'info',
+  message: 'Successfully got desk bookings for user for dates',
+  timestamp: '2023-12-14T11:47:13.688Z'
+}
+{
+  module: 'user-all-booking-controller',
+  service: 'cancelAll',
+  userId: 'E10101',
+  request: { dates: [ '2024-01-17' ] },
+  level: 'info',
+  message: 'Getting cab bookings for user for dates',
+  timestamp: '2023-12-14T11:47:13.688Z'
+}
+{
+  module: 'cab-booking',
+  service: 'getCabBookingsForUserForDates',
+  userId: 'E10101',
+  request: { dates: [ '2024-01-17' ] },
+  level: 'info',
+  message: 'Successfully got cab bookings for user for dates',
+  timestamp: '2023-12-14T11:47:13.780Z'
+}
+{
+  module: 'cab-booking',
+  service: 'formatCabBookings',
+  level: 'info',
+  message: 'Successfully formatted cab bookings',
+  timestamp: '2023-12-14T11:47:13.780Z'
+}
+{
+  module: 'cab-booking',
+  service: 'formatCabBookings',
+  userId: 'E10101',
+  request: { dates: [ '2024-01-17' ] },
+  level: 'info',
+  message: 'Successfully formatted cab bookings for user for dates',
+  timestamp: '2023-12-14T11:47:13.781Z'
+}
+{
+  module: 'cab-booking',
+  service: 'formatCabBookings',
+  userId: 'E10101',
+  request: { dates: [ '2024-01-17' ] },
+  level: 'info',
+  message: 'Successfully returned cab bookings for user for dates',
+  timestamp: '2023-12-14T11:47:13.781Z'
+}
+{
+  module: 'user-all-booking-controller',
+  service: 'cancelAll',
+  userId: 'E10101',
+  request: { dates: [ '2024-01-17' ] },
+  level: 'info',
+  message: 'Successfully got cab bookings for user for dates',
+  timestamp: '2023-12-14T11:47:13.781Z'
+}
+{
+  module: 'user-all-booking-controller',
+  service: 'cancelAll',
+  userId: 'E10101',
+  request: { dates: [ '2024-01-17' ] },
+  level: 'info',
+  message: 'Getting food bookings for user for dates',
+  timestamp: '2023-12-14T11:47:13.781Z'
+}
+{
+  module: 'desk-booking',
+  service: 'formatDeskBoookings',
+  userId: 'E10101',
+  request: { dates: [ '2024-01-17' ] },
+  level: 'info',
+  message: 'Successfully got all desk bookings for a user for multiple dates',
+  timestamp: '2023-12-14T11:47:13.786Z'
+}
+{
+  module: 'desk-booking',
+  service: 'formatDeskBoookings',
+  level: 'info',
+  message: 'Successfully formatted desk bookings',
+  timestamp: '2023-12-14T11:47:13.786Z'
+}
+{
+  module: 'desk-booking',
+  service: 'formatDeskBoookings',
+  userId: 'E10101',
+  request: { dates: [ '2024-01-17' ] },
+  level: 'info',
+  message: 'Successfully formatted all desk bookings for a user for multiple dates',
+  timestamp: '2023-12-14T11:47:13.787Z'
+}
+{
+  module: 'desk-booking',
+  service: 'formatDeskBoookings',
+  userId: 'E10101',
+  request: { dates: [ '2024-01-17' ] },
+  level: 'info',
+  message: 'Successfully returned all desk bookings for a user for multiple dates',
+  timestamp: '2023-12-14T11:47:13.787Z'
+}
+{
+  module: 'user-all-booking-controller',
+  service: 'cancelAll',
+  userId: 'E10101',
+  request: { dates: [ '2024-01-17' ] },
+  level: 'info',
+  message: 'Successfully got desk bookings for user for dates',
+  timestamp: '2023-12-14T11:47:13.787Z'
+}
+{
+  module: 'user-all-booking-controller',
+  service: 'cancelAll',
+  userId: 'E10101',
+  request: { dates: [ '2024-01-17' ] },
+  level: 'info',
+  message: 'Getting cab bookings for user for dates',
+  timestamp: '2023-12-14T11:47:13.787Z'
+}
+{
+  module: 'food-booking',
+  service: 'getFoodBookingsForUserForDates',
+  userId: 'E10101',
+  request: { dates: [ '2024-01-17' ] },
+  level: 'info',
+  message: 'Successfully got all food bookings for a user for multiple dates',
+  timestamp: '2023-12-14T11:47:13.873Z'
+}
+{
+  module: 'food-booking',
+  service: 'formatFoodBookings',
+  level: 'info',
+  message: 'Successfully formatted food bookings',
+  timestamp: '2023-12-14T11:47:13.874Z'
+}
+{
+  module: 'food-booking',
+  service: 'formatFoodBookings',
+  userId: 'E10101',
+  request: { dates: [ '2024-01-17' ] },
+  level: 'info',
+  message: 'Successfully formatted all food bookings for a user for multiple dates',
+  timestamp: '2023-12-14T11:47:13.874Z'
+}
+{
+  module: 'food-booking',
+  service: 'formatFoodBookings',
+  userId: 'E10101',
+  request: { dates: [ '2024-01-17' ] },
+  level: 'info',
+  message: 'Successfully returned all food bookings for a user for multiple dates',
+  timestamp: '2023-12-14T11:47:13.874Z'
+}
+{
+  module: 'user-all-booking-controller',
+  service: 'cancelAll',
+  userId: 'E10101',
+  request: { dates: [ '2024-01-17' ] },
+  level: 'info',
+  message: 'Successfully got food bookings for user for dates',
+  timestamp: '2023-12-14T11:47:13.875Z'
+}
+{
+  module: 'user-all-booking-controller',
+  service: 'cancelAll',
+  userId: 'E10101',
+  request: { dates: [ '2024-01-17' ] },
+  level: 'info',
+  message: 'Canceling desk booking for user',
+  timestamp: '2023-12-14T11:47:13.875Z'
+}
+{
+  module: 'cab-booking',
+  service: 'getCabBookingsForUserForDates',
+  userId: 'E10101',
+  request: { dates: [ '2024-01-17' ] },
+  level: 'info',
+  message: 'Successfully got cab bookings for user for dates',
+  timestamp: '2023-12-14T11:47:13.876Z'
+}
+{
+  module: 'cab-booking',
+  service: 'formatCabBookings',
+  level: 'info',
+  message: 'Successfully formatted cab bookings',
+  timestamp: '2023-12-14T11:47:13.877Z'
+}
+{
+  module: 'cab-booking',
+  service: 'formatCabBookings',
+  userId: 'E10101',
+  request: { dates: [ '2024-01-17' ] },
+  level: 'info',
+  message: 'Successfully formatted cab bookings for user for dates',
+  timestamp: '2023-12-14T11:47:13.877Z'
+}
+{
+  module: 'cab-booking',
+  service: 'formatCabBookings',
+  userId: 'E10101',
+  request: { dates: [ '2024-01-17' ] },
+  level: 'info',
+  message: 'Successfully returned cab bookings for user for dates',
+  timestamp: '2023-12-14T11:47:13.877Z'
+}
+{
+  module: 'user-all-booking-controller',
+  service: 'cancelAll',
+  userId: 'E10101',
+  request: { dates: [ '2024-01-17' ] },
+  level: 'info',
+  message: 'Successfully got cab bookings for user for dates',
+  timestamp: '2023-12-14T11:47:13.877Z'
+}
+{
+  module: 'user-all-booking-controller',
+  service: 'cancelAll',
+  userId: 'E10101',
+  request: { dates: [ '2024-01-17' ] },
+  level: 'info',
+  message: 'Getting food bookings for user for dates',
+  timestamp: '2023-12-14T11:47:13.877Z'
+}
+{
+  module: 'food-booking',
+  service: 'getFoodBookingsForUserForDates',
+  userId: 'E10101',
+  request: { dates: [ '2024-01-17' ] },
+  level: 'info',
+  message: 'Successfully got all food bookings for a user for multiple dates',
+  timestamp: '2023-12-14T11:47:13.968Z'
+}
+{
+  module: 'food-booking',
+  service: 'formatFoodBookings',
+  level: 'info',
+  message: 'Successfully formatted food bookings',
+  timestamp: '2023-12-14T11:47:13.969Z'
+}
+{
+  module: 'food-booking',
+  service: 'formatFoodBookings',
+  userId: 'E10101',
+  request: { dates: [ '2024-01-17' ] },
+  level: 'info',
+  message: 'Successfully formatted all food bookings for a user for multiple dates',
+  timestamp: '2023-12-14T11:47:13.969Z'
+}
+{
+  module: 'food-booking',
+  service: 'formatFoodBookings',
+  userId: 'E10101',
+  request: { dates: [ '2024-01-17' ] },
+  level: 'info',
+  message: 'Successfully returned all food bookings for a user for multiple dates',
+  timestamp: '2023-12-14T11:47:13.969Z'
+}
+{
+  module: 'user-all-booking-controller',
+  service: 'cancelAll',
+  userId: 'E10101',
+  request: { dates: [ '2024-01-17' ] },
+  level: 'info',
+  message: 'Successfully got food bookings for user for dates',
+  timestamp: '2023-12-14T11:47:13.969Z'
+}
+{
+  module: 'user-all-booking-controller',
+  service: 'cancelAll',
+  userId: 'E10101',
+  request: { dates: [ '2024-01-17' ] },
+  level: 'info',
+  message: 'Canceling desk booking for user',
+  timestamp: '2023-12-14T11:47:13.970Z'
+}
+{
+  module: 'desk-booking',
+  service: 'cancelDeskBooking',
+  userId: 'E10101',
+  request: { date: [ '2024-01-17' ] },
+  level: 'info',
+  message: 'Successfully cancelled a desk booking',
+  timestamp: '2023-12-14T11:47:13.970Z'
+}
+{
+  module: 'user-all-booking-controller',
+  service: 'cancelAll',
+  userId: 'E10101',
+  request: { dates: [ '2024-01-17' ] },
+  level: 'info',
+  message: 'Successfully canceled desk booking for user',
+  timestamp: '2023-12-14T11:47:13.971Z'
+}
+{
+  module: 'user-all-booking-controller',
+  service: 'cancelAll',
+  userId: 'E10101',
+  request: { dates: [ '2024-01-17' ] },
+  level: 'info',
+  message: 'Getting cab bookings for user for dates',
+  timestamp: '2023-12-14T11:47:13.971Z'
+}
+{
+  module: 'desk-booking',
+  service: 'cancelDeskBooking',
+  userId: 'E10101',
+  request: { date: [ '2024-01-17' ] },
+  level: 'info',
+  message: 'Successfully cancelled a desk booking',
+  timestamp: '2023-12-14T11:47:14.058Z'
+}
+{
+  module: 'user-all-booking-controller',
+  service: 'cancelAll',
+  userId: 'E10101',
+  request: { dates: [ '2024-01-17' ] },
+  level: 'info',
+  message: 'Successfully canceled desk booking for user',
+  timestamp: '2023-12-14T11:47:14.059Z'
+}
+{
+  module: 'user-all-booking-controller',
+  service: 'cancelAll',
+  userId: 'E10101',
+  request: { dates: [ '2024-01-17' ] },
+  level: 'info',
+  message: 'Getting cab bookings for user for dates',
+  timestamp: '2023-12-14T11:47:14.059Z'
+}
+{
+  module: 'cab-booking',
+  service: 'getCabBookingsForUserForDates',
+  userId: 'E10101',
+  request: { dates: [ '2024-01-17' ] },
+  level: 'info',
+  message: 'Successfully got cab bookings for user for dates',
+  timestamp: '2023-12-14T11:47:14.062Z'
+}
+{
+  module: 'cab-booking',
+  service: 'formatCabBookings',
+  level: 'info',
+  message: 'Successfully formatted cab bookings',
+  timestamp: '2023-12-14T11:47:14.063Z'
+}
+{
+  module: 'cab-booking',
+  service: 'formatCabBookings',
+  userId: 'E10101',
+  request: { dates: [ '2024-01-17' ] },
+  level: 'info',
+  message: 'Successfully formatted cab bookings for user for dates',
+  timestamp: '2023-12-14T11:47:14.063Z'
+}
+{
+  module: 'cab-booking',
+  service: 'formatCabBookings',
+  userId: 'E10101',
+  request: { dates: [ '2024-01-17' ] },
+  level: 'info',
+  message: 'Successfully returned cab bookings for user for dates',
+  timestamp: '2023-12-14T11:47:14.063Z'
+}
+{
+  module: 'user-all-booking-controller',
+  service: 'cancelAll',
+  userId: 'E10101',
+  request: { dates: [ '2024-01-17' ] },
+  level: 'info',
+  message: 'Successfully got cab bookings for user for dates',
+  timestamp: '2023-12-14T11:47:14.063Z'
+}
+{
+  module: 'user-all-booking-controller',
+  service: 'cancelAll',
+  userId: 'E10101',
+  request: { dates: [ '2024-01-17' ] },
+  level: 'info',
+  message: 'Canceling cab booking for user',
+  timestamp: '2023-12-14T11:47:14.064Z'
+}
+{
+  module: 'cab-booking',
+  service: 'cancelCabBooking',
+  userId: 'E10101',
+  request: { dates: [ '2024-01-17' ] },
+  level: 'info',
+  message: 'Successfully got cab bookings for user for dates',
+  timestamp: '2023-12-14T11:47:14.147Z'
+}
+{
+  module: 'cab-booking',
+  service: 'formatCabBookings',
+  level: 'info',
+  message: 'Successfully formatted cab bookings',
+  timestamp: '2023-12-14T11:47:14.148Z'
+}
+{
+  module: 'cab-booking',
+  service: 'formatCabBookings',
+  userId: 'E10101',
+  request: { dates: [ '2024-01-17' ] },
+  level: 'info',
+  message: 'Successfully formatted cab bookings for user for dates',
+  timestamp: '2023-12-14T11:47:14.148Z'
+}
+{
+  module: 'cab-booking',
+  service: 'formatCabBookings',
+  userId: 'E10101',
+  request: { dates: [ '2024-01-17' ] },
+  level: 'info',
+  message: 'Successfully returned cab bookings for user for dates',
+  timestamp: '2023-12-14T11:47:14.149Z'
+}
+{
+  module: 'user-all-booking-controller',
+  service: 'cancelAll',
+  userId: 'E10101',
+  request: { dates: [ '2024-01-17' ] },
+  level: 'info',
+  message: 'Successfully got cab bookings for user for dates',
+  timestamp: '2023-12-14T11:47:14.149Z'
+}
+{
+  module: 'user-all-booking-controller',
+  service: 'cancelAll',
+  userId: 'E10101',
+  request: { dates: [ '2024-01-17' ] },
+  level: 'info',
+  message: 'Canceling cab booking for user',
+  timestamp: '2023-12-14T11:47:14.149Z'
+}
+{
+  module: 'cab-booking',
+  service: 'cancelCabBooking',
+  userId: 'E10101',
+  request: { date: [ '2024-01-17' ] },
+  level: 'info',
+  message: 'Successfully cancelled cab booking',
+  timestamp: '2023-12-14T11:47:14.157Z'
+}
+{
+  module: 'user-all-booking-controller',
+  service: 'cancelAll',
+  userId: 'E10101',
+  request: { dates: [ '2024-01-17' ] },
+  level: 'info',
+  message: 'Successfully canceled cab booking for user',
+  timestamp: '2023-12-14T11:47:14.157Z'
+}
+{
+  module: 'user-all-booking-controller',
+  service: 'cancelAll',
+  userId: 'E10101',
+  request: { dates: [ '2024-01-17' ] },
+  level: 'info',
+  message: 'Getting food bookings for user for dates',
+  timestamp: '2023-12-14T11:47:14.158Z'
+}
+{
+  module: 'cab-booking',
+  service: 'cancelCabBooking',
+  userId: 'E10101',
+  request: { date: [ '2024-01-17' ] },
+  level: 'info',
+  message: 'Successfully cancelled cab booking',
+  timestamp: '2023-12-14T11:47:14.237Z'
+}
+{
+  module: 'user-all-booking-controller',
+  service: 'cancelAll',
+  userId: 'E10101',
+  request: { dates: [ '2024-01-17' ] },
+  level: 'info',
+  message: 'Successfully canceled cab booking for user',
+  timestamp: '2023-12-14T11:47:14.238Z'
+}
+{
+  module: 'user-all-booking-controller',
+  service: 'cancelAll',
+  userId: 'E10101',
+  request: { dates: [ '2024-01-17' ] },
+  level: 'info',
+  message: 'Getting food bookings for user for dates',
+  timestamp: '2023-12-14T11:47:14.238Z'
+}
+{
+  module: 'food-booking',
+  service: 'getFoodBookingsForUserForDates',
+  userId: 'E10101',
+  request: { dates: [ '2024-01-17' ] },
+  level: 'info',
+  message: 'Successfully got all food bookings for a user for multiple dates',
+  timestamp: '2023-12-14T11:47:14.250Z'
+}
+{
+  module: 'food-booking',
+  service: 'formatFoodBookings',
+  level: 'info',
+  message: 'Successfully formatted food bookings',
+  timestamp: '2023-12-14T11:47:14.251Z'
+}
+{
+  module: 'food-booking',
+  service: 'formatFoodBookings',
+  userId: 'E10101',
+  request: { dates: [ '2024-01-17' ] },
+  level: 'info',
+  message: 'Successfully formatted all food bookings for a user for multiple dates',
+  timestamp: '2023-12-14T11:47:14.251Z'
+}
+{
+  module: 'food-booking',
+  service: 'formatFoodBookings',
+  userId: 'E10101',
+  request: { dates: [ '2024-01-17' ] },
+  level: 'info',
+  message: 'Successfully returned all food bookings for a user for multiple dates',
+  timestamp: '2023-12-14T11:47:14.251Z'
+}
+{
+  module: 'user-all-booking-controller',
+  service: 'cancelAll',
+  userId: 'E10101',
+  request: { dates: [ '2024-01-17' ] },
+  level: 'info',
+  message: 'Successfully got food bookings for user for dates',
+  timestamp: '2023-12-14T11:47:14.251Z'
+}
+{
+  module: 'user-all-booking-controller',
+  service: 'cancelAll',
+  userId: 'E10101',
+  request: { dates: [ '2024-01-17' ] },
+  level: 'info',
+  message: 'Canceling food booking for user',
+  timestamp: '2023-12-14T11:47:14.252Z'
+}
+{
+  module: 'food-booking',
+  service: 'cancelFoodBooking',
+  userId: 'E10101',
+  request: { dates: [ '2024-01-17' ] },
+  level: 'info',
+  message: 'Successfully got all food bookings for a user for multiple dates',
+  timestamp: '2023-12-14T11:47:14.328Z'
+}
+{
+  module: 'food-booking',
+  service: 'formatFoodBookings',
+  level: 'info',
+  message: 'Successfully formatted food bookings',
+  timestamp: '2023-12-14T11:47:14.329Z'
+}
+{
+  module: 'food-booking',
+  service: 'formatFoodBookings',
+  userId: 'E10101',
+  request: { dates: [ '2024-01-17' ] },
+  level: 'info',
+  message: 'Successfully formatted all food bookings for a user for multiple dates',
+  timestamp: '2023-12-14T11:47:14.329Z'
+}
+{
+  module: 'food-booking',
+  service: 'formatFoodBookings',
+  userId: 'E10101',
+  request: { dates: [ '2024-01-17' ] },
+  level: 'info',
+  message: 'Successfully returned all food bookings for a user for multiple dates',
+  timestamp: '2023-12-14T11:47:14.329Z'
+}
+{
+  module: 'user-all-booking-controller',
+  service: 'cancelAll',
+  userId: 'E10101',
+  request: { dates: [ '2024-01-17' ] },
+  level: 'info',
+  message: 'Successfully got food bookings for user for dates',
+  timestamp: '2023-12-14T11:47:14.330Z'
+}
+{
+  module: 'user-all-booking-controller',
+  service: 'cancelAll',
+  userId: 'E10101',
+  request: { dates: [ '2024-01-17' ] },
+  level: 'info',
+  message: 'Canceling food booking for user',
+  timestamp: '2023-12-14T11:47:14.330Z'
+}
+{
+  module: 'food-booking',
+  service: 'cancelFoodBooking',
+  userId: 'E10101',
+  request: { date: [ '2024-01-17' ] },
+  level: 'info',
+  message: 'Successfully cancelled food booking',
+  timestamp: '2023-12-14T11:47:14.345Z'
+}
+{
+  module: 'user-all-booking-controller',
+  service: 'cancelAll',
+  userId: 'E10101',
+  request: { dates: [ '2024-01-17' ] },
+  level: 'info',
+  message: 'Successfully canceled food booking for user',
+  timestamp: '2023-12-14T11:47:14.345Z'
+}
+{
+  module: 'user-all-booking-controller',
+  service: 'cancelAll',
+  userId: 'E10101',
+  request: { dates: [ '2024-01-17' ] },
+  level: 'info',
+  message: 'Cancellation successfull',
+  timestamp: '2023-12-14T11:47:14.346Z'
+}
+{
+  module: 'verify-jwt-token',
+  service: 'verifyJWT',
+  userId: 'E10101',
+  level: 'info',
+  message: 'Access token verified',
+  timestamp: '2023-12-14T11:47:14.356Z'
+}
+{
+  module: 'check-auth',
+  service: 'checkAuthStatus',
+  userId: 'E10101',
+  level: 'info',
+  message: 'User authenticated',
+  timestamp: '2023-12-14T11:47:14.357Z'
+}
+{
+  module: 'user-all-booking-controller',
+  service: 'getAllFutureBookingsForUser',
+  userId: 'E10101',
+  level: 'info',
+  message: 'Getting all future desk bookings for user',
+  timestamp: '2023-12-14T11:47:14.357Z'
+}
+{
+  module: 'food-booking',
+  service: 'cancelFoodBooking',
+  userId: 'E10101',
+  request: { date: [ '2024-01-17' ] },
+  level: 'info',
+  message: 'Successfully cancelled food booking',
+  timestamp: '2023-12-14T11:47:14.424Z'
+}
+{
+  module: 'user-all-booking-controller',
+  service: 'getAllFutureBookingsForUser',
+  userId: 'E10101',
+  request: { dates: [ '2024-01-17' ] },
+  level: 'info',
+  message: 'Successfully canceled food booking for user',
+  timestamp: '2023-12-14T11:47:14.424Z'
+}
+{
+  module: 'user-all-booking-controller',
+  service: 'getAllFutureBookingsForUser',
+  userId: 'E10101',
+  request: { dates: [ '2024-01-17' ] },
+  level: 'info',
+  message: 'Cancellation successfull',
+  timestamp: '2023-12-14T11:47:14.424Z'
+}
+{
+  module: 'verify-jwt-token',
+  service: 'verifyJWT',
+  userId: 'E10101',
+  level: 'info',
+  message: 'Access token verified',
+  timestamp: '2023-12-14T11:47:14.437Z'
+}
+{
+  module: 'check-auth',
+  service: 'checkAuthStatus',
+  userId: 'E10101',
+  level: 'info',
+  message: 'User authenticated',
+  timestamp: '2023-12-14T11:47:14.437Z'
+}
+{
+  module: 'user-all-booking-controller',
+  service: 'getAllFutureBookingsForUser',
+  userId: 'E10101',
+  level: 'info',
+  message: 'Getting all future desk bookings for user',
+  timestamp: '2023-12-14T11:47:14.437Z'
+}
+{
+  module: 'desk-booking',
+  service: 'getFutureDeskBookingsForUser',
+  userId: 'E10101',
+  level: 'info',
+  message: 'Successfully got all future desk bookings for a user',
+  timestamp: '2023-12-14T11:47:14.449Z'
+}
+{
+  module: 'desk-booking',
+  service: 'formatDeskBoookings',
+  level: 'info',
+  message: 'Successfully formatted desk bookings',
+  timestamp: '2023-12-14T11:47:14.450Z'
+}
+{
+  module: 'desk-booking',
+  service: 'formatDeskBoookings',
+  userId: 'E10101',
+  level: 'info',
+  message: 'Successfully formatted all future desk bookings for a user',
+  timestamp: '2023-12-14T11:47:14.450Z'
+}
+{
+  module: 'desk-booking',
+  service: 'formatDeskBoookings',
+  userId: 'E10101',
+  level: 'info',
+  message: 'Successfully returned all future desk bookings for a user',
+  timestamp: '2023-12-14T11:47:14.450Z'
+}
+{
+  module: 'user-all-booking-controller',
+  service: 'getAllFutureBookingsForUser',
+  userId: 'E10101',
+  level: 'info',
+  message: 'Successfully got all future desk bookings for user',
+  timestamp: '2023-12-14T11:47:14.450Z'
+}
+{
+  module: 'user-all-booking-controller',
+  service: 'getAllFutureBookingsForUser',
+  userId: 'E10101',
+  level: 'info',
+  message: 'Getting all future cab bookings for user',
+  timestamp: '2023-12-14T11:47:14.450Z'
+}
+{
+  module: 'desk-booking',
+  service: 'formatDeskBoookings',
+  userId: 'E10101',
+  level: 'info',
+  message: 'Successfully got all future desk bookings for a user',
+  timestamp: '2023-12-14T11:47:14.527Z'
+}
+{
+  module: 'desk-booking',
+  service: 'formatDeskBoookings',
+  level: 'info',
+  message: 'Successfully formatted desk bookings',
+  timestamp: '2023-12-14T11:47:14.528Z'
+}
+{
+  module: 'desk-booking',
+  service: 'formatDeskBoookings',
+  userId: 'E10101',
+  level: 'info',
+  message: 'Successfully formatted all future desk bookings for a user',
+  timestamp: '2023-12-14T11:47:14.528Z'
+}
+{
+  module: 'desk-booking',
+  service: 'formatDeskBoookings',
+  userId: 'E10101',
+  level: 'info',
+  message: 'Successfully returned all future desk bookings for a user',
+  timestamp: '2023-12-14T11:47:14.528Z'
+}
+{
+  module: 'user-all-booking-controller',
+  service: 'getAllFutureBookingsForUser',
+  userId: 'E10101',
+  level: 'info',
+  message: 'Successfully got all future desk bookings for user',
+  timestamp: '2023-12-14T11:47:14.529Z'
+}
+{
+  module: 'user-all-booking-controller',
+  service: 'getAllFutureBookingsForUser',
+  userId: 'E10101',
+  level: 'info',
+  message: 'Getting all future cab bookings for user',
+  timestamp: '2023-12-14T11:47:14.529Z'
+}
+{
+  module: 'cab-booking',
+  service: 'getFutureCabBookingsForUser',
+  userId: 'E10101',
+  level: 'info',
+  message: 'Successfully got future cab bookings for user',
+  timestamp: '2023-12-14T11:47:14.543Z'
+}
+{
+  module: 'cab-booking',
+  service: 'formatCabBookings',
+  level: 'info',
+  message: 'Successfully formatted cab bookings',
+  timestamp: '2023-12-14T11:47:14.544Z'
+}
+{
+  module: 'cab-booking',
+  service: 'formatCabBookings',
+  userId: 'E10101',
+  level: 'info',
+  message: 'Successfully formatted future cab bookings for user',
+  timestamp: '2023-12-14T11:47:14.544Z'
+}
+{
+  module: 'cab-booking',
+  service: 'formatCabBookings',
+  userId: 'E10101',
+  level: 'info',
+  message: 'Successfully returned future cab bookings for user',
+  timestamp: '2023-12-14T11:47:14.546Z'
+}
+{
+  module: 'user-all-booking-controller',
+  service: 'getAllFutureBookingsForUser',
+  userId: 'E10101',
+  level: 'info',
+  message: 'Successfully got all future cab bookings for user',
+  timestamp: '2023-12-14T11:47:14.546Z'
+}
+{
+  module: 'user-all-booking-controller',
+  service: 'getAllFutureBookingsForUser',
+  userId: 'E10101',
+  level: 'info',
+  message: 'Getting all future food bookings for user',
+  timestamp: '2023-12-14T11:47:14.546Z'
+}
+{
+  module: 'cab-booking',
+  service: 'formatCabBookings',
+  userId: 'E10101',
+  level: 'info',
+  message: 'Successfully got future cab bookings for user',
+  timestamp: '2023-12-14T11:47:14.620Z'
+}
+{
+  module: 'cab-booking',
+  service: 'formatCabBookings',
+  level: 'info',
+  message: 'Successfully formatted cab bookings',
+  timestamp: '2023-12-14T11:47:14.621Z'
+}
+{
+  module: 'cab-booking',
+  service: 'formatCabBookings',
+  userId: 'E10101',
+  level: 'info',
+  message: 'Successfully formatted future cab bookings for user',
+  timestamp: '2023-12-14T11:47:14.621Z'
+}
+{
+  module: 'cab-booking',
+  service: 'formatCabBookings',
+  userId: 'E10101',
+  level: 'info',
+  message: 'Successfully returned future cab bookings for user',
+  timestamp: '2023-12-14T11:47:14.621Z'
+}
+{
+  module: 'user-all-booking-controller',
+  service: 'getAllFutureBookingsForUser',
+  userId: 'E10101',
+  level: 'info',
+  message: 'Successfully got all future cab bookings for user',
+  timestamp: '2023-12-14T11:47:14.621Z'
+}
+{
+  module: 'user-all-booking-controller',
+  service: 'getAllFutureBookingsForUser',
+  userId: 'E10101',
+  level: 'info',
+  message: 'Getting all future food bookings for user',
+  timestamp: '2023-12-14T11:47:14.621Z'
+}
+{
+  module: 'food-booking',
+  service: 'getFutureFoodBookingsForUser',
+  userId: 'E10101',
+  level: 'info',
+  message: 'Successfully got all future food bookings for a user',
+  timestamp: '2023-12-14T11:47:14.639Z'
+}
+{
+  module: 'food-booking',
+  service: 'formatFoodBookings',
+  level: 'info',
+  message: 'Successfully formatted food bookings',
+  timestamp: '2023-12-14T11:47:14.640Z'
+}
+{
+  module: 'food-booking',
+  service: 'formatFoodBookings',
+  userId: 'E10101',
+  level: 'info',
+  message: 'Successfully formatted all future food bookings for a user',
+  timestamp: '2023-12-14T11:47:14.640Z'
+}
+{
+  module: 'food-booking',
+  service: 'formatFoodBookings',
+  userId: 'E10101',
+  level: 'info',
+  message: 'Successfully returned all future food bookings for a user',
+  timestamp: '2023-12-14T11:47:14.640Z'
+}
+{
+  module: 'user-all-booking-controller',
+  service: 'getAllFutureBookingsForUser',
+  userId: 'E10101',
+  level: 'info',
+  message: 'Successfully got all future food bookings for user',
+  timestamp: '2023-12-14T11:47:14.640Z'
+}
+{
+  module: 'user-all-booking-controller',
+  userId: 'E10101',
+  service: 'getAllFutureBookingsForUser',
+  level: 'info',
+  message: 'Sorting all future bookings by dateBooked',
+  timestamp: '2023-12-14T11:47:14.640Z'
+}
+{
+  module: 'user-all-booking-controller',
+  service: 'getAllFutureBookingsForUser',
+  userId: 'E10101',
+  level: 'info',
+  message: 'Successfully returned all future bookings for user',
+  timestamp: '2023-12-14T11:47:14.641Z'
+}
+{
+  module: 'food-booking',
+  service: 'formatFoodBookings',
+  userId: 'E10101',
+  level: 'info',
+  message: 'Successfully got all future food bookings for a user',
+  timestamp: '2023-12-14T11:47:14.712Z'
+}
+{
+  module: 'food-booking',
+  service: 'formatFoodBookings',
+  level: 'info',
+  message: 'Successfully formatted food bookings',
+  timestamp: '2023-12-14T11:47:14.712Z'
+}
+{
+  module: 'food-booking',
+  service: 'formatFoodBookings',
+  userId: 'E10101',
+  level: 'info',
+  message: 'Successfully formatted all future food bookings for a user',
+  timestamp: '2023-12-14T11:47:14.713Z'
+}
+{
+  module: 'food-booking',
+  service: 'formatFoodBookings',
+  userId: 'E10101',
+  level: 'info',
+  message: 'Successfully returned all future food bookings for a user',
+  timestamp: '2023-12-14T11:47:14.713Z'
+}
+{
+  module: 'user-all-booking-controller',
+  service: 'getAllFutureBookingsForUser',
+  userId: 'E10101',
+  level: 'info',
+  message: 'Successfully got all future food bookings for user',
+  timestamp: '2023-12-14T11:47:14.713Z'
+}
+{
+  module: 'user-all-booking-controller',
+  userId: 'E10101',
+  service: 'getAllFutureBookingsForUser',
+  level: 'info',
+  message: 'Sorting all future bookings by dateBooked',
+  timestamp: '2023-12-14T11:47:14.713Z'
+}
+{
+  module: 'user-all-booking-controller',
+  service: 'getAllFutureBookingsForUser',
+  userId: 'E10101',
+  level: 'info',
+  message: 'Successfully returned all future bookings for user',
+  timestamp: '2023-12-14T11:47:14.713Z'
+}
+{
+  module: 'verify-jwt-token',
+  service: 'verifyJWT',
+  userId: 'E10101',
+  level: 'info',
+  message: 'Access token verified',
+  timestamp: '2023-12-14T11:47:27.540Z'
+}
+{
+  module: 'check-auth',
+  service: 'checkAuthStatus',
+  userId: 'E10101',
+  level: 'info',
+  message: 'User authenticated',
+  timestamp: '2023-12-14T11:47:27.541Z'
+}
+{
+  module: 'news-controller',
+  service: 'getNewsFeedPosts',
+  userId: 'E10101',
+  level: 'info',
+  message: 'Getting all news feed posts',
+  timestamp: '2023-12-14T11:47:27.541Z'
+}
+{
+  message: 'User connected with socket id NrtXYkRLzZizuVK8AAC3',
+  level: 'info',
+  timestamp: '2023-12-14T11:47:27.545Z'
+}
+{
+  module: 'verify-jwt-token',
+  service: 'verifyJWT',
+  userId: 'E10101',
+  level: 'info',
+  message: 'Access token verified',
+  timestamp: '2023-12-14T11:47:31.422Z'
+}
+{
+  module: 'check-auth',
+  service: 'checkAuthStatus',
+  userId: 'E10101',
+  level: 'info',
+  message: 'User authenticated',
+  timestamp: '2023-12-14T11:47:31.422Z'
+}
+{
+  module: 'user-desk-controller',
+  service: 'getDesksAvailabilityByDatesObj',
+  userId: 'E10101',
+  level: 'error',
+  message: 'Dates not provided',
+  timestamp: '2023-12-14T11:47:31.422Z'
+}
+{
+  module: 'verify-jwt-token',
+  service: 'verifyJWT',
+  userId: 'E10101',
+  level: 'info',
+  message: 'Access token verified',
+  timestamp: '2023-12-14T11:47:32.858Z'
+}
+{
+  module: 'check-auth',
+  service: 'checkAuthStatus',
+  userId: 'E10101',
+  level: 'info',
+  message: 'User authenticated',
+  timestamp: '2023-12-14T11:47:32.859Z'
+}
+{
+  module: 'user-all-booking-controller',
+  service: 'getAllFutureBookingsForUser',
+  userId: 'E10101',
+  level: 'info',
+  message: 'Getting all future desk bookings for user',
+  timestamp: '2023-12-14T11:47:32.859Z'
+}
+{
+  module: 'news',
+  service: 'formatNews',
+  level: 'info',
+  message: 'Successfully formatted news',
+  timestamp: '2023-12-14T11:47:39.438Z'
+}
+{
+  module: 'news',
+  service: 'formatNews',
+  level: 'info',
+  message: 'Successfully formatted news',
+  timestamp: '2023-12-14T11:47:39.439Z'
+}
+{
+  module: 'news',
+  service: 'formatNews',
+  level: 'info',
+  message: 'Successfully formatted all news',
+  timestamp: '2023-12-14T11:47:39.439Z'
+}
+{
+  module: 'news',
+  service: 'formatNews',
+  level: 'info',
+  message: 'Successfully returned all news',
+  timestamp: '2023-12-14T11:47:39.439Z'
+}
+{
+  module: 'news-controller',
+  service: 'getNewsFeedPosts',
+  userId: 'E10101',
+  level: 'info',
+  message: 'Successfully got all news feed posts',
+  timestamp: '2023-12-14T11:47:39.439Z'
+}
+{
+  module: 'news-controller',
+  service: 'getNewsFeedPosts',
+  userId: 'E10101',
+  level: 'info',
+  message: 'Successfully returned all news feed posts',
+  timestamp: '2023-12-14T11:47:39.439Z'
+}
+{
+  module: 'desk-booking',
+  service: 'getFutureDeskBookingsForUser',
+  userId: 'E10101',
+  level: 'info',
+  message: 'Successfully got all future desk bookings for a user',
+  timestamp: '2023-12-14T11:47:39.441Z'
+}
+{
+  module: 'desk-booking',
+  service: 'formatDeskBoookings',
+  level: 'info',
+  message: 'Successfully formatted desk bookings',
+  timestamp: '2023-12-14T11:47:39.442Z'
+}
+{
+  module: 'desk-booking',
+  service: 'formatDeskBoookings',
+  userId: 'E10101',
+  level: 'info',
+  message: 'Successfully formatted all future desk bookings for a user',
+  timestamp: '2023-12-14T11:47:39.442Z'
+}
+{
+  module: 'desk-booking',
+  service: 'formatDeskBoookings',
+  userId: 'E10101',
+  level: 'info',
+  message: 'Successfully returned all future desk bookings for a user',
+  timestamp: '2023-12-14T11:47:39.442Z'
+}
+{
+  module: 'user-all-booking-controller',
+  service: 'getAllFutureBookingsForUser',
+  userId: 'E10101',
+  level: 'info',
+  message: 'Successfully got all future desk bookings for user',
+  timestamp: '2023-12-14T11:47:39.442Z'
+}
+{
+  module: 'user-all-booking-controller',
+  service: 'getAllFutureBookingsForUser',
+  userId: 'E10101',
+  level: 'info',
+  message: 'Getting all future cab bookings for user',
+  timestamp: '2023-12-14T11:47:39.442Z'
+}
+{
+  module: 'verify-jwt-token',
+  service: 'verifyJWT',
+  userId: 'E10101',
+  level: 'info',
+  message: 'Access token verified',
+  timestamp: '2023-12-14T11:47:39.447Z'
+}
+{
+  module: 'check-auth',
+  service: 'checkAuthStatus',
+  userId: 'E10101',
+  level: 'info',
+  message: 'User authenticated',
+  timestamp: '2023-12-14T11:47:39.447Z'
+}
+{
+  module: 'news-controller',
+  service: 'getNewsFeedPosts',
+  userId: 'E10101',
+  level: 'info',
+  message: 'Getting all news feed posts',
+  timestamp: '2023-12-14T11:47:39.447Z'
+}
+{
+  module: 'cab-booking',
+  service: 'getFutureCabBookingsForUser',
+  userId: 'E10101',
+  level: 'info',
+  message: 'Successfully got future cab bookings for user',
+  timestamp: '2023-12-14T11:47:39.525Z'
+}
+{
+  module: 'cab-booking',
+  service: 'formatCabBookings',
+  level: 'info',
+  message: 'Successfully formatted cab bookings',
+  timestamp: '2023-12-14T11:47:39.527Z'
+}
+{
+  module: 'cab-booking',
+  service: 'formatCabBookings',
+  userId: 'E10101',
+  level: 'info',
+  message: 'Successfully formatted future cab bookings for user',
+  timestamp: '2023-12-14T11:47:39.527Z'
+}
+{
+  module: 'cab-booking',
+  service: 'formatCabBookings',
+  userId: 'E10101',
+  level: 'info',
+  message: 'Successfully returned future cab bookings for user',
+  timestamp: '2023-12-14T11:47:39.528Z'
+}
+{
+  module: 'user-all-booking-controller',
+  service: 'getAllFutureBookingsForUser',
+  userId: 'E10101',
+  level: 'info',
+  message: 'Successfully got all future cab bookings for user',
+  timestamp: '2023-12-14T11:47:39.528Z'
+}
+{
+  module: 'user-all-booking-controller',
+  service: 'getAllFutureBookingsForUser',
+  userId: 'E10101',
+  level: 'info',
+  message: 'Getting all future food bookings for user',
+  timestamp: '2023-12-14T11:47:39.528Z'
+}
+{
+  module: 'news',
+  service: 'formatNews',
+  level: 'info',
+  message: 'Successfully formatted news',
+  timestamp: '2023-12-14T11:47:39.529Z'
+}
+{
+  module: 'news',
+  service: 'formatNews',
+  level: 'info',
+  message: 'Successfully formatted news',
+  timestamp: '2023-12-14T11:47:39.530Z'
+}
+{
+  module: 'news',
+  service: 'formatNews',
+  level: 'info',
+  message: 'Successfully formatted all news',
+  timestamp: '2023-12-14T11:47:39.530Z'
+}
+{
+  module: 'news',
+  service: 'formatNews',
+  level: 'info',
+  message: 'Successfully returned all news',
+  timestamp: '2023-12-14T11:47:39.530Z'
+}
+{
+  module: 'news-controller',
+  service: 'getNewsFeedPosts',
+  userId: 'E10101',
+  level: 'info',
+  message: 'Successfully got all news feed posts',
+  timestamp: '2023-12-14T11:47:39.530Z'
+}
+{
+  module: 'news-controller',
+  service: 'getNewsFeedPosts',
+  userId: 'E10101',
+  level: 'info',
+  message: 'Successfully returned all news feed posts',
+  timestamp: '2023-12-14T11:47:39.530Z'
+}
+{
+  module: 'food-booking',
+  service: 'getFutureFoodBookingsForUser',
+  userId: 'E10101',
+  level: 'info',
+  message: 'Successfully got all future food bookings for a user',
+  timestamp: '2023-12-14T11:47:39.611Z'
+}
+{
+  module: 'food-booking',
+  service: 'formatFoodBookings',
+  level: 'info',
+  message: 'Successfully formatted food bookings',
+  timestamp: '2023-12-14T11:47:39.612Z'
+}
+{
+  module: 'food-booking',
+  service: 'formatFoodBookings',
+  userId: 'E10101',
+  level: 'info',
+  message: 'Successfully formatted all future food bookings for a user',
+  timestamp: '2023-12-14T11:47:39.612Z'
+}
+{
+  module: 'food-booking',
+  service: 'formatFoodBookings',
+  userId: 'E10101',
+  level: 'info',
+  message: 'Successfully returned all future food bookings for a user',
+  timestamp: '2023-12-14T11:47:39.613Z'
+}
+{
+  module: 'user-all-booking-controller',
+  service: 'getAllFutureBookingsForUser',
+  userId: 'E10101',
+  level: 'info',
+  message: 'Successfully got all future food bookings for user',
+  timestamp: '2023-12-14T11:47:39.613Z'
+}
+{
+  module: 'user-all-booking-controller',
+  userId: 'E10101',
+  service: 'getAllFutureBookingsForUser',
+  level: 'info',
+  message: 'Sorting all future bookings by dateBooked',
+  timestamp: '2023-12-14T11:47:39.613Z'
+}
+{
+  module: 'user-all-booking-controller',
+  service: 'getAllFutureBookingsForUser',
+  userId: 'E10101',
+  level: 'info',
+  message: 'Successfully returned all future bookings for user',
+  timestamp: '2023-12-14T11:47:39.613Z'
+}
