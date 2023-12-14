@@ -7463,3 +7463,197 @@
   message: 'Successfully returned all future bookings for user',
   timestamp: '2023-12-14T11:47:39.613Z'
 }
+{
+  message: 'User disconnected with socket id NrtXYkRLzZizuVK8AAC3',
+  level: 'info',
+  timestamp: '2023-12-14T13:25:22.294Z'
+}
+{
+  message: 'User disconnected with socket id iLsCKlzg3OX91LdHAACt',
+  level: 'info',
+  timestamp: '2023-12-14T13:25:22.296Z'
+}
+{
+  message: 'User disconnected with socket id -wEUIlAtEbOrTtCKAACv',
+  level: 'info',
+  timestamp: '2023-12-14T13:25:22.297Z'
+}
+{
+  message: 'User disconnected with socket id jmHNE8RbKQxLu4xiAACx',
+  level: 'info',
+  timestamp: '2023-12-14T13:25:22.298Z'
+}
+{
+  message: 'User disconnected with socket id oaPpZTlXE_6ZvQCuAACz',
+  level: 'info',
+  timestamp: '2023-12-14T13:25:22.298Z'
+}
+{
+  message: 'User disconnected with socket id I407Y67M0XsvmMgFAAC1',
+  level: 'info',
+  timestamp: '2023-12-14T13:25:22.298Z'
+}
+{
+  message: 'User connected with socket id Kth2oKAFpbNGyjPqAAC-',
+  level: 'info',
+  timestamp: '2023-12-14T13:26:10.414Z'
+}
+{
+  message: 'User connected with socket id daRP9yBsCqUaq7bqAAC_',
+  level: 'info',
+  timestamp: '2023-12-14T13:26:10.436Z'
+}
+{
+  message: 'User connected with socket id 1N5KNMLuC_TRifS4AADA',
+  level: 'info',
+  timestamp: '2023-12-14T13:26:10.466Z'
+}
+{
+  message: 'User connected with socket id kbmZymgSPQkJBrjCAADB',
+  level: 'info',
+  timestamp: '2023-12-14T13:26:10.470Z'
+}
+{
+  message: 'User connected with socket id wTIs5Plqk2lT0RmfAADC',
+  level: 'info',
+  timestamp: '2023-12-14T13:26:10.481Z'
+}
+{
+  message: 'User connected with socket id KRir0RMVM3RqJSxYAADD',
+  level: 'info',
+  timestamp: '2023-12-14T13:26:10.492Z'
+}
+{
+  message: 'User connected with socket id ETZryfgR-o_SRIpEAADF',
+  level: 'info',
+  timestamp: '2023-12-14T14:08:10.500Z'
+}
+{
+  message: 'User disconnected with socket id ETZryfgR-o_SRIpEAADF',
+  level: 'info',
+  timestamp: '2023-12-14T14:28:03.484Z'
+}
+{
+  message: 'User disconnected with socket id Kth2oKAFpbNGyjPqAAC-',
+  level: 'info',
+  timestamp: '2023-12-14T14:28:03.486Z'
+}
+{
+  message: 'User disconnected with socket id daRP9yBsCqUaq7bqAAC_',
+  level: 'info',
+  timestamp: '2023-12-14T14:28:03.487Z'
+}
+{
+  message: 'User disconnected with socket id 1N5KNMLuC_TRifS4AADA',
+  level: 'info',
+  timestamp: '2023-12-14T14:28:03.487Z'
+}
+{
+  message: 'User disconnected with socket id kbmZymgSPQkJBrjCAADB',
+  level: 'info',
+  timestamp: '2023-12-14T14:28:03.487Z'
+}
+{
+  message: 'User disconnected with socket id wTIs5Plqk2lT0RmfAADC',
+  level: 'info',
+  timestamp: '2023-12-14T14:28:03.487Z'
+}
+{
+  message: 'User disconnected with socket id KRir0RMVM3RqJSxYAADD',
+  level: 'info',
+  timestamp: '2023-12-14T14:28:03.488Z'
+}
+{
+  message: 'User connected with socket id SpwOwSgrkPh5rqrGAADN',
+  level: 'info',
+  timestamp: '2023-12-14T14:32:12.366Z'
+}
+{
+  message: 'User connected with socket id 7E6Zy_AlKJuczEAeAADO',
+  level: 'info',
+  timestamp: '2023-12-14T14:32:12.380Z'
+}
+{
+  message: 'User connected with socket id Z5iOrc7O7vKUBHc-AADP',
+  level: 'info',
+  timestamp: '2023-12-14T14:32:12.398Z'
+}
+{
+  message: 'User connected with socket id RYKQnV6mbAV-NoSJAADQ',
+  level: 'info',
+  timestamp: '2023-12-14T14:32:12.408Z'
+}
+{
+  message: 'User connected with socket id 5sStHUuPEs_43SEuAADR',
+  level: 'info',
+  timestamp: '2023-12-14T14:32:12.412Z'
+}
+{
+  message: 'User connected with socket id zvkPTroclkHfrHckAADS',
+  level: 'info',
+  timestamp: '2023-12-14T14:32:12.416Z'
+}
+{
+  message: 'User connected with socket id Yaij4-W8WHARviZXAADT',
+  level: 'info',
+  timestamp: '2023-12-14T14:32:12.423Z'
+}
+{
+  module: 'verify-jwt-token',
+  service: 'verifyJWT',
+  level: 'error',
+  message: 'Access token invalid',
+  timestamp: '2023-12-14T14:32:15.715Z'
+}
+{
+  message: 'User connected with socket id NyMJj_kFPZDR5gqiAADV',
+  level: 'info',
+  timestamp: '2023-12-14T14:32:15.716Z'
+}
+{
+  module: 'refresh-token-controller',
+  service: 'handleRefreshToken',
+  level: 'error',
+  message: 'You are not logged in',
+  timestamp: '2023-12-14T14:32:15.724Z'
+}
+{
+  message: 'User disconnected with socket id Z5iOrc7O7vKUBHc-AADP',
+  level: 'info',
+  timestamp: '2023-12-14T14:32:16.847Z'
+}
+{
+  message: 'User disconnected with socket id 7E6Zy_AlKJuczEAeAADO',
+  level: 'info',
+  timestamp: '2023-12-14T14:32:16.849Z'
+}
+{
+  message: 'User disconnected with socket id NyMJj_kFPZDR5gqiAADV',
+  level: 'info',
+  timestamp: '2023-12-14T14:32:16.849Z'
+}
+{
+  message: 'User disconnected with socket id Yaij4-W8WHARviZXAADT',
+  level: 'info',
+  timestamp: '2023-12-14T14:32:16.850Z'
+}
+{
+  message: 'User disconnected with socket id zvkPTroclkHfrHckAADS',
+  level: 'info',
+  timestamp: '2023-12-14T14:32:16.850Z'
+}
+{
+  message: 'User disconnected with socket id 5sStHUuPEs_43SEuAADR',
+  level: 'info',
+  timestamp: '2023-12-14T14:32:16.850Z'
+}
+{
+  message: 'User disconnected with socket id SpwOwSgrkPh5rqrGAADN',
+  level: 'info',
+  timestamp: '2023-12-14T14:32:16.851Z'
+}
+{
+  message: 'User disconnected with socket id RYKQnV6mbAV-NoSJAADQ',
+  level: 'info',
+  timestamp: '2023-12-14T14:32:16.852Z'
+}

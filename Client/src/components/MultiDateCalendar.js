@@ -52,19 +52,37 @@ const MultiDateCalendar = ({ showNewsFeed, selectedDates, setSelectedDates, user
 
 
     setUser((prevUser) => ({ ...prevUser, selectedDate: newSelectedDates }));
+
   };
 
+  const handleBookButtonClick = () => {
+    setBookings((prevBookings) => ({
+      ...prevBookings,
+      dates: [
+        ...prevBookings.dates,
+        ...selectedDates.map((selectedDate) => {
+          const year = selectedDate.getFullYear();
+          const month = String(selectedDate.getMonth() + 1).padStart(2, '0');
+          const day = String(selectedDate.getDate()).padStart(2, '0');
+          return `${year}/${month}/${day}`;
+        }),
+      ],
+    }));
+  
+    console.log(bookings);
+    // Navigate to the /bookings page
+    navigate('/bookings');
+  };
+  
+  
 
-  if (!user || !user.userId || user.userId === '') {
-    navigate("/login");
-    // window.location.href = "/login";
-  }
 
-  // if(!user.isAdmin){
-  //   return (
-  //     <div>Unauthorized!</div>
-  //   )
+  // if (!user || !user.userId || user.userId === '') {
+  //   // navigate("/");
+  //   window.location.href = "/";
+  //   return null;
   // }
+
 
   return (
     <div style={{ backgroundColor: 'white', height: '664px', width: '76.1vw' }}>
