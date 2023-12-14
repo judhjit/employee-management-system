@@ -263,13 +263,13 @@ const Signup = () => {
         break;
 
       case 'email':
-        const emailRegex = /^[^\s@]+@abcgroup\.com$/;
-        if (!emailRegex.test(value)) {
-          setErrors((prevErrors) => ({
-            ...prevErrors,
-            [name]: 'Invalid email address',
-          }));
-        }
+        // const emailRegex = /^[^\s@]+@abcgroup\.com$/;
+        // if (!emailRegex.test(value)) {
+        //   setErrors((prevErrors) => ({
+        //     ...prevErrors,
+        //     [name]: 'Invalid email address',
+        //   }));
+        // }
         break;
 
       case 'password':

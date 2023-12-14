@@ -1,11 +1,14 @@
 const DeskBookings = require('../models/desk-booking');
 const CabBookings = require('../models/cab-booking');
 const FoodBookings = require('../models/food-booking');
+const User = require('../models/user');
 const dateFns = require('date-fns');
 require("dotenv").config("../.env");
 
 const logger = require('../logger/index');
 const childLogger = logger.child({ module: 'user-all-booking-controller' });
+
+const transporter = require('../mail');
 
 let service = "";
 
@@ -413,8 +416,9 @@ async function bookAll(req, res, next) { //function to book a desk, cab and food
             //     childLogger.error("Cab booking failed", { service: service, userId: req.userId });
             //     return res.status(400).json({ message: 'Cab booking failed!' });
             // }
+            console.log(workSlot);
             for (let i = 0; i < dates.length; i++) {
-                if(workSlot[i] === 'None' || workSlot[i] === '') continue; //if workSlot is None, then do not book cab for that date
+                if(!workSlot[i] || workSlot[i] === 'None' || workSlot[i] === 'none' || workSlot[i] === '') continue; //if workSlot is None, then do not book cab for that date
                 cabBooking = await CabBookings.bookCab(userId, dates[i], workSlot[i]);
                 if (!cabBooking || cabBooking.length === 0) {
                     childLogger.error("Cab booking failed", { service: service, userId: req.userId });
@@ -431,7 +435,7 @@ async function bookAll(req, res, next) { //function to book a desk, cab and food
             //     return res.status(400).json({ message: 'Food booking failed!' });
             // }
             for (let i = 0; i < dates.length; i++) {
-                if(preference[i] === 'None' || preference[i] === '') continue; //if preference is None, then do not book food for that date
+                if(!preference[i] || preference[i] === 'None' || preference[i] === 'none' || preference[i] === '') continue; //if preference is None, then do not book food for that date
                 foodBooking = await FoodBookings.bookFood(userId, dates[i], preference[i]);
                 if (!foodBooking || foodBooking.length === 0) {
                     childLogger.error("Food booking failed", { service: service, userId: req.userId });
@@ -445,6 +449,44 @@ async function bookAll(req, res, next) { //function to book a desk, cab and food
         return res.status(500).json({ message: 'Internal Server Error' });
     }
     childLogger.info("Booking successfull", { service: service, userId: req.userId, request: { dates: dates} });
+
+    //get email and name of user
+    let user;
+    try {
+        childLogger.info("Getting user by id", { service: service, userId: req.userId, request: { userId: userId } });
+        user = await User.findById(userId);
+        childLogger.info("Successfully got user by id", { service: service, userId: req.userId, request: { userId: userId } });
+    } catch (error) {
+        childLogger.error("Failed to get user by id", { service: service, userId: req.userId, request: { userId: userId }, error: error });
+        return res.status(500).json({ message: 'Internal Server Error' });
+    }
+    if (!user || user.length === 0) {
+        childLogger.error("User not found", { service: service, userId: req.userId });
+        return res.status(404).json({ message: 'User not found' });
+    }
+    //send email to user
+    try {
+        childLogger.info("Sending email to user", { service: service, userId: req.userId});
+        await transporter.sendMail({
+            from: '"ABC Group EMS" <mybookings@abcgroup.com>', // sender address
+            to: user.email,
+            subject: 'Booking Successful!',
+            //if isDeskRequired is true, then add deskId to email, if isCabRequired is true, then add workSlot to email, if isFoodRequired is true, then add preference to email with corresponding dates
+            html: `<p>Hey ${user.first_name},</p><p>Your booking for the following dates has been confirmed:</p><p>${dates.map((date, index) => {
+                let desk = '';
+                let cab = '';
+                let food = '';
+                if (isDeskRequired) desk = 'Desk: ' + deskId[index] + '<br>';
+                if (isCabRequired) cab = 'Work Slot: ' + workSlot[index] + '<br>';
+                if (isFoodRequired) food = 'Preference: ' + preference[index] + '<br>';
+                return ('<b>' + date + ':</b>' + '<br>' + desk + cab + food);
+            }).join('<br>')}</p><p>Regards,<br>Employee Management System,<br>ABC Group</p>`
+        });
+        childLogger.info("Successfully sent email to user", { service: service, userId: req.userId });
+    } catch (error) {
+        childLogger.error("Failed to send email to user", { service: service, userId: req.userId, error: error });
+    }
+
     return res.status(201).json({ message: 'Booked successfully', deskBookingId: deskBooking, cabBookingId: cabBooking, foodBookingId: foodBooking });
 }
 
@@ -537,6 +579,37 @@ async function modifyAll(req, res, next) { //function to modify a cab or food bo
         }
     }
     childLogger.info("Modification successfull", { service: service, userId: req.userId, request: { dates: dates} });
+
+    //get email and name of user
+    let user;
+    try {
+        user = await User.findById(userId);
+    } catch (error) {
+        childLogger.error("Failed to get user by id", { service: service, userId: req.userId, request: { userId: userId }, error: error });
+        return res.status(500).json({ message: 'Internal Server Error' });
+    }
+
+    //send email to user
+    try {
+        childLogger.info("Sending email to user", { service: service, userId: req.userId});
+        await transporter.sendMail({
+            from: '"ABC Group EMS" <mybookings@abcgroup.com>', // sender address
+            to: user.email,
+            subject: 'Modification Successful!',
+            //if modifyCab is true, then add workSlot to email, if modifyFood is true, then add preference to email with corresponding dates
+            html: `<p>Hey ${user.first_name},</p><p>Your booking for the following dates has been modified:</p><p>${dates.map((date, index) => {
+                let cab = '';
+                let food = '';
+                if (modifyCab) cab = 'Cab Booking -> Work Slot: ' + workSlot + '<br>';
+                if (modifyFood) food = 'Food Booking -> Preference: ' + preference + '<br>';
+                return ('<b>' + date + ':</b>' + '<br>' + cab + food);
+            }
+            ).join('<br>')}</p><p>Regards,<br>Employee Management System,<br>ABC Group</p>`
+        });
+        childLogger.info("Successfully sent email to user", { service: service, userId: req.userId });
+    } catch (error) {
+        childLogger.error("Failed to send email to user", { service: service, userId: req.userId, error: error });
+    }
     return res.status(200).json({ message: 'Booking modified successfully!' });
 }
 
@@ -668,6 +741,40 @@ async function cancelAll(req, res, next) { //function to cancel a desk, cab and 
         }
     }
     childLogger.info("Cancellation successfull", { service: service, userId: req.userId, request: { dates: dates} });
+
+    //get email and name of user
+    let user;
+    try {
+        user = await User.findById(userId);
+    } catch (error) {
+        childLogger.error("Failed to get user by id", { service: service, userId: req.userId, request: { userId: userId }, error: error });
+        return res.status(500).json({ message: 'Internal Server Error' });
+    }
+
+    //send email to user
+    try {
+        childLogger.info("Sending email to user", { service: service, userId: req.userId});
+        await transporter.sendMail({
+            from: '"ABC Group EMS" <mybookings@abcgroup.com>', // sender address
+            to: user.email,
+            subject: 'Cancellation Successful!',
+            //if cancelDesk is true, then add deskId to email, if cancelCab is true, then add workSlot to email, if cancelFood is true, then add preference to email with corresponding dates
+            html: `<p>Hey ${user.first_name},</p><p>Your booking for the following dates has been cancelled:</p><p>${dates.map((date, index) => {
+                let desk = '';
+                let cab = '';
+                let food = '';
+                if (cancelDesk) desk = 'Desk Booking Cancelled<br>';
+                if (cancelCab) cab = 'Cab Booking Cancelled<br>';
+                if (cancelFood) food = 'Food Booking Cancelled<br>';
+                return ('<b>' + date + ':</b>' + '<br>' + desk + cab + food);
+            }).join('<br>')}</p><p>Regards,<br>Employee Management System,<br>ABC Group</p>`
+        });
+        childLogger.info("Successfully sent email to user", { service: service, userId: req.userId });
+    }
+    catch (error) {
+        childLogger.error("Failed to send email to user", { service: service, userId: req.userId, error: error });
+    }
+
     return res.status(200).json({ message: 'Booking canceled successfully' });
 }
 
