@@ -25,22 +25,23 @@ const GrantAccess = () => {
   const navigate = useNavigate();
   const [requests, setRequests] = useState([]);
 
-  useEffect(() => {
-    const fetchData = async () => {
-      let response;
-      try {
-        response = await api.get('/admin/allnewsadminaccessrequests');
-        console.log(response.data);
-        setRequests([...response.data]);
-      } catch (error) {
-        if (error.response.status === 404) {
-          console.log("No data found!");
-          setRequests([...requests]);
-        } else {
-          console.error('Error fetching data:', error);
-        }
+  const fetchData = async () => {
+    let response;
+    try {
+      response = await api.get('/admin/allnewsadminaccessrequests');
+      console.log(response.data);
+      setRequests([...response.data]);
+    } catch (error) {
+      if (error.response.status === 404) {
+        console.log("No data found!");
+        setRequests([]);
+      } else {
+        console.error('Error fetching data:', error);
       }
-    };
+    }
+  };
+
+  useEffect(() => {
     fetchData();
   }, []);
 
@@ -53,7 +54,7 @@ const GrantAccess = () => {
         userId: userId,
         isNewsAdmin: true
       });
-      setRequests([...requests.filter((request) => request.userId !== userId)]);
+      fetchData();
     } catch (error) {
       console.error('Error fetching data:', error);
     }
@@ -66,19 +67,20 @@ const GrantAccess = () => {
         userId: userId,
         isNewsAdmin: false
       });
-      setRequests([...requests.filter((request) => request.userId !== userId)]);
+      // setRequests([...requests.filter((request) => request.userId !== userId)]);
+      fetchData();
     } catch (error) {
       console.error('Error fetching data:', error);
     }
   };
-  
+
   return (
     <div style={{
       backgroundColor: "white",
       height: "520px",
       width: "75vw",
       textAlign: "center",
-      margin: "auto auto",
+      margin: "0 auto",
     }} >
 
       <h1>Grant News Admin Access</h1>

@@ -1,66 +1,3 @@
-// import React, { useState } from 'react';
-// import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper, Button } from '@mui/material';
-// import DeleteIcon from '@mui/icons-material/Delete'; 
-// import { Label } from '@mui/icons-material';
-
-
-// const ViewAllAdmin = () => {
-//     const [employees, setEmployees] = useState([
-//         { empID: '1234', name: 'ajeet'},
-//     { empID: '1235', name: 'sumit' },
-//     { empID: '1236', name: 'amit'},
-//     { empID: '1237', name: 'abc'},
-//     { empID: '1238', name: 'abc' },
-//     { empID: '1239', name: 'abc'},
-//     { empID: '1242', name: 'abc' },
-
-
-//     ]);
-//   console.log('viweAllAdmin');
-//     const handleRemoveEmployee = (empID) => {
-//       setEmployees((prevEmployees) => prevEmployees.filter((employee) => employee.empID !== empID));
-//     };
-
-//     return (
-//       <div>
-//         <h1 style={{marginLeft:'500px'}}>List of All The News Admins</h1>
-//         <TableContainer component={Paper} style={{marginLeft:'350px'}}>
-//           <Table>
-//             <TableHead>
-//               <TableRow>
-//                 <TableCell>Employee Name</TableCell>
-//                 <TableCell>Employee ID</TableCell>
-//                 <TableCell>Action</TableCell>
-//               </TableRow>
-//             </TableHead>
-//             <TableBody>
-//               {employees.map((employee) => (
-//                 <TableRow key={employee.empID}>
-//                   <TableCell>{employee.name}</TableCell>
-//                   <TableCell>{employee.empID}</TableCell>
-//                   <TableCell>
-//                     <Button
-//                       variant="outlined"
-//                       color="secondary"
-//                       startIcon={<DeleteIcon />}
-//                       onClick={() => handleRemoveEmployee(employee.empID)}
-//                     >
-//                       Remove
-//                     </Button>
-//                   </TableCell>
-//                 </TableRow>
-//               ))}
-//             </TableBody>
-//           </Table>
-//         </TableContainer>
-//       </div>
-//     );
-//   };
-
-//   export default ViewAllAdmin;
-
-
-
 import React, { useState, useEffect } from 'react';
 import './GrantAccess.css';
 import DoneIcon from '@mui/icons-material/Done';
@@ -84,40 +21,39 @@ import api from '../../api';
 const ViewAllAdmin = () => {
   const navigate = useNavigate();
   const [employees, setEmployees] = useState([]);
-  // console.log('viweAllAdmin');
+
+  const fetchData = async () => {
+    let response;
+    try {
+      response = await api.get('/admin/allnewsadmins');
+      console.log(response.data);
+      setEmployees([...response.data]);
+    } catch (error) {
+      if (error.response.status === 404) {
+        console.log("No data found!");
+        setEmployees([]);
+      } else {
+        console.error('Error fetching data:', error);
+      }
+    }
+  };
+
+  useEffect(() => {
+    fetchData();
+  }, []);
 
   const handleRemoveEmployee = async (userId) => {
-    // setEmployees((prevEmployees) => prevEmployees.filter((employee) => employee.empID !== empID));
     let response;
     try {
       response = await api.patch('/admin/togglenewsadmin', {
         userId: userId,
         isNewsAdmin: false
       });
-      setEmployees([...employees.filter((employees) => employees.userId !== userId)]);
+      fetchData();
     } catch (error) {
       console.error('Error fetching data:', error);
     }
   };
-
-  useEffect(() => {
-    const fetchData = async () => {
-      let response;
-      try {
-        response = await api.get('/admin/allnewsadmins');
-        console.log(response.data);
-        setEmployees([...response.data]);
-      } catch (error) {
-        if (error.response.status === 404) {
-          console.log("No data found!");
-          setEmployees([...employees]);
-        } else {
-          console.error('Error fetching data:', error);
-        }
-      }
-    };
-    fetchData();
-  }, []);
 
   return (
     <div style={{
@@ -125,7 +61,8 @@ const ViewAllAdmin = () => {
       height: "520px",
       width: "75vw",
       textAlign: "center",
-      margin: "auto auto",
+      // margin: "auto auto",
+      margin: "0 auto",
     }}>
 
       <h1>Manage News Admins</h1>

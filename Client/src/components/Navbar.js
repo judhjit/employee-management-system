@@ -10,6 +10,7 @@ import {
   faNewspaper,
   faSignOutAlt,
   faUserCircle,
+  faHome,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Navigate, useNavigate } from "react-router-dom";
@@ -141,6 +142,12 @@ const Navbar = ({
             </div>
           )}
           <div style={{ marginLeft: "auto", display: "flex", gap: "10px" }}>
+            <IconButton component={Link} to="/landingpage">
+              <FontAwesomeIcon
+                icon={faHome}
+                style={{ height: "1.5vw", width: "1.5vw" }}
+              />
+            </IconButton>
             <IconButton onClick={togglePopover}>
               <FontAwesomeIcon
                 icon={faNewspaper}

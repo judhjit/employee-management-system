@@ -135,18 +135,29 @@ function UserAnalytics() {
     };
 
     return (
-        <Box>
-            <div style={{ paddingLeft: '30px' }}>
-                <h3 style={{ fontSize: '25px', paddingLeft: '560px' }}>
+        
+        <div style={{ backgroundColor: "white",
+        height: "100%",
+        width: "75vw",
+        textAlign: "center",
+        margin: "0 auto", }}>
+                {/* <h3 style={{ fontSize: '25px', paddingLeft: '560px' }}>
                     Booking <span style={{ color: '#0066b2' }}>Insights</span>
-                </h3>
+                </h3> */}
+                <h1>Booking Insights</h1>
                 <div style={{
-                    border: '3px solid #004B81',
-                    borderRadius: '10px',
-                    marginLeft: '165px',
-                    padding: '6px',
-                    width: '98%'
-                }}>
+          width: "60vw",
+          marginLeft: "4vw",
+          height:"70vh",
+          maxHeight: 480,
+          justifyContent: "center",
+          // borderRadius: "10px",
+          // border: '3px solid #004B81',
+          
+          // marginLeft: '165px',
+          padding: '20px',
+          // width: '98%'
+        }}>
                     <div style={{ padding: '20px 45px' }}>
                         <label>
                             <span style={{ fontSize: '18px' }}>Filter by:</span>
@@ -157,7 +168,7 @@ function UserAnalytics() {
                                     padding: '6px',
                                     fontSize: '12px',
                                     backgroundColor: '#f5f5f5',
-                                    padding: '10px',
+                                    
                                     width: '150px',
                                     border: '1px solid #ccc',
                                     borderRadius: '6px',
@@ -180,7 +191,7 @@ function UserAnalytics() {
                                     padding: '6px',
                                     fontSize: '10px',
                                     backgroundColor: '#f5f5f5',
-                                    padding: '10px',
+                                    
                                     width: '150px',
                                     border: '1px solid #ccc',
                                     borderRadius: '6px',
@@ -189,14 +200,14 @@ function UserAnalytics() {
                             />
                         </label>
                     </div>
-                    <div style={{ display: 'flex', justifyContent: 'space-between', width: '100%', paddingLeft: '100px', height: '320px' }}>
+                    <div style={{ display: 'flex', justifyContent: 'center', width: '100%', paddingLeft: '100px', height: '320px' }}>
                         {chartData && (
                             <Bar ref={chartRef} data={chartData} options={options} />
                         )}
                     </div>
                 </div>
             </div>
-        </Box>
+        
     );
 }
 

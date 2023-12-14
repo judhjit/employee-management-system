@@ -17,7 +17,8 @@ import {
 } from "@mui/material";
 import * as XLSX from "xlsx";
 import "./Requests.css";
-import SearchIcon from "@mui/icons-material/Search";
+// import SearchIcon from "@mui/icons-material/Search";
+import FileDownloadIcon from "@mui/icons-material/FileDownload";
 import Fab from "@mui/material/Fab";
 import dayjs from "dayjs";
 import { DemoContainer } from "@mui/x-date-pickers/internals/demo";
@@ -29,12 +30,6 @@ import api from "../../api";
 
 const Requests = () => {
   const [initialData, setInitialData] = useState([]);
-
-  // const [filterService, setFilterService] = useState('Service Type');
-
-  // const handleServiceFilterChange = (event) => {
-  //           setFilterService(event.target.value);
-  //       };
   const [startDate, setStartDate] = React.useState();
   const [endDate, setEndDate] = React.useState();
   const [isDeskRequired, setIsDeskRequired] = useState(true);
@@ -46,26 +41,33 @@ const Requests = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await api.post(
-          '/admin/getallbookings',
-          {
-            isDeskRequired: isDeskRequired,
-            isCabRequired: isCabRequired,
-            isFoodRequired: isFoodRequired,
-            userId: userId,
-            startDate: startDate?.format('YYYY-MM-DD'),
-            endDate: endDate?.format('YYYY-MM-DD'),
-          }
-        );
+        const response = await api.post("/admin/getallbookings", {
+          isDeskRequired: isDeskRequired,
+          isCabRequired: isCabRequired,
+          isFoodRequired: isFoodRequired,
+          userId: userId,
+          startDate: startDate?.format("YYYY-MM-DD"),
+          endDate: endDate?.format("YYYY-MM-DD"),
+        });
         console.log(response.data);
         setInitialData(response.data);
       } catch (error) {
-        console.error('Error fetching data:', error);
+        if (error.response && error.response.status === 404) {
+          setInitialData([]);
+        }
+        console.error("Error fetching data:", error);
       }
     };
 
     fetchData();
-  }, [isDeskRequired, isCabRequired, isFoodRequired, userId,startDate,endDate]);
+  }, [
+    isDeskRequired,
+    isCabRequired,
+    isFoodRequired,
+    userId,
+    startDate,
+    endDate,
+  ]);
 
   const handleDateRangeChange = (e) => {
     const selectedValue = e.target.value;
@@ -89,49 +91,45 @@ const Requests = () => {
       default:
         newStartDate = null; // Fetch all data
         newEndDate = null;
-
     }
     setStartDate(newStartDate);
     setEndDate(newEndDate);
-
-  }
-
+  };
 
   const StyledDatePicker = styled(DatePicker)({
-    '& .MuiInputBase-root': {
-      height: '53px',
+    "& .MuiInputBase-root": {
+      height: "53px",
     },
   });
-
 
   const exportToExcel = () => {
     const ws = XLSX.utils.json_to_sheet(initialData);
     const wb = XLSX.utils.book_new();
-    XLSX.utils.book_append_sheet(wb, ws, 'initial data');
-    XLSX.writeFile(wb, 'aditi.xlsx');
+    XLSX.utils.book_append_sheet(wb, ws, "initial data");
+    XLSX.writeFile(wb, "bookings.xlsx");
   };
 
   const handleServiceChange = (e) => {
     const selectedValue = e.target.value;
-    
-    if (selectedValue === 'Car') {
+
+    if (selectedValue === "Car") {
       setIsDeskRequired(false);
       setIsCabRequired(true);
       setIsFoodRequired(false);
-    } else if (selectedValue === 'Desk') {
+    } else if (selectedValue === "Desk") {
       setIsDeskRequired(true);
       setIsCabRequired(false);
       setIsFoodRequired(false);
-    } else if (selectedValue === 'Lunch') {
+    } else if (selectedValue === "Lunch") {
       setIsDeskRequired(false);
       setIsCabRequired(false);
       setIsFoodRequired(true);
-    } else if (selectedValue === 'all') {
+    } else if (selectedValue === "all") {
       setIsDeskRequired(true);
       setIsCabRequired(true);
       setIsFoodRequired(true);
     }
-  }
+  };
 
   return (
     <div
@@ -164,13 +162,16 @@ const Requests = () => {
             fontFamily: "poppins",
           }}
         >
-          <LocalizationProvider dateAdapter={AdapterDayjs} style={{ fontFamily: "poppins", height: '51px' }}>
-            <DemoContainer components={["DatePicker", "DatePicker"]} >
+          <LocalizationProvider
+            dateAdapter={AdapterDayjs}
+            style={{ fontFamily: "poppins", height: "51px" }}
+          >
+            <DemoContainer components={["DatePicker", "DatePicker"]}>
               <StyledDatePicker
                 label="Start Date"
                 value={startDate}
                 onChange={(newValue) => setStartDate(newValue)}
-
+                style={{ fontFamily: "poppins" }}
               />
             </DemoContainer>
           </LocalizationProvider>
@@ -178,7 +179,7 @@ const Requests = () => {
           <LocalizationProvider dateAdapter={AdapterDayjs}>
             <DemoContainer components={["DatePicker", "DatePicker"]}>
               <StyledDatePicker
-                label="end Date"
+                label="End Date"
                 value={endDate}
                 onChange={(newValue) => setEndDate(newValue)}
                 style={{ fontFamily: "poppins" }}
@@ -189,7 +190,7 @@ const Requests = () => {
 
         <input
           type="text"
-          placeholder="Employee Id"
+          placeholder="User ID"
           value={userId}
           onChange={(e) => setUserId(e.target.value)}
           style={{
@@ -207,6 +208,7 @@ const Requests = () => {
 
         <select
           label="service Type"
+          placeholder="Service Type"
           style={{
             width: "11vw",
             height: "54px",
@@ -216,13 +218,13 @@ const Requests = () => {
             borderRadius: "4px",
             border: "1px solid #C3C3C3",
             marginTop: "0.6vw",
-          }} onChange={(e) => handleServiceChange(e)}
+          }}
+          onChange={(e) => handleServiceChange(e)}
         >
-          <option value="Car">Car</option>
+          <option value="all">All Services</option>
+          <option value="Car">Cab</option>
           <option value="Desk">Desk</option>
-
-          <option value="Lunch">Lunch</option>
-          <option value="all">All</option>
+          <option value="Lunch">Food</option>
         </select>
 
         <select
@@ -236,13 +238,13 @@ const Requests = () => {
             borderRadius: "4px",
             border: "1px solid #C3C3C3",
             marginTop: "0.6vw",
-          }} onChange={(e) => handleDateRangeChange(e)}
+          }}
+          onChange={(e) => handleDateRangeChange(e)}
         >
+          <option value="all">All Upcoming</option>
           <option value="1w">1 week</option>
           <option value="1m">1 month</option>
-
           <option value="6m">6 months</option>
-          <option value="all">All</option>
         </select>
 
         <Fab
@@ -251,9 +253,11 @@ const Requests = () => {
             marginLeft: "20px",
             backgroundColor: "#79C6F1",
             color: "white",
+            cursor: "pointer", 
           }}
+          onClick={exportToExcel} 
         >
-          <SearchIcon />
+          <FileDownloadIcon />
         </Fab>
       </div>
 
@@ -281,7 +285,7 @@ const Requests = () => {
                     fontSize: "14px",
                   }}
                 >
-                  Employee ID
+                  User ID
                 </TableCell>
                 <TableCell
                   style={{
@@ -301,6 +305,15 @@ const Requests = () => {
                 >
                   Services
                 </TableCell>{" "}
+                <TableCell
+                  style={{
+                    backgroundColor: "#004B81",
+                    color: "white",
+                    fontSize: "14px",
+                  }}
+                >
+                  Preference
+                </TableCell>{" "}
               </TableRow>
             </TableHead>
             <TableBody style={{ backgroundColor: "	#F5F5F5" }}>
@@ -311,13 +324,14 @@ const Requests = () => {
                   </TableCell>
                   <TableCell>{item.dateBooked}</TableCell>
                   <TableCell>{item.type}</TableCell>
+                  <TableCell>{item.selected}</TableCell>
                 </TableRow>
               ))}
             </TableBody>
           </Table>
         </TableContainer>
-        <div style={{ paddingLeft: '5vw' }}>
-          <Button
+        <div style={{ paddingLeft: "5vw" }}>
+          {/* <Button
 
             onClick={exportToExcel}
             style={{
@@ -329,11 +343,11 @@ const Requests = () => {
             }}
           >
             Export To Excel
-          </Button>
+          </Button> */}
         </div>
       </div>
     </div>
   );
 };
 
-export default Requests
+export default Requests;
