@@ -52,37 +52,19 @@ const MultiDateCalendar = ({ showNewsFeed, selectedDates, setSelectedDates, user
 
 
     setUser((prevUser) => ({ ...prevUser, selectedDate: newSelectedDates }));
-
   };
 
-  const handleBookButtonClick = () => {
-    setBookings((prevBookings) => ({
-      ...prevBookings,
-      dates: [
-        ...prevBookings.dates,
-        ...selectedDates.map((selectedDate) => {
-          const year = selectedDate.getFullYear();
-          const month = String(selectedDate.getMonth() + 1).padStart(2, '0');
-          const day = String(selectedDate.getDate()).padStart(2, '0');
-          return `${year}/${month}/${day}`;
-        }),
-      ],
-    }));
-  
-    console.log(bookings);
-    // Navigate to the /bookings page
-    navigate('/bookings');
-  };
-  
-  
 
+  if (!user || !user.userId || user.userId === '') {
+    navigate("/login");
+    // window.location.href = "/login";
+  }
 
-  // if (!user || !user.userId || user.userId === '') {
-  //   // navigate("/");
-  //   window.location.href = "/";
-  //   return null;
+  // if(!user.isAdmin){
+  //   return (
+  //     <div>Unauthorized!</div>
+  //   )
   // }
-
 
   return (
     <div style={{ backgroundColor: 'white', height: '664px', width: '76.1vw' }}>
@@ -132,152 +114,3 @@ const MultiDateCalendar = ({ showNewsFeed, selectedDates, setSelectedDates, user
 export default MultiDateCalendar;
 
 
-// import React, { useState, useEffect } from 'react';
-// import Calendar from 'react-calendar';
-// import { Box, Button } from '@mui/material';
-// import 'react-calendar/dist/Calendar.css';
-// import './MultiDateCalendar.css';
-// import { useNavigate } from 'react-router-dom';
-// import CurrentBookings from './CurrentBookings';
-// import api from '../api';
-
-// const MultiDateCalendar = ({ showNewsFeed, selectedDates, setSelectedDates, user, setUser, isUser, bookings, setBookings, socket }) => {
-//   const navigate = useNavigate();
-//   const [newsTitles, setNewsTitles] = useState([]);
-//   const [newsFeedOpen, setNewsFeedOpen] = useState(false);
-
-//   const fetchNewsTitles = async () => {
-//     try {
-//       const response = await api.get('/user/news');
-//       setNewsTitles(response.data.map((post) => post.title));
-//     } catch (error) {
-//       if (error.response.status === 404) {
-//         console.log("No data found!");
-//         setNewsTitles([]);
-//       } else {
-//         console.error('Error fetching data:', error);
-//       }
-//     }
-//   };
-
-//   useEffect(() => {
-//     fetchNewsTitles();
-//     socket.on('newsfeed:refresh', fetchNewsTitles);
-//   }, []);
-
-//   const handleDateClick = (date) => {
-//     if (date.getDay() === 0) {
-//       return;
-//     }
-
-//     let newSelectedDates;
-
-//     const dateIndex = selectedDates.findIndex(
-//       (selectedDate) => selectedDate.toDateString() === date.toDateString()
-//     );
-
-//     if (dateIndex !== -1) {
-//       newSelectedDates = selectedDates.filter((d) => d.toDateString() !== date.toDateString());
-//     } else {
-//       newSelectedDates = [...selectedDates, date];
-//     }
-
-//     setSelectedDates(newSelectedDates);
-//     setUser((prevUser) => ({ ...prevUser, selectedDate: newSelectedDates }));
-//   };
-
-//   const handleBookButtonClick = () => {
-//     setBookings((prevBookings) => ({
-//       ...prevBookings,
-//       dates: [
-//         ...prevBookings.dates,
-//         ...selectedDates.map((selectedDate) => selectedDate.toISOString().slice(0, 10)),
-//       ],
-//     }));
-    
-//     console.log(bookings);
-//     // Navigate to the /bookings page
-//     navigate('/bookings');
-//   };
-
-//   const marqueeStyle = {
-//     position: 'absolute',
-//     top: 0,
-//     left: 0,
-//     right: 0,
-//     zIndex: 1,
-//     backgroundColor: '#003A64',
-//     width: newsFeedOpen ? '50%' : '100%', // Adjust the width as needed
-//   };
-
-//   const currentBookingsStyle = {
-//     backgroundColor: '#F0F8FF',
-//     width: '100vw',
-//     position: 'relative',
-//     zIndex: 0,
-//     transform: newsFeedOpen ? 'scale(0.8)' : 'scale(1)',
-//     transition: 'transform 0.3s ease-in-out', // Add transition for smoother animation
-//   };
-
-//   return (
-//     <div style={{ backgroundColor: 'white', height: '664px', width: '76.1vw', position: 'relative' }}>
-//       <div style={marqueeStyle}>
-//         <marquee
-//           behavior="scroll"
-//           direction="left"
-//           height={newsFeedOpen ? '20px' : '30px'}
-//           vspace="4"
-//           style={{ color: 'yellow', fontSize: '16px' }}
-//         >
-//           {newsTitles.map((title, index) => (
-//             <span style={{ paddingRight: 20, paddingLeft: 20 }} key={index}>
-//               {title}
-//               {index < newsTitles.length - 1}
-//             </span>
-//           ))}
-//         </marquee>
-//       </div>
-//       <div>
-//         <div
-//           style={{
-//             fontSize: newsFeedOpen ? '20px' : '29px',
-//             fontFamily: 'poppins',
-//             fontWeight: 600,
-//             marginLeft: '90px',
-//             paddingTop: newsFeedOpen ? '10px' : '20px',
-//             color: '#0071BA',
-//           }}
-//         >
-//           <span style={{ color: '#0071BA' }}>Plan </span>
-//           <span>Your Day:</span>
-//         </div>
-//         <div className="calendar">
-//           <Calendar
-//             onClickDay={handleDateClick}
-//             tileDisabled={({ date }) => date.getDay() === 0}
-//             tileClassName={({ date }) =>
-//               selectedDates.find(
-//                 (selectedDate) => selectedDate.toDateString() === date.toDateString()
-//               )
-//                 ? 'selected'
-//                 : ''
-//             }
-//           />
-//           <Button
-//             variant="contained"
-//             color="primary"
-//             style={{ height: '2vw', width: '1.5vw', marginTop: '-60px', marginLeft: '650px' }}
-//             onClick={handleBookButtonClick}
-//           >
-//             Book
-//           </Button>
-//         </div>
-//       </div>
-//       <div style={currentBookingsStyle}>
-//         <CurrentBookings />
-//       </div>
-//     </div>
-//   );
-// };
-
-// export default MultiDateCalendar;

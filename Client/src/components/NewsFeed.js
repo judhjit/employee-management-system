@@ -21,7 +21,7 @@
 //   const handleCreatePost = () => {
 //     if (newPost.trim() === '') {
 //       alert("Empty post is not accepted!!!");
-//       return; 
+//       return;
 //     }
 
 //     const newPostObj = {
@@ -51,14 +51,13 @@
 //     setEditingPostId(null);
 //     setEditedText('');
 //   };
-  
+
 //   return (
 //     <Container  >
 //       <Typography variant="h5" component="h2" gutterBottom style={{color:'white', marginTop:'2vw',fontWeight:'bolder',fontFamily: 'Poppins',fontSize:'1.3vw'}}>
 //         News Feed
 //       </Typography>
-      
-      
+
 //       {/* to Conditionally render the "Post" input and button based on newsfeedadmin */}
 //       {isNewsadmin && (
 //         <>
@@ -112,9 +111,8 @@
 //                   <DeleteIcon />
 //                 </IconButton>
 
-
 //                 </div>
-                
+
 //               </div>
 //             )}
 //           </Paper>
@@ -125,8 +123,6 @@
 // };
 
 // export default NewsFeed;
-
-
 
 // import React, { useState } from 'react';
 // import './NewsFeed.css';
@@ -155,7 +151,7 @@
 //   const handleCreatePost = () => {
 //     if (newPost.trim() === '') {
 //       alert("Empty post is not accepted!!!");
-//       return; 
+//       return;
 //     }
 
 //     const newPostObj = {
@@ -188,7 +184,6 @@
 //     setEditedText('');
 //     setAnchorEl(null); // Close the menu after saving
 //   };
-  
 
 //   const handleMenuOpen = (event) => {
 //     setAnchorEl(event.currentTarget);
@@ -197,7 +192,7 @@
 //   const handleMenuClose = () => {
 //     setAnchorEl(null);
 //   };
-  
+
 //   return (
 //     <Container>
 //       <Typography variant="h5" component="h2" gutterBottom style={{ color: 'white', marginTop: '2vw', fontWeight: 'bolder', fontFamily: 'Poppins', fontSize: '1.3vw' }}>
@@ -222,7 +217,6 @@
 //           <Divider style={{ marginTop: '10px', backgroundColor: 'rgba(199, 199, 199, 0.30)', marginTop: '2vw' }} />
 //         </>
 //       )}
-      
 
 //       <div>
 //         {posts.map((post) => (
@@ -254,10 +248,9 @@
 
 // export default NewsFeed;
 
-
-
 //3rd attempt
-import React, { useState } from 'react';
+
+import React, { useState } from "react";
 import {
   Container,
   Typography,
@@ -291,9 +284,35 @@ const NewsFeed = ({ userId, isNewsadmin, isAdmin, socket }) => {
   const [showInputArea, setShowInputArea] = useState(true);
   const [anchorEl, setAnchorEl] = useState(null);
 
-  const handleCreatePost = () => {
-    if (newPostTitle.trim() === "") {
-      alert("Title is required!");
+  const fetchData = async () => {
+    let response;
+    try {
+      response = await api.get('/user/news');
+      console.log(response.data);
+      setPosts([...response.data]);
+    } catch (error) {
+      if (error.response.status === 404) {
+        console.log("No posts found!");
+        setPosts([]);
+      } else {
+        console.error('Error fetching data:', error);
+      }
+    }
+  };
+
+  useEffect(() => {
+    fetchData();
+  }, []);
+
+  socket.on("newsfeed:refresh", () => {
+    fetchData();
+  });
+
+  // Function to handle creating a new post
+  const handleCreatePost = async (newPostTitle, newPostDescription) => {
+
+    if ((newPostTitle.trim() === "") || (newPostDescription.trim() === "")) {
+      alert("Title and Body are required!");
       return;
     }
 
@@ -316,24 +335,39 @@ const NewsFeed = ({ userId, isNewsadmin, isAdmin, socket }) => {
 
   const handleDeletePost = (postId) => {
     setPosts(posts.filter((post) => post.id !== postId));
-    setAnchorEl(null); // Close the menu after deleting
+    setAnchorElMap((prevAnchorElMap) => ({
+      ...prevAnchorElMap,
+      [postId]: null,
+    }));
   };
 
-  const handleEditPost = (postId, title, text) => {
+  // handle editing a post
+  const handleEditButton = (postId, title, text) => {
     setEditingPostId(postId);
     setEditedTitle(title);
     setEditedText(text);
     setAnchorEl(null); // Close the menu after selecting Edit
   };
 
-  const handleSavePost = (postId) => {
-    setPosts(
-      posts.map((post) =>
-        post.id === postId
-          ? { ...post, title: editedTitle, description: editedText }
-          : post
-      )
-    );
+  // handle editing a post
+  const handleEditPost = async (newsId, title, text) => {
+    if ((title.trim() === "") || (text.trim() === "")) {
+      alert("Title and Body are required!");
+      return;
+    }
+    let response;
+    try {
+      response = await api.patch('/newsadmin/news', {
+        newsId: newsId,
+        title: title,
+        body: text,
+      });
+      socket.emit("newsfeed:modified", {userId: userId});
+      fetchData();
+    } catch (error) {
+      console.error('Error editing data:', error);
+    }
+
     setEditingPostId(null);
     setEditedTitle("");
     setEditedText("");

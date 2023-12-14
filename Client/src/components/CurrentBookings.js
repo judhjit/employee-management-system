@@ -15,13 +15,52 @@ import DeleteIcon from "@mui/icons-material/Delete";
 import EditIcon from "@mui/icons-material/Edit";
 import "./CurrentBookings.css";
 import api from "../api";
+import React, { useState, useEffect } from "react";
+import {
+  Button,
+  IconButton,
+  Table,
+  TableBody,
+  TableCell,
+  TableContainer,
+  TableHead,
+  TableRow,
+  Select,
+  MenuItem,
+} from "@mui/material";
+import DeleteIcon from "@mui/icons-material/Delete";
+import EditIcon from "@mui/icons-material/Edit";
+import "./CurrentBookings.css";
+import api from "../api";
 
+const CurrentBookings = (showNewsFeed) => {
 const CurrentBookings = (showNewsFeed) => {
   const initialData = [];
   let dates = [];
 
   const [data, setData] = useState(initialData);
 
+  const fetchData = async () => {
+    let response;
+    try {
+      response = await api.post('/user/getbookings', {
+        isDeskRequired: true,
+        isCabRequired: true,
+        isFoodRequired: true,
+      });
+      console.log(response.data);
+      setData([...response.data]);
+    } catch (error) {
+      if (error.response.status === 404) {
+        console.log("No data found!");
+        setData([]);
+      } else {
+        console.error('Error fetching data:', error);
+      }
+    }
+  };
+
+  useEffect(() => {
   const fetchData = async () => {
     let response;
     try {
@@ -137,102 +176,23 @@ const CurrentBookings = (showNewsFeed) => {
 
   return (
     <div className="table-container">
-      {/* <h2 className='booking'>Current Bookings</h2> */}
-      <div
-        style={{
-          fontSize: "29px",
-          fontFamily: "poppins",
-          fontWeight: 600,
-          marginLeft: "90px",
-          paddingTop: "20px",
-          color: "#0071BA",
-        }}
-      >
-        <span>Current </span>
-        <span>Bookings:</span>
-      </div>
-      <TableContainer 
-        style={{
-          width: "97vw", 
-          padding: "0 10px", 
-          height: "190px",
-          marginTop:"3vh",
-        }}
-      >
-        <Table stickyHeader>
+      <h2 className='booking'>Current Bookings</h2>
+      <TableContainer style={{
+        width: '75vw',
+        // padding: '0 60px', 
+        height: '480px'
+      }}>
+        <Table>
           <TableHead >
-            <TableRow
-              // style={{
-              //   backgroundColor: "#0071BA",
-              // }}
-            >
-              <TableCell
-                style={{
-                  padding: 5,
-                  color: "white",
-                  backgroundColor: "#0071BA",
-                  fontFamily: "poppins",
-                  fontSize: "20px",
-                }}
-              >
-                Sl No.
-              </TableCell>
-              <TableCell
-                style={{
-                  padding: 5,
-                  color: "white",
-                  backgroundColor: "#0071BA",
-                  fontFamily: "poppins",
-                  fontSize: "20px",
-                }}
-              >
-                Date
-              </TableCell>
-              <TableCell
-                style={{
-                  padding: 5,
-                  color: "white",
-                  fontFamily: "poppins",
-                  backgroundColor: "#0071BA",
-                  fontSize: "20px",
-                }}
-              >
-                Type
-              </TableCell>
-              <TableCell
-                style={{
-                  padding: 5,
-                  color: "white",
-                  fontFamily: "poppins",
-                  backgroundColor: "#0071BA",
-                  fontSize: "20px",
-                }}
-              >
-                Preference
-              </TableCell>
-              <TableCell
-                style={{
-                  padding: 5,
-                  color: "white",
-                  backgroundColor: "#0071BA",
-                  fontFamily: "poppins",
-                  fontSize: "20px",
-                }}
-              >
-                Delete
-              </TableCell>
-              <TableCell
-                style={{
-                  padding: 5,
-                  color: "white",
-                  backgroundColor: "#0071BA",
-                  fontFamily: "poppins",
-                  fontSize: "20px",
-                 
-                }}
-              >
-                Modify
-              </TableCell>
+            <TableRow style={{
+              backgroundColor: '#0071BA',
+            }} >
+              <TableCell style={{ padding: 5, color: 'white', fontFamily: 'poppins', fontSize: '20px' }}>Sl No.</TableCell>
+              <TableCell style={{ padding: 5, color: 'white', fontFamily: 'poppins', fontSize: '20px' }}>Date</TableCell>
+              <TableCell style={{ padding: 5, color: 'white', fontFamily: 'poppins', fontSize: '20px' }}>Type</TableCell>
+              <TableCell style={{ padding: 5, color: 'white', fontFamily: 'poppins', fontSize: '20px' }}>Preference</TableCell>
+              <TableCell style={{ padding: 5, color: 'white', fontFamily: 'poppins', fontSize: '20px' }}>Delete</TableCell>
+              <TableCell style={{ padding: 5, color: 'white', fontFamily: 'poppins', fontSize: '20px' }}>Modify</TableCell>
             </TableRow>
           </TableHead>
           <TableBody>
