@@ -30,13 +30,13 @@ api.interceptors.response.use(
         console.log(error.response);
         
         // If the error status is 401 and there is no originalRequest._retry flag,
-        // and the error message is not 'Password is incorrect'
+        // and the error message is not 'Password is incorrect' or 'You are not logged in',
         // it means the token has expired and we need to refresh it
-        if (error.response.status === 401 && !originalRequest._retry && error.response.data.message !== 'Password is incorrect') {
+        if (error.response.status === 401 && !originalRequest._retry && error.response.data.message !== 'Password is incorrect' && error.response.data.message !== 'You are not logged in') {
             originalRequest._retry = true;
 
             try {
-                const response = await axios.post('/refresh');
+                const response = await api.post('/refresh');
                 const { accessToken, ttl } = response.data;
                 const date = new Date();
                 const ttlNum = Number(ttl) * 1000;
@@ -56,12 +56,19 @@ api.interceptors.response.use(
                 localStorage.removeItem('user');
                 console.log('Redirecting to login page');
                 // window.location.href = '/login';
-                // window.location.href = '/';
+                window.location.href = '/';
+                return Promise.reject(error);
             }
         }
 
         if(error.response.status === 401 && !originalRequest._retry && error.response.data.message === 'Password is incorrect') {
             console.log("Password is incorrect");
+            return Promise.reject(error);
+        }
+        
+        if(error.response.status === 401 && !originalRequest._retry && error.response.data.message === 'You are not logged in') {
+            console.log("User is not logged in");
+            window.location.href = '/';
             return Promise.reject(error);
         }
 

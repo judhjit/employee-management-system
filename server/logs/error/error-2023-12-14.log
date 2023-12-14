@@ -1,0 +1,31 @@
+{
+  errno: -3008,
+  code: 'ENOTFOUND',
+  syscall: 'getaddrinfo',
+  hostname: 'ep-muddy-frog-18780884-pooler.ap-southeast-1.aws.neon.tech',
+  level: 'error',
+  timestamp: '2023-12-14T11:32:04.639Z'
+}
+{
+  module: 'user',
+  service: 'findOne',
+  request: { email: 'trial.user@abcgroup.com' },
+  error: Error: getaddrinfo ENOTFOUND ep-muddy-frog-18780884-pooler.ap-southeast-1.aws.neon.tech
+      at GetAddrInfoReqWrap.onlookupall [as oncomplete] (node:dns:118:26) {
+    errno: -3008,
+    code: 'ENOTFOUND',
+    syscall: 'getaddrinfo',
+    hostname: 'ep-muddy-frog-18780884-pooler.ap-southeast-1.aws.neon.tech'
+  },
+  level: 'error',
+  message: 'Failed to get user by email',
+  timestamp: '2023-12-14T11:32:19.502Z'
+}
+{
+  module: 'auth-controller',
+  service: 'login',
+  request: { email: 'trial.user@abcgroup.com' },
+  level: 'error',
+  message: 'User not found',
+  timestamp: '2023-12-14T11:32:19.504Z'
+}
