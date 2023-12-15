@@ -85,7 +85,7 @@ const DeskBooking = ({ selectedDates, onNext, bookings, setBookings }) => {
           position: "absolute",
           backgroundColor: "#F6F6F6",
           height: "80vh",
-          width: "71vw",
+          // width: "71vw",
           marginLeft: "42px",
           marginTop: "-68px",
           zIndex: 0,
@@ -131,7 +131,7 @@ const DeskBooking = ({ selectedDates, onNext, bookings, setBookings }) => {
                     fontSize: "13px",
                     fontFamily: "poppins",
                     lineHeight: "15px",
-                    width: "170px",
+                    width: "160px",
                     fontWeight: 500,
                     color: index === active ? "#FFF" : "#000",
                     backgroundColor:
@@ -195,7 +195,7 @@ const DeskBooking = ({ selectedDates, onNext, bookings, setBookings }) => {
                     fontSize: "13px",
                     fontFamily: "poppins",
                     lineHeight: "15px",
-                    width: "170px",
+                    width: "160px",
                     fontWeight: 500,
                     // color: index === active ? "#FFF" : "#000",
                     // backgroundColor:

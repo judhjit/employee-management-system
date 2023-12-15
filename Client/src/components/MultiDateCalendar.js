@@ -30,30 +30,31 @@ const MultiDateCalendar = ({ showNewsFeed, selectedDates, setSelectedDates, user
     socket.on('newsfeed:refresh', fetchNewsTitles);
   }, []);
 
-  // console.log(showNewsFeed);
+  
   const handleDateClick = (date) => {
     if (date.getDay() === 0) {
       return;
     }
 
+    if (selectedDates.length >= 5) {
+     
+      alert("You can only select up to 5 dates.");
+
+   
+      
+      return; 
+    }
+
     let newSelectedDates;
 
-    const dateIndex = selectedDates.findIndex(
-      (selectedDate) => selectedDate.toDateString() === date.toDateString()
-    );
-
-    if (dateIndex !== -1) {
-      newSelectedDates = selectedDates.filter((d) => d.toDateString() !== date.toDateString());
-    } else {
-      newSelectedDates = [...selectedDates, date];
-    }
+    
+    newSelectedDates = [...selectedDates, date];
 
     setSelectedDates(newSelectedDates);
 
-
     setUser((prevUser) => ({ ...prevUser, selectedDate: newSelectedDates }));
-
   };
+
 
   const handleBookButtonClick = () => {
     setBookings((prevBookings) => ({
