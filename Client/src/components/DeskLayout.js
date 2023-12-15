@@ -58,6 +58,14 @@ const DeskLayout = ({ active, setSelectedSeat, selectedSeats, responce ,bookings
       console.log(err)
     }
   } 
+
+  useEffect(()=>{
+    if(selectedSeats[active])
+    setActiveTable(selectedSeats[active]);
+  else
+  setActiveTable('')
+  },[active])
+
   useEffect(() => {
     if (selectedSeats[active]) setActiveTable(selectedSeats[active]);
     else setActiveTable("");

@@ -1,4 +1,69 @@
-import React, { useState,useEffect } from 'react';
+// import React, { useState,useEffect } from 'react';
+// import Card from "@mui/material/Card";
+// import CardContent from "@mui/material/CardContent";
+// import Typography from "@mui/material/Typography";
+// import Divider from "@mui/material/Divider";
+// import FormControl from "@mui/material/FormControl";
+// import Select from "@mui/material/Select";
+// import MenuItem from "@mui/material/MenuItem";
+// import Radio from "@mui/material/Radio";
+// import RadioGroup from "@mui/material/RadioGroup";
+// import FormControlLabel from "@mui/material/FormControlLabel";
+// import { Box, CardActions } from '@mui/material';
+
+// const LunchAndCabForm = ({ active,setSelectedMeal,setSelectedCab ,selectedMeal,selectedCab,bookings,setBookings}) => {
+//     const[activeLunch,setActiveLunch]=useState(selectedMeal[active]);
+//     const [preferences, setPreferences] = useState(Array(selectedMeal.length).fill(''));
+//     const [selectedSlot, setSelectedSlot] = useState('');
+//     console.log(selectedCab);
+//     console.log(selectedMeal);
+
+    
+   
+//     const handleLunchChange = (event) => {
+//       const value = event.target.value;
+//       setActiveLunch(value);
+  
+//       setPreferences((prevPreferences) => {
+//         const newPreferences = [...prevPreferences];
+//         newPreferences[active] = value;
+//         return newPreferences;
+//       });
+//     };
+  
+//     const handleSlotChange = (event) => {
+//       const value = event.target.value;
+//       setSelectedSlot(value);
+  
+//       setSelectedCab((prevSlots) => {
+//         const newSlots = [...prevSlots];
+//         newSlots[active] = value;
+//         return newSlots;
+//       });
+//     };
+  
+//     useEffect(() => {
+//       setSelectedMeal((prevArray) => {
+//         const newArray = [...prevArray];
+//         newArray[active] = activeLunch;
+//         return newArray;
+//       });
+//     }, [activeLunch, active, setSelectedMeal]);
+  
+//     useEffect(() => {
+//       // Check if all preferences and slots are selected
+//       if (preferences.every(preference => preference !== '') && selectedCab.every(slot => slot !== '')) {
+//         // Update the bookings state
+//         setBookings((prevBookings) => {
+//           const newBookings = { ...prevBookings };
+//           newBookings.preference = [...preferences];
+//           newBookings.workSlot = [...selectedCab];
+//           return newBookings;
+//         });
+//       }
+//     }, [preferences, selectedCab, setBookings]);
+   
+import React, { useState, useEffect } from 'react';
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import Typography from "@mui/material/Typography";
@@ -9,61 +74,73 @@ import MenuItem from "@mui/material/MenuItem";
 import Radio from "@mui/material/Radio";
 import RadioGroup from "@mui/material/RadioGroup";
 import FormControlLabel from "@mui/material/FormControlLabel";
-import { Box, CardActions } from '@mui/material';
+import { CardActions } from '@mui/material';
 
-const LunchAndCabForm = ({ active,setSelectedMeal,setSelectedCab ,selectedMeal,selectedCab,bookings,setBookings}) => {
-    const[activeLunch,setActiveLunch]=useState(selectedMeal[active]);
-    const [preferences, setPreferences] = useState(Array(selectedMeal.length).fill(''));
-    const [selectedSlot, setSelectedSlot] = useState('');
-    console.log(selectedCab);
-    console.log(selectedMeal);
+const LunchAndCabForm = ({ active, setSelectedMeal, setSelectedCab, selectedMeal, selectedCab, bookings, setBookings }) => {
+  const [activeLunch, setActiveLunch] = useState(selectedMeal[active]);
+  const [preferences, setPreferences] = useState(Array(selectedMeal.length).fill(''));
+  const [selectedSlot, setSelectedSlot] = useState('');
 
+  const handleLunchChange = (event) => {
+    const value = event.target.value;
+    setActiveLunch(value);
+
+    setPreferences((prevPreferences) => {
+      const newPreferences = [...prevPreferences];
+      newPreferences[active] = value;
+      return newPreferences;
+    });
+  };
+
+  const handleSlotChange = (event) => {
+    const value = event.target.value;
+    setSelectedSlot(value);
+
+    setSelectedCab((prevSlots) => {
+      const newSlots = [...prevSlots];
+      newSlots[active] = value;
+      return newSlots;
+    });
+  };
+
+  
+  useEffect(() => {
+    if (preferences[active]) {
+      setActiveLunch(preferences[active]);
+      console.log("active lunch", selectedMeal[active])
+    }
+    else{
+      setActiveLunch(null)
+    }
+    if (selectedCab[active])
+      setSelectedSlot(selectedCab[active]);
+    else
+    setSelectedSlot(null)
+
+  }, [active]);
+
+  useEffect(() => {
+    setSelectedMeal((prevArray) => {
+      const newArray = [...prevArray];
+      newArray[active] = activeLunch;
+      return newArray;
+    });
+  }, [activeLunch, active, setSelectedMeal]);
+
+  useEffect(() => {
     
-   
-    const handleLunchChange = (event) => {
-      const value = event.target.value;
-      setActiveLunch(value);
-  
-      setPreferences((prevPreferences) => {
-        const newPreferences = [...prevPreferences];
-        newPreferences[active] = value;
-        return newPreferences;
+    if (preferences.every(preference => preference !== '') && selectedCab.every(slot => slot !== '')) {
+      
+      setBookings((prevBookings) => {
+        const newBookings = { ...prevBookings };
+        newBookings.preference = [...preferences];
+        newBookings.workSlot = [...selectedCab];
+        return newBookings;
       });
-    };
+    }
+  }, [preferences, selectedCab, setBookings]);
+
   
-    const handleSlotChange = (event) => {
-      const value = event.target.value;
-      setSelectedSlot(value);
-  
-      setSelectedCab((prevSlots) => {
-        const newSlots = [...prevSlots];
-        newSlots[active] = value;
-        return newSlots;
-      });
-    };
-  
-    useEffect(() => {
-      setSelectedMeal((prevArray) => {
-        const newArray = [...prevArray];
-        newArray[active] = activeLunch;
-        return newArray;
-      });
-    }, [activeLunch, active, setSelectedMeal]);
-  
-    useEffect(() => {
-      // Check if all preferences and slots are selected
-      if (preferences.every(preference => preference !== '') && selectedCab.every(slot => slot !== '')) {
-        // Update the bookings state
-        setBookings((prevBookings) => {
-          const newBookings = { ...prevBookings };
-          newBookings.preference = [...preferences];
-          newBookings.workSlot = [...selectedCab];
-          return newBookings;
-        });
-      }
-    }, [preferences, selectedCab, setBookings]);
-   
-    
   
 
   

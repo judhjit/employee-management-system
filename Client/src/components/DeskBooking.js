@@ -167,7 +167,7 @@ const DeskBooking = ({ selectedDates, onNext, bookings, setBookings }) => {
                 marginLeft: "10px",
               }}
               onClick={onNext}
-              disabled={selectedSeats.includes(null)}
+              // disabled={selectedSeats.includes(null)}
             >
               Next
             </Button>
