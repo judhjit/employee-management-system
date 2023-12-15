@@ -143,6 +143,7 @@ async function login(req, res, next) {
     const newRefreshToken = createRefreshToken(existingUser.user_id);
     childLogger.info("Successfully created access and refresh tokens", { service: service, userId: existingUser.user_id });
 
+    if(existingUser.refreshTokens === null) existingUser.refreshTokens = []; //if existingUser.refreshTokens is null, then set it to empty array) {
     let newRefreshTokenArray = !cookies?.jwt ? existingUser.refreshTokens : existingUser.refreshTokens.filter((token) => token !== cookies.jwt); //if cookies.jwt is undefined, then set newRefreshTokenArray to existingUser.refreshTokens, else set newRefreshTokenArray to existingUser.refreshTokens.filter((token) => token !== cookies.jwt) i.e. remove cookies.jwt from existingUser.refreshTokens array
     if (!newRefreshTokenArray) newRefreshTokenArray = []; //if newRefreshTokenArray is undefined, then set newRefreshTokenArray to empty array
     if (cookies?.jwt) { //if cookies.jwt is defined
