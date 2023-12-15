@@ -5,6 +5,7 @@ import api from "../api";
 const Review = ({ bookings, setBookings }) => {
   console.log("bookings in review page", bookings);
   const [submissionStatus, setSubmissionStatus] = useState(null);
+  const [isdisabled,setDisabled]=useState(false);
   useEffect(() => {
     const containsNonNullPreference = bookings.preference.some(
       (element) => element !== "None"
@@ -25,8 +26,15 @@ const Review = ({ bookings, setBookings }) => {
       }));
     }
   }, []);
+
+
+  const handleSubmit1=()=>{
+    setDisabled(true);
+  }
   const handleSubmit = async () => {
+    
     try {
+      setDisabled(true);
       const response = await api.post("/user/bookings", {
         dates: bookings.dates,
         deskId: bookings.deskId,
@@ -40,9 +48,11 @@ const Review = ({ bookings, setBookings }) => {
 
       console.log(response);
       setSubmissionStatus("success");
+      setDisabled(false);
     } catch (err) {
       console.log("error in the final submission", err);
       setSubmissionStatus("error");
+      setDisabled(false);
     }
   };
 
@@ -107,9 +117,9 @@ const Review = ({ bookings, setBookings }) => {
        
       
       </Box>
-      <Button style={{marginTop:'40px', marginLeft:'30px'}} onClick={handleSubmit}>Submit</Button>
+      <Button variant="contained" style={{marginTop:'40px', marginLeft:'30px'}} onClick={handleSubmit}  disabled={isdisabled}>Submit</Button>
       {submissionStatus === "success" && (
-          <Typography variant="h6" sx={{ marginTop: "50px", color: "green", marginLeft:'30px'}}>
+          <Typography variant="h6" sx={{ marginTop: "50px", color: "green", marginLeft:'30px'}} > 
             All bookings has been done successfully!!!
           </Typography>
         )}
