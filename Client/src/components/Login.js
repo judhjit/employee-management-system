@@ -36,15 +36,15 @@ const Login = ({ showNewsFeed, setShowNewsFeed, isUser, setisUser, setUser }) =>
     const { name, value } = e.target;
 
     switch (name) {
-      case 'email':
-        const emailRegex = /^[^\s@]+@abcgroup\.com$/;
-        if (!emailRegex.test(value)) {
-          setErrors((prevErrors) => ({
-            ...prevErrors,
-            [name]: 'Invalid email address',
-          }));
-        }
-        break;
+      // case 'email':
+      //   const emailRegex = /^[^\s@]+@abcgroup\.com$/;
+      //   if (!emailRegex.test(value)) {
+      //     setErrors((prevErrors) => ({
+      //       ...prevErrors,
+      //       [name]: 'Invalid email address',
+      //     }));
+      //   }
+      //   break;
 
       case 'password':
         if (value.length < 6) {
