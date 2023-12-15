@@ -10,22 +10,29 @@ import {
   TableRow,
   Select,
   MenuItem,
+  Dialog,
+  DialogTitle,
+  DialogContent,
+  DialogActions,
 } from "@mui/material";
 import DeleteIcon from "@mui/icons-material/Delete";
 import EditIcon from "@mui/icons-material/Edit";
 import "./CurrentBookings.css";
+
 import api from "../api";
 
-const CurrentBookings = (showNewsFeed) => {
+const CurrentBookings = ({ showNewsFeed }) => {
   const initialData = [];
   let dates = [];
 
   const [data, setData] = useState(initialData);
+  const [selectedBooking, setSelectedBooking] = useState(null);
+  const [isDeleteDialogOpen, setDeleteDialogOpen] = useState(false);
 
   const fetchData = async () => {
     let response;
     try {
-      response = await api.post('/user/getbookings', {
+      response = await api.post("/user/getbookings", {
         isDeskRequired: true,
         isCabRequired: true,
         isFoodRequired: true,
@@ -37,7 +44,7 @@ const CurrentBookings = (showNewsFeed) => {
         console.log("No data found!");
         setData([]);
       } else {
-        console.error('Error fetching data:', error);
+        console.error("Error fetching data:", error);
       }
     }
   };
@@ -135,6 +142,23 @@ const CurrentBookings = (showNewsFeed) => {
   //   setEditedMeal(data[rowIndex].meal);
   // };
 
+  const handleDeleteClick = (booking) => {
+    setSelectedBooking(booking);
+    setDeleteDialogOpen(true);
+  };
+
+  const handleDeleteDialogClose = () => {
+    setDeleteDialogOpen(false);
+    setSelectedBooking(null);
+  };
+
+  const handleConfirmDelete = async () => {
+    if (selectedBooking) {
+      await handleCancel(selectedBooking.dateBooked, selectedBooking.type);
+      handleDeleteDialogClose();
+    }
+  };
+
   return (
     <div className="table-container">
       {/* <h2 className='booking'>Current Bookings</h2> */}
@@ -151,20 +175,20 @@ const CurrentBookings = (showNewsFeed) => {
         <span>Current </span>
         <span>Bookings:</span>
       </div>
-      <TableContainer 
+      <TableContainer
         style={{
-          width: "97vw", 
-          padding: "0 10px", 
+          width: showNewsFeed ? "80vw" : "97vw",
+          padding: "0 10px",
           height: "190px",
-          marginTop:"3vh",
+          marginTop: "3vh",
         }}
       >
         <Table stickyHeader>
-          <TableHead >
+          <TableHead>
             <TableRow
-              // style={{
-              //   backgroundColor: "#0071BA",
-              // }}
+            // style={{
+            //   backgroundColor: "#0071BA",
+            // }}
             >
               <TableCell
                 style={{
@@ -228,7 +252,6 @@ const CurrentBookings = (showNewsFeed) => {
                   backgroundColor: "#0071BA",
                   fontFamily: "poppins",
                   fontSize: "20px",
-                 
                 }}
               >
                 Modify
@@ -237,7 +260,7 @@ const CurrentBookings = (showNewsFeed) => {
           </TableHead>
           <TableBody>
             {data.map((booking, index) => (
-              <TableRow style={{ padding: 5 }}>
+              <TableRow style={{ padding: 5 }} key={index}>
                 <TableCell style={{ padding: 5 }}>{index + 1}</TableCell>
                 <TableCell style={{ padding: 5 }}>
                   {booking.dateBooked}
@@ -247,9 +270,7 @@ const CurrentBookings = (showNewsFeed) => {
                 <TableCell style={{ padding: 5 }}>
                   <IconButton
                     color="secondary"
-                    onClick={() =>
-                      handleCancel(booking.dateBooked, booking.type)
-                    }
+                    onClick={() => handleDeleteClick(booking)}
                   >
                     <DeleteIcon />
                   </IconButton>
@@ -313,6 +334,45 @@ const CurrentBookings = (showNewsFeed) => {
           </TableBody>
         </Table>
       </TableContainer>
+      <Dialog
+        open={isDeleteDialogOpen}
+        onClose={handleDeleteDialogClose}
+        maxWidth="sm"
+        fullWidth
+      >
+        <DialogTitle>Confirm Deletion</DialogTitle>
+        <DialogContent>
+          <p>Are you sure you want to delete this booking?</p>
+        </DialogContent>
+        <DialogActions>
+          <Button
+            onClick={handleConfirmDelete}
+            className="deleteButton"
+            style={{
+              backgroundColor: "blue",
+              color: "white",
+              transition: "background-color 0.3s ease",
+            }}
+            onMouseOver={(e) => (e.target.style.backgroundColor = "#3457D5")}
+            onMouseOut={(e) => (e.target.style.backgroundColor = "#0039a6")}
+          >
+            Delete
+          </Button>
+          <Button
+            onClick={handleDeleteDialogClose}
+            className="cancelButton"
+            style={{
+              backgroundColor: "red",
+              color: "white",
+              transition: "background-color 0.3s ease",
+            }}
+            onMouseOver={(e) => (e.target.style.backgroundColor = "#E32636")}
+            onMouseOut={(e) => (e.target.style.backgroundColor = "#BA0021")}
+          >
+            Cancel
+          </Button>
+        </DialogActions>
+      </Dialog>
     </div>
   );
 };
