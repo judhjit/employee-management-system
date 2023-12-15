@@ -116,7 +116,7 @@ const Review = ({ bookings, setBookings }) => {
 
      
         {submissionStatus === "error" && (
-          <Typography variant="h6" sx={{ marginTop: "50px", color: "green", marginLeft:'30px' }}>
+          <Typography variant="h6" sx={{ marginTop: "50px", color: "red", marginLeft:'30px' }}>
             Error in booking. Please try again.
           </Typography>
         )}

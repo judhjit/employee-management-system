@@ -58,8 +58,10 @@ const DeskLayout = ({ active, setSelectedSeat, selectedSeats, responce ,bookings
       console.log(err)
     }
   } 
-
-
+  useEffect(() => {
+    if (selectedSeats[active]) setActiveTable(selectedSeats[active]);
+    else setActiveTable("");
+  }, [active]);
   return (
     <div >
       <Box sx={{ position: 'relative', marginLeft: '95px', marginTop: '-12px', width: '608px' }}>

@@ -121,7 +121,7 @@ const MultiDateCalendar = ({ showNewsFeed, selectedDates, setSelectedDates, user
         </div>
       </div>
       <div style={{ backgroundColor: '#F0F8FF', width: '100vw' }}>
-        <CurrentBookings />
+        <CurrentBookings showNewsFeed={showNewsFeed}/>
       </div>
 
     </div>
