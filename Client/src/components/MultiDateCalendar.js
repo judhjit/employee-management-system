@@ -10,7 +10,11 @@ import api from '../api';
 const MultiDateCalendar = ({ showNewsFeed, selectedDates, setSelectedDates, user, setUser, isUser, bookings, setBookings, socket }) => {
   const navigate = useNavigate();
   const [newsTitles, setNewsTitles] = useState([]);
+  // const [errorMessage,setErrorMessage]=useState(null);
 
+
+
+  const [disabledDates, setDisabledDates] = useState([]);
   const fetchNewsTitles = async () => {
     try {
       const response = await api.get('/user/news');
@@ -28,33 +32,55 @@ const MultiDateCalendar = ({ showNewsFeed, selectedDates, setSelectedDates, user
   useEffect(() => {
     fetchNewsTitles();
     socket.on('newsfeed:refresh', fetchNewsTitles);
+
+    setSelectedDates([]);
+    setBookings({
+      dates: [],
+      deskId: [],
+      workSlot: [],
+      preference: [],
+      isDeskRequired: true,
+      isCabRequired: false,
+      isFoodRequired: false,
+    });
   }, []);
 
-  
   const handleDateClick = (date) => {
+    console.log(date);
     if (date.getDay() === 0) {
       return;
     }
-
-    if (selectedDates.length >= 5) {
-     
-      alert("You can only select up to 5 dates.");
-
-   
+    console.log("hi");
+    const formattedDate=date.toDateString();
+    if(disabledDates.includes(formattedDate)){
+      // alert(`Bookings for ${formattedDate} have already been done.`);
       
-      return; 
+     return;
     }
-
     let newSelectedDates;
 
-    
-    newSelectedDates = [...selectedDates, date];
+    const dateIndex = selectedDates.findIndex(
+      (selectedDate) => selectedDate.toDateString() === date.toDateString()
+    );
+
+    if (dateIndex !== -1) {
+      // If already selected, remove the date
+      newSelectedDates = selectedDates.filter(
+        (selectedDate) => selectedDate.toDateString() !== date.toDateString()
+      );
+    } else {
+      // If not selected, add the date
+      if (selectedDates.length >= 5) {
+        alert("You can only select up to 5 dates.");
+        return;
+      }
+      newSelectedDates = [...selectedDates, date];
+    }
 
     setSelectedDates(newSelectedDates);
 
     setUser((prevUser) => ({ ...prevUser, selectedDate: newSelectedDates }));
   };
-
 
   const handleBookButtonClick = () => {
     setBookings((prevBookings) => ({
@@ -69,21 +95,39 @@ const MultiDateCalendar = ({ showNewsFeed, selectedDates, setSelectedDates, user
         }),
       ],
     }));
-  
+
     console.log(bookings);
     // Navigate to the /bookings page
     navigate('/bookings');
   };
+
+
+  const fetchData=async()=>{
+    let response;
+    try {
+      const response = await api.post("/user/getbookings", {
+        isDeskRequired: true,
+        isCabRequired: true,
+        isFoodRequired: true,
+      });
+      console.log("res",response);
+      
+      const dateBookedArray = response.data.map(item => item.dateBooked);
   
+      
+      console.log("dates",dateBookedArray);
+      setDisabledDates(dateBookedArray);
   
-
-
-  // if (!user || !user.userId || user.userId === '') {
-  //   // navigate("/");
-  //   window.location.href = "/";
-  //   return null;
-  // }
-
+     
+      
+    } catch (error) {
+      console.error('Error:', error);
+      
+    }
+  }
+  useEffect(() => {
+    fetchData();
+  }, []);
 
   return (
     <div style={{ backgroundColor: 'white', height: '664px', width: '76.1vw' }}>
@@ -100,17 +144,21 @@ const MultiDateCalendar = ({ showNewsFeed, selectedDates, setSelectedDates, user
           <span>Your Day:</span>
         </div>
         <div className="calendar">
-          <Calendar
-            onClickDay={handleDateClick}
-            tileDisabled={({ date }) => date.getDay() === 0}
-            tileClassName={({ date }) =>
-              selectedDates.find(
-                (selectedDate) => selectedDate.toDateString() === date.toDateString()
-              )
-                ? 'selected'
-                : ''
-            }
-          />
+        <Calendar
+          onClickDay={handleDateClick}
+          tileDisabled={({ date }) => 
+            date < new Date(new Date().setHours(0, 0, 0, 0)) ||
+            date.getDay() === 0 ||
+            disabledDates.some(disabledDate => new Date(disabledDate).toDateString() === date.toDateString())
+          }
+          tileClassName={({ date }) =>
+            selectedDates.find(
+              (selectedDate) => selectedDate.toDateString() === date.toDateString()
+            )
+              ? 'selected'
+              : ''
+          }
+        />
           <Button
             variant="contained"
             color="primary"
@@ -124,12 +172,8 @@ const MultiDateCalendar = ({ showNewsFeed, selectedDates, setSelectedDates, user
       <div style={{ backgroundColor: '#F0F8FF', width: '100vw' }}>
         <CurrentBookings showNewsFeed={showNewsFeed}/>
       </div>
-
     </div>
-
   );
 };
 
 export default MultiDateCalendar;
-
-

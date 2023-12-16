@@ -123,6 +123,7 @@ export default function LunchAndCabbook({
           position: "absolute",
           backgroundColor: "#F6F6F6",
           height: "80vh",
+          width: "1103px",
           // width: "71vw",
           marginLeft: "42px",
           marginTop: "-68px",

@@ -1,0 +1,7 @@
+{
+  module: 'verify-jwt-token',
+  service: 'verifyJWT',
+  level: 'error',
+  message: 'Access token invalid',
+  timestamp: '2023-12-16T19:38:45.237Z'
+}
