@@ -85,7 +85,7 @@ const DeskBooking = ({ selectedDates, onNext, bookings, setBookings }) => {
           position: "absolute",
           backgroundColor: "#F6F6F6",
           height: "80vh",
-          // width: "71vw",
+          width: "1103px",
           marginLeft: "42px",
           marginTop: "-68px",
           zIndex: 0,

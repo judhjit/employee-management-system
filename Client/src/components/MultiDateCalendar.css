@@ -17,8 +17,9 @@
 .selected {
     background-color: #3498db;
     color: #fff;
-    border-radius: 5px;
+    border-radius: 50px;
     border: 2px solid #3498db;
+
   }
   /* .selected {
     background-color: white !important;
@@ -44,3 +45,30 @@ height: 305px;
  
   
 }
+.react-calendar__month-view__days__day--weekend {
+  color: #c5c6d3;
+}
+
+
+/* .react-calendar__tile--active:enabled:hover, .react-calendar__tile--active:enabled:focus {
+  background: #ffffff;
+} */
+/* .react-calendar__tile--active {
+ background-color: white;
+  color: black !important; 
+} */
+
+/* .react-calendar__tile--active:enabled:hover {
+  background: #ffffff;
+} */
+
+
+/* .react-calendar__tile--hasActive:enabled:hover, .react-calendar__tile--hasActive:enabled:focus{
+background-color: white !important;
+} */
+
+.react-calendar__tile:disabled {
+  background-color: white;
+}
+
+

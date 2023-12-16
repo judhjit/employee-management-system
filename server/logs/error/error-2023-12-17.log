@@ -1,0 +1,366 @@
+{
+  module: 'verify-jwt-token',
+  service: 'verifyJWT',
+  level: 'error',
+  message: 'Access token invalid',
+  timestamp: '2023-12-16T19:38:45.237Z'
+}
+{
+  module: 'refresh-token-controller',
+  service: 'handleRefreshToken',
+  level: 'error',
+  message: 'You are not logged in',
+  timestamp: '2023-12-16T19:38:45.287Z'
+}
+{
+  module: 'verify-jwt-token',
+  service: 'verifyJWT',
+  level: 'error',
+  message: 'Access token invalid',
+  timestamp: '2023-12-16T20:16:43.299Z'
+}
+{
+  module: 'verify-jwt-token',
+  service: 'verifyJWT',
+  level: 'error',
+  message: 'Access token invalid',
+  timestamp: '2023-12-16T20:56:48.945Z'
+}
+{
+  module: 'verify-jwt-token',
+  service: 'verifyJWT',
+  level: 'error',
+  message: 'Access token invalid',
+  timestamp: '2023-12-16T20:56:48.947Z'
+}
+{
+  module: 'verify-jwt-token',
+  service: 'verifyJWT',
+  level: 'error',
+  message: 'Access token invalid',
+  timestamp: '2023-12-16T20:56:48.953Z'
+}
+{
+  module: 'user',
+  service: 'replaceRefreshTokens',
+  level: 'error',
+  message: 'User with same refresh token not found',
+  timestamp: '2023-12-16T20:57:11.979Z'
+}
+{
+  module: 'refresh-token-controller',
+  service: 'handleRefreshToken',
+  userId: 'E10101',
+  level: 'error',
+  message: 'Attempted reuse of refresh token detected',
+  timestamp: '2023-12-16T20:57:11.981Z'
+}
+{
+  module: 'refresh-token-controller',
+  service: 'handleRefreshToken',
+  level: 'error',
+  message: 'Forbidden! Attempted reuse of token.',
+  timestamp: '2023-12-16T20:57:11.981Z'
+}
+{
+  module: 'user',
+  service: 'replaceRefreshTokens',
+  level: 'error',
+  message: 'User with same refresh token not found',
+  timestamp: '2023-12-16T20:57:12.165Z'
+}
+{
+  module: 'refresh-token-controller',
+  service: 'handleRefreshToken',
+  userId: 'E10101',
+  level: 'error',
+  message: 'Attempted reuse of refresh token detected',
+  timestamp: '2023-12-16T20:57:12.167Z'
+}
+{
+  module: 'refresh-token-controller',
+  service: 'handleRefreshToken',
+  level: 'error',
+  message: 'Forbidden! Attempted reuse of token.',
+  timestamp: '2023-12-16T20:57:12.167Z'
+}
+{
+  module: 'verify-jwt-token',
+  service: 'verifyJWT',
+  level: 'error',
+  message: 'Access token invalid',
+  timestamp: '2023-12-16T21:37:57.309Z'
+}
+{
+  module: 'verify-jwt-token',
+  service: 'verifyJWT',
+  level: 'error',
+  message: 'Access token invalid',
+  timestamp: '2023-12-16T21:37:57.311Z'
+}
+{
+  module: 'verify-jwt-token',
+  service: 'verifyJWT',
+  level: 'error',
+  message: 'Access token invalid',
+  timestamp: '2023-12-16T21:37:57.313Z'
+}
+{
+  module: 'user',
+  service: 'replaceRefreshTokens',
+  level: 'error',
+  message: 'User with same refresh token not found',
+  timestamp: '2023-12-16T21:38:20.577Z'
+}
+{
+  module: 'refresh-token-controller',
+  service: 'handleRefreshToken',
+  userId: 'E10101',
+  level: 'error',
+  message: 'Attempted reuse of refresh token detected',
+  timestamp: '2023-12-16T21:38:20.580Z'
+}
+{
+  module: 'refresh-token-controller',
+  service: 'handleRefreshToken',
+  level: 'error',
+  message: 'Forbidden! Attempted reuse of token.',
+  timestamp: '2023-12-16T21:38:20.580Z'
+}
+{
+  module: 'user',
+  service: 'replaceRefreshTokens',
+  level: 'error',
+  message: 'User with same refresh token not found',
+  timestamp: '2023-12-16T21:38:20.801Z'
+}
+{
+  module: 'refresh-token-controller',
+  service: 'handleRefreshToken',
+  userId: 'E10101',
+  level: 'error',
+  message: 'Attempted reuse of refresh token detected',
+  timestamp: '2023-12-16T21:38:20.804Z'
+}
+{
+  module: 'refresh-token-controller',
+  service: 'handleRefreshToken',
+  level: 'error',
+  message: 'Forbidden! Attempted reuse of token.',
+  timestamp: '2023-12-16T21:38:20.805Z'
+}
+{
+  module: 'desk-booking',
+  service: 'formatDeskBoookings',
+  level: 'error',
+  message: 'Desk bookings is undefined',
+  timestamp: '2023-12-16T21:39:48.640Z'
+}
+{
+  module: 'cab-booking',
+  service: 'formatCabBookings',
+  level: 'error',
+  message: 'Cab bookings not found',
+  timestamp: '2023-12-16T21:39:48.993Z'
+}
+{
+  module: 'food-booking',
+  service: 'formatFoodBookings',
+  level: 'error',
+  message: 'foodBookings is undefined',
+  timestamp: '2023-12-16T21:39:49.168Z'
+}
+{
+  module: 'user-all-booking-controller',
+  service: 'bookAll',
+  userId: 'E10101',
+  error: Error: Missing credentials for "PLAIN"
+      at SMTPConnection._formatError (C:\Users\KIIT\Desktop\employee-management-system\server\node_modules\nodemailer\lib\smtp-connection\index.js:790:19)
+      at SMTPConnection.login (C:\Users\KIIT\Desktop\employee-management-system\server\node_modules\nodemailer\lib\smtp-connection\index.js:444:38)
+      at C:\Users\KIIT\Desktop\employee-management-system\server\node_modules\nodemailer\lib\smtp-transport\index.js:272:32
+      at SMTPConnection.<anonymous> (C:\Users\KIIT\Desktop\employee-management-system\server\node_modules\nodemailer\lib\smtp-connection\index.js:213:17)
+      at Object.onceWrapper (node:events:628:28)
+      at SMTPConnection.emit (node:events:514:28)
+      at SMTPConnection._actionEHLO (C:\Users\KIIT\Desktop\employee-management-system\server\node_modules\nodemailer\lib\smtp-connection\index.js:1347:14)
+      at SMTPConnection._processResponse (C:\Users\KIIT\Desktop\employee-management-system\server\node_modules\nodemailer\lib\smtp-connection\index.js:969:20)
+      at SMTPConnection._onData (C:\Users\KIIT\Desktop\employee-management-system\server\node_modules\nodemailer\lib\smtp-connection\index.js:755:14)
+      at SMTPConnection._onSocketData (C:\Users\KIIT\Desktop\employee-management-system\server\node_modules\nodemailer\lib\smtp-connection\index.js:193:44) {
+    code: 'EAUTH',
+    command: 'API'
+  },
+  level: 'error',
+  message: 'Failed to send email to user',
+  timestamp: '2023-12-16T21:39:52.596Z'
+}
+{
+  module: 'auth-controller',
+  service: 'signup',
+  request: { userId: 'E10102', email: 'aditijsr2002@gmail.com' },
+  level: 'error',
+  message: 'User already exists',
+  timestamp: '2023-12-16T21:42:16.828Z'
+}
+{
+  module: 'auth-controller',
+  service: 'signup',
+  request: { userId: 'E10102', email: 'aditijsr2002@gmail.com' },
+  level: 'error',
+  message: 'User already exists',
+  timestamp: '2023-12-16T21:43:11.503Z'
+}
+{
+  module: 'auth-controller',
+  service: 'signup',
+  request: { userId: 'E10102', email: 'aditijsr2002@gmail.com' },
+  level: 'error',
+  message: 'User already exists',
+  timestamp: '2023-12-16T21:43:11.673Z'
+}
+{
+  module: 'auth-controller',
+  service: 'signup',
+  request: { userId: 'E10102', email: 'aditijsr2002@gmail.com' },
+  level: 'error',
+  message: 'User already exists',
+  timestamp: '2023-12-16T21:43:17.805Z'
+}
+{
+  module: 'auth-controller',
+  service: 'signup',
+  request: { userId: 'E10102', email: 'aditijsr2002@gmail.com' },
+  level: 'error',
+  message: 'User already exists',
+  timestamp: '2023-12-16T21:43:22.613Z'
+}
+{
+  module: 'auth-controller',
+  service: 'signup',
+  request: { userId: 'E10102', email: 'aditijsr2002@gmail.com' },
+  level: 'error',
+  message: 'User already exists',
+  timestamp: '2023-12-16T21:43:26.075Z'
+}
+{
+  module: 'user',
+  service: 'create',
+  userId: 'E10105',
+  error: error: duplicate key value violates unique constraint "Users_pkey"
+      at Parser.parseErrorMessage (C:\Users\KIIT\Desktop\employee-management-system\server\node_modules\pg-protocol\dist\parser.js:287:98)
+      at Parser.handlePacket (C:\Users\KIIT\Desktop\employee-management-system\server\node_modules\pg-protocol\dist\parser.js:126:29)
+      at Parser.parse (C:\Users\KIIT\Desktop\employee-management-system\server\node_modules\pg-protocol\dist\parser.js:39:38)
+      at TLSSocket.<anonymous> (C:\Users\KIIT\Desktop\employee-management-system\server\node_modules\pg-protocol\dist\index.js:11:42)
+      at TLSSocket.emit (node:events:514:28)
+      at addChunk (node:internal/streams/readable:376:12)
+      at readableAddChunk (node:internal/streams/readable:349:9)
+      at Readable.push (node:internal/streams/readable:286:10)
+      at TLSWrap.onStreamRead (node:internal/stream_base_commons:190:23) {
+    length: 190,
+    severity: 'ERROR',
+    code: '23505',
+    detail: 'Key (user_id)=(E10105) already exists.',
+    hint: undefined,
+    position: undefined,
+    internalPosition: undefined,
+    internalQuery: undefined,
+    where: undefined,
+    schema: 'public',
+    table: 'Users',
+    column: undefined,
+    dataType: undefined,
+    constraint: 'Users_pkey',
+    file: 'nbtinsert.c',
+    line: '664',
+    routine: '_bt_check_unique',
+    query: `INSERT INTO public."Users" VALUES ('E10105', 'Aditi', 'Singh', 'aditijsr2002@gmail.com', '$2b$10$jE2uMgF5bsXZ1xviM6f/SuZaKE1Xz3LF.lrZGGWG..cat8ggoRsLm', false, false) RETURNING *`,
+    params: undefined
+  },
+  level: 'error',
+  message: 'Failed to create user',
+  timestamp: '2023-12-16T21:44:07.022Z'
+}
+{
+  module: 'desk-booking',
+  service: 'formatDeskBoookings',
+  level: 'error',
+  message: 'Desk bookings is undefined',
+  timestamp: '2023-12-16T21:46:09.680Z'
+}
+{
+  module: 'cab-booking',
+  service: 'formatCabBookings',
+  level: 'error',
+  message: 'Cab bookings not found',
+  timestamp: '2023-12-16T21:46:10.385Z'
+}
+{
+  module: 'food-booking',
+  service: 'formatFoodBookings',
+  level: 'error',
+  message: 'foodBookings is undefined',
+  timestamp: '2023-12-16T21:46:10.568Z'
+}
+{
+  module: 'user-all-booking-controller',
+  service: 'bookAll',
+  userId: 'E10105',
+  error: Error: Missing credentials for "PLAIN"
+      at SMTPConnection._formatError (C:\Users\KIIT\Desktop\employee-management-system\server\node_modules\nodemailer\lib\smtp-connection\index.js:790:19)
+      at SMTPConnection.login (C:\Users\KIIT\Desktop\employee-management-system\server\node_modules\nodemailer\lib\smtp-connection\index.js:444:38)
+      at C:\Users\KIIT\Desktop\employee-management-system\server\node_modules\nodemailer\lib\smtp-transport\index.js:272:32
+      at SMTPConnection.<anonymous> (C:\Users\KIIT\Desktop\employee-management-system\server\node_modules\nodemailer\lib\smtp-connection\index.js:213:17)
+      at Object.onceWrapper (node:events:628:28)
+      at SMTPConnection.emit (node:events:514:28)
+      at SMTPConnection._actionEHLO (C:\Users\KIIT\Desktop\employee-management-system\server\node_modules\nodemailer\lib\smtp-connection\index.js:1347:14)
+      at SMTPConnection._processResponse (C:\Users\KIIT\Desktop\employee-management-system\server\node_modules\nodemailer\lib\smtp-connection\index.js:969:20)
+      at SMTPConnection._onData (C:\Users\KIIT\Desktop\employee-management-system\server\node_modules\nodemailer\lib\smtp-connection\index.js:755:14)
+      at SMTPConnection._onSocketData (C:\Users\KIIT\Desktop\employee-management-system\server\node_modules\nodemailer\lib\smtp-connection\index.js:193:44) {
+    code: 'EAUTH',
+    command: 'API'
+  },
+  level: 'error',
+  message: 'Failed to send email to user',
+  timestamp: '2023-12-16T21:46:12.204Z'
+}
+{
+  module: 'desk-booking',
+  service: 'formatDeskBoookings',
+  level: 'error',
+  message: 'Desk bookings is undefined',
+  timestamp: '2023-12-16T21:47:11.654Z'
+}
+{
+  module: 'cab-booking',
+  service: 'formatCabBookings',
+  level: 'error',
+  message: 'Cab bookings not found',
+  timestamp: '2023-12-16T21:47:11.996Z'
+}
+{
+  module: 'food-booking',
+  service: 'formatFoodBookings',
+  level: 'error',
+  message: 'foodBookings is undefined',
+  timestamp: '2023-12-16T21:47:12.165Z'
+}
+{
+  module: 'user-all-booking-controller',
+  service: 'bookAll',
+  userId: 'E10105',
+  error: Error: Missing credentials for "PLAIN"
+      at SMTPConnection._formatError (C:\Users\KIIT\Desktop\employee-management-system\server\node_modules\nodemailer\lib\smtp-connection\index.js:790:19)
+      at SMTPConnection.login (C:\Users\KIIT\Desktop\employee-management-system\server\node_modules\nodemailer\lib\smtp-connection\index.js:444:38)
+      at C:\Users\KIIT\Desktop\employee-management-system\server\node_modules\nodemailer\lib\smtp-transport\index.js:272:32
+      at SMTPConnection.<anonymous> (C:\Users\KIIT\Desktop\employee-management-system\server\node_modules\nodemailer\lib\smtp-connection\index.js:213:17)
+      at Object.onceWrapper (node:events:628:28)
+      at SMTPConnection.emit (node:events:514:28)
+      at SMTPConnection._actionEHLO (C:\Users\KIIT\Desktop\employee-management-system\server\node_modules\nodemailer\lib\smtp-connection\index.js:1347:14)
+      at SMTPConnection._processResponse (C:\Users\KIIT\Desktop\employee-management-system\server\node_modules\nodemailer\lib\smtp-connection\index.js:969:20)
+      at SMTPConnection._onData (C:\Users\KIIT\Desktop\employee-management-system\server\node_modules\nodemailer\lib\smtp-connection\index.js:755:14)
+      at SMTPConnection._onSocketData (C:\Users\KIIT\Desktop\employee-management-system\server\node_modules\nodemailer\lib\smtp-connection\index.js:193:44) {
+    code: 'EAUTH',
+    command: 'API'
+  },
+  level: 'error',
+  message: 'Failed to send email to user',
+  timestamp: '2023-12-16T21:47:14.207Z'
+}

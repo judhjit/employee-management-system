@@ -37,7 +37,7 @@ const CurrentBookings = ({ showNewsFeed }) => {
         isCabRequired: true,
         isFoodRequired: true,
       });
-      console.log(response.data);
+      console.log("current-booking:",response.data);
       setData([...response.data]);
     } catch (error) {
       if (error.response.status === 404) {

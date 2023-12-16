@@ -1,0 +1,598 @@
+{
+  module: 'refresh-token-controller',
+  service: 'handleRefreshToken',
+  level: 'error',
+  message: 'You are not logged in',
+  timestamp: '2023-12-16T06:56:14.357Z'
+}
+{
+  module: 'desk-booking',
+  service: 'formatDeskBoookings',
+  level: 'error',
+  message: 'Desk bookings is undefined',
+  timestamp: '2023-12-16T07:18:17.401Z'
+}
+{
+  module: 'desk-booking',
+  service: 'getDeskBookingByDeskIdAndDates',
+  level: 'error',
+  message: 'Desk id or dates not provided',
+  timestamp: '2023-12-16T07:18:17.403Z'
+}
+{
+  module: 'desk-booking',
+  service: 'getDeskBookingByDeskIdAndDates',
+  level: 'error',
+  message: 'Desk id or dates not provided',
+  timestamp: '2023-12-16T07:18:17.404Z'
+}
+{
+  module: 'desk-booking',
+  service: 'getDeskBookingByDeskIdAndDates',
+  level: 'error',
+  message: 'Desk id or dates not provided',
+  timestamp: '2023-12-16T07:18:17.404Z'
+}
+{
+  module: 'cab-booking',
+  service: 'formatCabBookings',
+  level: 'error',
+  message: 'Cab bookings not found',
+  timestamp: '2023-12-16T07:18:17.741Z'
+}
+{
+  module: 'food-booking',
+  service: 'formatFoodBookings',
+  level: 'error',
+  message: 'foodBookings is undefined',
+  timestamp: '2023-12-16T07:18:18.280Z'
+}
+{
+  module: 'desk-booking',
+  service: 'bookDesk',
+  level: 'error',
+  message: 'Desk id, user id or dates not provided',
+  timestamp: '2023-12-16T07:18:18.282Z'
+}
+{
+  module: 'user-all-booking-controller',
+  service: 'bookAll',
+  userId: 'E10101',
+  level: 'error',
+  message: 'Desk booking failed',
+  timestamp: '2023-12-16T07:18:18.282Z'
+}
+{
+  module: 'desk-booking',
+  service: 'formatDeskBoookings',
+  level: 'error',
+  message: 'Desk bookings is undefined',
+  timestamp: '2023-12-16T07:18:26.346Z'
+}
+{
+  module: 'desk-booking',
+  service: 'getDeskBookingByDeskIdAndDates',
+  level: 'error',
+  message: 'Desk id or dates not provided',
+  timestamp: '2023-12-16T07:18:26.347Z'
+}
+{
+  module: 'desk-booking',
+  service: 'getDeskBookingByDeskIdAndDates',
+  level: 'error',
+  message: 'Desk id or dates not provided',
+  timestamp: '2023-12-16T07:18:26.348Z'
+}
+{
+  module: 'desk-booking',
+  service: 'getDeskBookingByDeskIdAndDates',
+  level: 'error',
+  message: 'Desk id or dates not provided',
+  timestamp: '2023-12-16T07:18:26.348Z'
+}
+{
+  module: 'cab-booking',
+  service: 'formatCabBookings',
+  level: 'error',
+  message: 'Cab bookings not found',
+  timestamp: '2023-12-16T07:18:26.640Z'
+}
+{
+  module: 'food-booking',
+  service: 'formatFoodBookings',
+  level: 'error',
+  message: 'foodBookings is undefined',
+  timestamp: '2023-12-16T07:18:27.260Z'
+}
+{
+  module: 'desk-booking',
+  service: 'bookDesk',
+  level: 'error',
+  message: 'Desk id, user id or dates not provided',
+  timestamp: '2023-12-16T07:18:27.261Z'
+}
+{
+  module: 'user-all-booking-controller',
+  service: 'bookAll',
+  userId: 'E10101',
+  level: 'error',
+  message: 'Desk booking failed',
+  timestamp: '2023-12-16T07:18:27.261Z'
+}
+{
+  module: 'verify-jwt-token',
+  service: 'verifyJWT',
+  level: 'error',
+  message: 'Access token invalid',
+  timestamp: '2023-12-16T07:52:06.308Z'
+}
+{
+  module: 'refresh-token-controller',
+  service: 'handleRefreshToken',
+  level: 'error',
+  message: 'You are not logged in',
+  timestamp: '2023-12-16T07:52:06.338Z'
+}
+{
+  module: 'verify-jwt-token',
+  service: 'verifyJWT',
+  level: 'error',
+  message: 'Access token invalid',
+  timestamp: '2023-12-16T08:25:03.261Z'
+}
+{
+  module: 'verify-jwt-token',
+  service: 'verifyJWT',
+  level: 'error',
+  message: 'Access token invalid',
+  timestamp: '2023-12-16T08:25:12.801Z'
+}
+{
+  module: 'verify-jwt-token',
+  service: 'verifyJWT',
+  level: 'error',
+  message: 'Access token invalid',
+  timestamp: '2023-12-16T08:25:15.042Z'
+}
+{
+  module: 'verify-jwt-token',
+  service: 'verifyJWT',
+  level: 'error',
+  message: 'Access token invalid',
+  timestamp: '2023-12-16T08:25:15.045Z'
+}
+{
+  module: 'user',
+  service: 'replaceRefreshTokens',
+  level: 'error',
+  message: 'User with same refresh token not found',
+  timestamp: '2023-12-16T08:25:15.443Z'
+}
+{
+  module: 'refresh-token-controller',
+  service: 'handleRefreshToken',
+  userId: 'E10101',
+  level: 'error',
+  message: 'Attempted reuse of refresh token detected',
+  timestamp: '2023-12-16T08:25:15.447Z'
+}
+{
+  module: 'refresh-token-controller',
+  service: 'handleRefreshToken',
+  level: 'error',
+  message: 'Forbidden! Attempted reuse of token.',
+  timestamp: '2023-12-16T08:25:15.448Z'
+}
+{
+  module: 'user',
+  service: 'replaceRefreshTokens',
+  level: 'error',
+  message: 'User with same refresh token not found',
+  timestamp: '2023-12-16T08:25:26.292Z'
+}
+{
+  module: 'refresh-token-controller',
+  service: 'handleRefreshToken',
+  userId: 'E10101',
+  level: 'error',
+  message: 'Attempted reuse of refresh token detected',
+  timestamp: '2023-12-16T08:25:26.297Z'
+}
+{
+  module: 'refresh-token-controller',
+  service: 'handleRefreshToken',
+  level: 'error',
+  message: 'Forbidden! Attempted reuse of token.',
+  timestamp: '2023-12-16T08:25:26.297Z'
+}
+{
+  module: 'user',
+  service: 'findById',
+  level: 'error',
+  message: 'User with same refresh token not found',
+  timestamp: '2023-12-16T08:25:26.379Z'
+}
+{
+  module: 'refresh-token-controller',
+  service: 'handleRefreshToken',
+  userId: 'E10101',
+  level: 'error',
+  message: 'Attempted reuse of refresh token detected',
+  timestamp: '2023-12-16T08:25:26.381Z'
+}
+{
+  module: 'refresh-token-controller',
+  service: 'handleRefreshToken',
+  level: 'error',
+  message: 'Forbidden! Attempted reuse of token.',
+  timestamp: '2023-12-16T08:25:26.382Z'
+}
+{
+  module: 'user',
+  service: 'replaceRefreshTokens',
+  level: 'error',
+  message: 'User with same refresh token not found',
+  timestamp: '2023-12-16T08:25:37.482Z'
+}
+{
+  module: 'refresh-token-controller',
+  service: 'handleRefreshToken',
+  userId: 'E10101',
+  level: 'error',
+  message: 'Attempted reuse of refresh token detected',
+  timestamp: '2023-12-16T08:25:37.484Z'
+}
+{
+  module: 'refresh-token-controller',
+  service: 'handleRefreshToken',
+  level: 'error',
+  message: 'Forbidden! Attempted reuse of token.',
+  timestamp: '2023-12-16T08:25:37.485Z'
+}
+{
+  module: 'verify-jwt-token',
+  service: 'verifyJWT',
+  level: 'error',
+  message: 'Access token invalid',
+  timestamp: '2023-12-16T10:36:54.723Z'
+}
+{
+  module: 'refresh-token-controller',
+  service: 'handleRefreshToken',
+  level: 'error',
+  message: 'You are not logged in',
+  timestamp: '2023-12-16T10:36:54.761Z'
+}
+{
+  module: 'user-all-booking-controller',
+  service: 'bookAll',
+  userId: 'E10101',
+  level: 'error',
+  message: 'User has already booked a desk for one or more of the dates',
+  timestamp: '2023-12-16T10:40:30.119Z'
+}
+{
+  module: 'verify-jwt-token',
+  service: 'verifyJWT',
+  level: 'error',
+  message: 'Access token invalid',
+  timestamp: '2023-12-16T12:50:17.898Z'
+}
+{
+  module: 'refresh-token-controller',
+  service: 'handleRefreshToken',
+  level: 'error',
+  message: 'You are not logged in',
+  timestamp: '2023-12-16T12:50:17.926Z'
+}
+{
+  module: 'user-desk-controller',
+  service: 'getDesksAvailabilityByDatesObj',
+  userId: 'E10101',
+  level: 'error',
+  message: 'Dates not provided',
+  timestamp: '2023-12-16T12:55:17.900Z'
+}
+{
+  module: 'desk-booking',
+  service: 'formatDeskBoookings',
+  level: 'error',
+  message: 'Desk bookings is undefined',
+  timestamp: '2023-12-16T12:56:14.673Z'
+}
+{
+  module: 'user-all-booking-controller',
+  service: 'bookAll',
+  userId: 'E10101',
+  level: 'error',
+  message: 'Desk already booked for one or more of the dates',
+  timestamp: '2023-12-16T12:56:14.762Z'
+}
+{
+  module: 'desk-booking',
+  service: 'formatDeskBoookings',
+  level: 'error',
+  message: 'Desk bookings is undefined',
+  timestamp: '2023-12-16T12:59:22.029Z'
+}
+{
+  module: 'cab-booking',
+  service: 'formatCabBookings',
+  level: 'error',
+  message: 'Cab bookings not found',
+  timestamp: '2023-12-16T12:59:22.577Z'
+}
+{
+  module: 'food-booking',
+  service: 'formatFoodBookings',
+  level: 'error',
+  message: 'foodBookings is undefined',
+  timestamp: '2023-12-16T12:59:22.883Z'
+}
+{
+  module: 'user-all-booking-controller',
+  service: 'bookAll',
+  userId: 'E10101',
+  error: Error: Missing credentials for "PLAIN"
+      at SMTPConnection._formatError (C:\Users\KIIT\Desktop\employee-management-system\server\node_modules\nodemailer\lib\smtp-connection\index.js:790:19)
+      at SMTPConnection.login (C:\Users\KIIT\Desktop\employee-management-system\server\node_modules\nodemailer\lib\smtp-connection\index.js:444:38)
+      at C:\Users\KIIT\Desktop\employee-management-system\server\node_modules\nodemailer\lib\smtp-transport\index.js:272:32
+      at SMTPConnection.<anonymous> (C:\Users\KIIT\Desktop\employee-management-system\server\node_modules\nodemailer\lib\smtp-connection\index.js:213:17)
+      at Object.onceWrapper (node:events:628:28)
+      at SMTPConnection.emit (node:events:514:28)
+      at SMTPConnection._actionEHLO (C:\Users\KIIT\Desktop\employee-management-system\server\node_modules\nodemailer\lib\smtp-connection\index.js:1347:14)
+      at SMTPConnection._processResponse (C:\Users\KIIT\Desktop\employee-management-system\server\node_modules\nodemailer\lib\smtp-connection\index.js:969:20)
+      at SMTPConnection._onData (C:\Users\KIIT\Desktop\employee-management-system\server\node_modules\nodemailer\lib\smtp-connection\index.js:755:14)
+      at SMTPConnection._onSocketData (C:\Users\KIIT\Desktop\employee-management-system\server\node_modules\nodemailer\lib\smtp-connection\index.js:193:44) {
+    code: 'EAUTH',
+    command: 'API'
+  },
+  level: 'error',
+  message: 'Failed to send email to user',
+  timestamp: '2023-12-16T12:59:26.108Z'
+}
+{
+  module: 'verify-jwt-token',
+  service: 'verifyJWT',
+  level: 'error',
+  message: 'Access token invalid',
+  timestamp: '2023-12-16T13:28:29.651Z'
+}
+{
+  module: 'news',
+  service: 'formatNews',
+  error: AggregateError
+      at internalConnectMultiple (node:net:1114:18)
+      at afterConnectMultiple (node:net:1667:5) {
+    code: 'ETIMEDOUT',
+    [errors]: [
+      Error: connect ETIMEDOUT 13.228.46.236:5432
+          at createConnectionError (node:net:1634:14)
+          at Timeout.internalConnectMultipleTimeout (node:net:1685:38)
+          at listOnTimeout (node:internal/timers:575:11)
+          at process.processTimers (node:internal/timers:514:7) {
+        errno: -4039,
+        code: 'ETIMEDOUT',
+        syscall: 'connect',
+        address: '13.228.46.236',
+        port: 5432
+      },
+      Error: connect ETIMEDOUT 13.228.184.177:5432
+          at createConnectionError (node:net:1634:14)
+          at Timeout.internalConnectMultipleTimeout (node:net:1685:38)
+          at listOnTimeout (node:internal/timers:575:11)
+          at process.processTimers (node:internal/timers:514:7) {
+        errno: -4039,
+        code: 'ETIMEDOUT',
+        syscall: 'connect',
+        address: '13.228.184.177',
+        port: 5432
+      },
+      Error: connect ETIMEDOUT 52.220.170.93:5432
+          at createConnectionError (node:net:1634:14)
+          at afterConnectMultiple (node:net:1664:40) {
+        errno: -4039,
+        code: 'ETIMEDOUT',
+        syscall: 'connect',
+        address: '52.220.170.93',
+        port: 5432
+      }
+    ]
+  },
+  level: 'error',
+  message: 'Failed to get all news',
+  timestamp: '2023-12-16T16:14:14.259Z'
+}
+{
+  module: 'verify-jwt-token',
+  service: 'verifyJWT',
+  level: 'error',
+  message: 'Access token invalid',
+  timestamp: '2023-12-16T16:26:40.031Z'
+}
+{
+  module: 'refresh-token-controller',
+  service: 'handleRefreshToken',
+  level: 'error',
+  message: 'You are not logged in',
+  timestamp: '2023-12-16T16:26:40.037Z'
+}
+{
+  module: 'verify-jwt-token',
+  service: 'verifyJWT',
+  level: 'error',
+  message: 'Access token invalid',
+  timestamp: '2023-12-16T16:26:40.043Z'
+}
+{
+  module: 'refresh-token-controller',
+  service: 'handleRefreshToken',
+  level: 'error',
+  message: 'You are not logged in',
+  timestamp: '2023-12-16T16:26:40.098Z'
+}
+{
+  module: 'refresh-token-controller',
+  service: 'handleRefreshToken',
+  level: 'error',
+  message: 'You are not logged in',
+  timestamp: '2023-12-16T16:26:40.100Z'
+}
+{
+  module: 'verify-jwt-token',
+  service: 'verifyJWT',
+  level: 'error',
+  message: 'Access token invalid',
+  timestamp: '2023-12-16T17:00:07.220Z'
+}
+{
+  module: 'verify-jwt-token',
+  service: 'verifyJWT',
+  level: 'error',
+  message: 'Access token invalid',
+  timestamp: '2023-12-16T17:00:07.291Z'
+}
+{
+  module: 'user',
+  service: 'replaceRefreshTokens',
+  level: 'error',
+  message: 'User with same refresh token not found',
+  timestamp: '2023-12-16T17:00:30.327Z'
+}
+{
+  module: 'refresh-token-controller',
+  service: 'handleRefreshToken',
+  userId: 'E10101',
+  level: 'error',
+  message: 'Attempted reuse of refresh token detected',
+  timestamp: '2023-12-16T17:00:30.330Z'
+}
+{
+  module: 'refresh-token-controller',
+  service: 'handleRefreshToken',
+  level: 'error',
+  message: 'Forbidden! Attempted reuse of token.',
+  timestamp: '2023-12-16T17:00:30.330Z'
+}
+{
+  module: 'verify-jwt-token',
+  service: 'verifyJWT',
+  level: 'error',
+  message: 'Access token invalid',
+  timestamp: '2023-12-16T17:51:42.516Z'
+}
+{
+  module: 'refresh-token-controller',
+  service: 'handleRefreshToken',
+  level: 'error',
+  message: 'You are not logged in',
+  timestamp: '2023-12-16T17:51:42.518Z'
+}
+{
+  module: 'verify-jwt-token',
+  service: 'verifyJWT',
+  level: 'error',
+  message: 'Access token invalid',
+  timestamp: '2023-12-16T17:51:42.523Z'
+}
+{
+  module: 'refresh-token-controller',
+  service: 'handleRefreshToken',
+  level: 'error',
+  message: 'You are not logged in',
+  timestamp: '2023-12-16T17:51:42.546Z'
+}
+{
+  module: 'refresh-token-controller',
+  service: 'handleRefreshToken',
+  level: 'error',
+  message: 'You are not logged in',
+  timestamp: '2023-12-16T17:51:42.548Z'
+}
+{
+  module: 'verify-jwt-token',
+  service: 'verifyJWT',
+  level: 'error',
+  message: 'Access token invalid',
+  timestamp: '2023-12-16T18:22:19.147Z'
+}
+{
+  module: 'verify-jwt-token',
+  service: 'verifyJWT',
+  level: 'error',
+  message: 'Access token invalid',
+  timestamp: '2023-12-16T18:22:34.104Z'
+}
+{
+  module: 'verify-jwt-token',
+  service: 'verifyJWT',
+  level: 'error',
+  message: 'Access token invalid',
+  timestamp: '2023-12-16T18:22:34.140Z'
+}
+{
+  module: 'user',
+  service: 'findRefreshToken',
+  level: 'error',
+  message: 'User with same refresh token not found',
+  timestamp: '2023-12-16T18:22:34.188Z'
+}
+{
+  module: 'refresh-token-controller',
+  service: 'handleRefreshToken',
+  userId: 'E10101',
+  level: 'error',
+  message: 'Attempted reuse of refresh token detected',
+  timestamp: '2023-12-16T18:22:34.190Z'
+}
+{
+  module: 'refresh-token-controller',
+  service: 'handleRefreshToken',
+  level: 'error',
+  message: 'Forbidden! Attempted reuse of token.',
+  timestamp: '2023-12-16T18:22:34.191Z'
+}
+{
+  module: 'user',
+  service: 'replaceRefreshTokens',
+  level: 'error',
+  message: 'User with same refresh token not found',
+  timestamp: '2023-12-16T18:22:46.328Z'
+}
+{
+  module: 'refresh-token-controller',
+  service: 'handleRefreshToken',
+  userId: 'E10101',
+  level: 'error',
+  message: 'Attempted reuse of refresh token detected',
+  timestamp: '2023-12-16T18:22:46.331Z'
+}
+{
+  module: 'refresh-token-controller',
+  service: 'handleRefreshToken',
+  level: 'error',
+  message: 'Forbidden! Attempted reuse of token.',
+  timestamp: '2023-12-16T18:22:46.331Z'
+}
+{
+  module: 'user',
+  service: 'replaceRefreshTokens',
+  level: 'error',
+  message: 'User with same refresh token not found',
+  timestamp: '2023-12-16T18:22:46.489Z'
+}
+{
+  module: 'refresh-token-controller',
+  service: 'handleRefreshToken',
+  userId: 'E10101',
+  level: 'error',
+  message: 'Attempted reuse of refresh token detected',
+  timestamp: '2023-12-16T18:22:46.493Z'
+}
+{
+  module: 'refresh-token-controller',
+  service: 'handleRefreshToken',
+  level: 'error',
+  message: 'Forbidden! Attempted reuse of token.',
+  timestamp: '2023-12-16T18:22:46.494Z'
+}

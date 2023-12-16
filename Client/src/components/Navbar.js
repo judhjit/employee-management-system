@@ -251,6 +251,10 @@ const Navbar = ({
   isAdmin,
   isUser,
   isNewsadmin,
+  bookings,
+  setBookings,
+  selectedDates,
+                setSelectedDates
 }) => {
   const navigate = useNavigate();
 
@@ -326,6 +330,19 @@ const Navbar = ({
 
     },
   }));
+  
+  const handleHomeButtonClick=()=>{
+    // setBookings({
+    //   dates: [],
+    //   deskId: [],
+    //   workSlot: [],
+    //   preference: [],
+    //   isDeskRequired: true,
+    //   isCabRequired: false,
+    //   isFoodRequired: false,
+    // })
+    navigate("/landingpage");
+  };
 
   return (
     <div>
@@ -385,7 +402,7 @@ const Navbar = ({
             </div>
           )}
           <div style={{ marginLeft: "auto", display: "flex", gap: "10px" }}>
-            <IconButton component={Link} to="/landingpage">
+            <IconButton onClick={handleHomeButtonClick}>
               <FontAwesomeIcon
                 icon={faHome}
                 style={{ height: "1.5vw", width: "1.5vw" }}
