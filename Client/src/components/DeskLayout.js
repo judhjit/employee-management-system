@@ -4,7 +4,7 @@ import Table from './Table';
 import Box from '@mui/material/Box';
 import { useEffect } from 'react';
 
-const DeskLayout = ({ active, setSelectedSeat, selectedSeats, responce ,bookings,setBookings}) => {
+const DeskLayout = ({ active, setSelectedSeat, selectedSeats, responce ,bookings,setBookings,singleSelect,setSingleSelect}) => {
   const [activeTable, setActiveTable] = useState(selectedSeats[active]);
   const shouldUpdateSelectedSeat = useRef(false);
   const [bookedTable,setBookedTable] = useState([])
@@ -14,6 +14,7 @@ const DeskLayout = ({ active, setSelectedSeat, selectedSeats, responce ,bookings
   useEffect(()=>{
     setBookedTable([])
     getData();
+    setSingleSelect(true)
   },[responce,active])
 
   useEffect(() => {
@@ -81,6 +82,7 @@ const DeskLayout = ({ active, setSelectedSeat, selectedSeats, responce ,bookings
             bookedTable={bookedTable}
             setActiveTable={setActiveTable}
             shouldUpdateSelectedSeat={shouldUpdateSelectedSeat}
+            singleSelect={singleSelect}
           />
 
           <Table
@@ -89,6 +91,7 @@ const DeskLayout = ({ active, setSelectedSeat, selectedSeats, responce ,bookings
             bookedTable={bookedTable}
             setActiveTable={setActiveTable}
             shouldUpdateSelectedSeat={shouldUpdateSelectedSeat}
+            singleSelect={singleSelect}
           />
 
           <Table
@@ -97,6 +100,7 @@ const DeskLayout = ({ active, setSelectedSeat, selectedSeats, responce ,bookings
             bookedTable={bookedTable}
             setActiveTable={setActiveTable}
             shouldUpdateSelectedSeat={shouldUpdateSelectedSeat}
+            singleSelect={singleSelect}
           />
 
           <Table
@@ -105,6 +109,7 @@ const DeskLayout = ({ active, setSelectedSeat, selectedSeats, responce ,bookings
             bookedTable={bookedTable}
             setActiveTable={setActiveTable}
             shouldUpdateSelectedSeat={shouldUpdateSelectedSeat}
+            singleSelect={singleSelect}
           />
 
           <Table
@@ -113,6 +118,7 @@ const DeskLayout = ({ active, setSelectedSeat, selectedSeats, responce ,bookings
             bookedTable={bookedTable}
             setActiveTable={setActiveTable}
             shouldUpdateSelectedSeat={shouldUpdateSelectedSeat}
+            singleSelect={singleSelect}
           />
         </div>
         {/* <div>
