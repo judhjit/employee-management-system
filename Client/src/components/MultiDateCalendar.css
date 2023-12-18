@@ -90,6 +90,14 @@ background-color: white !important;
   color: grey;
 }
 
+.disabled {
+  background-color: green !important;
+  border-radius: 80%;
+  padding: 3px 6px;
+  color: white;
+}
+
+
 
 
 
