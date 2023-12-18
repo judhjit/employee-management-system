@@ -72,13 +72,13 @@ background-color: white !important;
 
 .react-calendar .booked {
   background-color: green;
-  border-radius: 50px;
+  /* border-radius: 50px; */
   color: white;
 }
 
 .react-calendar .sunday {
   color: black; 
-  background-color: grey;
+  background-color: rgb(196, 190, 190);
   opacity: 0.5; 
 }
 
@@ -92,7 +92,7 @@ background-color: white !important;
 
 .disabled {
   background-color: green !important;
-  border-radius: 80%;
+ 
   padding: 3px 6px;
   color: white;
 }

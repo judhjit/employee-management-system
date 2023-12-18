@@ -56,18 +56,36 @@ const MultiDateCalendar = ({
     });
   }, []);
 
+  const fetchData = async () => {
+    let response;
+    try {
+      const response = await api.post("/user/getbookings", {
+        isDeskRequired: true,
+        isCabRequired: true,
+        isFoodRequired: true,
+      });
+      console.log("res", response);
+
+      const dateBookedArray = response.data.map((item) => item.dateBooked);
+
+      console.log("dates", dateBookedArray);
+      setDisabledDates(dateBookedArray);
+    } catch (error) {
+      console.error("Error:", error);
+    }
+  };
+  useEffect(() => {
+    fetchData();
+  }, []);
+
+
   const handleDateClick = (date) => {
     console.log(date);
     if (date.getDay() === 0) {
       return;
     }
-    console.log("hi");
-    const formattedDate = date.toDateString();
-    if (disabledDates.includes(formattedDate)) {
-      // alert(`Bookings for ${formattedDate} have already been done.`);
-
-      return;
-    }
+    
+    
     let newSelectedDates;
 
     const dateIndex = selectedDates.findIndex(
@@ -118,28 +136,7 @@ const MultiDateCalendar = ({
     navigate("/bookings");
   };
 
-  const fetchData = async () => {
-    let response;
-    try {
-      const response = await api.post("/user/getbookings", {
-        isDeskRequired: true,
-        isCabRequired: true,
-        isFoodRequired: true,
-      });
-      console.log("res", response);
-
-      const dateBookedArray = response.data.map((item) => item.dateBooked);
-
-      console.log("dates", dateBookedArray);
-      setDisabledDates(dateBookedArray);
-    } catch (error) {
-      console.error("Error:", error);
-    }
-  };
-  useEffect(() => {
-    fetchData();
-  }, []);
-
+ 
   return (
     <div style={{ backgroundColor: "white", height: "664px", width: "76.1vw" }}>
       <div

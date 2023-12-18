@@ -40,6 +40,7 @@ function CustomTabPanel(props) {
 const DeskBooking = ({ selectedDates, onNext, bookings, setBookings }) => {
   const [value, setValue] = React.useState(0);
   const [active, setActive] = useState(0);
+  const [singleSelect,setSingleSelect] = useState(true)
   const [selectedSeats, setSelectedSeat] = useState(
     Array(selectedDates.length).fill(null)
   );
@@ -55,11 +56,7 @@ const DeskBooking = ({ selectedDates, onNext, bookings, setBookings }) => {
         dates: selectedDates
       })
       setresponce(responce)
-      // console.log("indexed",responce.data['A1'])
-
-      // responce.data['A1'].bookedBy[0]="Aditi"
-      // responce.data['A2'].bookedBy[1]="Shyam"
-      // responce.data['C2'].bookedBy[1]="Chotu"
+      
 
       console.log("indexed",responce.data['A1'].bookedBy)
       console.log("indexed",responce.data['A2'].bookedBy)
@@ -156,6 +153,8 @@ const DeskBooking = ({ selectedDates, onNext, bookings, setBookings }) => {
                 bookings={bookings}
                 setBookings={setBookings}
                 responce={responce.data}
+                singleSelect={singleSelect}
+                setSingleSelect={setSingleSelect}
               />
             )}
             <Button
@@ -219,6 +218,8 @@ const DeskBooking = ({ selectedDates, onNext, bookings, setBookings }) => {
                 bookings={bookings}
                 setBookings={setBookings}
                 responce={responce.data}
+                singleSelect={singleSelect}
+                setSingleSelect={setSingleSelect}
               />
             )}
             <Button
