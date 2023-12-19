@@ -5,6 +5,7 @@ import api from "../api";
 const Review = ({ bookings, setBookings }) => {
   console.log("bookings in review page", bookings);
   const [submissionStatus, setSubmissionStatus] = useState(null);
+  const [errorMessage, setErrorMessage] = useState(null);
   const [isdisabled,setDisabled]=useState(false);
   useEffect(() => {
     const containsNonNullPreference = bookings.preference.some(
@@ -32,10 +33,11 @@ const Review = ({ bookings, setBookings }) => {
     setDisabled(true);
   }
   const handleSubmit = async () => {
+    let response;
     
     try {
       setDisabled(true);
-      const response = await api.post("/user/bookings", {
+      response = await api.post("/user/bookings", {
         dates: bookings.dates,
         deskId: bookings.deskId,
         preference: bookings.preference,
@@ -52,6 +54,7 @@ const Review = ({ bookings, setBookings }) => {
     } catch (err) {
       console.log("error in the final submission", err);
       setSubmissionStatus("error");
+      setErrorMessage(err.response.data.message);
       setDisabled(false);
     }
   };
@@ -127,7 +130,7 @@ const Review = ({ bookings, setBookings }) => {
      
         {submissionStatus === "error" && (
           <Typography variant="h6" sx={{ marginTop: "50px", color: "red", marginLeft:'30px' }}>
-            Error in booking. Please try again.
+            {errorMessage}
           </Typography>
         )}
     </Card>
