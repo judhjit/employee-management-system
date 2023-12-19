@@ -44,6 +44,10 @@ const DeskLayoutAll = ({ setSelectedSeat, selectedSeats, responce ,bookings,setB
     };
 
     getData();
+    if(bookedTable.length === 5)
+    {
+      alert("no seats are available on the selected dates.go for single date selection!!!")
+    }
     setSingleSelect(false);
   }, [responce]);
 

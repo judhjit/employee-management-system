@@ -9,6 +9,7 @@ import "./MultiDateCalendar.css";
 import { useNavigate } from "react-router-dom";
 import CurrentBookings from "./CurrentBookings";
 import api from "../api";
+import Loading from './Loading';
 
 const MultiDateCalendar = ({
   showNewsFeed,
@@ -24,12 +25,18 @@ const MultiDateCalendar = ({
   const navigate = useNavigate();
   const [newsTitles, setNewsTitles] = useState([]);
   // const [errorMessage,setErrorMessage]=useState(null);
+  const [loading,setLoading]=useState(false);
 
   const [disabledDates, setDisabledDates] = useState([]);
   const fetchNewsTitles = async () => {
     try {
       const response = await api.get("/user/news");
       setNewsTitles(response.data.map((post) => post.title));
+
+
+     
+
+
     } catch (error) {
       if (error.response.status === 404) {
         console.log("No data found!");
@@ -70,6 +77,7 @@ const MultiDateCalendar = ({
 
       console.log("dates", dateBookedArray);
       setDisabledDates(dateBookedArray);
+      setLoading(true);
     } catch (error) {
       console.error("Error:", error);
     }
@@ -138,8 +146,11 @@ const MultiDateCalendar = ({
 
  
   return (
+    
     <div style={{ backgroundColor: "white", height: "664px", width: "76.1vw" }}>
-      <div
+     {loading?(
+      <div>
+          <div
         style={{
           flex: 0,
           height: "5%",
@@ -237,6 +248,9 @@ const MultiDateCalendar = ({
         <CurrentBookings showNewsFeed={showNewsFeed} />
       </div>
       <ToastContainer />
+        </div>
+     ):<Loading/>}
+      
     </div>
   );
 };
