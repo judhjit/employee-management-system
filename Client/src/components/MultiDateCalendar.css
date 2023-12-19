@@ -71,9 +71,9 @@ background-color: white !important;
 }
 
 .react-calendar .booked {
-  background-color: green;
+  background-color: rgb(236, 232, 232);
   /* border-radius: 50px; */
-  color: white;
+  color: rgb(172, 166, 166);
 }
 
 .react-calendar .sunday {
