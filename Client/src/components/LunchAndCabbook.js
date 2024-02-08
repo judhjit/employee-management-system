@@ -66,7 +66,7 @@ export default function LunchAndCabbook({
 }) {
   const [value, setValue] = React.useState(0);
   const [selectedPreferences, setSelectedPreferences] = useState({});
-  const [selectedCab, setSelectedCab] = useState(Array(selectedDates.length).fill(null));
+  // const [selectedCab, setSelectedCab] = useState(Array(selectedDates.length).fill(null));
   const [selectedMeal, setSelectedMeal] = useState(Array(selectedDates.length).fill(null));
 
   console.log("bookingslunchandcab", bookings);
@@ -85,24 +85,20 @@ export default function LunchAndCabbook({
 
     }
 
-    const containsNonNullCab = selectedCab.some(element => element !== null);
-    if (containsNonNullCab) {
-      setBookings((prevBookings) => ({
-        ...prevBookings,
-        isCabRequired: true
-      }));
+    // const containsNonNullCab = selectedCab.some(element => element !== null);
+    // if (containsNonNullCab) {
+    //   setBookings((prevBookings) => ({
+    //     ...prevBookings,
+    //     isCabRequired: true
+    //   }));
 
-    }
-  }, [selectedMeal, selectedCab])
+    // }
+  }, [selectedMeal])
 
-  const [selectedSlot, setSelectedSlot] = useState("Morning");
+  // const [selectedSlot, setSelectedSlot] = useState("Morning");
   const [selectedLunch, setSelectedLunch] = useState("none");
   const [active, setActive] = useState(-1);
   const [selectAllDates, setSelectAllDates] = useState(false);
-
-  const handleSlotChange = (event) => {
-    setSelectedSlot(event.target.value);
-  };
 
   const handleActiveStatus = (index) => {
     setActive(index);
@@ -191,7 +187,7 @@ export default function LunchAndCabbook({
               }
             </div> */}
           <Box style={{ display: "flex", flexDirection: "row", flexWrap: "wrap" }}>
-            <LunchAndCabForm active={active} setSelectedCab={setSelectedCab} setSelectedMeal={setSelectedMeal} selectedMeal={selectedMeal} selectedCab={selectedCab} bookings={bookings} setBookings={setBookings} />
+            <LunchAndCabForm active={active} setSelectedMeal={setSelectedMeal} selectedMeal={selectedMeal} bookings={bookings} setBookings={setBookings} />
             <Button
               variant="contained"
               style={{ marginTop: "70px", width: "150px", marginTop: "350px" }}
@@ -212,7 +208,7 @@ export default function LunchAndCabbook({
             >
               <ArrowBackIcon />
             </Button>
-            <Button
+            {/* <Button
               variant="contained"
               style={{
                 width: "150px",
@@ -223,7 +219,7 @@ export default function LunchAndCabbook({
               onClick={onSkip}
             >
               skip{" "}
-            </Button>
+            </Button> */}
           </Box>
           {/* <Button
           variant="contained"
@@ -237,7 +233,7 @@ export default function LunchAndCabbook({
             <Box
               sx={{ display: "flex", flexDirection: "row", flexWrap: "wrap" }}
             >
-              <LunchAndCabFormAll setSelectedCab={setSelectedCab} setSelectedMeal={setSelectedMeal} selectedMeal={selectedMeal} selectedCab={selectedCab} bookings={bookings} setBookings={setBookings} active={active} selectedDates={selectedDates}/>
+              <LunchAndCabFormAll setSelectedMeal={setSelectedMeal} selectedMeal={selectedMeal} bookings={bookings} setBookings={setBookings} active={active} selectedDates={selectedDates} />
               <Button
                 style={{
                   marginLeft: "-51px",
@@ -256,7 +252,7 @@ export default function LunchAndCabbook({
                   marginTop: "70px",
                   width: "200px",
                   marginTop: "350px",
-                }}onClick={onNext}
+                }} onClick={onNext}
               >
                 Submit{" "}
               </Button>

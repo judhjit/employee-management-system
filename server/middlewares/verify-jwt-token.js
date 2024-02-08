@@ -25,7 +25,7 @@ const verifyJWT = (req, res, next) => {
             }
             req.userId = decoded.UserInfo.userId;
             req.isAdmin = decoded.UserInfo.isAdmin;
-            req.isNewsAdmin = decoded.UserInfo.isNewsAdmin;
+            // req.isNewsAdmin = decoded.UserInfo.isNewsAdmin;
             childLogger.info("Access token verified", { service: service, userId: req.userId });
             next();
         }

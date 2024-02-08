@@ -33,15 +33,15 @@ const corsMiddleware = cors(corsOptions);
 const adminRoutes = require('./routes/admin-routes');
 const authRoutes = require('./routes/auth-routes');
 const baseRoutes = require('./routes/base-routes');
-const newsAdminRoutes = require('./routes/news-admin-routes');
+// const newsAdminRoutes = require('./routes/news-admin-routes');
 const userRoutes = require('./routes/user-routes');
 
 const app = express();
 
 const server = require('http').createServer(app);
-const io = require('socket.io')(server, {
-    cors: corsOptions
-});
+// const io = require('socket.io')(server, {
+//     cors: corsOptions
+// });
 
 // app.set('view engine', 'ejs');
 // app.set('views', path.join(__dirname, 'views'));
@@ -74,7 +74,7 @@ app.use('/user', userRoutes); //registering a middleware triggered for all incom
 
 app.use(protectRoutesMiddleware); //registering a middleware to protect routes requiring authentication and authorization
 
-app.use('/newsadmin', newsAdminRoutes); //registering a middleware triggered for all incoming requests with /newsAdmin prefix
+// app.use('/newsadmin', newsAdminRoutes); //registering a middleware triggered for all incoming requests with /newsAdmin prefix
 
 app.use('/admin', adminRoutes); //registering a middleware triggered for all incoming requests with /admin prefix
 
@@ -93,16 +93,16 @@ server.listen(port, () => {
     logger.info(`Server listening on port ${port}`);
 });
 
-io.on('connection', (socket) => {
-    logger.info(`User connected with socket id ${socket.id}`);
-    socket.on('disconnect', () => {
-        logger.info(`User disconnected with socket id ${socket.id}`);
-    });
-    socket.on('newsfeed:modified', (userId) => {
-        logger.info(`Newsfeed modified by user ${userId.userId}`);
-        socket.broadcast.emit('newsfeed:refresh');
-    });
-});
+// io.on('connection', (socket) => {
+//     logger.info(`User connected with socket id ${socket.id}`);
+//     socket.on('disconnect', () => {
+//         logger.info(`User disconnected with socket id ${socket.id}`);
+//     });
+//     socket.on('newsfeed:modified', (userId) => {
+//         logger.info(`Newsfeed modified by user ${userId.userId}`);
+//         socket.broadcast.emit('newsfeed:refresh');
+//     });
+// });
 
 
 module.exports = app;

@@ -32,8 +32,8 @@ const Requests = () => {
   const [initialData, setInitialData] = useState([]);
   const [startDate, setStartDate] = React.useState();
   const [endDate, setEndDate] = React.useState();
-  const [isDeskRequired, setIsDeskRequired] = useState(true);
-  const [isCabRequired, setIsCabRequired] = useState(true);
+  // const [isDeskRequired, setIsDeskRequired] = useState(true);
+  // const [isCabRequired, setIsCabRequired] = useState(true);
   const [isFoodRequired, setIsFoodRequired] = useState(true);
   const [userId, setUserId] = useState("");
   const [selectedDateRange, setSelectedDateRange] = useState("all");
@@ -42,8 +42,8 @@ const Requests = () => {
     const fetchData = async () => {
       try {
         const response = await api.post("/admin/getallbookings", {
-          isDeskRequired: isDeskRequired,
-          isCabRequired: isCabRequired,
+          // isDeskRequired: isDeskRequired,
+          // isCabRequired: isCabRequired,
           isFoodRequired: isFoodRequired,
           userId: userId,
           startDate: startDate?.format("YYYY-MM-DD"),
@@ -61,8 +61,8 @@ const Requests = () => {
 
     fetchData();
   }, [
-    isDeskRequired,
-    isCabRequired,
+    // isDeskRequired,
+    // isCabRequired,
     isFoodRequired,
     userId,
     startDate,
@@ -113,20 +113,20 @@ const Requests = () => {
     const selectedValue = e.target.value;
 
     if (selectedValue === "Car") {
-      setIsDeskRequired(false);
-      setIsCabRequired(true);
+      // setIsDeskRequired(false);
+      // setIsCabRequired(true);
       setIsFoodRequired(false);
     } else if (selectedValue === "Desk") {
-      setIsDeskRequired(true);
-      setIsCabRequired(false);
+      // setIsDeskRequired(true);
+      // setIsCabRequired(false);
       setIsFoodRequired(false);
     } else if (selectedValue === "Lunch") {
-      setIsDeskRequired(false);
-      setIsCabRequired(false);
+      // setIsDeskRequired(false);
+      // setIsCabRequired(false);
       setIsFoodRequired(true);
     } else if (selectedValue === "all") {
-      setIsDeskRequired(true);
-      setIsCabRequired(true);
+      // setIsDeskRequired(true);
+      // setIsCabRequired(true);
       setIsFoodRequired(true);
     }
   };
@@ -205,27 +205,6 @@ const Requests = () => {
             marginTop: "0.6vw",
           }}
         />
-
-        <select
-          label="service Type"
-          placeholder="Service Type"
-          style={{
-            width: "11vw",
-            height: "54px",
-            color: "grey",
-            marginLeft: "0.4vw",
-            paddingLeft: "15px",
-            borderRadius: "4px",
-            border: "1px solid #C3C3C3",
-            marginTop: "0.6vw",
-          }}
-          onChange={(e) => handleServiceChange(e)}
-        >
-          <option value="all">All Services</option>
-          <option value="Car">Cab</option>
-          <option value="Desk">Desk</option>
-          <option value="Lunch">Food</option>
-        </select>
 
         <select
           placeholder="Choose date"

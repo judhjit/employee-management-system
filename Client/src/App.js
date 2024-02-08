@@ -5,18 +5,18 @@ import "./App.css";
 
 import MultiDateCalendar from "./components/MultiDateCalendar";
 import Navbar from "./components/Navbar";
-import NewsFeed from "./components/NewsFeed";
+// import NewsFeed from "./components/NewsFeed";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import DeskBooking from "./components/DeskBooking";
+// import DeskBooking from "./components/DeskBooking";
 
 // import Stepper from "./components/Stepper";
 
 import CurrentBookings from "./components/CurrentBookings";
 import LunchAndCabbook from "./components/LunchAndCabbook";
-import GrantAccess from "./components/admin/GrantAccess";
+// import GrantAccess from "./components/admin/GrantAccess";
 import Requests from "./components/admin/Requests";
 import Analytics from "./components/admin/Analytics";
-import ViewAllAdmin from "./components/admin/ViewAllAdmin";
+// import ViewAllAdmin from "./components/admin/ViewAllAdmin";
 import Login from "./components/Login";
 import Signup from "./components/Signup";
 import Layout from "./components/Layout";
@@ -25,12 +25,12 @@ import Profile from "./components/Profile";
 import UserAnalytics from "./components/UserAnalytics";
 import api from "./api";
 
-import io from "socket.io-client";
+// import io from "socket.io-client";
 
 
 function App() {
-  const socket = io("http://localhost:3001");
-  const [showNewsFeed, setShowNewsFeed] = useState(false);
+  // const socket = io("http://localhost:3001");
+  // const [showNewsFeed, setShowNewsFeed] = useState(false);
   const [selectedDates, setSelectedDates] = useState([]);
   const [nightLight, setNightLight] = useState(false);
   const [isUser, setisUser] = useState(false);
@@ -40,17 +40,17 @@ function App() {
     firstName: '',
     lastName: '',
     isAdmin: false,
-    isNewsAdmin: false,
+    // isNewsAdmin: false,
     expiry: '',
   });
 
   const [bookings, setBookings] = useState({
     dates: [],
-    deskId: [],
-    workSlot: [],
+    // deskId: [],
+    // workSlot: [],
     preference: [],
-    isDeskRequired: true,
-    isCabRequired: false,
+    // isDeskRequired: true,
+    // isCabRequired: false,
     isFoodRequired: false,
   })
 
@@ -92,15 +92,15 @@ function App() {
       <div>
 
         {isUser && <Navbar
-          showNewsFeed={showNewsFeed}
-          setShowNewsFeed={setShowNewsFeed}
+          // showNewsFeed={showNewsFeed}
+          // setShowNewsFeed={setShowNewsFeed}
           isAdmin={user.isAdmin}
           isUser={isUser}
-          isNewsadmin={user.isNewsAdmin}
+          // isNewsadmin={user.isNewsAdmin}
           bookings={bookings}
           setBookings={setBookings}
           selectedDates={selectedDates}
-                setSelectedDates={setSelectedDates}
+          setSelectedDates={setSelectedDates}
         />}
 
         <div className="App" style={{ display: "flex" }}>
@@ -113,8 +113,8 @@ function App() {
             <Routes>
               <Route path="/" element={<Layout />}>
                 <Route index element={<Login
-                  setShowNewsFeed={setShowNewsFeed}
-                  showNewsFeed={showNewsFeed}
+                  // setShowNewsFeed={setShowNewsFeed}
+                  // showNewsFeed={showNewsFeed}
                   isUser={isUser}
                   setisUser={setisUser}
                   setUser={setUser}
@@ -123,8 +123,8 @@ function App() {
               </Route>
               <Route path="/" element={<Layout />}>
                 <Route path="login" element={<Login
-                  setShowNewsFeed={setShowNewsFeed}
-                  showNewsFeed={showNewsFeed}
+                  // setShowNewsFeed={setShowNewsFeed}
+                  // showNewsFeed={showNewsFeed}
                   isUser={isUser}
                   setisUser={setisUser}
                   setUser={setUser}
@@ -132,7 +132,7 @@ function App() {
                 <Route path="/signup" element={<Signup />} />
               </Route>
               <Route path="/landingpage" element={<MultiDateCalendar
-                showNewsFeed={showNewsFeed}
+                // showNewsFeed={showNewsFeed}
                 selectedDates={selectedDates}
                 setSelectedDates={setSelectedDates}
                 user={user}
@@ -140,38 +140,38 @@ function App() {
                 isUser={isUser}
                 bookings={bookings}
                 setBookings={setBookings}
-                socket={socket}
+                // socket={socket}
               />} />
-              <Route path="/deskbooking" element={<DeskBooking selectedDates={selectedDates} bookings={bookings} setBookings={setBookings} />} />
+              {/* <Route path="/deskbooking" element={<DeskBooking selectedDates={selectedDates} bookings={bookings} setBookings={setBookings} />} /> */}
               {/* <Route path="/cabbooking" element={<CabBooking/>}/> */}
 
-              <Route path="/lunchandcabbook" element={<LunchAndCabbook selectedDates={selectedDates} bookings={bookings} setBookings={setBookings}/>} />
-              <Route path="/grantaccess" element={<GrantAccess />} />
+              <Route path="/lunchandcabbook" element={<LunchAndCabbook selectedDates={selectedDates} bookings={bookings} setBookings={setBookings} />} />
+              {/* <Route path="/grantaccess" element={<GrantAccess />} /> */}
               <Route path="/requests" element={<Requests />} />
               <Route path="/analytics" element={<Analytics />} />
               <Route path="/useranalytics" element={<UserAnalytics />} />
-              <Route path="/viewAllAdmin" element={<ViewAllAdmin />} />
+              {/* <Route path="/viewAllAdmin" element={<ViewAllAdmin />} /> */}
               <Route path="/bookings" element={<Bookings selectedDates={selectedDates} bookings={bookings} setBookings={setBookings} userId={user.user} />} />
               <Route path="/profile" element={<Profile user={user} isUser={isUser} />} />
               {/* <Route path="/currentbookings" element={<CurrentBookings />} /> */}
             </Routes>
 
-            {showNewsFeed && (
+            {/* {showNewsFeed && (
               <div
                 style={{
                   width: "370px",
                   backgroundColor: "#004B81",
                   overflowY: "auto",
                   height: "700px",
-                  zIndex:2,
-                  position:"relative"
+                  zIndex: 2,
+                  position: "relative"
 
                 }}
               >
                 <NewsFeed style={{ height: "100%" }} userId={user.userId} isNewsadmin={user.isNewsAdmin} isAdmin={user.isAdmin} socket={socket} />
               </div>
 
-            )}
+            )} */}
 
           </div>
         </div>

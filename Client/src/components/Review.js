@@ -11,21 +11,21 @@ const Review = ({ bookings, setBookings }) => {
     const containsNonNullPreference = bookings.preference.some(
       (element) => element !== "None"
     );
-    const containsNonNullworkSlot = bookings.workSlot.some(
-      (element) => element !== "None"
-    );
+    // const containsNonNullworkSlot = bookings.workSlot.some(
+    //   (element) => element !== "None"
+    // );
     if (containsNonNullPreference) {
       setBookings((prevBookings) => ({
         ...prevBookings,
         isFoodRequired: true,
       }));
     }
-    if (containsNonNullworkSlot) {
-      setBookings((prevBookings) => ({
-        ...prevBookings,
-        isCabRequired: true,
-      }));
-    }
+    // if (containsNonNullworkSlot) {
+    //   setBookings((prevBookings) => ({
+    //     ...prevBookings,
+    //     isCabRequired: true,
+    //   }));
+    // }
   }, []);
 
 
@@ -39,11 +39,11 @@ const Review = ({ bookings, setBookings }) => {
       setDisabled(true);
       response = await api.post("/user/bookings", {
         dates: bookings.dates,
-        deskId: bookings.deskId,
+        // deskId: bookings.deskId,
         preference: bookings.preference,
-        workSlot: bookings.workSlot,
-        isDeskRequired: bookings.isDeskRequired,
-        isCabRequired: bookings.isCabRequired,
+        // workSlot: bookings.workSlot,
+        // isDeskRequired: bookings.isDeskRequired,
+        // isCabRequired: bookings.isCabRequired,
         isFoodRequired: bookings.isFoodRequired,
         // Add other properties as needed
       });
@@ -100,15 +100,15 @@ const Review = ({ bookings, setBookings }) => {
                 {date}
               </Typography>
               <ul>
-                <li>
+                {/* <li>
                   <strong>Desk ID:</strong> {bookings.deskId[index]}
-                </li>
+                </li> */}
                 <li>
                   <strong>Preference:</strong> {bookings.preference[index]}
                 </li>
-                <li>
+                {/* <li>
                   <strong>Work Slot:</strong> {bookings.workSlot[index]}
-                </li>
+                </li> */}
                 {/* Add additional information if needed */}
               </ul>
             </CardContent>

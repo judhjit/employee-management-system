@@ -12,12 +12,12 @@ function protectRoutes(req, res, next) {
         });
     }
 
-    if ((req.path.startsWith('/newsAdmin') && !req.isNewsAdmin) && (req.path.startsWith('/newsAdmin') && !req.isAdmin)) {
-        childLogger.error("User not authorized to access news admin resource", { service: service, userId: req.userId });
-        return res.status(403).json({
-            message: 'You are not authorized to access news admin resource'
-        });
-    }
+    // if ((req.path.startsWith('/newsAdmin') && !req.isNewsAdmin) && (req.path.startsWith('/newsAdmin') && !req.isAdmin)) {
+    //     childLogger.error("User not authorized to access news admin resource", { service: service, userId: req.userId });
+    //     return res.status(403).json({
+    //         message: 'You are not authorized to access news admin resource'
+    //     });
+    // }
 
     if (req.path.startsWith('/admin') && !req.isAdmin) {
         childLogger.error("User not authorized to access admin resource", { service: service, userId: req.userId });

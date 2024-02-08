@@ -6,7 +6,7 @@ const childLogger = logger.child({ module: 'create-jwt-token' });
 
 let service = "";
 
-function createAccessToken(userId, isAdmin, isNewsAdmin) {
+function createAccessToken(userId, isAdmin) {
     service = "createAccessToken";
     childLogger.info("Creating access token", { service: service, userId: userId });
     return jwt.sign(
@@ -14,7 +14,6 @@ function createAccessToken(userId, isAdmin, isNewsAdmin) {
             "UserInfo": {
                 "userId": userId,
                 "isAdmin": isAdmin,
-                "isNewsAdmin": isNewsAdmin
             },
             exp: Math.floor(Date.now() / 1000) + Number(process.env.JWT_ACCESS_TOKEN_EXPIRATION)
         }, process.env.JWT_SECRET_KEY);

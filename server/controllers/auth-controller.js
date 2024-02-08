@@ -85,7 +85,7 @@ async function signup(req, res, next) {
             return res.status(500).json({ message: "Internal Server Error" });
         }
         childLogger.info("Successfully signed in user", { service: service, userId: userId, request: { userId: userId, email: email } });
-        return res.status(201).json({ message: "User signed in successfully", userId: user.userId, firstName: user.firstName, lastName: user.lastName, isAdmin: false, isNewsAdmin: false });
+        return res.status(201).json({ message: "User signed in successfully", userId: user.userId, firstName: user.firstName, lastName: user.lastName, isAdmin: false });
     } catch (error) {
         childLogger.error("Failed to sign in user", { service: service, request: { userId: userId, email: email }, error: error });
         res.status(500).json({ message: "Internal Server Error" });
@@ -139,7 +139,7 @@ async function login(req, res, next) {
     }
 
     childLogger.info("Creating access and refresh tokens", { service: service, userId: existingUser.user_id });
-    const accessToken = createAccessToken(existingUser.user_id, existingUser.isAdmin, existingUser.isNewsAdmin);
+    const accessToken = createAccessToken(existingUser.user_id, existingUser.isAdmin);
     const newRefreshToken = createRefreshToken(existingUser.user_id);
     childLogger.info("Successfully created access and refresh tokens", { service: service, userId: existingUser.user_id });
 
@@ -196,7 +196,7 @@ async function login(req, res, next) {
         maxAge: Number(process.env.JWT_REFRESH_TOKEN_EXPIRATION),
     }); //set cookie with token
     childLogger.info("Successfully logged in user", { service: service, userId: existingUser.user_id });
-    return res.status(200).json({ message: "User logged in successfully", accessToken: accessToken, userId: existingUser.user_id, firstName: existingUser.first_name, lastName: existingUser.last_name, email: existingUser.email, isAdmin: existingUser.isAdmin, isNewsAdmin: existingUser.isNewsAdmin, ttl: process.env.JWT_ACCESS_TOKEN_EXPIRATION });
+    return res.status(200).json({ message: "User logged in successfully", accessToken: accessToken, userId: existingUser.user_id, firstName: existingUser.first_name, lastName: existingUser.last_name, email: existingUser.email, isAdmin: existingUser.isAdmin, ttl: process.env.JWT_ACCESS_TOKEN_EXPIRATION });
 }
 
 

@@ -91,7 +91,7 @@ async function handleRefreshToken(req, res) {
 
             childLogger.info("Creating new access and refresh tokens", { service: service, userId: decoded.userId });
             // Refresh token was still valid and user is authorized to access the route
-            const accessToken = createAccessToken(foundUser.user_id, foundUser.isAdmin, foundUser.isNewsAdmin);
+            const accessToken = createAccessToken(foundUser.user_id, foundUser.isAdmin);
 
             const newRefreshToken = createRefreshToken(foundUser.user_id);
             childLogger.info("Successfully created new access and refresh tokens", { service: service, userId: decoded.userId });

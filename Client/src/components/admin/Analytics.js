@@ -44,8 +44,8 @@ function Analytics() {
     let response;
     try {
       response = await api.post('/admin/countallbookings', {
-        isDeskRequired: true,
-        isCabRequired: true,
+        // isDeskRequired: true,
+        // isCabRequired: true,
         isFoodRequired: true,
         startDate: calculateDateRange().startDate,
         endDate: calculateDateRange().endDate,
@@ -64,10 +64,10 @@ function Analytics() {
   };
 
   const updateChartData = () => {
-    const chartLabels = ['Desk', 'Cab', 'Food'];
-    let chartData = [0, 0, 0];
+    const chartLabels = ['Food'];
+    let chartData = [0];
     if (bookingData) {
-      chartData = [bookingData.deskBookingsCount, bookingData.cabBookingsCount, bookingData.foodBookingsCount];
+      chartData = [bookingData.foodBookingsCount];
     }
     setChartData({
       labels: chartLabels,
@@ -77,13 +77,13 @@ function Analytics() {
           data: chartData,
           backgroundColor: [
             '#0066b2',
-            '#00b359',
-            '#ff4d4d',
+            // '#00b359',
+            // '#ff4d4d',
           ],
           borderColor: [
             '#0066b2',
-            '#00b359',
-            '#ff4d4d',
+            // '#00b359',
+            // '#ff4d4d',
           ],
           borderWidth: 1,
         },

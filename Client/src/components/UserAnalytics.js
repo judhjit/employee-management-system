@@ -8,7 +8,7 @@ ChartJS.register(BarElement, Tooltip, Legend, CategoryScale, LinearScale);
 
 function UserAnalytics() {
     const [selectedFilter, setSelectedFilter] = useState('monthly');
-    const [selectedDate, setSelectedDate] = useState('2023-12-31');
+    const [selectedDate, setSelectedDate] = useState(new Date().toISOString().slice(0, 10));
     // const [selectedDate, setSelectedDate] = useState(new Date().toISOString().slice(0, 10));
     const [chartData, setChartData] = useState(null);
     const [bookingData, setBookingData] = useState(null);
@@ -44,8 +44,8 @@ function UserAnalytics() {
         let response;
         try {
             response = await api.post('/user/getcountofallbookings', {
-                isDeskRequired: true,
-                isCabRequired: true,
+                // isDeskRequired: true,
+                // isCabRequired: true,
                 isFoodRequired: true,
                 startDate: calculateDateRange().startDate,
                 endDate: calculateDateRange().endDate,
@@ -64,10 +64,10 @@ function UserAnalytics() {
     };
 
     const updateChartData = () => {
-        const chartLabels = ['Desk', 'Cab', 'Food'];
-        let chartData = [0, 0, 0];
+        const chartLabels = ['Food'];
+        let chartData = [0];
         if (bookingData) {
-            chartData = [bookingData.deskBookingsCount, bookingData.cabBookingsCount, bookingData.foodBookingsCount];
+            chartData = [bookingData.foodBookingsCount];
         }
         setChartData({
             labels: chartLabels,
@@ -77,13 +77,13 @@ function UserAnalytics() {
                     data: chartData,
                     backgroundColor: [
                         '#0066b2',
-                        '#00b359',
-                        '#ff4d4d',
+                        // '#00b359',
+                        // '#ff4d4d',
                     ],
                     borderColor: [
                         '#0066b2',
-                        '#00b359',
-                        '#ff4d4d',
+                        // '#00b359',
+                        // '#ff4d4d',
                     ],
                     borderWidth: 1,
                 },

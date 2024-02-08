@@ -236,7 +236,7 @@ import {
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Navigate, useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
-import NewsFeed from "./NewsFeed";
+// import NewsFeed from "./NewsFeed";
 import Popover from "@mui/material/Popover";
 import { AppBar, Toolbar, Typography } from "@mui/material";
 import { styled } from '@mui/system';
@@ -247,7 +247,7 @@ library.add(faNewspaper, faSignOutAlt, faUserCircle);
 
 const Navbar = ({
   showNewsFeed,
-  setShowNewsFeed,
+  // setShowNewsFeed,
   isAdmin,
   isUser,
   isNewsadmin,
@@ -292,10 +292,10 @@ const Navbar = ({
     setProfileAnchorEl(null);
   };
 
-  const togglePopover = (event) => {
-    // setNewspaperAnchorEl(event.currentTarget);
-    setShowNewsFeed(!showNewsFeed)
-  };
+  // const togglePopover = (event) => {
+  //   // setNewspaperAnchorEl(event.currentTarget);
+  //   setShowNewsFeed(!showNewsFeed)
+  // };
 
   const closePopover = () => {
     setNewspaperAnchorEl(null);
@@ -308,16 +308,16 @@ const Navbar = ({
     // navigate("/");
   };
 
-  const handleNewsAdminRequest = async () => {
-    let response;
-    try {
-      response = await api.post('/user/requestnewsadminaccess');
-      console.log(response.data);
-      // alert("News Admin Access Request Sent Successfully");
-    } catch (error) {
-      console.error('Error fetching data:', error);
-    }
-  }
+  // const handleNewsAdminRequest = async () => {
+  //   let response;
+  //   try {
+  //     response = await api.post('/user/requestnewsadminaccess');
+  //     console.log(response.data);
+  //     // alert("News Admin Access Request Sent Successfully");
+  //   } catch (error) {
+  //     console.error('Error fetching data:', error);
+  //   }
+  // }
 
   const CustomTextButton = styled(Button)(({ theme }) => ({
     color: 'black',
@@ -362,13 +362,13 @@ const Navbar = ({
                 >
                   Bookings
                 </CustomTextButton>
-                <CustomTextButton
+                {/* <CustomTextButton
                   variant="text"
                   onClick={() => navigate("/grantaccess")}
                   style={{ fontFamily: 'poppins', paddingLeft: '32px' }}
                 >
                   Grant Access
-                </CustomTextButton>
+                </CustomTextButton> */}
                 <CustomTextButton
                   variant="text"
                   onClick={() => navigate("/analytics")}
@@ -390,17 +390,6 @@ const Navbar = ({
               </CustomTextButton>
             </div>
           )}
-          {isUser && !isAdmin && !isNewsadmin && (
-            <div>
-              <CustomTextButton
-                variant="text"
-                onClick={handleNewsAdminRequest}
-                style={{ fontFamily: 'poppins', paddingLeft: '32px' }}
-              >
-                Request News Admin Access
-              </CustomTextButton>
-            </div>
-          )}
           <div style={{ marginLeft: "auto", display: "flex", gap: "10px" }}>
             <IconButton onClick={handleHomeButtonClick}>
               <FontAwesomeIcon
@@ -410,13 +399,13 @@ const Navbar = ({
             </IconButton>
 
             
-            <IconButton onClick={togglePopover}>
+            {/* <IconButton onClick={togglePopover}>
               <FontAwesomeIcon
                 icon={faNewspaper}
                 size="2x"
                 style={{ height: "1.5vw", width: "1.5vw" }}
               />
-            </IconButton>
+            </IconButton> */}
             
 
 
