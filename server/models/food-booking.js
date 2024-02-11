@@ -256,7 +256,10 @@ class FoodBookings {
             childLogger.error("Failed to get all food bookings for a user for multiple dates", { service: service, userId: userId, request: { dates: dates}, error: error });
         }
         try {
-            bookings = await this.formatFoodBookings(bookings);
+            if(bookings && bookings.length > 0) {
+                bookings = await this.formatFoodBookings(bookings);
+            }
+            // bookings = await this.formatFoodBookings(bookings);
             childLogger.info("Successfully formatted all food bookings for a user for multiple dates", { service: service, userId: userId, request: { dates: dates} });
         } catch (error) {
             childLogger.error("Failed to format all food bookings for a user for multiple dates", { service: service, userId: userId, request: { dates: dates}, error: error });
