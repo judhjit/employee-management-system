@@ -23,6 +23,8 @@ import Layout from "./components/Layout";
 import Bookings from "./components/Bookings";
 import Profile from "./components/Profile";
 import UserAnalytics from "./components/UserAnalytics";
+import Holiday from "./components/admin/Holiday";
+import HolidayListUser from "./components/HolidayListUser";
 import api from "./api";
 
 // import io from "socket.io-client";
@@ -150,6 +152,8 @@ function App() {
               <Route path="/requests" element={<Requests />} />
               <Route path="/analytics" element={<Analytics />} />
               <Route path="/useranalytics" element={<UserAnalytics />} />
+              <Route path="/holidays" element={<Holiday />} />
+              <Route path="/userholidaylist" element={<HolidayListUser />} />
               {/* <Route path="/viewAllAdmin" element={<ViewAllAdmin />} /> */}
               <Route path="/bookings" element={<Bookings selectedDates={selectedDates} bookings={bookings} setBookings={setBookings} userId={user.user} />} />
               <Route path="/profile" element={<Profile user={user} isUser={isUser} />} />

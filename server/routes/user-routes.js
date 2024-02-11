@@ -3,6 +3,7 @@ const express = require('express');
 const router = express.Router();
 
 const userAllBookingsControllers = require('../controllers/user-all-booking-controller');
+const userHolidayController = require('../controllers/user-holiday-controller');
 // const newsFeedControllers = require('../controllers/news-controller');
 // const newsAdminRequestControllers = require('../controllers/request-controller');
 // const userDeskAvailabilityControllers = require('../controllers/user-desk-controller');
@@ -22,6 +23,10 @@ router.post('/deletebookings', userAllBookingsControllers.cancelAll); //cancel a
 
 // /user/getcountofallbookings => POST
 router.post('/getcountofallbookings', userAllBookingsControllers.getCountOfAllFutureBookingsForUser); //count all or any of desk, cab, meal future bookings or bookings between dates for user based on request body parameters startDate and endDate (if present)
+
+//holiday routes
+// /user/getholidays => GET
+router.get('/getholidaysofthisandupcomingyears', userHolidayController.getAllHolidaysOfThisAndUpcomingYears); //get all holidays of this and upcoming years
 
 //Desk availability related routes
 // /user/getdesks => POST

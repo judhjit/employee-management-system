@@ -376,6 +376,13 @@ const Navbar = ({
                 >
                   Admin Analytics
                 </CustomTextButton>
+                <CustomTextButton
+                  variant="text"
+                  onClick={() => navigate("/holidays")}
+                  style={{ fontFamily: 'poppins', paddingLeft: '32px' }}
+                >
+                  Edit Holidays
+                </CustomTextButton>
               </div>
             )}
           </div>
@@ -387,6 +394,13 @@ const Navbar = ({
                 style={{ fontFamily: 'poppins', paddingLeft: '32px' }}
               >
                 Analytics
+              </CustomTextButton>
+              <CustomTextButton
+                variant="text"
+                onClick={() => navigate("/userholidaylist")}
+                style={{ fontFamily: 'poppins', paddingLeft: '32px' }}
+              >
+                Holiday List
               </CustomTextButton>
             </div>
           )}
