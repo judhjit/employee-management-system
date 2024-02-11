@@ -3,8 +3,8 @@ const express = require('express');
 const router = express.Router();
 
 const adminBookingsControllers = require('../controllers/admin-all-booking-controller');
-const adminNewsAdminControllers = require('../controllers/admin-news-admin-request-controller');
-
+const adminHolidayController = require('../controllers/admin-holiday-controller');
+// const adminNewsAdminControllers = require('../controllers/admin-news-admin-request-controller');
 
 //Users list related routes
 // /admin/getallusers => GET
@@ -17,18 +17,21 @@ router.post('/getallbookings', adminBookingsControllers.getAllFutureBookings); /
 // /admin/countallbookings => POST
 router.post('/countallbookings', adminBookingsControllers.getCountOfAllFutureBookings); //count all or any of desk, cab, meal future bookings or bookings between dates based on request body parameters startDate and endDate (if present) for a particular userId (if present)
 
-//News Admin Access Related routes
-// /admin/allnewsadmins => GET
-router.get('/allnewsadmins', adminNewsAdminControllers.getNewsAdmins); //get all news admins
 
-// /admin/allnewsadminaccessrequests => GET
-router.get('/allnewsadminaccessrequests', adminNewsAdminControllers.getNewsAdminAccessRequests); //get all news admin access requests
+//holiday routes
+// /admin/getholidaysofthisandupcomingyears => GET
+router.get('/getholidaysofthisandupcomingyears', adminHolidayController.getAllHolidaysOfThisAndUpcomingYears); //get all holidays of this and upcoming years
 
-// /admin/togglenewsadmin => PATCH
-router.patch('/togglenewsadmin', adminNewsAdminControllers.toggleNewsAdmin); //toggle news admin status
+// /admin/createholiday => POST
+router.post('/createholiday', adminHolidayController.createHoliday); //create a holiday
 
-// /admin/deletenewsadminaccessrequest => POST
-router.post('/deletenewsadminaccessrequest', adminNewsAdminControllers.deleteNewsAdminAccessRequest); //delete news admin access request
+// /admin/updateholidaydate => POST
+router.post('/updateholidaydate', adminHolidayController.updateHolidayDate); //update a holiday
 
+// /admin/updateholidayname => POST
+router.post('/updateholidayname', adminHolidayController.updateHolidayName); //update a holiday
+
+// /admin/deleteholiday => POST
+router.post('/deleteholiday', adminHolidayController.deleteHoliday); //delete a holiday
 
 module.exports = router;

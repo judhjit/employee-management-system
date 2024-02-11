@@ -21,7 +21,7 @@ import "./CurrentBookings.css";
 
 import api from "../api";
 
-const CurrentBookings = ({ showNewsFeed }) => {
+const CurrentBookings = () => {
   const initialData = [];
   let dates = [];
 
@@ -33,11 +33,9 @@ const CurrentBookings = ({ showNewsFeed }) => {
     let response;
     try {
       response = await api.post("/user/getbookings", {
-        isDeskRequired: true,
-        isCabRequired: true,
         isFoodRequired: true,
       });
-      console.log("current-booking:",response.data);
+      console.log("current-booking:", response.data);
       setData([...response.data]);
     } catch (error) {
       if (error.response.status === 404) {
@@ -53,23 +51,23 @@ const CurrentBookings = ({ showNewsFeed }) => {
     fetchData();
   }, []);
 
-  const editCab = async (dates, newValue) => {
-    if (!Array.isArray(dates)) {
-      dates = [dates];
-    }
-    let response;
-    try {
-      response = await api.patch("/user/bookings", {
-        dates: dates,
-        modifyCab: true,
-        modifyFood: false,
-        workSlot: newValue,
-      });
-      fetchData();
-    } catch (error) {
-      console.error(error);
-    }
-  };
+  // const editCab = async (dates, newValue) => {
+  //   if (!Array.isArray(dates)) {
+  //     dates = [dates];
+  //   }
+  //   let response;
+  //   try {
+  //     response = await api.patch("/user/bookings", {
+  //       dates: dates,
+  //       modifyCab: true,
+  //       modifyFood: false,
+  //       workSlot: newValue,
+  //     });
+  //     fetchData();
+  //   } catch (error) {
+  //     console.error(error);
+  //   }
+  // };
 
   const editFood = async (dates, newValue) => {
     if (!Array.isArray(dates)) {
@@ -79,7 +77,7 @@ const CurrentBookings = ({ showNewsFeed }) => {
     try {
       response = await api.patch("/user/bookings", {
         dates: dates,
-        modifyCab: false,
+        // modifyCab: false,
         modifyFood: true,
         preference: newValue,
       });
@@ -94,38 +92,12 @@ const CurrentBookings = ({ showNewsFeed }) => {
     if (!Array.isArray(dates)) {
       dates = [dates];
     }
-    if (type === "Desk") {
+    if (type === "Food") {
       try {
         response = await api.post("/user/deletebookings", {
           dates: dates,
-          cancelDesk: true,
-          cancelCab: true,
-          cancelFood: true,
-        });
-        fetchData();
-        // setData([...data.filter((booking) => booking.dateBooked !== dates[0])]);
-      } catch (error) {
-        console.error(error);
-      }
-    } else if (type === "Cab") {
-      try {
-        response = await api.post("/user/deletebookings", {
-          dates: dates,
-          cancelDesk: false,
-          cancelCab: true,
-          cancelFood: false,
-        });
-        fetchData();
-        // setData([...data.filter((booking) => booking.dateBooked !== dates[0])]);
-      } catch (error) {
-        console.error(error);
-      }
-    } else if (type === "Food") {
-      try {
-        response = await api.post("/user/deletebookings", {
-          dates: dates,
-          cancelDesk: false,
-          cancelCab: false,
+          // cancelDesk: false,
+          // cancelCab: false,
           cancelFood: true,
         });
         fetchData();
@@ -177,7 +149,7 @@ const CurrentBookings = ({ showNewsFeed }) => {
       </div>
       <TableContainer
         style={{
-          width: showNewsFeed ? "80vw" : "97vw",
+          width: "97vw",
           padding: "0 10px",
           height: "190px",
           marginTop: "3vh",
@@ -276,24 +248,6 @@ const CurrentBookings = ({ showNewsFeed }) => {
                   </IconButton>
                 </TableCell>
                 <TableCell style={{ padding: 5 }}>
-                  {booking.type === "Cab" && (
-                    <Select
-                      style={{ width: "200px" }}
-                      name="workSlot"
-                      // defaultValue={booking.selected}
-                      value={booking.selected}
-                      onChange={(e) =>
-                        editCab(booking.dateBooked, e.target.value)
-                      }
-                    >
-                      {/* // <option value="9:00am-5:00pm">9:00am-5:00pm</option>
-                    // <option value="5:00am-2:00pm">5:00am-2:00pm</option>
-                    // <option value="6:00am-3:00pm">6:00am-3:00pm</option> */}
-                      <MenuItem value="5:00AM-2:00PM">5:00AM-2:00PM</MenuItem>
-                      <MenuItem value="6:00AM-3:00PM">6:00AM-3:00PM</MenuItem>
-                      <MenuItem value="9:00AM-5:00PM">9:00AM-5:00PM</MenuItem>
-                    </Select>
-                  )}
                   {booking.type === "Food" && (
                     <Select
                       style={{ width: "200px" }}

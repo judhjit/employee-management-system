@@ -3,9 +3,10 @@ const express = require('express');
 const router = express.Router();
 
 const userAllBookingsControllers = require('../controllers/user-all-booking-controller');
-const newsFeedControllers = require('../controllers/news-controller');
-const newsAdminRequestControllers = require('../controllers/request-controller');
-const userDeskAvailabilityControllers = require('../controllers/user-desk-controller');
+const userHolidayController = require('../controllers/user-holiday-controller');
+// const newsFeedControllers = require('../controllers/news-controller');
+// const newsAdminRequestControllers = require('../controllers/request-controller');
+// const userDeskAvailabilityControllers = require('../controllers/user-desk-controller');
 
 //Bookings related routes
 // /user/getbookings => POST
@@ -23,17 +24,21 @@ router.post('/deletebookings', userAllBookingsControllers.cancelAll); //cancel a
 // /user/getcountofallbookings => POST
 router.post('/getcountofallbookings', userAllBookingsControllers.getCountOfAllFutureBookingsForUser); //count all or any of desk, cab, meal future bookings or bookings between dates for user based on request body parameters startDate and endDate (if present)
 
+//holiday routes
+// /user/getholidays => GET
+router.get('/getholidaysofthisandupcomingyears', userHolidayController.getAllHolidaysOfThisAndUpcomingYears); //get all holidays of this and upcoming years
+
 //Desk availability related routes
 // /user/getdesks => POST
-router.post('/getdesks', userDeskAvailabilityControllers.getDesksAvailabilityByDatesObj); //get all desks availability with booked by name for multiple dates
+// router.post('/getdesks', userDeskAvailabilityControllers.getDesksAvailabilityByDatesObj); //get all desks availability with booked by name for multiple dates
 
 
-//News Feed related routes
-// /user/news => GET
-router.get('/news', newsFeedControllers.getNewsFeedPosts); //get all news feed posts
+// //News Feed related routes
+// // /user/news => GET
+// router.get('/news', newsFeedControllers.getNewsFeedPosts); //get all news feed posts
 
-//News Admin Request related routes
-// /user/requestnewsadminaccess => POST
-router.post('/requestnewsadminaccess', newsAdminRequestControllers.requestNewsAdminAccess); //create a news admin request
+// //News Admin Request related routes
+// // /user/requestnewsadminaccess => POST
+// router.post('/requestnewsadminaccess', newsAdminRequestControllers.requestNewsAdminAccess); //create a news admin request
 
 module.exports = router;

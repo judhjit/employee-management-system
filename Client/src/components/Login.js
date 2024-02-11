@@ -4,7 +4,7 @@ import { useNavigate, Link } from 'react-router-dom';
 import api from '../api';
 import './Layout.css'
 
-const Login = ({ showNewsFeed, setShowNewsFeed, isUser, setisUser, setUser }) => {
+const Login = ({ isUser, setisUser, setUser }) => {
   const navigate = useNavigate();
   // console.log("isUser", isUser);
   if(isUser){
@@ -89,7 +89,7 @@ const Login = ({ showNewsFeed, setShowNewsFeed, isUser, setisUser, setUser }) =>
         firstName,
         lastName,
         isAdmin,
-        isNewsAdmin,
+        // isNewsAdmin,
         email,
         ttl,
       } = response.data;
@@ -103,7 +103,7 @@ const Login = ({ showNewsFeed, setShowNewsFeed, isUser, setisUser, setUser }) =>
         firstName,
         lastName,
         isAdmin,
-        isNewsAdmin,
+        // isNewsAdmin,
         expiry: expiry.toString(),
       };
       setUser(user);

@@ -98,24 +98,24 @@ class User {
         }
     }
 
-    static async getNewsAdmins() {
-        service = "getNewsAdmins";
-        let newsAdmins;
-        try {
-            newsAdmins = await db.any('SELECT * FROM public."Users" WHERE "isNewsAdmin" = true');
-            childLogger.info("Successfully got all news admins", { service: service });
-        } catch (error) {
-            childLogger.error("Failed to get all news admins", { service: service, error: error });
-        }
-        try {
-            newsAdmins = await this.formatUser(newsAdmins);
-            childLogger.info("Successfully formatted all news admins", { service: service });
-        } catch (error) {
-            childLogger.error("Failed to format all news admins", { service: service, error: error });
-        }
-        childLogger.info("Successfully returned all news admins", { service: service });
-        return newsAdmins;
-    }
+    // static async getNewsAdmins() {
+    //     service = "getNewsAdmins";
+    //     let newsAdmins;
+    //     try {
+    //         newsAdmins = await db.any('SELECT * FROM public."Users" WHERE "isNewsAdmin" = true');
+    //         childLogger.info("Successfully got all news admins", { service: service });
+    //     } catch (error) {
+    //         childLogger.error("Failed to get all news admins", { service: service, error: error });
+    //     }
+    //     try {
+    //         newsAdmins = await this.formatUser(newsAdmins);
+    //         childLogger.info("Successfully formatted all news admins", { service: service });
+    //     } catch (error) {
+    //         childLogger.error("Failed to format all news admins", { service: service, error: error });
+    //     }
+    //     childLogger.info("Successfully returned all news admins", { service: service });
+    //     return newsAdmins;
+    // }
 
     static async getAllUsers() {
         service = "getAllUsers";
@@ -136,35 +136,35 @@ class User {
         return users;
     }
 
-    static async requestNewsAdminAccess(userId) {
-        service = "requestNewsAdminAccess";
-        if (!userId) {
-            childLogger.error("User id not provided", { service: service });
-            return null; //if userId is undefined, then return null
-        }
-        let requestId;
-        try {
-            requestId = uuidv4();
-            await db.any('INSERT INTO public."NewsAdminRequests" (request_id, user_id, date_of_request) VALUES ($1, $2, CURRENT_TIMESTAMP)', [requestId, userId]);
-            childLogger.info("Successfully requested news admin access", { service: service, userId: userId, requestId: requestId });
-        } catch (error) {
-            childLogger.error("Failed to request news admin access", { service: service, userId: userId, requestId: requestId, error: error });
-        }
-    }
+    // static async requestNewsAdminAccess(userId) {
+    //     service = "requestNewsAdminAccess";
+    //     if (!userId) {
+    //         childLogger.error("User id not provided", { service: service });
+    //         return null; //if userId is undefined, then return null
+    //     }
+    //     let requestId;
+    //     try {
+    //         requestId = uuidv4();
+    //         await db.any('INSERT INTO public."NewsAdminRequests" (request_id, user_id, date_of_request) VALUES ($1, $2, CURRENT_TIMESTAMP)', [requestId, userId]);
+    //         childLogger.info("Successfully requested news admin access", { service: service, userId: userId, requestId: requestId });
+    //     } catch (error) {
+    //         childLogger.error("Failed to request news admin access", { service: service, userId: userId, requestId: requestId, error: error });
+    //     }
+    // }
 
-    static async toggleNewsAdmin(userId, isNewsAdmin) {
-        service = "toggleNewsAdmin";
-        if (!userId) {
-            childLogger.error("User id not provided", { service: service });
-            return null; //if userId is undefined, then return null
-        }
-        try {
-            await db.any('UPDATE public."Users" SET "isNewsAdmin" = $1 WHERE "user_id" = $2', [isNewsAdmin, userId]);
-            childLogger.info("Successfully toggled news admin", { service: service, userId: userId });
-        } catch (error) {
-            childLogger.error("Failed to toggle news admin", { service: service, userId: userId, error: error });
-        }
-    }
+    // static async toggleNewsAdmin(userId, isNewsAdmin) {
+    //     service = "toggleNewsAdmin";
+    //     if (!userId) {
+    //         childLogger.error("User id not provided", { service: service });
+    //         return null; //if userId is undefined, then return null
+    //     }
+    //     try {
+    //         await db.any('UPDATE public."Users" SET "isNewsAdmin" = $1 WHERE "user_id" = $2', [isNewsAdmin, userId]);
+    //         childLogger.info("Successfully toggled news admin", { service: service, userId: userId });
+    //     } catch (error) {
+    //         childLogger.error("Failed to toggle news admin", { service: service, userId: userId, error: error });
+    //     }
+    // }
 
     static async findRefreshToken(refreshToken) {  //function to check if refreshToken is present in array of varchar named refreshTokens in the database
         service = "findRefreshToken";

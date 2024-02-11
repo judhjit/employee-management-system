@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Calendar from "react-calendar";
 import Alert from '@mui/material/Alert';
-import { Box, Button} from "@mui/material";
+import { Box, Button } from "@mui/material";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import "react-calendar/dist/Calendar.css";
@@ -12,7 +12,7 @@ import api from "../api";
 import Loading from './Loading';
 
 const MultiDateCalendar = ({
-  showNewsFeed,
+  // showNewsFeed,
   selectedDates,
   setSelectedDates,
   user,
@@ -20,45 +20,27 @@ const MultiDateCalendar = ({
   isUser,
   bookings,
   setBookings,
-  socket,
+  // socket,
 }) => {
   const navigate = useNavigate();
-  const [newsTitles, setNewsTitles] = useState([]);
+  // const [newsTitles, setNewsTitles] = useState([]);
   // const [errorMessage,setErrorMessage]=useState(null);
-  const [loading,setLoading]=useState(false);
+  const [loading, setLoading] = useState(false);
 
   const [disabledDates, setDisabledDates] = useState([]);
-  const fetchNewsTitles = async () => {
-    try {
-      const response = await api.get("/user/news");
-      setNewsTitles(response.data.map((post) => post.title));
-
-
-     
-
-
-    } catch (error) {
-      if (error.response.status === 404) {
-        console.log("No data found!");
-        setNewsTitles([]);
-      } else {
-        console.error("Error fetching data:", error);
-      }
-    }
-  };
 
   useEffect(() => {
-    fetchNewsTitles();
-    socket.on("newsfeed:refresh", fetchNewsTitles);
+    // fetchNewsTitles();
+    // socket.on("newsfeed:refresh", fetchNewsTitles);
 
     setSelectedDates([]);
     setBookings({
       dates: [],
-      deskId: [],
-      workSlot: [],
+      // deskId: [],
+      // workSlot: [],
       preference: [],
-      isDeskRequired: true,
-      isCabRequired: false,
+      // isDeskRequired: true,
+      // isCabRequired: false,
       isFoodRequired: false,
     });
   }, []);
@@ -66,9 +48,9 @@ const MultiDateCalendar = ({
   const fetchData = async () => {
     let response;
     try {
-      const response = await api.post("/user/getbookings", {
-        isDeskRequired: true,
-        isCabRequired: true,
+      response = await api.post("/user/getbookings", {
+        // isDeskRequired: true,
+        // isCabRequired: true,
         isFoodRequired: true,
       });
       console.log("res", response);
@@ -92,8 +74,8 @@ const MultiDateCalendar = ({
     if (date.getDay() === 0) {
       return;
     }
-    
-    
+
+
     let newSelectedDates;
 
     const dateIndex = selectedDates.findIndex(
@@ -109,14 +91,14 @@ const MultiDateCalendar = ({
       // If not selected, add the date
       // if (selectedDates.length >= 5) {
       //   alert("You can only select up to 5 dates.");
-        
+
       //   return;
       // }
       if (selectedDates.length >= 5) {
         toast.error('You can only select up to 5 dates.');
         return;
       }
-      
+
       newSelectedDates = [...selectedDates, date];
     }
 
@@ -144,113 +126,113 @@ const MultiDateCalendar = ({
     navigate("/bookings");
   };
 
- 
+
   return (
-    
+
     <div style={{ backgroundColor: "white", height: "664px", width: "76.1vw" }}>
-     {loading?(
-      <div>
-          <div
-        style={{
-          flex: 0,
-          height: "5%",
-          width: "100vw",
-          backgroundColor: "#003A64",
-        }}
-      >
-        <marquee
-          behavior="scroll"
-          direction="left"
-          height="30px"
-          vspace="4"
-          style={{ color: "yellow", fontSize: "16px" }}
-        >
-          {newsTitles.map((title, index) => (
-            <span style={{ paddingRight: 20, paddingLeft: 20 }} key={index}>
-              {title}
-              {index < newsTitles.length - 1}
-            </span>
-          ))}
-        </marquee>
-      </div>
-      <div>
-        <div
-          style={{
-            fontSize: "29px",
-            fontFamily: "poppins",
-            fontWeight: 600,
-            marginLeft: "90px",
-            paddingTop: "7px",
-            color: "#0071BA",
-          }}
-        >
-          <span style={{ color: "#0071BA" }}>Plan </span>
-          <span>Your Day:</span>
-        </div>
-        <div className="calendar">
-          <Calendar
-            onClickDay={handleDateClick}
-            tileDisabled={({ date }) =>
-            date < new Date(new Date().setHours(0, 0, 0, 0)) ||
-               date.getDay() === 0 ||
-               disabledDates.some(disabledDate => new Date(disabledDate).toDateString() === date.toDateString())
-            }
-            tileClassName={({ date }) => {
-              const isSunday = date.getDay() === 0;
-
-              const isSaturday = !(date < new Date(new Date().setHours(0, 0, 0, 0))) &&
-              (date.getDay() === 0 || date.getDay() === 6
-              );
-
-              const isBooked = disabledDates.some(
-                (disabledDate) =>
-                  new Date(disabledDate).toDateString() === date.toDateString()
-              );
-
-              const isSelected = selectedDates.find(
-                (selectedDate) =>
-                  selectedDate.toDateString() === date.toDateString()
-              );
-
-              const isPreviousWeekend =
-                date < new Date(new Date().setHours(0, 0, 0, 0)) &&
-                (date.getDay() === 0 || date.getDay() === 6);
-
-              return isBooked
-                ? "booked"
-                : isSelected
-                ? "selected"
-                : isSunday
-                ? "sunday"
-                : isSaturday
-                ? "saturday"
-                : isPreviousWeekend
-                ? "previous-weekend"
-                : "";
-            }}
-          />
-          <Button
-            variant="contained"
-            color="primary"
+      {loading ? (
+        <div>
+          {/* <div
             style={{
-              height: "2vw",
-              width: "1.5vw",
-              marginTop: "-60px",
-              marginLeft: "650px",
+              flex: 0,
+              height: "5%",
+              width: "100vw",
+              backgroundColor: "#003A64",
             }}
-            onClick={handleBookButtonClick}
           >
-            Book
-          </Button>
+            <marquee
+              behavior="scroll"
+              direction="left"
+              height="30px"
+              vspace="4"
+              style={{ color: "yellow", fontSize: "16px" }}
+            >
+              {newsTitles.map((title, index) => (
+                <span style={{ paddingRight: 20, paddingLeft: 20 }} key={index}>
+                  {title}
+                  {index < newsTitles.length - 1}
+                </span>
+              ))}
+            </marquee>
+          </div> */}
+          <div>
+            <div
+              style={{
+                fontSize: "29px",
+                fontFamily: "poppins",
+                fontWeight: 600,
+                marginLeft: "90px",
+                paddingTop: "7px",
+                color: "#0071BA",
+              }}
+            >
+              <span style={{ color: "#0071BA" }}>Plan </span>
+              <span>Your Day:</span>
+            </div>
+            <div className="calendar">
+              <Calendar
+                onClickDay={handleDateClick}
+                tileDisabled={({ date }) =>
+                  date < new Date(new Date().setHours(0, 0, 0, 0)) ||
+                  date.getDay() === 0 ||
+                  disabledDates.some(disabledDate => new Date(disabledDate).toDateString() === date.toDateString())
+                }
+                tileClassName={({ date }) => {
+                  const isSunday = date.getDay() === 0;
+
+                  const isSaturday = !(date < new Date(new Date().setHours(0, 0, 0, 0))) &&
+                    (date.getDay() === 0 || date.getDay() === 6
+                    );
+
+                  const isBooked = disabledDates.some(
+                    (disabledDate) =>
+                      new Date(disabledDate).toDateString() === date.toDateString()
+                  );
+
+                  const isSelected = selectedDates.find(
+                    (selectedDate) =>
+                      selectedDate.toDateString() === date.toDateString()
+                  );
+
+                  const isPreviousWeekend =
+                    date < new Date(new Date().setHours(0, 0, 0, 0)) &&
+                    (date.getDay() === 0 || date.getDay() === 6);
+
+                  return isBooked
+                    ? "booked"
+                    : isSelected
+                      ? "selected"
+                      : isSunday
+                        ? "sunday"
+                        : isSaturday
+                          ? "saturday"
+                          : isPreviousWeekend
+                            ? "previous-weekend"
+                            : "";
+                }}
+              />
+              <Button
+                variant="contained"
+                color="primary"
+                style={{
+                  height: "2vw",
+                  width: "1.5vw",
+                  marginTop: "-60px",
+                  marginLeft: "650px",
+                }}
+                onClick={handleBookButtonClick}
+              >
+                Book
+              </Button>
+            </div>
+          </div>
+          <div style={{ backgroundColor: "#F0F8FF", width: "100vw" }}>
+            <CurrentBookings />
+          </div>
+          <ToastContainer />
         </div>
-      </div>
-      <div style={{ backgroundColor: "#F0F8FF", width: "100vw" }}>
-        <CurrentBookings showNewsFeed={showNewsFeed} />
-      </div>
-      <ToastContainer />
-        </div>
-     ):<Loading/>}
-      
+      ) : <Loading />}
+
     </div>
   );
 };

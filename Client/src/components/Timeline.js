@@ -22,7 +22,7 @@ const Timeline = ({ selectedDates }) => {
   const [activeStep, setActiveStep] = useState(0);
   const [skipped, setSkipped] = useState(new Set());
   const [lunchPreference, setLunchPreference] = useState('');
-  const [cabTiming, setCabTiming] = useState('');
+  // const [cabTiming, setCabTiming] = useState('');
   const [reviewData, setReviewData] = useState({});
   const [active, setActive] = useState([]); // To Track booked dates
   const [bookings, setBookings] = useState([]); // To Store booking data for each date
@@ -73,7 +73,7 @@ const Timeline = ({ selectedDates }) => {
     setSelectAll(!selectAll);
   };
 
-  
+
 
   const handleNext = () => {
     let newSkipped = skipped;
@@ -82,9 +82,9 @@ const Timeline = ({ selectedDates }) => {
       newSkipped.delete(activeStep);
     }
 
-    if (activeStep === 2) {
-      setReviewData({ ...reviewData, lunchPreference, cabTiming });
-    }
+    // if (activeStep === 2) {
+    //   setReviewData({ ...reviewData, lunchPreference, cabTiming });
+    // }
 
     if (activeStep === steps.length - 1) {
       // To Handle finishing a booking
@@ -92,7 +92,7 @@ const Timeline = ({ selectedDates }) => {
         // If No date selected, reset everything
         setActiveStep(0);
         setLunchPreference('');
-        setCabTiming('');
+        // setCabTiming('');
         setReviewData({});
         setBookings([]); // To Clear all bookings
         setSelectAll(false); // To Uncheck "Select All"
@@ -113,7 +113,7 @@ const Timeline = ({ selectedDates }) => {
   const handleReset = () => {
     setActiveStep(0);
     setLunchPreference('');
-    setCabTiming('');
+    // setCabTiming('');
     setReviewData({});
     setActive([]); // To Clear booked dates
     setBookings([]); // To Clear all bookings
@@ -124,15 +124,15 @@ const Timeline = ({ selectedDates }) => {
     setLunchPreference(event.target.value);
   };
 
-  const handleCabTimingChange = (event) => {
-    setCabTiming(event.target.value);
-  };
+  // const handleCabTimingChange = (event) => {
+  //   setCabTiming(event.target.value);
+  // };
 
   const updateBookingData = () => {
     const selectedDateData = {
       date: selectedDates[active[active.length - 1]].toDateString(),
       lunchPreference,
-      cabTiming,
+      // cabTiming,
     };
     setBookings([...bookings, selectedDateData]);
   };
@@ -196,10 +196,10 @@ const Timeline = ({ selectedDates }) => {
                       backgroundColor: active
                         ? 'red'
                         : completed
-                        ? 'green'
-                        : activeStep > index
-                        ? 'grey'
-                        : 'white',
+                          ? 'green'
+                          : activeStep > index
+                            ? 'grey'
+                            : 'white',
                       display: 'flex',
                       alignItems: 'center',
                       justifyContent: 'center',
@@ -247,7 +247,7 @@ const Timeline = ({ selectedDates }) => {
               <Button onClick={handleNext}>
                 {activeStep === steps.length - 1 ? 'Finish' : 'Next'}
               </Button>
-              
+
             </Box>
           </React.Fragment>
         )}
@@ -255,10 +255,10 @@ const Timeline = ({ selectedDates }) => {
           <React.Fragment>
             <div>
               <FormControl component="fieldset">
-              <Typography variant="h5" style={{ textAlign: 'left', paddingTop: '20px', fontSize: '30px' }}>
-                <span style={{ color: '#0071BA' }}>Book </span>
-                <span>Your Lunch!</span>
-              </Typography>
+                <Typography variant="h5" style={{ textAlign: 'left', paddingTop: '20px', fontSize: '30px' }}>
+                  <span style={{ color: '#0071BA' }}>Book </span>
+                  <span>Your Lunch!</span>
+                </Typography>
                 <Typography variant="h6" gutterBottom>
                   Lunch Preferences:
                 </Typography>
@@ -287,50 +287,8 @@ const Timeline = ({ selectedDates }) => {
               </FormControl>
             </div>
           </React.Fragment>
-        ) : activeStep === 1 ? (
-          <React.Fragment>
-            <div>
-              <FormControl fullWidth>
-              <Typography variant="h5" style={{ textAlign: 'left', paddingTop: '20px', fontSize: '30px' }}>
-                <span>Book Your</span>
-                <span style={{ color: '#0071BA' }}> Cab!</span>
-              </Typography>
-                <Typography variant="h6" gutterBottom>
-                  Choose Timings:
-                </Typography>
-                <Select
-                  labelId="cab-timing-label"
-                  id="cab-timing"
-                  value={cabTiming}
-                  onChange={handleCabTimingChange}
-                >
-                  <MenuItem value="9:00am-5:00pm">9:00am-5:00pm</MenuItem>
-                  <MenuItem value="5:00am-2:00pm">5:00am-2:00pm</MenuItem>
-                  <MenuItem value="6:00am-3:00pm">6:00am-3:00pm</MenuItem>
-                </Select>
-              </FormControl>
-            </div>
-          </React.Fragment>
         ) : null}
       </Box>
-      {activeStep === steps.length - 1 && (
-        <div>
-          <Typography variant="h5" style={{ textAlign: 'left', paddingTop: '20px', fontSize: '30px' }}>
-                <span style={{ color: '#0071BA' }}>Review </span>
-                <span>Your Requests</span>
-              </Typography>
-          {active.map((index, idx) => (
-            <div key={idx}>
-              <Typography variant="h6" fontWeight="bold" style={{paddingTop:'10px'}}>{selectedDates[index].toDateString()}</Typography>
-              <Typography>Lunch Preference: {reviewData.lunchPreference}</Typography>
-              <Typography>Cab Timing: {reviewData.cabTiming}</Typography>
-              {bookings.length > idx && (
-                <Typography>Booking Data: {bookings[idx].lunchPreference} - {bookings[idx].cabTiming}</Typography>
-              )}
-            </div>
-          ))}
-        </div>
-      )}
     </Box>
   );
 };
