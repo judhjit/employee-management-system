@@ -2,6 +2,7 @@
 // const CabBookings = require('../models/cab-booking');
 const FoodBookings = require('../models/food-booking');
 const User = require('../models/user');
+const Holiday = require('../models/holiday');
 const dateFns = require('date-fns');
 require("dotenv").config("../.env");
 
@@ -11,6 +12,61 @@ const childLogger = logger.child({ module: 'user-all-booking-controller' });
 const transporter = require('../mail');
 
 let service = "";
+
+async function ifDateIsOneDayAheadAndTodayIsHoliday(selectedDateStr) {
+
+    service = "ifDateIsOneDayAheadAndTodayIsHoliday";
+
+    let holidayList;
+    try {
+        holidayList = await Holiday.getHolidaysOfCurrentAndUpcomingYears(); //get holidays of current and upcoming years
+        // if (holidayList && !isArray(holidayList)) holidayList = [holidayList]; //if holidayList is not an array, then set holidayList to an array containing holidayList
+        childLogger.info("Successfully got holidays of current and upcoming years", { service: service });
+
+        if (!holidayList || holidayList.length === 0) {
+            //set holidayList to empty array if no holidays found
+            // holidayList = [];
+            childLogger.info("No holidays found", { service: service });
+        } else {
+            childLogger.info("Successfully found holiday list", { service: service });
+        }
+    } catch (error) {
+        childLogger.error("Failed to get holidays of current and upcoming years", { service: service, error: error });
+        // return res.status(500).json({ message: 'Internal Server Error' });
+        return true; //return true if failed to get holidays
+    }
+    const selectedDate = new Date(selectedDateStr);
+    const currentDate = new Date();
+    //set hours, minutes, seconds and milliseconds to 0 to compare only date part
+    const currentDateStart = new Date(currentDate.setHours(0, 0, 0, 0));
+    const selectedDateStart = new Date(selectedDate.setHours(0, 0, 0, 0));
+
+    //find difference in days
+    const differenceInTime = selectedDateStart - currentDateStart;
+    const differenceInDays = differenceInTime / (1000 * 3600 * 24);
+    // const isTodayHoliday = holidayList.some(holiday => dateFns.isSameDay(new Date(holiday.date), currentDate)); //check if today is holiday
+
+    let isTodayHoliday = false;
+    childLogger.info("holidayList Length: " + holidayList.length, { service: service });
+    //check if date is present in holidayList
+    if (holidayList.length > 0) {
+        isTodayHoliday = holidayList.some(holiday => dateFns.isSameDay(new Date(holiday.holiday_date), currentDateStart));
+        childLogger.info("Current date: " + currentDateStart, { service: service });
+        childLogger.info("Holiday date: " + new Date(holidayList[0].holiday_date), { service: service });
+    }
+
+    childLogger.info("Is today holiday: " + isTodayHoliday, { service: service });
+    childLogger.info("Difference in days: " + differenceInDays, { service: service });
+
+    if (differenceInDays === 1 && isTodayHoliday) { //if selected date is one day ahead
+        childLogger.info("Cannot book for next day since today is a holiday", { service: service });
+        return true;
+    }
+
+    childLogger.info("Selected date is not one day ahead or today is not holiday..", { service: service });
+    return false;
+}
+
 
 function ifDateIsOneDayAheadAndTimeIsBefore10AM(selectedDateStr) {
 
@@ -292,6 +348,11 @@ async function bookAll(req, res, next) { //function to book a desk, cab and food
             return res.status(400).json({ message: 'For next day, booking time must be before 10AM' });
         }
 
+        //verify if date is one day ahead and today is not holiday
+        if (await ifDateIsOneDayAheadAndTodayIsHoliday(dates[i])) {
+            return res.status(400).json({ message: 'You can not book for next day since today is a holiday' });
+        }
+
         dates[i] = dateFns.format(new Date(dates[i]), 'yyyy-MM-dd');
     }
     childLogger.info('Formatting dates and checking buffer', { userId: req.userId, service: service, request: { dates: dates, isFoodRequired: isFoodRequired } });
@@ -398,12 +459,17 @@ async function modifyAll(req, res, next) { //function to modify a cab or food bo
 
     //verify if date is upcoming Monday and today is not weekend
     if (isSelectedDateMonday && !isSelectedDateUpcomingMondayAndTodayNotWeekend(dates[0])) {
-        return res.status(400).json({ message: 'You can only book food for upcoming Monday and today is not weekend' });
+        return res.status(400).json({ message: 'You can not modify booking for upcoming Monday on weekend' });
     }
 
     //verify if date is one day ahead and time is before 10AM
     if (!ifDateIsOneDayAheadAndTimeIsBefore10AM(dates[0])) {
-        return res.status(400).json({ message: 'You can only book food for a date which is one day ahead and time is before 10AM' });
+        return res.status(400).json({ message: 'You can only modify booking before 10 AM for a date which is one day ahead' });
+    }
+
+    //verify if date is one day ahead and today is not holiday
+    if (await ifDateIsOneDayAheadAndTodayIsHoliday(dates[0])) {
+        return res.status(400).json({ message: 'You can not modify booking for next day since today is a holiday' });
     }
 
     dates[0] = dateFns.format(new Date(dates[0]), 'yyyy-MM-dd');
@@ -494,25 +560,33 @@ async function cancelAll(req, res, next) { //function to cancel a desk, cab and 
 
     //verify if date is upcoming Monday and today is not weekend
     if (isSelectedDateMonday && !isSelectedDateUpcomingMondayAndTodayNotWeekend(dates[0])) {
-        return res.status(400).json({ message: 'You can only book food for upcoming Monday and today is not weekend' });
+        return res.status(400).json({ message: 'You can not cancel booking for upcoming Monday on weekend' });
     }
 
     //verify if date is one day ahead and time is before 10AM
     if (!ifDateIsOneDayAheadAndTimeIsBefore10AM(dates[0])) {
-        return res.status(400).json({ message: 'You can only book food for a date which is one day ahead and time is before 10AM' });
+        return res.status(400).json({ message: 'You can only cancel booking before 10 AM for a date which is one day ahead' });
     }
 
+    //verify if date is one day ahead and today is not holiday
+    if (await ifDateIsOneDayAheadAndTodayIsHoliday(dates[0])) {
+        // console.log("You can not cancel booking for next day since today is a holiday");
+        // childLogger.error("You can not cancel booking for next day since today is a holiday", { service: service, userId: req.userId });
+        return res.status(400).json({ message: 'You can not cancel booking for next day since today is a holiday' });
+    }
+
+    // childLogger.info('Formatting dates and checking buffer', { userId: req.userId, service: service, request: { dates: dates, cancelFood: cancelFood } });
     dates[0] = dateFns.format(new Date(dates[0]), 'yyyy-MM-dd');
     if (!cancelFood) {
         childLogger.error("Food not to be cancelled", { service: service, userId: req.userId });
         return res.status(400).json({ message: 'Food not to be cancelled' });
     }
-    childLogger.info('Formatting dates and checking buffer', { userId: req.userId, service: service, request: { dates: dates, cancelFood: cancelFood } });
-    //verify if date is in future starting next day
-    const durationUnitsFromNow = dateFns.format(dateFns.addDays(new Date(), 1), 'yyyy-MM-dd');
-    if (dateFns.isBefore(new Date(dates[0]), new Date(durationUnitsFromNow))) { //if date is before durationUnitsFromNow
-        return res.status(400).json({ message: 'Date should be a day ahead from today for cancellation!' });
-    }
+    // childLogger.info('Formatting dates and checking buffer', { userId: req.userId, service: service, request: { dates: dates, cancelFood: cancelFood } });
+    // //verify if date is in future starting next day
+    // const durationUnitsFromNow = dateFns.format(dateFns.addDays(new Date(), 1), 'yyyy-MM-dd');
+    // if (dateFns.isBefore(new Date(dates[0]), new Date(durationUnitsFromNow))) { //if date is before durationUnitsFromNow
+    //     return res.status(400).json({ message: 'Date should be a day ahead from today for cancellation!' });
+    // }
     let foodBookings;
     if (cancelFood) {
         //verify that there is a food booking for the date
