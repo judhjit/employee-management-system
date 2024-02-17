@@ -150,7 +150,7 @@ export default function LunchAndCabbook({
               <div key={index}>
                 <Button
                   variant="contained"
-                  disabled={new Date(d) - currentDate < 14 * 24 * 60 * 60 * 1000}
+                  // disabled={new Date(d) - currentDate < 14 * 24 * 60 * 60 * 1000}
 
                   onClick={() => handleActiveStatus(index)}
                   style={{

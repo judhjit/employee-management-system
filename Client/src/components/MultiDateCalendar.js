@@ -13,6 +13,7 @@ import api from "../api";
 import Loading from './Loading';
 import Divider from '@mui/material/Divider';
 import ChevronRightIcon from '@mui/icons-material/ChevronLeft';
+import { cleanDigitSectionValue } from "@mui/x-date-pickers/internals/hooks/useField/useField.utils";
 
 const MultiDateCalendar = ({
   // showNewsFeed,
@@ -31,6 +32,7 @@ const MultiDateCalendar = ({
   const [loading, setLoading] = useState(false);
 
   const [disabledDates, setDisabledDates] = useState([]);
+  const [holidays,setHolidays]=useState([]);
   const [currentBookingsOpen, setCurrentBookingsOpen] = useState(false);
 
   useEffect(() => {
@@ -49,6 +51,10 @@ const MultiDateCalendar = ({
     });
   }, []);
 
+
+
+
+ 
   const fetchData = async () => {
     let response;
     try {
@@ -68,8 +74,25 @@ const MultiDateCalendar = ({
       console.error("Error:", error);
     }
   };
+  
+
+ 
+  const fetchHolidays=async()=>{
+    let response;
+    try {
+      response = await api.get("/user/getholidaysofthisandupcomingyears");
+      console.log("holiays",response.data.holidays);
+      setHolidays(response.data.holidays);
+    }
+    catch (error){
+      console.log("error fetching holidays",error);
+    }
+  };
+
+
   useEffect(() => {
     fetchData();
+    fetchHolidays();
   }, []);
 
   const handleCurrentBookingsClick = () => {
@@ -81,7 +104,30 @@ const MultiDateCalendar = ({
   };
 
   const handleDateClick = (date) => {
-    console.log(date);
+    console.log("click",date);
+    const formattedDate=date.toISOString().split('T')[0];
+    console.log("format",formattedDate);
+    // const checkHoliday=holidays.find(holiday=>holiday.holiday_date===formattedDate);
+    // console.log("checked holiday",checkHoliday);
+    // const holidayDate=new Date(holiday.holiday_date);
+    // const holidayDateIndex=holidays.findIndex((holiday) => holiday.holiday_date.toDateString() === date.toDateString());
+    // console.log(holidayDateIndex);
+
+    const foundHoliday = holidays.find(holiday => {
+      // Convert holiday_date to a Date object if it's not already
+      const holidayDate = new Date(holiday.holiday_date);
+      // Compare holiday_date with date after converting both toDateString
+      return holidayDate.toDateString() === date.toDateString();
+      
+  });
+
+  console.log("f",foundHoliday);
+    if(foundHoliday){
+      
+      alert('its a holiday')
+      return;
+    }
+
     if (date.getDay() === 0) {
       return;
     }
@@ -93,6 +139,8 @@ const MultiDateCalendar = ({
       (selectedDate) => selectedDate.toDateString() === date.toDateString()
     );
 
+    
+      
     if (dateIndex !== -1) {
       // If already selected, remove the date
       newSelectedDates = selectedDates.filter(
@@ -104,6 +152,10 @@ const MultiDateCalendar = ({
       //   alert("You can only select up to 5 dates.");
 
       //   return;
+      // }
+
+      // if (holidayDateIndex!==-1){
+        
       // }
       if (selectedDates.length >= 5) {
         toast.error('You can only select up to 5 dates.');
@@ -137,6 +189,10 @@ const MultiDateCalendar = ({
     navigate("/bookings");
   };
 
+  const isAfter10AMToday = () => {
+    const currentDate = new Date();
+    return currentDate.getHours() >= 10;
+  };
 
   return (
     <Grid container spacing={2}>
@@ -185,10 +241,11 @@ const MultiDateCalendar = ({
               <Calendar
                 onClickDay={handleDateClick}
                 tileDisabled={({ date }) =>
-                  date < new Date(new Date().setHours(0, 0, 0, 0)) ||
-                  date.getDay() === 0 ||
-                  disabledDates.some(disabledDate => new Date(disabledDate).toDateString() === date.toDateString())
-                }
+                date < new Date(new Date().setHours(0, 0, 0, 0)) ||
+                date.getDay() === 0 ||
+                disabledDates.some((disabledDate) => new Date(disabledDate).toDateString() === date.toDateString()) ||
+                (isAfter10AMToday() && date.toDateString() === new Date(new Date().setDate(new Date().getDate() + 1)).toDateString())
+              }
                 tileClassName={({ date }) => {
                   const isSunday = date.getDay() === 0;
 
@@ -206,23 +263,36 @@ const MultiDateCalendar = ({
                       selectedDate.toDateString() === date.toDateString()
                   );
 
+                  const isHoliday = holidays.some(
+                    (holiday) => new Date(holiday.holiday_date).toDateString() === date.toDateString()
+                  );
+
                   const isPreviousWeekend =
                     date < new Date(new Date().setHours(0, 0, 0, 0)) &&
                     (date.getDay() === 0 || date.getDay() === 6);
 
-                  return isBooked
+                    return isBooked
                     ? "booked"
                     : isSelected
-                      ? "selected"
-                      : isSunday
-                        ? "sunday"
-                        : isSaturday
-                          ? "saturday"
-                          : isPreviousWeekend
-                            ? "previous-weekend"
-                            : "";
+                    ? "selected"
+                    : isSunday
+                    ? "sunday"
+                    : isSaturday
+                    ? "saturday"
+                    : isPreviousWeekend
+                    ? "previous-weekend"
+                    : isHoliday
+                    ? "holiday"
+                    : "";
                 }}
+
+                tileContent={({ date, view }) =>
+                view === "month" && holidays.some((holiday) => new Date(holiday.holiday_date).toDateString() === date.toDateString())
+                  ? <div style={{ backgroundColor: "green", borderRadius: "50%", height: "10px", width: "10px", margin: "auto" }} />
+                  : null
+              }
               />
+             
               <Button
                 variant="contained"
                 color="primary"

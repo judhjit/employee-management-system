@@ -23,6 +23,7 @@
 
 // import api from "../api";
 
+
 // library.add(faNewspaper, faSignOutAlt, faUserCircle);
 
 // const Navbar = ({
@@ -227,6 +228,7 @@ import React, { useState } from "react";
 import Divider from '@mui/material/Divider';
 import CurrentBookings from "./CurrentBookings";
 import { Button, Menu, MenuItem, IconButton, Drawer } from "@mui/material";
+
 import { library } from "@fortawesome/fontawesome-svg-core";
 import ChevronRightIcon from '@mui/icons-material/ChevronLeft';
 import {
