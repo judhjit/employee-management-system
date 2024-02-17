@@ -9,6 +9,7 @@ import {
   TableHead,
   TableRow,
   Select,
+  Paper,
   MenuItem,
   Dialog,
   DialogTitle,
@@ -137,6 +138,7 @@ const CurrentBookings = () => {
       <div
         style={{
           fontSize: "29px",
+          width:'100vw',
           fontFamily: "poppins",
           fontWeight: 600,
           marginLeft: "90px",
@@ -148,14 +150,18 @@ const CurrentBookings = () => {
         <span>Bookings:</span>
       </div>
       <TableContainer
+        component={Paper}
         style={{
-          width: "97vw",
-          padding: "0 10px",
-          height: "190px",
-          marginTop: "3vh",
+          width: "45vw",
+          marginTop: "0.2vw",
+          marginLeft: "2vw",
+          maxHeight: 400,
+          justifyContent: "center",
+          border: "1px solid #E9E9E9",
+          borderRadius: "10px",
         }}
       >
-        <Table stickyHeader>
+        <Table sx={{ minWidth: 500 }} stickyHeader>
           <TableHead>
             <TableRow
             // style={{
@@ -164,11 +170,9 @@ const CurrentBookings = () => {
             >
               <TableCell
                 style={{
-                  padding: 5,
+                  backgroundColor: "#004B81",
                   color: "white",
-                  backgroundColor: "#0071BA",
-                  fontFamily: "poppins",
-                  fontSize: "20px",
+                  fontSize: "14px",
                 }}
               >
                 Sl No.
@@ -184,7 +188,7 @@ const CurrentBookings = () => {
               >
                 Date
               </TableCell>
-              <TableCell
+              {/* <TableCell
                 style={{
                   padding: 5,
                   color: "white",
@@ -194,7 +198,7 @@ const CurrentBookings = () => {
                 }}
               >
                 Type
-              </TableCell>
+              </TableCell> */}
               <TableCell
                 style={{
                   padding: 5,
@@ -237,7 +241,7 @@ const CurrentBookings = () => {
                 <TableCell style={{ padding: 5 }}>
                   {booking.dateBooked}
                 </TableCell>
-                <TableCell style={{ padding: 5 }}>{booking.type}</TableCell>
+                {/* <TableCell style={{ padding: 5 }}>{booking.type}</TableCell> */}
                 <TableCell style={{ padding: 5 }}>{booking.selected}</TableCell>
                 <TableCell style={{ padding: 5 }}>
                   <IconButton

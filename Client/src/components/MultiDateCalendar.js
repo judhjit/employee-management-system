@@ -1,15 +1,18 @@
 import React, { useState, useEffect } from "react";
 import Calendar from "react-calendar";
 import Alert from '@mui/material/Alert';
-import { Box, Button } from "@mui/material";
+import { Box, Button, Drawer, IconButton } from "@mui/material";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import "react-calendar/dist/Calendar.css";
 import "./MultiDateCalendar.css";
 import { useNavigate } from "react-router-dom";
 import CurrentBookings from "./CurrentBookings";
+import Grid from '@mui/material/Grid';
 import api from "../api";
 import Loading from './Loading';
+import Divider from '@mui/material/Divider';
+import ChevronRightIcon from '@mui/icons-material/ChevronLeft';
 
 const MultiDateCalendar = ({
   // showNewsFeed,
@@ -28,6 +31,7 @@ const MultiDateCalendar = ({
   const [loading, setLoading] = useState(false);
 
   const [disabledDates, setDisabledDates] = useState([]);
+  const [currentBookingsOpen, setCurrentBookingsOpen] = useState(false);
 
   useEffect(() => {
     // fetchNewsTitles();
@@ -68,6 +72,13 @@ const MultiDateCalendar = ({
     fetchData();
   }, []);
 
+  const handleCurrentBookingsClick = () => {
+    setCurrentBookingsOpen(true);
+  };
+
+  const handleCloseCurrentBookings = () => {
+    setCurrentBookingsOpen(false);
+  };
 
   const handleDateClick = (date) => {
     console.log(date);
@@ -128,7 +139,8 @@ const MultiDateCalendar = ({
 
 
   return (
-
+    <Grid container spacing={2}>
+      <Grid item xs={12} md={10}>
     <div style={{ backgroundColor: "white", height: "664px", width: "76.1vw" }}>
       {loading ? (
         <div>
@@ -217,8 +229,8 @@ const MultiDateCalendar = ({
                 style={{
                   height: "2vw",
                   width: "1.5vw",
-                  marginTop: "-60px",
-                  marginLeft: "650px",
+                  marginTop: "70px",
+                  marginLeft: "100px",
                 }}
                 onClick={handleBookButtonClick}
               >
@@ -226,14 +238,37 @@ const MultiDateCalendar = ({
               </Button>
             </div>
           </div>
-          <div style={{ backgroundColor: "#F0F8FF", width: "100vw" }}>
-            <CurrentBookings />
-          </div>
-          <ToastContainer />
         </div>
       ) : <Loading />}
 
     </div>
+    </Grid>
+     <Grid item xs={12} md={2}>
+     {/* <div style={{ backgroundColor: "#F0F8FF", height: "664px", width: "100%" }}>
+       <CurrentBookings />
+     </div> */}
+     <button onClick={handleCurrentBookingsClick} style={{ textTransform: 'none', fontSize: '16px', fontWeight: 'bold', color: 'black', marginTop:'20vh', marginLeft:'12vw', height:'40vh', borderRadius:'6px', writingMode: 'vertical-rl',
+        textOrientation: 'mixed',  }}>Current Bookings</button>
+     <Drawer
+            anchor="right"
+            open={currentBookingsOpen}
+            onClose={handleCloseCurrentBookings}
+            variant="persistent"
+   
+          >
+            <div style={{ width: "800px", padding: "20px" }}>
+            <IconButton onClick={handleCloseCurrentBookings}>
+             <ChevronRightIcon />
+          </IconButton>
+              <Divider />
+              <CurrentBookings />
+            </div>
+          </Drawer>
+
+   </Grid>
+
+   <ToastContainer />
+ </Grid>
   );
 };
 

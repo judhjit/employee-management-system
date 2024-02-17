@@ -153,7 +153,7 @@ function App() {
               <Route path="/analytics" element={<Analytics />} />
               <Route path="/useranalytics" element={<UserAnalytics />} />
               <Route path="/holidays" element={<Holiday />} />
-              <Route path="/userholidaylist" element={<HolidayListUser />} />
+              <Route path="/userholidaylist" element={<HolidayListUser isAdmin={user.isAdmin} />} />
               {/* <Route path="/viewAllAdmin" element={<ViewAllAdmin />} /> */}
               <Route path="/bookings" element={<Bookings selectedDates={selectedDates} bookings={bookings} setBookings={setBookings} userId={user.user} />} />
               <Route path="/profile" element={<Profile user={user} isUser={isUser} />} />

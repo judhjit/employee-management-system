@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-no-undef */
 
 
 
@@ -224,14 +225,16 @@
 
 import React, { useState } from "react";
 import Divider from '@mui/material/Divider';
-
+import CurrentBookings from "./CurrentBookings";
 import { Button, Menu, MenuItem, IconButton, Drawer } from "@mui/material";
 import { library } from "@fortawesome/fontawesome-svg-core";
+import ChevronRightIcon from '@mui/icons-material/ChevronLeft';
 import {
   faNewspaper,
   faSignOutAlt,
   faUserCircle,
   faHome,
+  faListAlt,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Navigate, useNavigate } from "react-router-dom";
@@ -241,9 +244,10 @@ import Popover from "@mui/material/Popover";
 import { AppBar, Toolbar, Typography } from "@mui/material";
 import { styled } from '@mui/system';
 
+
 import api from "../api";
 
-library.add(faNewspaper, faSignOutAlt, faUserCircle);
+library.add(faNewspaper, faSignOutAlt, faUserCircle, faListAlt);
 
 const Navbar = ({
   showNewsFeed,
@@ -260,6 +264,7 @@ const Navbar = ({
 
   const [newspaperAnchorEl, setNewspaperAnchorEl] = useState(null);
   const [profileAnchorEl, setProfileAnchorEl] = useState(null);
+  const [currentBookingsOpen, setCurrentBookingsOpen] = useState(false);
 
 
   const [drawerOpen, setDrawerOpen] = useState(false);
@@ -277,7 +282,15 @@ const Navbar = ({
     setDrawerOpen(open);
   };
 
+  
 
+  const handleCurrentBookingsClick = () => {
+    setCurrentBookingsOpen(true);
+  };
+
+  const handleCloseCurrentBookings = () => {
+    setCurrentBookingsOpen(false);
+  };
 
 
 
@@ -297,9 +310,9 @@ const Navbar = ({
   //   setShowNewsFeed(!showNewsFeed)
   // };
 
-  const closePopover = () => {
-    setNewspaperAnchorEl(null);
-  };
+  // const closePopover = () => {
+  //   setNewspaperAnchorEl(null);
+  // };
 
   const handleLogout = () => {
     localStorage.removeItem('token');
@@ -307,6 +320,9 @@ const Navbar = ({
     window.location.href = "/";
     // navigate("/");
   };
+  // const handleOverlayClick = () => {
+  //   setCurrentBookingsOpen(false);
+  // };
 
   // const handleNewsAdminRequest = async () => {
   //   let response;
@@ -318,7 +334,6 @@ const Navbar = ({
   //     console.error('Error fetching data:', error);
   //   }
   // }
-
   const CustomTextButton = styled(Button)(({ theme }) => ({
     color: 'black',
     fontSize: '20px',
@@ -330,6 +345,7 @@ const Navbar = ({
 
     },
   }));
+  
   
   const handleHomeButtonClick=()=>{
     // setBookings({
@@ -352,7 +368,8 @@ const Navbar = ({
       >
         <Toolbar>
 
-          <div style={{ display: "flex", gap: "17px", margin: "10px", paddingLeft: '50px' }}>
+          <div style={{ display: "flex", gap: "17px"}}>
+          
             {isAdmin && (
               <div>
                 <CustomTextButton
@@ -376,16 +393,16 @@ const Navbar = ({
                 >
                   Admin Analytics
                 </CustomTextButton>
-                <CustomTextButton
+                {/* <CustomTextButton
                   variant="text"
                   onClick={() => navigate("/holidays")}
                   style={{ fontFamily: 'poppins', paddingLeft: '32px' }}
                 >
                   Edit Holidays
-                </CustomTextButton>
+                </CustomTextButton> */}
               </div>
             )}
-          </div>
+          
           {isUser && (
             <div>
               <CustomTextButton
@@ -404,6 +421,7 @@ const Navbar = ({
               </CustomTextButton>
             </div>
           )}
+          </div>
           <div style={{ marginLeft: "auto", display: "flex", gap: "10px" }}>
             <IconButton onClick={handleHomeButtonClick}>
               <FontAwesomeIcon
@@ -421,7 +439,9 @@ const Navbar = ({
               />
             </IconButton> */}
             
-
+            <Button onClick={handleCurrentBookingsClick} style={{ textTransform: 'none', fontSize: '16px', fontWeight: 'bold', color: 'black' }}>
+              Current Booking
+            </Button>
 
             <IconButton onClick={handleOpenMenu}>
               <FontAwesomeIcon
@@ -451,7 +471,23 @@ const Navbar = ({
               />
               Logout
             </MenuItem>
+           
           </Menu>
+          <Drawer
+            anchor="right"
+            open={currentBookingsOpen}
+            onClose={handleCloseCurrentBookings}
+            variant="persistent"
+   
+          >
+            <div style={{ width: "800px", padding: "20px" }}>
+            <IconButton onClick={handleCloseCurrentBookings}>
+             <ChevronRightIcon />
+          </IconButton>
+              <Divider />
+              <CurrentBookings />
+            </div>
+          </Drawer>
 
           {/* <Popover
             open={Boolean(newspaperAnchorEl)}
@@ -470,6 +506,20 @@ const Navbar = ({
           </Popover> */}
         </Toolbar>
       </AppBar>
+      {/* {currentBookingsOpen && (
+        <div
+          style={{
+            position: 'fixed',
+            top: 0,
+            left: 0,
+            width: '100vw',
+            height: '100vh',
+            background: 'rgba(0, 0, 0, 0.5)',
+            zIndex: 999,
+          }}
+          onClick={handleOverlayClick}
+        />
+      )} */}
 
 
       <Divider />
