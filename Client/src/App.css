@@ -1,6 +1,6 @@
-/* .App {
-  text-align: center;
-} */
+.App {
+  background: #F7FCFF;
+}
 
 .lds-default {
   display: inline-block;
@@ -89,6 +89,7 @@
  html {
   font-size:16px;
   font-family: 'Poppins', sans-serif;
+  background: #F7FCFF;
 }
 
 *{

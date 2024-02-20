@@ -112,7 +112,8 @@ const Login = ({ isUser, setisUser, setUser }) => {
       console.log(response.data.message, userId, firstName);
       setisUser(true);
       // setShowNewsFeed(true);
-      navigate('/landingpage')
+      // navigate('/landingpage')
+      navigate('/dashboard')
     } catch (error) {
       // console.log(error.response);
       if (error.response.status === 404) {

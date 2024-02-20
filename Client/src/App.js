@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import "./App.css";
 
 import MultiDateCalendar from "./components/MultiDateCalendar";
-import Navbar from "./components/Navbar";
+// import Navbar from "./components/Navbar";
 // import NewsFeed from "./components/NewsFeed";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 // import DeskBooking from "./components/DeskBooking";
@@ -26,6 +26,7 @@ import UserAnalytics from "./components/UserAnalytics";
 import Holiday from "./components/admin/Holiday";
 import HolidayListUser from "./components/HolidayListUser";
 import api from "./api";
+import Dashboard from "./components/Dashboard";
 
 // import io from "socket.io-client";
 
@@ -93,7 +94,7 @@ function App() {
     <BrowserRouter>
       <div>
 
-        {isUser && <Navbar
+        {/* {isUser && <Navbar
           // showNewsFeed={showNewsFeed}
           // setShowNewsFeed={setShowNewsFeed}
           isAdmin={user.isAdmin}
@@ -103,7 +104,7 @@ function App() {
           setBookings={setBookings}
           selectedDates={selectedDates}
           setSelectedDates={setSelectedDates}
-        />}
+        />} */}
 
         <div className="App" style={{ display: "flex" }}>
           <div
@@ -133,6 +134,7 @@ function App() {
                 />} />
                 <Route path="/signup" element={<Signup />} />
               </Route>
+              <Route path='/dashboard' element ={<Dashboard/>}/>
               <Route path="/landingpage" element={<MultiDateCalendar
                 // showNewsFeed={showNewsFeed}
                 selectedDates={selectedDates}
