@@ -865,10 +865,10 @@ const CurrentBookings = () => {
       <TableContainer
         component={Paper}
         style={{
-          width: "27vw",
+          width: "32vw",
           marginTop: "0.2vw",
-          marginLeft: "0.1vw",
-          // maxHeight: 400,
+          marginLeft: "0.10000000000000009vw;",
+          maxHeight: 450,
           justifyContent: "center",
           // border: "1px solid #E9E9E9",
           // borderRadius: "10px",
@@ -937,14 +937,14 @@ const CurrentBookings = () => {
               <TableRow style={{ padding: 5 }} key={index}>
 
                 {/* <TableCell style={{ padding: 5 , fontSize:"13px",fontFamily: "poppins"}}>{index + 1}</TableCell> */}
-                <TableCell style={{ padding: 5 , fontSize:"12px" ,fontFamily: "poppins",borderBottom:'0'}}>
+                <TableCell style={{ paddingLeft:'10px' , fontSize:"12px" ,fontFamily: "poppins",borderBottom:'0'}}>
                  <img src={Meal}/>
                 </TableCell>
                 <TableCell style={{ padding: 5 , fontSize:"12px" ,fontFamily: "poppins",borderBottom:'0'}}>
                   {booking.dateBooked}
                 </TableCell>
                 <TableCell style={{paddingRight: 5 , fontSize:"13px" ,fontFamily: "poppins" , paddingBottom:'15px' , paddingLeft:'192px',borderBottom:'0'}}>{booking.selected}</TableCell>
-                <TableCell style={{borderBottom:'0'}}>
+                <TableCell style={{borderBottom:'0',paddingLeft:'45px'}}>
                   {/* <IconButton
                     color="secondary"
                     onClick={() => handleDeleteClick(booking)}
