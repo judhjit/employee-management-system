@@ -441,9 +441,9 @@ const Navbar = ({
               />
             </IconButton> */}
             
-            <Button onClick={handleCurrentBookingsClick} style={{ textTransform: 'none', fontSize: '16px', fontWeight: 'bold', color: 'black' }}>
+            {/* <Button onClick={handleCurrentBookingsClick} style={{ textTransform: 'none', fontSize: '16px', fontWeight: 'bold', color: 'black' }}>
               Current Booking
-            </Button>
+            </Button> */}
 
             <IconButton onClick={handleOpenMenu}>
               <FontAwesomeIcon

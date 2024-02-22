@@ -380,8 +380,11 @@ const MultiDateCalendar = ({
   const [disabledDates, setDisabledDates] = useState([]);
   const [holidays, setHolidays] = useState([]);
   const [currentBookingsOpen, setCurrentBookingsOpen] = useState(false);
-  const dummyContainerRef = useRef(null);
-  const [showDummyContainer, setShowDummyContainer] = useState(false);
+  const [showHolidayModal, setShowHolidayModal] = useState(false);
+  const [selectedHolidayDate, setSelectedHolidayDate] = useState(null);
+  // const [showBookingReview, setShowBookingReview] = useState(false);
+  const [showFoodPreferenceModal, setShowFoodPreferenceModal] = useState(false);
+  const [foodPreference, setFoodPreference] = useState("");
 
   useEffect(() => {
     setSelectedDates([]);
@@ -439,16 +442,22 @@ const MultiDateCalendar = ({
 
     const foundHoliday = holidays.find((holiday) => {
       const holidayDate = new Date(holiday.holiday_date);
-      return (
-        holidayDate.toDateString() === date.toDateString()
-      );
+      // Compare holiday_date with date after converting both toDateString
+      return holidayDate.toDateString() === date.toDateString();
     });
 
-    console.log("f", foundHoliday);
     if (foundHoliday) {
-      alert("its a holiday");
+      setShowHolidayModal(true);
+      setSelectedHolidayDate(date);
       return;
     }
+
+    // console.log("f",foundHoliday);
+    //   if(foundHoliday){
+
+    //     alert('its a holiday')
+    //     return;
+    //   }
 
     if (date.getDay() === 0) {
       return;
@@ -467,6 +476,16 @@ const MultiDateCalendar = ({
           selectedDate.toDateString() !== date.toDateString()
       );
     } else {
+      // If not selected, add the date
+      // if (selectedDates.length >= 5) {
+      //   alert("You can only select up to 5 dates.");
+
+      //   return;
+      // }
+
+      // if (holidayDateIndex!==-1){
+
+      // }
       if (selectedDates.length >= 5) {
         toast.error("You can only select up to 5 dates.");
         return;
@@ -501,21 +520,6 @@ const MultiDateCalendar = ({
 
     navigate("/bookings");
   };
-
-  const handleBookButton1Click=()=>{
-    setShowDummyContainer(true);
-
-    
-
-    setTimeout(() => {
-      if (dummyContainerRef.current) {
-        dummyContainerRef.current.scrollIntoView({
-          behavior: "smooth",
-        });
-      }
-    }, 500);
-
- }
 
   const isAfter10AMToday = () => {
     const currentDate = new Date();
@@ -585,9 +589,7 @@ const MultiDateCalendar = ({
                       );
 
                       const isHoliday = holidays.some(
-                        (holiday) =>
-                          new Date(holiday.holiday_date).toDateString() ===
-                          date.toDateString()
+                        (holiday) => new Date(holiday.holiday_date).toDateString() === date.toDateString()
                       );
 
                       const isPreviousWeekend =
@@ -608,27 +610,14 @@ const MultiDateCalendar = ({
                         ? "holiday"
                         : "";
                     }}
+
                     tileContent={({ date, view }) =>
-                      view === "month" &&
-                      holidays.some(
-                        (holiday) =>
-                          new Date(holiday.holiday_date).toDateString() ===
-                          date.toDateString()
-                      )
-                        ? (
-                          <div
-                            style={{
-                              backgroundColor: "green",
-                              borderRadius: "50%",
-                              height: "10px",
-                              width: "10px",
-                              margin: "auto",
-                            }}
-                          />
-                          )
-                        : null
+                      view === "month" && holidays.some((holiday) => new Date(holiday.holiday_date).toDateString() === date.toDateString())
+                  ? <div style={{ backgroundColor: "green", borderRadius: "50%", height: "10px", width: "10px", margin: "auto" }} />
+                      : null
                     }
                   />
+
                   <Button
                     variant="contained"
                     color="primary"
@@ -642,52 +631,27 @@ const MultiDateCalendar = ({
                   >
                     Book
                   </Button>
-                  <Button
-                    variant="contained"
-                    color="primary"
-                    style={{
-                      height: "2vw",
-                      width: "1.5vw",
-                      marginTop: "70px",
-                      marginLeft: "100px",
-                    }}
-                    onClick={handleBookButton1Click}
-                  >
-                    Book1
-                  </Button>
                 </div>
               </div>
             </div>
-          ) : (
-            <Loading />
-          )}
+          ) : <Loading />}
+
         </div>
       </Grid>
       <Grid item xs={12} md={2}>
-        <button
-          onClick={handleCurrentBookingsClick}
-          style={{
-            textTransform: "none",
-            fontSize: "13px",
-            fontWeight: "bold",
-            color: "black",
-            marginTop: "29vh",
-            marginLeft: "14.2vw",
-            height: "19vh",
-            borderRadius: "20px",
-            writingMode: "vertical-rl",
-            textOrientation: "mixed",
-          }}
-        >
-          Current Bookings
-        </button>
+                {/* <div style={{ backgroundColor: "#F0F8FF", height: "664px", width: "100%" }}>
+       <CurrentBookings />
+     </div> */}
+        <button onClick={handleCurrentBookingsClick} style={{ textTransform: 'none', fontSize: '16px', fontWeight: 'bold', color: 'black', marginTop:'20vh', marginLeft:'12vw', height:'40vh', borderRadius:'6px', writingMode: 'vertical-rl',
+            textOrientation: 'mixed',  }}>Current Bookings</button>
         <Drawer
           anchor="right"
           open={currentBookingsOpen}
           onClose={handleCloseCurrentBookings}
           variant="persistent"
+
         >
-          <div style={{ width: "415px", padding: "20px" }}>
+          <div style={{ width: "800px", padding: "20px" }}>
             <IconButton onClick={handleCloseCurrentBookings}>
               <ChevronRightIcon />
             </IconButton>
@@ -697,26 +661,8 @@ const MultiDateCalendar = ({
         </Drawer>
       </Grid>
 
-      {showDummyContainer && (
-        <div
-          ref={dummyContainerRef}
-          style={{
-            height: "100vh",
-            background: "#f2f2f2",
-            textAlign: "center",
-            paddingTop: "20px",
-          }}
-        >
-          <h2>Dummy Container</h2>
-          <p>
-            This is a dummy container that appears after clicking the Book
-            button. Scroll back to the previous container.
-          </p>
-        </div>
-      )}
-
       <ToastContainer />
-    </Grid>
+          </Grid>
   );
 };
 

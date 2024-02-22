@@ -27,6 +27,7 @@ import Holiday from "./components/admin/Holiday";
 import HolidayListUser from "./components/HolidayListUser";
 import api from "./api";
 import Dashboard from "./components/Dashboard";
+import Sidebar from "./components/Sidebar";
 
 // import io from "socket.io-client";
 
@@ -105,6 +106,13 @@ function App() {
           selectedDates={selectedDates}
           setSelectedDates={setSelectedDates}
         />} */}
+        {isUser && <Sidebar
+          // showNewsFeed={showNewsFeed}
+          // setShowNewsFeed={setShowNewsFeed}
+          isAdmin={user.isAdmin}
+          isUser={isUser}
+          // isNewsadmin={user.isNewsAdmin}
+        />}
 
         <div className="App" style={{ display: "flex" }}>
           <div
@@ -134,7 +142,9 @@ function App() {
                 />} />
                 <Route path="/signup" element={<Signup />} />
               </Route>
-              <Route path='/dashboard' element ={<Dashboard/>}/>
+              <Route path='/dashboard' element ={<Dashboard 
+                isAdmin={user.isAdmin}
+                isUser={isUser}/>}/>
               <Route path="/landingpage" element={<MultiDateCalendar
                 // showNewsFeed={showNewsFeed}
                 selectedDates={selectedDates}
@@ -152,6 +162,8 @@ function App() {
               <Route path="/lunchandcabbook" element={<LunchAndCabbook selectedDates={selectedDates} bookings={bookings} setBookings={setBookings} />} />
               {/* <Route path="/grantaccess" element={<GrantAccess />} /> */}
               <Route path="/requests" element={<Requests />} />
+              <Route path="/sidebar" element={<Sidebar  isAdmin={user.isAdmin}
+          isUser={isUser} />} />
               <Route path="/analytics" element={<Analytics />} />
               <Route path="/useranalytics" element={<UserAnalytics />} />
               <Route path="/holidays" element={<Holiday />} />

@@ -69,11 +69,13 @@ import { Box, Divider } from '@mui/material';
 import Illustration from '../assets/Illustration.png';
 import Lunch from '../assets/lunch.png';
 import CurrentBookings from './CurrentBookings';
-const Dashboard = () => {
+
+const Dashboard = ({ isAdmin, isUser }) => {
   return (
     <div>
       <div style={{ display: 'flex', flexDirection: 'row' }}>
-        <Sidebar />
+        <Sidebar isAdmin={isAdmin} isUser={isUser}/>
+        
 
         <Box
         sx={{
@@ -81,7 +83,7 @@ const Dashboard = () => {
           marginLeft: '441px',
           position: 'absolute',
           marginTop: '32px',
-          width: '497px',
+          width: '550px',
           height: '92vh',
           borderRadius: "15px",
           backgroundColor:'white'
@@ -106,7 +108,7 @@ const Dashboard = () => {
         <Box
         sx={{
           boxShadow: '0 4px 8px 0 rgba(149,146,146,0.2), 0 4px 20px 0 rgba(255, 255, 255, 0.19);',
-          marginLeft: '960px',
+          marginLeft: '1010px',
           position: 'absolute',
           marginTop: '32px',
           width: '497px',

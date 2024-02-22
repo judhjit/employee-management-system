@@ -8,7 +8,7 @@ const Login = ({ isUser, setisUser, setUser }) => {
   const navigate = useNavigate();
   // console.log("isUser", isUser);
   if(isUser){
-    navigate('/landingpage');
+    navigate('/dashboard');
   }
   const [formData, setFormData] = useState({
     email: '',
