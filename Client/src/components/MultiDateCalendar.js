@@ -442,7 +442,6 @@ const MultiDateCalendar = ({
 
     const foundHoliday = holidays.find((holiday) => {
       const holidayDate = new Date(holiday.holiday_date);
-      // Compare holiday_date with date after converting both toDateString
       return holidayDate.toDateString() === date.toDateString();
     });
 
