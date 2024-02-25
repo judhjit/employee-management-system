@@ -143,8 +143,14 @@ function App() {
                 <Route path="/signup" element={<Signup />} />
               </Route>
               <Route path='/dashboard' element ={<Dashboard 
-                isAdmin={user.isAdmin}
-                isUser={isUser}/>}/>
+              selectedDates={selectedDates}
+              setSelectedDates={setSelectedDates}
+              user={user}
+              setUser={setUser}
+              isUser={isUser}
+              bookings={bookings}
+              setBookings={setBookings}/>}/>
+              
               <Route path="/landingpage" element={<MultiDateCalendar
                 // showNewsFeed={showNewsFeed}
                 selectedDates={selectedDates}

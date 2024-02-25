@@ -113,7 +113,7 @@ const Bookings = ({ selectedDates, bookings, setBookings }) => {
   }
 
   return (
-    <div className={classes.root} style={{ width: '1100px' }}>
+    <div className={classes.root} style={{ width: '500px' }}>
       <Stepper activeStep={activeStep} alternativeLabel style={{ marginLeft: '780px', zIndex: '1', position: 'relative', marginTop: '64px' }}>
         {steps.map((label, index) => (
           <Step key={label} >

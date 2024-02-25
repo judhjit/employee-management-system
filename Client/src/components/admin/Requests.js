@@ -134,9 +134,9 @@ const Requests = () => {
   return (
     <div
       style={{
-        backgroundColor: "white",
-        height: "664px",
-        width: "75vw",
+      
+        height: "60vh",
+        width: "50vw",
         textAlign: "center",
         margin: "0 auto",
       }}
@@ -229,10 +229,11 @@ const Requests = () => {
         <Fab
           aria-label="Search"
           style={{
-            marginLeft: "20px",
+            marginLeft: "818px",
             backgroundColor: "#79C6F1",
             color: "white",
             cursor: "pointer", 
+            position: "absolute"
           }}
           onClick={exportToExcel} 
         >

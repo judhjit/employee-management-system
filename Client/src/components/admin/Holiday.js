@@ -45,8 +45,8 @@ const Holiday = () => {
         <div
             style={{
                 backgroundColor: "white",
-                height: "664px",
-                width: "75vw",
+                height: "60vh",
+                width: "50vw",
                 textAlign: "center",
                 margin: "0 auto",
             }}
@@ -73,9 +73,9 @@ const Holiday = () => {
             </form>
             <TableContainer component={Paper}
                 style={{
-                    width: "70vw",
-                    marginTop: "0.2vw",
-                    marginLeft: "2vw",
+                    width: "54vw",
+                    marginTop: "2vw",
+                    marginLeft: "12vw",
                     maxHeight: 400,
                     justifyContent: "center",
                     border: "1px solid #E9E9E9",

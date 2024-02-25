@@ -69,8 +69,17 @@ import { Box, Divider } from '@mui/material';
 import Illustration from '../assets/Illustration.png';
 import Lunch from '../assets/lunch.png';
 import CurrentBookings from './CurrentBookings';
-
-const Dashboard = ({ isAdmin, isUser }) => {
+import CalendarMonthIcon from '@mui/icons-material/CalendarMonth';
+import Customers from '../assets/Customers.png';
+import MultiDateCalendar from './MultiDateCalendar';
+const Dashboard = ({selectedDates,
+  setSelectedDates,
+  user,
+  setUser,
+  bookings,
+  setBookings,
+isAdmin,
+isUser}) => {
   return (
     <div>
       <div style={{ display: 'flex', flexDirection: 'row' }}>
@@ -124,7 +133,21 @@ const Dashboard = ({ isAdmin, isUser }) => {
           
         }}
       >
-       <img src={Illustration} style={{marginTop:'368px'}}/>
+        <div style={{position:'absolute',paddingLeft:'30px'}}>
+          {/* <Typography style={{marginTop:'40px'}}>Plan Your Day</Typography> */}
+          <img src={Customers} /></div>
+          <div style={{width:'150px'}}>
+          <MultiDateCalendar selectedDates={selectedDates}
+                setSelectedDates={setSelectedDates}
+                user={user}
+                setUser={setUser}
+               
+                bookings={bookings}
+                setBookings={setBookings}/>
+          </div>
+          
+        
+       <img src={Illustration} style={{marginTop:'345px'}}/>
       </Box>
       </div>
     </div>
