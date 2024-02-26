@@ -139,6 +139,8 @@ function Analytics() {
       <div style={{ backgroundColor: "white",
       height: "100%",
       width: "75vw",
+      paddingTop:"6vh",
+      paddingLeft:"6vw",
       textAlign: "center",
       margin: "0 auto", }}>
         {/* <h3 style={{ fontSize: '25px', paddingLeft: '560px' }}>

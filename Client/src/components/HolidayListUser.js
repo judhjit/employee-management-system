@@ -84,7 +84,7 @@ const HolidayListUser = ({ isAdmin }) => {
       style={{
         backgroundColor: "white",
         height: "664px",
-        width: "75vw",
+        width: "45vw",
         textAlign: "center",
         margin: "0 auto",
       }}
@@ -94,6 +94,8 @@ const HolidayListUser = ({ isAdmin }) => {
           display: "flex",
           alignItems: "center",
           justifyContent: "center",
+          paddingLeft:"17vw",
+          paddingTop:"6vh"
         }}
       >
         Holidays
@@ -131,7 +133,7 @@ const HolidayListUser = ({ isAdmin }) => {
       <TableContainer
         component={Paper}
         style={{
-          width: "70vw",
+          width: "60vw",
           marginTop: "0.2vw",
           marginLeft: "2vw",
           maxHeight: 400,

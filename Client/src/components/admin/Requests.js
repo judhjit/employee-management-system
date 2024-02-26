@@ -134,9 +134,9 @@ const Requests = () => {
   return (
     <div
       style={{
-      
-        height: "60vh",
-        width: "50vw",
+        backgroundColor: "white",
+        height: "664px",
+        width: "57vw",
         textAlign: "center",
         margin: "0 auto",
       }}
@@ -164,7 +164,7 @@ const Requests = () => {
         >
           <LocalizationProvider
             dateAdapter={AdapterDayjs}
-            style={{ fontFamily: "poppins", height: "51px" }}
+            style={{ fontFamily: "poppins", height: "51px"}}
           >
             <DemoContainer components={["DatePicker", "DatePicker"]}>
               <StyledDatePicker
@@ -229,7 +229,7 @@ const Requests = () => {
         <Fab
           aria-label="Search"
           style={{
-            marginLeft: "818px",
+            marginLeft: "922px",
             backgroundColor: "#79C6F1",
             color: "white",
             cursor: "pointer", 

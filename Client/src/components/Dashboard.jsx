@@ -89,10 +89,10 @@ isUser}) => {
         <Box
         sx={{
           boxShadow: '0 4px 8px 0 rgba(149,146,146,0.2), 0 4px 20px 0 rgba(255, 255, 255, 0.19);',
-          marginLeft: '441px',
+          marginLeft: '341px',
           position: 'absolute',
           marginTop: '32px',
-          width: '550px',
+          width: '580px',
           height: '92vh',
           borderRadius: "15px",
           backgroundColor:'white'
@@ -109,7 +109,7 @@ isUser}) => {
 
         <Typography style={{marginTop:'2vw', marginLeft:'30px',fontFamily:'poppins',fontSize:'18px', fontWeight:'bold'}}>Current Booking</Typography>
         <Divider
-            style={{ width: "427px", height: "15px", opacity: 0.5, marginLeft:'30px' }}
+            style={{ width: "500px", height: "15px", opacity: 0.5, marginLeft:'30px' }}
           />
           <CurrentBookings/>
       </Box>
@@ -117,10 +117,10 @@ isUser}) => {
         <Box
         sx={{
           boxShadow: '0 4px 8px 0 rgba(149,146,146,0.2), 0 4px 20px 0 rgba(255, 255, 255, 0.19);',
-          marginLeft: '1010px',
+          marginLeft: '950px',
           position: 'absolute',
           marginTop: '32px',
-          width: '497px',
+          width: '580px',
           height: '92vh',
           borderRadius: "15px",
           backgroundColor:'white'
@@ -133,10 +133,10 @@ isUser}) => {
           
         }}
       >
-        <div style={{position:'absolute',paddingLeft:'30px'}}>
+        <div style={{position:'absolute',paddingLeft:'60px'}}>
           {/* <Typography style={{marginTop:'40px'}}>Plan Your Day</Typography> */}
-          <img src={Customers} /></div>
-          <div style={{width:'150px'}}>
+          <img src={Customers} style={{marginTop:'20px'}}/></div>
+          <div style={{width:'150px', marginTop:'30px', paddingLeft:'30px'}}>
           <MultiDateCalendar selectedDates={selectedDates}
                 setSelectedDates={setSelectedDates}
                 user={user}

@@ -145,8 +145,7 @@ function App() {
               <Route path='/dashboard' element ={<Dashboard 
               selectedDates={selectedDates}
               setSelectedDates={setSelectedDates}
-              user={user}
-              setUser={setUser}
+              isAdmin={user.isAdmin}
               isUser={isUser}
               bookings={bookings}
               setBookings={setBookings}/>}/>

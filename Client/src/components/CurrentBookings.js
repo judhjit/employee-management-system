@@ -1190,12 +1190,14 @@ const CurrentBookings = () => {
   };
   const handleDeleteClick = (booking) => {
     setSelectedBooking(booking);
+    setMenuOpen(false);
     setDeleteDialogOpen(true);
   };
 
   const handleEditClick = (booking) => {
     setSelectedBooking(booking);
     setEditDialogOpen(true);
+    setMenuOpen(false);
     setEditPreference(booking.selected);
   };
 
@@ -1203,7 +1205,7 @@ const CurrentBookings = () => {
     if (selectedBooking) {
       await handleCancel(selectedBooking.dateBooked, selectedBooking.type);
       handleDeleteDialogClose();
-      Swal.fire('Deleted!', 'The booking has been deleted successfully!\nA confirmation mail has been sent to your email.', 'success');
+      Swal.fire('Deleted!', 'Your booking has been deleted successfully!\nA confirmation mail has been sent to your email. \n Thank You!', 'success');
 
     }
   };
@@ -1212,7 +1214,7 @@ const CurrentBookings = () => {
     if (selectedBooking) {
       await editFood(selectedBooking.dateBooked, editPreference);
       handleEditDialogClose();
-      Swal.fire('Edited!', 'The booking has been edited successfully!\nA confirmation mail has been sent to your email.', 'success');
+      Swal.fire('Edited!', 'Your booking has been edited successfully!\n A confirmation mail has been sent to your email. \n Thank You!', 'success');
     }
   };
   const handleMoreOptionsClick = (event, booking) => {
@@ -1227,13 +1229,11 @@ const CurrentBookings = () => {
   };
   const handleCloseEditSuccessModal = () => {
     setEditSuccessModalOpen(false);
-    setMenuOpen(false);
     Swal.close();
   };
 
   const handleCloseDeleteSuccessModal = () => {
     setDeleteSuccessModalOpen(false);
-    setMenuOpen(false);
     Swal.close();
   };
 
@@ -1381,14 +1381,14 @@ const CurrentBookings = () => {
               <TableRow style={{ padding: 5 }} key={index}>
 
                 {/* <TableCell style={{ padding: 5 , fontSize:"13px",fontFamily: "poppins"}}>{index + 1}</TableCell> */}
-                <TableCell style={{ paddingLeft:'10px' , fontSize:"12px" ,fontFamily: "poppins",borderBottom:'0'}}>
+                <TableCell style={{ fontSize:"12px" ,fontFamily: "poppins",borderBottom:'0', paddingLeft:'50px'}}>
                  <img src={Meal}/>
                 </TableCell>
-                <TableCell style={{ padding: 5 , fontSize:"12px" ,fontFamily: "poppins",borderBottom:'0'}}>
+                <TableCell style={{ padding: 5 , fontSize:"12px" ,fontFamily: "poppins",borderBottom:'0', width:'85px'}}>
                   {booking.dateBooked}
                 </TableCell>
-                <TableCell style={{paddingRight: 5 , fontSize:"13px" ,fontFamily: "poppins" , paddingBottom:'15px' , paddingLeft:'192px',borderBottom:'0'}}>{booking.selected}</TableCell>
-                <TableCell style={{ borderBottom: '0', paddingLeft: '45px' }}>
+                <TableCell style={{paddingRight: 2 , fontSize:"13px" ,fontFamily: "poppins" , paddingBottom:'15px' , paddingLeft:'170px',borderBottom:'0', width:'85px'}}>{booking.selected}</TableCell>
+                <TableCell style={{ borderBottom: '0', marginLeft: '65px' }}>
               <IconButton
                 onClick={(event) => handleMoreOptionsClick(event, booking)}
               >

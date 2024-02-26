@@ -7,6 +7,8 @@ import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 import { faSignOutAlt, faUserCircle } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import HomeSharpIcon from "@mui/icons-material/HomeSharp";
+import { useLocation } from "react-router-dom";
 
 const CustomTextButton = styled(Button)(({ theme }) => ({
   color: "black",
@@ -21,6 +23,7 @@ const CustomTextButton = styled(Button)(({ theme }) => ({
 
 const Sidebar = ({ isAdmin, isUser }) => {
   const navigate = useNavigate();
+  const location = useLocation();
   const [profileAnchorEl, setProfileAnchorEl] = useState(null);
 
   const handleCloseMenu = () => {
@@ -33,7 +36,8 @@ const Sidebar = ({ isAdmin, isUser }) => {
     // navigate("/");
   };
   const activeStyle = {
-    color: "#0071BA", 
+    color: "black",
+    fontWeight:'bold',
   };
   return (
     <div>
@@ -46,55 +50,111 @@ const Sidebar = ({ isAdmin, isUser }) => {
                 display: "flex",
                 flexDirection: "column",
                 marginTop: "85px",
-                
+
                 alignItems: "flex-start",
-                fontFamily:'poppins',
-                color:'grey'
+                fontFamily: "poppins",
+                color: "grey",
               }}
             >
-              <CustomTextButton
-                variant="text"
-                onClick={() => navigate("/dashboard")}
-                style={{ fontFamily: "poppins",fontSize:'15px' ,letterSpacing:'2px',color:'grey'}}
-              >
-                Home
-              </CustomTextButton>
+             
+                {/* <HomeSharpIcon style={{height:'34px'}}/> */}
+                <CustomTextButton
+                  variant="text"
+                  onClick={() => navigate("/dashboard")}
+                  style={{
+                    fontFamily: "poppins",
+                    fontSize: "15px",
+                    letterSpacing: "2px",
+                    color:
+                      location.pathname === "/dashboard"
+                        ? activeStyle.color
+                        : "grey",
+                  }}
+                >
+                  HOME
+                </CustomTextButton>
+             
+
               {isAdmin && (
-                <div style={{display: "flex",
-                flexDirection: "column", alignItems:'flex-start',fontSize:'15px' ,letterSpacing:'2px',color:'grey'}}>
+                <div
+                  style={{
+                    display: "flex",
+                    flexDirection: "column",
+                    alignItems: "flex-start",
+                    fontSize: "15px",
+                    letterSpacing: "2px",
+                  }}
+                >
                   <CustomTextButton
                     variant="text"
                     onClick={() => navigate("/requests")}
-                    style={{ fontFamily: "poppins" ,fontSize:'15px' ,letterSpacing:'2px',color:'grey'}}
+                    style={{
+                      fontFamily: "poppins",
+                      fontSize: "15px",
+                      letterSpacing: "2px",
+                      color:
+                      location.pathname === "/requests"
+                        ? activeStyle.color
+                        : "grey",
+                    }}
                   >
-                    Bookings
+                    BOOKINGS
                   </CustomTextButton>
                   <CustomTextButton
                     variant="text"
                     onClick={() => navigate("/analytics")}
-                    style={{ fontFamily: "poppins",fontSize:'15px',letterSpacing:'2px' ,color:'grey' }}
+                    style={{
+                      fontFamily: "poppins",
+                      fontSize: "15px",
+                      letterSpacing: "2px",
+                      color:
+                      location.pathname === "/analytics"
+                        ? activeStyle.color
+                        : "grey",
+                    }}
                   >
-                    Admin Analytics
+                    ADMIN ANALYTICS
                   </CustomTextButton>
                 </div>
               )}
               {isUser && (
-                <div style={{display: "flex",
-                flexDirection: "column", alignItems:'flex-start'}}>
+                <div
+                  style={{
+                    display: "flex",
+                    flexDirection: "column",
+                    alignItems: "flex-start",
+                  }}
+                >
                   <CustomTextButton
                     variant="text"
                     onClick={() => navigate("/useranalytics")}
-                    style={{ fontFamily: "poppins",fontSize:'15px',letterSpacing:'2px',color:'grey' }}
+                    style={{
+                      fontFamily: "poppins",
+                      fontSize: "15px",
+                      letterSpacing: "2px",
+                      color:
+                      location.pathname === "/useranalytics"
+                        ? activeStyle.color
+                        : "grey",
+                    }}
                   >
-                    Analytics
+                    ANALYTICS
                   </CustomTextButton>
 
                   <CustomTextButton
                     variant="text"
                     onClick={() => navigate("/userholidaylist")}
-                    style={{ fontFamily: "poppins",fontSize:'15px',letterSpacing:'2px',color:'grey' }}
+                    style={{
+                      fontFamily: "poppins",
+                      fontSize: "15px",
+                      letterSpacing: "2px",
+                      color:
+                      location.pathname === "/userholidaylist"
+                        ? activeStyle.color
+                        : "grey",
+                    }}
                   >
-                    Holiday List
+                    HOLIDAY LIST
                   </CustomTextButton>
                 </div>
               )}
@@ -111,16 +171,29 @@ const Sidebar = ({ isAdmin, isUser }) => {
                 variant="text"
                 component={Link}
                 to="/profile"
-                style={{ fontFamily: "poppins" ,fontSize:'15px',letterSpacing:'2px' ,color:'grey'}}
+                style={{
+                  fontFamily: "poppins",
+                  fontSize: "15px",
+                  letterSpacing: "2px",
+                  color:
+                      location.pathname === "/profile"
+                        ? activeStyle.color
+                        : "grey",
+                }}
               >
-                Profile
+                PROFILE
               </CustomTextButton>
               <CustomTextButton
                 variant="text"
                 onClick={handleLogout}
-                style={{ fontFamily: "poppins" ,fontSize:'15px',letterSpacing:'2.5px',color:'grey' }}
+                style={{
+                  fontFamily: "poppins",
+                  fontSize: "15px",
+                  letterSpacing: "2.5px",
+                  color: "grey",
+                }}
               >
-                Logout
+                LOGOUT
               </CustomTextButton>
             </div>
           </nav>
