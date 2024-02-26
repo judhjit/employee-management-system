@@ -341,7 +341,15 @@
 import React, { useState, useEffect, useRef } from "react";
 import Calendar from "react-calendar";
 import Alert from "@mui/material/Alert";
-import { Box, Button, Drawer, FormControlLabel, IconButton, Radio, RadioGroup } from "@mui/material";
+import {
+  Box,
+  Button,
+  Drawer,
+  FormControlLabel,
+  IconButton,
+  Radio,
+  RadioGroup,
+} from "@mui/material";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import "react-calendar/dist/Calendar.css";
@@ -358,6 +366,7 @@ import Fade from "@mui/material/Fade";
 import Modal from "@mui/material/Modal";
 import Backdrop from "@mui/material/Backdrop";
 import Typography from "@mui/material/Typography";
+import Bookings from "./Bookings";
 
 const MultiDateCalendar = ({
   selectedDates,
@@ -375,11 +384,17 @@ const MultiDateCalendar = ({
 
   const [showHolidayModal, setShowHolidayModal] = useState(false);
   const [selectedHolidayDate, setSelectedHolidayDate] = useState(null);
-  // const [showBookingReview, setShowBookingReview] = useState(false);
   const [showFoodPreferenceModal, setShowFoodPreferenceModal] = useState(false);
   const [foodPreference, setFoodPreference] = useState("");
   const [open, setOpen] = useState(false);
+  const [selectedMeal, setSelectedMeal] = useState(
+    Array(selectedDates.length).fill(null)
+  );
+  const [submissionStatus, setSubmissionStatus] = useState(null);
+  const [errorMessage, setErrorMessage] = useState(null);
+  const [isdisabled, setDisabled] = useState(false);
 
+  // console.log('selectedmeal,',selectedMeal);
   const style = {
     position: "absolute",
     top: "50%",
@@ -394,9 +409,7 @@ const MultiDateCalendar = ({
 
   const dummyContainerRef = useRef(null);
   const [showDummyContainer, setShowDummyContainer] = useState(false);
- 
 
-  
   useEffect(() => {
     setSelectedDates([]);
     setBookings({
@@ -462,13 +475,6 @@ const MultiDateCalendar = ({
       return;
     }
 
-    // console.log("f",foundHoliday);
-    //   if(foundHoliday){
-
-    //     alert('its a holiday')
-    //     return;
-    //   }
-
     if (date.getDay() === 0) {
       return;
     }
@@ -484,16 +490,6 @@ const MultiDateCalendar = ({
         (selectedDate) => selectedDate.toDateString() !== date.toDateString()
       );
     } else {
-      // If not selected, add the date
-      // if (selectedDates.length >= 5) {
-      //   alert("You can only select up to 5 dates.");
-
-      //   return;
-      // }
-
-      // if (holidayDateIndex!==-1){
-
-      // }
       if (selectedDates.length >= 5) {
         toast.error("You can only select up to 5 dates.");
         return;
@@ -503,6 +499,16 @@ const MultiDateCalendar = ({
     }
 
     setSelectedDates(newSelectedDates);
+
+    // setBookings((prevBookings) => ({
+    //   ...prevBookings,
+    //   dates: newSelectedDates.map((selectedDate) => {
+    //     const year = selectedDate.getFullYear();
+    //     const month = String(selectedDate.getMonth() + 1).padStart(2, "0");
+    //     const day = String(selectedDate.getDate()).padStart(2, "0");
+    //     return `${year}/${month}/${day}`;
+    //   }),
+    // }));
 
     setUser((prevUser) => ({
       ...prevUser,
@@ -514,30 +520,16 @@ const MultiDateCalendar = ({
     setOpen(true);
     setBookings((prevBookings) => ({
       ...prevBookings,
-      dates: [
-        ...prevBookings.dates,
-        ...selectedDates.map((selectedDate) => {
+      dates: prevBookings.dates.concat(
+        selectedDates.map((selectedDate) => {
           const year = selectedDate.getFullYear();
           const month = String(selectedDate.getMonth() + 1).padStart(2, "0");
           const day = String(selectedDate.getDate()).padStart(2, "0");
           return `${year}/${month}/${day}`;
-        }),
-      ],
+        })
+      ),
     }));
-
-    // navigate("/bookings");
-  };
-
-  const handleBookButton1Click = () => {
-    setShowDummyContainer(true);
-
-    setTimeout(() => {
-      if (dummyContainerRef.current) {
-        dummyContainerRef.current.scrollIntoView({
-          behavior: "smooth",
-        });
-      }
-    }, 500);
+    console.log("bookings", bookings);
   };
 
   const isAfter10AMToday = () => {
@@ -547,18 +539,68 @@ const MultiDateCalendar = ({
 
   const handleClose = () => setOpen(false);
 
-  const [selectedLunch, setSelectedLunch] = useState("   ");
+  const [selectedLunch, setSelectedLunch] = useState("");
   // const [selectedSlot, setSelectedSlot] = useState("");
 
-  // const handleLunchChange = (event) => {
-  //   setSelectedLunch(event.target.value);
-  //   setSelectedMeal(selectedMeal.fill(event.target.value))
-  //   // setBookings((prevBookings) => ({
-  //   //     ...prevBookings,
-  //   //     preference: selectedMeal,
-  //   //   }));
-  //   console.log(selectedMeal)
-  // };
+  useEffect(() => {
+    const containsNonNullMeal = selectedMeal.some(
+      (element) => element !== null
+    );
+    if (containsNonNullMeal) {
+      setBookings((prevBookings) => ({
+        ...prevBookings,
+        isFoodRequired: true,
+      }));
+    }
+
+    // const containsNonNullCab = selectedCab.some(element => element !== null);
+    // if (containsNonNullCab) {
+    //   setBookings((prevBookings) => ({
+    //     ...prevBookings,
+    //     isCabRequired: true
+    //   }));
+
+    // }
+  }, [selectedMeal]);
+
+  const handleLunchChange = (event) => {
+    setSelectedLunch(event.target.value);
+
+    setSelectedMeal(Array(selectedDates.length).fill(event.target.value));
+
+    setBookings((prevBookings) => ({
+      ...prevBookings,
+      preference: Array(selectedDates.length).fill(event.target.value),
+    }));
+  };
+
+  const handleSubmit = async () => {
+    let response;
+
+    try {
+      setDisabled(true);
+      response = await api.post("/user/bookings", {
+        dates: bookings.dates,
+        // deskId: bookings.deskId,
+        preference: bookings.preference,
+        // workSlot: bookings.workSlot,
+        // isDeskRequired: bookings.isDeskRequired,
+        // isCabRequired: bookings.isCabRequired,
+        isFoodRequired: bookings.isFoodRequired,
+        // Add other properties as needed
+      });
+
+      console.log(response);
+      setSubmissionStatus("success");
+      setDisabled(false);
+    } catch (err) {
+      console.log("error in the final submission", err);
+      setSubmissionStatus("error");
+      setErrorMessage(err.response.data.message);
+      setDisabled(false);
+    }
+  };
+
   // useEffect(() => {
   //   // // Check if all preferences are selected
   //   // if (selectedCab.every(slot => slot !== '') && selectedLunch !== '') {
@@ -643,7 +685,9 @@ const MultiDateCalendar = ({
                       );
 
                       const isHoliday = holidays.some(
-                        (holiday) => new Date(holiday.holiday_date).toDateString() === date.toDateString()
+                        (holiday) =>
+                          new Date(holiday.holiday_date).toDateString() ===
+                          date.toDateString()
                       );
 
                       const isPreviousWeekend =
@@ -664,12 +708,23 @@ const MultiDateCalendar = ({
                         ? "holiday"
                         : "";
                     }}
-
                     tileContent={({ date, view }) =>
-                      view === "month" && holidays.some((holiday) => new Date(holiday.holiday_date).toDateString() === date.toDateString())
-                  ? <div style={{ backgroundColor: "green", borderRadius: "50%", height: "10px", width: "10px", margin: "auto" }} />
-                      : null
-                      
+                      view === "month" &&
+                      holidays.some(
+                        (holiday) =>
+                          new Date(holiday.holiday_date).toDateString() ===
+                          date.toDateString()
+                      ) ? (
+                        <div
+                          style={{
+                            backgroundColor: "green",
+                            borderRadius: "50%",
+                            height: "10px",
+                            width: "10px",
+                            margin: "auto",
+                          }}
+                        />
+                      ) : null
                     }
                   />
 
@@ -708,8 +763,8 @@ const MultiDateCalendar = ({
                       <RadioGroup
                         aria-label="lunch-type"
                         name="lunch-type"
-                        // value={selectedLunch}
-                        // onChange={handleLunchChange}
+                        value={selectedLunch}
+                        onChange={handleLunchChange}
                         style={{
                           flexDirection: "row",
                           paddingLeft: "10px",
@@ -741,13 +796,48 @@ const MultiDateCalendar = ({
                           label="none"
                         />
                       </RadioGroup>
+
+                      <Button
+                        variant="contained"
+                        onClick={handleSubmit}
+                        style={{ width: "20px" }}
+                        disabled={isdisabled}
+                      >
+                        Submit
+                      </Button>
+                      {submissionStatus === "success" && (
+                        <Typography
+                          variant="h6"
+                          sx={{
+                            marginTop: "50px",
+                            color: "green",
+                            marginLeft: "30px",
+                          }}
+                        >
+                          All bookings has been done successfully!!!
+                        </Typography>
+                      )}
+
+                      {submissionStatus === "error" && (
+                        <Typography
+                          variant="h6"
+                          sx={{
+                            marginTop: "50px",
+                            color: "red",
+                            marginLeft: "30px",
+                          }}
+                        >
+                          {errorMessage}
+                        </Typography>
+                      )}
                     </Box>
                   </Modal>
                 </div>
               </div>
             </div>
-          ) : <Loading />}
-
+          ) : (
+            <Loading />
+          )}
         </div>
       </Grid>
       {/* <Grid item xs={12} md={2}>
@@ -784,9 +874,7 @@ const MultiDateCalendar = ({
           </div>
         </Drawer>
       </Grid> */}
-
-      
-          </Grid>
+    </Grid>
   );
 };
 
