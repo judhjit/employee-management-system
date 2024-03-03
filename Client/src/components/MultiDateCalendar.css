@@ -27,13 +27,13 @@
   } */
   .react-calendar {
     width: 480px;
-    height: 334px;
+    height: 317px;
     max-width: 100%;
     background: #FFF;
-    border: 2px solid #E9E9E9;
+    border: 0.5px solid #E9E9E9;
     border-radius: 8px;
     
-    line-height: 1.125em;
+    line-height: 1em;
     padding-top: 10px;
     text-align: center;
 }

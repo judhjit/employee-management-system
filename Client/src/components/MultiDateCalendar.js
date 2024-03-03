@@ -400,9 +400,9 @@ const MultiDateCalendar = ({
     top: "50%",
     left: "50%",
     transform: "translate(-50%, -50%)",
-    width: 800,
+    width: 355,
     bgcolor: "background.paper",
-    border: "2px solid #000",
+    borderRadius:"5px",
     boxShadow: 24,
     p: 4,
   };
@@ -746,7 +746,8 @@ const MultiDateCalendar = ({
                     onClose={handleClose}
                     aria-labelledby="modal-modal-title"
                     aria-describedby="modal-modal-description"
-                    // style={{width:'343px',height:'186px'}}
+                    // style={{width:'279px',margin:'auto 0'}}
+                    style={{width:'10px',height:'186px',marginLeft:'710px',marginTop:'200px'}}
                   >
                     <Box sx={style}>
                       <Typography
@@ -757,7 +758,7 @@ const MultiDateCalendar = ({
                         Book Your Lunch
                       </Typography>
                       <Divider style={{ width: "350px" }} />
-                      <Typography id="modal-modal-description" sx={{ mt: 2 }}>
+                      <Typography id="modal-modal-description" sx={{ mt: 2,fontSize:'18px' }}>
                         preference:
                       </Typography>
                       <RadioGroup
@@ -767,7 +768,7 @@ const MultiDateCalendar = ({
                         onChange={handleLunchChange}
                         style={{
                           flexDirection: "row",
-                          paddingLeft: "10px",
+                          paddingLeft: "2px",
                           color: "#666C7E",
                           fontWeight: 500,
                           fontSize: "1px",
@@ -787,12 +788,12 @@ const MultiDateCalendar = ({
                           value="Non-Veg"
                           control={<Radio />}
                           label="Non-Veg"
-                          style={{ fontFamily: "poppins ", fontSize: "14px" }}
+                          style={{ fontFamily: "poppins ", fontSize: "14px",paddingLeft:'44px' }}
                         />
                         <FormControlLabel
                           value="None"
                           control={<Radio />}
-                          style={{ fontFamily: "poppins", fontSize: "14px" }}
+                          style={{ fontFamily: "poppins", fontSize: "14px",paddingLeft:'38px' }}
                           label="none"
                         />
                       </RadioGroup>
@@ -800,7 +801,7 @@ const MultiDateCalendar = ({
                       <Button
                         variant="contained"
                         onClick={handleSubmit}
-                        style={{ width: "20px" }}
+                        style={{ width: "85px", paddingTop:'10px' ,height:'30px',fontSize:'10px',marginTop:'10px'}}
                         disabled={isdisabled}
                       >
                         Submit

@@ -148,7 +148,8 @@ function App() {
               isAdmin={user.isAdmin}
               isUser={isUser}
               bookings={bookings}
-              setBookings={setBookings}/>}/>
+              setBookings={setBookings}
+              setUser={setUser}/>}/>
               
               <Route path="/landingpage" element={<MultiDateCalendar
                 // showNewsFeed={showNewsFeed}

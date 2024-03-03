@@ -71,7 +71,7 @@ const Sidebar = ({ isAdmin, isUser }) => {
                         : "grey",
                   }}
                 >
-                  HOME
+                  Home
                 </CustomTextButton>
              
 
@@ -98,7 +98,7 @@ const Sidebar = ({ isAdmin, isUser }) => {
                         : "grey",
                     }}
                   >
-                    BOOKINGS
+                    Bookings
                   </CustomTextButton>
                   <CustomTextButton
                     variant="text"
@@ -113,7 +113,7 @@ const Sidebar = ({ isAdmin, isUser }) => {
                         : "grey",
                     }}
                   >
-                    ADMIN ANALYTICS
+                    Admin Analytics
                   </CustomTextButton>
                 </div>
               )}
@@ -138,7 +138,7 @@ const Sidebar = ({ isAdmin, isUser }) => {
                         : "grey",
                     }}
                   >
-                    ANALYTICS
+                    Analytics
                   </CustomTextButton>
 
                   <CustomTextButton
@@ -154,7 +154,7 @@ const Sidebar = ({ isAdmin, isUser }) => {
                         : "grey",
                     }}
                   >
-                    HOLIDAY LIST
+                    Holiday List
                   </CustomTextButton>
                 </div>
               )}
@@ -181,7 +181,7 @@ const Sidebar = ({ isAdmin, isUser }) => {
                         : "grey",
                 }}
               >
-                PROFILE
+                Profile
               </CustomTextButton>
               <CustomTextButton
                 variant="text"
@@ -193,7 +193,7 @@ const Sidebar = ({ isAdmin, isUser }) => {
                   color: "grey",
                 }}
               >
-                LOGOUT
+                Logout
               </CustomTextButton>
             </div>
           </nav>

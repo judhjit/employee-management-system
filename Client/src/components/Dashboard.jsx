@@ -85,15 +85,15 @@ isUser}) => {
       <div style={{ display: 'flex', flexDirection: 'row' }}>
         <Sidebar isAdmin={isAdmin} isUser={isUser}/>
         
-
+        <div>
         <Box
         sx={{
           boxShadow: '0 4px 8px 0 rgba(149,146,146,0.2), 0 4px 20px 0 rgba(255, 255, 255, 0.19);',
-          marginLeft: '341px',
+          marginLeft: '348px',
           position: 'absolute',
           marginTop: '32px',
-          width: '580px',
-          height: '92vh',
+          width: '543px',
+          height: '642px',
           borderRadius: "15px",
           backgroundColor:'white'
         //   bgcolor: (theme) => (theme.palette.mode === 'dark' ? '#101010' : '#fff'),
@@ -107,7 +107,7 @@ isUser}) => {
       >
         <img src={Lunch} style={{width:'435px',marginTop:'20px',height:'100px',display:'flex' , margin:'16px auto'}}/>
 
-        <Typography style={{marginTop:'2vw', marginLeft:'30px',fontFamily:'poppins',fontSize:'18px', fontWeight:'bold'}}>Current Booking</Typography>
+        <Typography style={{marginTop:'2vw', marginLeft:'53px',fontFamily:'poppins',fontSize:'18px', fontWeight:'bold'}}>Current Booking</Typography>
         <Divider
             style={{ width: "500px", height: "15px", opacity: 0.5, marginLeft:'30px' }}
           />
@@ -117,10 +117,10 @@ isUser}) => {
         <Box
         sx={{
           boxShadow: '0 4px 8px 0 rgba(149,146,146,0.2), 0 4px 20px 0 rgba(255, 255, 255, 0.19);',
-          marginLeft: '950px',
+          marginLeft: '915px',
           position: 'absolute',
           marginTop: '32px',
-          width: '580px',
+          width: '543px',
           height: '92vh',
           borderRadius: "15px",
           backgroundColor:'white'
@@ -147,8 +147,9 @@ isUser}) => {
           </div>
           
         
-       <img src={Illustration} style={{marginTop:'345px'}}/>
+       <img src={Illustration} style={{marginTop:'322px',height:'270px'}}/>
       </Box>
+      </div>
       </div>
     </div>
   );

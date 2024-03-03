@@ -182,7 +182,7 @@ const Profile = ({ user, isUser }) => {
 
   return (
     <div className="profile-container" style={profileContainerStyle}>
-      <div style={headerContainerStyle}>
+      {/* <div style={headerContainerStyle}>
         {/* <h style={headingStyle}>
           <span style={{ color: '#0071BA'}}>My </span>
           <span>Profile</span>
@@ -191,9 +191,9 @@ const Profile = ({ user, isUser }) => {
           {userData.firstName.charAt(0).toUpperCase()}
           {userData.lastName.charAt(0).toUpperCase()}
         </Avatar> */}
-        <img src={bg3} alt="Left Half" />
+        {/* <img src={bg3} alt="Left Half" />
 
-      </div>
+      </div> */} 
 
       <div style={dataContainerStyle}>
 

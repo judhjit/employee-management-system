@@ -1384,7 +1384,7 @@ const CurrentBookings = () => {
                 <TableCell style={{ fontSize:"12px" ,fontFamily: "poppins",borderBottom:'0', paddingLeft:'50px'}}>
                  <img src={Meal}/>
                 </TableCell>
-                <TableCell style={{ padding: 5 , fontSize:"12px" ,fontFamily: "poppins",borderBottom:'0', width:'85px'}}>
+                <TableCell style={{ padding: 5 , fontSize:"12px" ,fontFamily: "poppins",borderBottom:'0', width:'117px'}}>
                   {booking.dateBooked}
                 </TableCell>
                 <TableCell style={{paddingRight: 2 , fontSize:"13px" ,fontFamily: "poppins" , paddingBottom:'15px' , paddingLeft:'170px',borderBottom:'0', width:'85px'}}>{booking.selected}</TableCell>
