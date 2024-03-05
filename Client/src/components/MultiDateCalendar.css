@@ -30,6 +30,7 @@
     height: 317px;
     max-width: 100%;
     background: #FFF;
+    border: 0 !important;
     border: 0.5px solid #E9E9E9;
     border-radius: 8px;
     

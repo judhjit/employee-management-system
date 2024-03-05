@@ -1470,6 +1470,7 @@ const CurrentBookings = () => {
           <Button
             onClick={handleConfirmEdit}
             className="editButton"
+            variant="contained"
             style={{
               backgroundColor: "green",
               color: "white",
@@ -1481,6 +1482,7 @@ const CurrentBookings = () => {
           <Button
             onClick={handleEditDialogClose}
             className="cancelButton"
+            variant="contained"
             style={{
               backgroundColor: "red",
               color: "white",

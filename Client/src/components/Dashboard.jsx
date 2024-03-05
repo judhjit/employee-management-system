@@ -89,7 +89,7 @@ isUser}) => {
         <Box
         sx={{
           boxShadow: '0 4px 8px 0 rgba(149,146,146,0.2), 0 4px 20px 0 rgba(255, 255, 255, 0.19);',
-          marginLeft: '348px',
+          marginLeft: '285px',
           position: 'absolute',
           marginTop: '32px',
           width: '543px',
@@ -117,7 +117,7 @@ isUser}) => {
         <Box
         sx={{
           boxShadow: '0 4px 8px 0 rgba(149,146,146,0.2), 0 4px 20px 0 rgba(255, 255, 255, 0.19);',
-          marginLeft: '915px',
+          marginLeft: '9px',
           position: 'absolute',
           marginTop: '32px',
           width: '543px',

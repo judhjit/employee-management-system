@@ -367,6 +367,8 @@ import Modal from "@mui/material/Modal";
 import Backdrop from "@mui/material/Backdrop";
 import Typography from "@mui/material/Typography";
 import Bookings from "./Bookings";
+import Swal from 'sweetalert2';
+
 
 const MultiDateCalendar = ({
   selectedDates,
@@ -381,7 +383,6 @@ const MultiDateCalendar = ({
   const [disabledDates, setDisabledDates] = useState([]);
   const [holidays, setHolidays] = useState([]);
   const [currentBookingsOpen, setCurrentBookingsOpen] = useState(false);
-
   const [showHolidayModal, setShowHolidayModal] = useState(false);
   const [selectedHolidayDate, setSelectedHolidayDate] = useState(null);
   const [showFoodPreferenceModal, setShowFoodPreferenceModal] = useState(false);
@@ -464,17 +465,17 @@ const MultiDateCalendar = ({
     const formattedDate = date.toISOString().split("T")[0];
     console.log("format", formattedDate);
 
-    const foundHoliday = holidays.find((holiday) => {
-      const holidayDate = new Date(holiday.holiday_date);
-      return holidayDate.toDateString() === date.toDateString();
-    });
+    
+    // const foundHoliday = holidays.find((holiday) => {
+    //   const holidayDate = new Date(holiday.holiday_date);
+    //   return holidayDate.toDateString() === date.toDateString();
+    // });
 
-    if (foundHoliday) {
-      setShowHolidayModal(true);
-      setSelectedHolidayDate(date);
-      return;
-    }
-
+    // if (foundHoliday) {
+    //   setShowHolidayModal(true);
+    //   setSelectedHolidayDate(date);
+    //   return;
+    // }
     if (date.getDay() === 0) {
       return;
     }
@@ -517,6 +518,31 @@ const MultiDateCalendar = ({
   };
 
   const handleBookButtonClick = () => {
+    
+    
+    // const foundHoliday = holidays.find((holiday) => {
+    //   const holidayDate = new Date(holiday.holiday_date);
+    //   return holidayDate.toDateString() === selectedDates[0]?.toDateString();
+    // });
+  
+    // if (foundHoliday) {
+    //   setShowHolidayModal(true);
+    //   setSelectedHolidayDate(selectedDates[0]);
+    //   return;
+    // }
+
+    const hasHoliday = selectedDates.some((date) =>
+    holidays.some(
+      (holiday) =>
+        new Date(holiday.holiday_date).toDateString() === date.toDateString()
+    )
+  );
+
+  if (hasHoliday) {
+    setShowHolidayModal(true);
+    setSelectedHolidayDate(selectedDates[0]);
+    return;
+  }
     setOpen(true);
     setBookings((prevBookings) => ({
       ...prevBookings,
@@ -591,16 +617,56 @@ const MultiDateCalendar = ({
       });
 
       console.log(response);
-      setSubmissionStatus("success");
+      // setSubmissionStatus("success");
+      setOpen(false);
       setDisabled(false);
+      Swal.fire({
+        icon: "success",
+        title: "Booking Successful!",
+        text: "Your booking has been done successfully!",
+      });
     } catch (err) {
       console.log("error in the final submission", err);
-      setSubmissionStatus("error");
+      // setSubmissionStatus("error");
       setErrorMessage(err.response.data.message);
+      setOpen(false);
       setDisabled(false);
+      Swal.fire({
+        icon: 'error',
+        title: 'Booking Error',
+        text: errorMessage || 'An error occurred while processing your booking.',
+      });
     }
   };
+  const handleHolidayModalClose = () => {
+    setShowHolidayModal(false);
+    setSelectedDates([]);
+  };
 
+  // const handleProceedHoliday = () => {
+  //   setShowHolidayModal(false);
+  //   setSelectedDates((prevSelectedDates) => [
+  //     ...prevSelectedDates,
+  //     selectedHolidayDate,
+  //   ]);
+  //   console.log(selectedDates);
+  //   handleBookButtonClick();
+  // };
+  const handleProceedHoliday = () => {
+    setShowHolidayModal(false);  
+    setOpen(true);
+    setBookings((prevBookings) => ({
+      ...prevBookings,
+      dates: [...prevBookings.dates, ...selectedDates.map((selectedDate) => {
+        const year = selectedDate.getFullYear();
+        const month = String(selectedDate.getMonth() + 1).padStart(2, "0");
+        const day = String(selectedDate.getDate()).padStart(2, "0");
+        return `${year}/${month}/${day}`;
+      })],
+    }));
+    console.log("bookings", bookings);
+  };
+  
   // useEffect(() => {
   //   // // Check if all preferences are selected
   //   // if (selectedCab.every(slot => slot !== '') && selectedLunch !== '') {
@@ -841,6 +907,40 @@ const MultiDateCalendar = ({
           )}
         </div>
       </Grid>
+      <Modal
+        open={showHolidayModal}
+        onClose={handleHolidayModalClose}
+        style={{
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+        }}
+      >
+        <Fade in={showHolidayModal}>
+          <Box
+            sx={{
+              backgroundColor: "white",
+              border: "2px solid #000",
+              boxShadow: 24,
+              padding: 4,
+            }}
+          >
+            <Typography variant="h5" component="div" gutterBottom>
+              Confirm Holiday Booking
+            </Typography>
+            <Typography variant="body1" gutterBottom>
+              You have selected a holiday. Do you want to proceed with the
+              booking?
+            </Typography>
+            <Button variant="contained" onClick={handleProceedHoliday} style={{backgroundColor:'green'}}>
+              Yes, Book on Holiday
+            </Button>
+            <Button variant="contained" onClick={handleHolidayModalClose} style={{marginLeft:'10px', backgroundColor:'red'}}>
+              No, Cancel Booking
+            </Button>
+          </Box>
+        </Fade>
+      </Modal>
       {/* <Grid item xs={12} md={2}>
         <button
           onClick={handleCurrentBookingsClick}
