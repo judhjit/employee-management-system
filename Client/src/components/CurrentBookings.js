@@ -1381,13 +1381,13 @@ const CurrentBookings = () => {
               <TableRow style={{ padding: 5 }} key={index}>
 
                 {/* <TableCell style={{ padding: 5 , fontSize:"13px",fontFamily: "poppins"}}>{index + 1}</TableCell> */}
-                <TableCell style={{ fontSize:"12px" ,fontFamily: "poppins",borderBottom:'0', paddingLeft:'50px'}}>
+                <TableCell style={{ fontSize:"12px" ,fontFamily: "poppins",borderBottom:'0', paddingLeft:'71px'}}>
                  <img src={Meal}/>
                 </TableCell>
                 <TableCell style={{ padding: 5 , fontSize:"12px" ,fontFamily: "poppins",borderBottom:'0', width:'85px'}}>
                   {booking.dateBooked}
                 </TableCell>
-                <TableCell style={{paddingRight: 2 , fontSize:"13px" ,fontFamily: "poppins" , paddingBottom:'15px' , paddingLeft:'170px',borderBottom:'0', width:'85px'}}>{booking.selected}</TableCell>
+                <TableCell style={{paddingRight: 2 , fontSize:"13px" ,fontFamily: "poppins" , paddingBottom:'15px' , paddingLeft:'167px',borderBottom:'0', width:'65px'}}>{booking.selected}</TableCell>
                 <TableCell style={{ borderBottom: '0', marginLeft: '65px' }}>
               <IconButton
                 onClick={(event) => handleMoreOptionsClick(event, booking)}

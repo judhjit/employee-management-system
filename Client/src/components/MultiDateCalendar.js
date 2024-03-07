@@ -367,8 +367,7 @@ import Modal from "@mui/material/Modal";
 import Backdrop from "@mui/material/Backdrop";
 import Typography from "@mui/material/Typography";
 import Bookings from "./Bookings";
-import Swal from 'sweetalert2';
-
+import Swal from "sweetalert2";
 
 const MultiDateCalendar = ({
   selectedDates,
@@ -465,7 +464,6 @@ const MultiDateCalendar = ({
     const formattedDate = date.toISOString().split("T")[0];
     console.log("format", formattedDate);
 
-    
     // const foundHoliday = holidays.find((holiday) => {
     //   const holidayDate = new Date(holiday.holiday_date);
     //   return holidayDate.toDateString() === date.toDateString();
@@ -518,13 +516,11 @@ const MultiDateCalendar = ({
   };
 
   const handleBookButtonClick = () => {
-    
-    
     // const foundHoliday = holidays.find((holiday) => {
     //   const holidayDate = new Date(holiday.holiday_date);
     //   return holidayDate.toDateString() === selectedDates[0]?.toDateString();
     // });
-  
+
     // if (foundHoliday) {
     //   setShowHolidayModal(true);
     //   setSelectedHolidayDate(selectedDates[0]);
@@ -532,17 +528,17 @@ const MultiDateCalendar = ({
     // }
 
     const hasHoliday = selectedDates.some((date) =>
-    holidays.some(
-      (holiday) =>
-        new Date(holiday.holiday_date).toDateString() === date.toDateString()
-    )
-  );
+      holidays.some(
+        (holiday) =>
+          new Date(holiday.holiday_date).toDateString() === date.toDateString()
+      )
+    );
 
-  if (hasHoliday) {
-    setShowHolidayModal(true);
-    setSelectedHolidayDate(selectedDates[0]);
-    return;
-  }
+    if (hasHoliday) {
+      setShowHolidayModal(true);
+      setSelectedHolidayDate(selectedDates[0]);
+      return;
+    }
     setOpen(true);
     setBookings((prevBookings) => ({
       ...prevBookings,
@@ -632,9 +628,10 @@ const MultiDateCalendar = ({
       setOpen(false);
       setDisabled(false);
       Swal.fire({
-        icon: 'error',
-        title: 'Booking Error',
-        text: errorMessage || 'An error occurred while processing your booking.',
+        icon: "error",
+        title: "Booking Error",
+        text:
+          errorMessage || "An error occurred while processing your booking.",
       });
     }
   };
@@ -653,20 +650,36 @@ const MultiDateCalendar = ({
   //   handleBookButtonClick();
   // };
   const handleProceedHoliday = () => {
-    setShowHolidayModal(false);  
+    setShowHolidayModal(false);
     setOpen(true);
     setBookings((prevBookings) => ({
       ...prevBookings,
-      dates: [...prevBookings.dates, ...selectedDates.map((selectedDate) => {
-        const year = selectedDate.getFullYear();
-        const month = String(selectedDate.getMonth() + 1).padStart(2, "0");
-        const day = String(selectedDate.getDate()).padStart(2, "0");
-        return `${year}/${month}/${day}`;
-      })],
+      dates: [
+        ...prevBookings.dates,
+        ...selectedDates.map((selectedDate) => {
+          const year = selectedDate.getFullYear();
+          const month = String(selectedDate.getMonth() + 1).padStart(2, "0");
+          const day = String(selectedDate.getDate()).padStart(2, "0");
+          return `${year}/${month}/${day}`;
+        }),
+      ],
     }));
     console.log("bookings", bookings);
   };
   
+  
+  
+  const holidayDates = selectedDates
+    .filter((date) =>
+      holidays.some(
+        (holiday) =>
+          new Date(holiday.holiday_date).toDateString() === date.toDateString()
+      )
+    )
+    .map((date) => date.toDateString());
+
+  
+
   // useEffect(() => {
   //   // // Check if all preferences are selected
   //   // if (selectedCab.every(slot => slot !== '') && selectedLunch !== '') {
@@ -928,14 +941,26 @@ const MultiDateCalendar = ({
               Confirm Holiday Booking
             </Typography>
             <Typography variant="body1" gutterBottom>
-              You have selected a holiday. Do you want to proceed with the
-              booking?
+              You have selected the following holiday
+              {holidayDates.length === 1 ? " date" : " dates"}:{" "}
+              <span style={{ fontWeight: "bolder" }}>
+                {holidayDates.join(", ")}
+              </span>
+              . Do you want to proceed with the booking?
             </Typography>
-            <Button variant="contained" onClick={handleProceedHoliday} style={{backgroundColor:'green'}}>
-              Yes, Book on Holiday
+            <Button
+              variant="contained"
+              onClick={handleProceedHoliday}
+              style={{ backgroundColor: "green" }}
+            >
+              Yes
             </Button>
-            <Button variant="contained" onClick={handleHolidayModalClose} style={{marginLeft:'10px', backgroundColor:'red'}}>
-              No, Cancel Booking
+            <Button
+              variant="contained"
+              onClick={handleHolidayModalClose}
+              style={{ marginLeft: "10px", backgroundColor: "red" }}
+            >
+              No
             </Button>
           </Box>
         </Fade>
